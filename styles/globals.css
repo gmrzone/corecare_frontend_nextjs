@@ -1,0 +1,102 @@
+@font-face {
+  font-family: 'afzal-heavy';
+  src: url('../corecare_fonts/Axiforma-Heavy.eot'); /* IE9 Compat Modes */
+  src: url('../corecare_fonts/Axiforma-Heavy.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../corecare_fonts/Axiforma-Heavy.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../corecare_fonts/Axiforma-Heavy.woff') format('woff'), /* Pretty Modern Browsers */
+       url('../corecare_fonts/Axiforma-Heavy.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('../corecare_fonts/Axiforma-Heavy.svg#afzal-heavy') format('svg'); /* Legacy iOS */
+}
+@font-face {
+  font-family: 'afzal-extra-bold';
+  src: url('../corecare_fonts/Axiforma-ExtraBold.eot'); /* IE9 Compat Modes */
+  src: url('../corecare_fonts/Axiforma-ExtraBold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../corecare_fonts/Axiforma-ExtraBold.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../corecare_fonts/Axiforma-ExtraBold.woff') format('woff'), /* Pretty Modern Browsers */
+       url('../corecare_fonts/Axiforma-ExtraBold.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('../corecare_fonts/Axiforma-ExtraBold.svg#afzal-extra-bold') format('svg'); /* Legacy iOS */
+}
+
+@font-face {
+  font-family: 'afzal-medium';
+  src: url('../corecare_fonts/Axiforma-Medium.eot'); /* IE9 Compat Modes */
+  src: url('../corecare_fonts/Axiforma-Medium.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../corecare_fonts/Axiforma-Medium.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../corecare_fonts/Axiforma-Medium.woff') format('woff'), /* Pretty Modern Browsers */
+       url('../corecare_fonts/Axiforma-Medium.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('../corecare_fonts/Axiforma-Medium.svg#afzal-medium') format('svg'); /* Legacy iOS */
+}
+@font-face {
+  font-family: 'afzal-regular';
+  src: url('../corecare_fonts/Axiforma-Regular.eot'); /* IE9 Compat Modes */
+  src: url('../corecare_fonts/Axiforma-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../corecare_fonts/Axiforma-Regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../corecare_fonts/Axiforma-Regular.woff') format('woff'), /* Pretty Modern Browsers */
+       url('../corecare_fonts/Axiforma-Regular.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('../corecare_fonts/Axiforma-Regular.svg#afzal-regular') format('svg'); /* Legacy iOS */
+}
+@font-face {
+  font-family: 'afzal-light';
+  src: url('../corecare_fonts/Axiforma-Light.eot'); /* IE9 Compat Modes */
+  src: url('../corecare_fonts/Axiforma-Light.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../corecare_fonts/Axiforma-Light.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../corecare_fonts/Axiforma-Light.woff') format('woff'), /* Pretty Modern Browsers */
+       url('../corecare_fonts/Axiforma-Light.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('../corecare_fonts/Axiforma-Light.svg#afzal-light') format('svg'); /* Legacy iOS */
+}
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: 'afzal-regular' ,-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+h1.heavy {
+  font-family: 'afzal-heavy' ,-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    font-size: 3.6rem;
+}
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  line-height: 1.15;
+}
+h1 {
+
+  font-size: 3.2rem;
+}
+h2 {
+
+  font-size: 3rem;
+}
+h2, h1 {
+  font-family: 'afzal-extra-bold' ,-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+h3 {
+  font-family: 'afzal-medium' ,-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+  Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-size: 2.8rem;
+}
+h4 {
+  font-family: 'afzal-regular' ,-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+  Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-size: 2.6rem;
+}
+h5 {
+  font-family: 'afzal-light' ,-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+  Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-size: 2.2rem;
+}
+h6 {
+  font-family: 'afzal-light' ,-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+  Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-size: 2rem;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
