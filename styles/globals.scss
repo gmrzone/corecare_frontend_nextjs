@@ -230,9 +230,9 @@ span {
   }
 }
 a {
-  color: #4d85ff;
-  :hover {
-    color: darken($color: #4d85ff, $amount: 30%);
+  color: map-get($map: $text, $key: link);
+  &:hover {
+    color: darken($color: map-get($text, link), $amount: 20%);
   }
 }
 * {
@@ -498,7 +498,7 @@ a {
   .profile-box .profile-box-dropdown {
     border-radius: 5px;
     right: 0;
-    top: 50px;
+    top: 56px;
     padding: 10px 0;
     height: auto;
     width: auto;

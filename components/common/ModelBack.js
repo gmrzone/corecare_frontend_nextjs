@@ -5,7 +5,10 @@ const BackModel = ({ active, closeModel , children, zIndex }) => {
     useEffect(() => {
        
         const open = () => {
-            modelRef.current.classList.add('active')
+            if (modelRef.current){
+                modelRef.current.classList.add('active')
+            }
+            
         }
         const close = () => {
             if (modelRef.current){
@@ -25,10 +28,11 @@ const BackModel = ({ active, closeModel , children, zIndex }) => {
         
     }, [active])
 
-    return  (
+    return  reactDom.createPortal(
         <div className="backmodel" ref={modelRef} style={children ? {display: 'flex', justifyContent: 'center', alignItems: 'center', zIndex: zIndex} : {zIndex: zIndex}} onClick={() => closeModel()}>
             {children}
-        </div>
+        </div>,
+        document.getElementById('model')
     )
 }
 BackModel.defaultProps = {

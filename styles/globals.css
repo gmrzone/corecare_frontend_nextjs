@@ -362,8 +362,8 @@ a {
   color: #4d85ff;
 }
 
-a :hover {
-  color: #0038b3;
+a:hover {
+  color: #0048e6;
 }
 
 * {
@@ -631,7 +631,7 @@ a :hover {
   .profile-box .profile-box-dropdown {
     border-radius: 5px;
     right: 0;
-    top: 50px;
+    top: 56px;
     padding: 10px 0;
     height: auto;
     width: auto;

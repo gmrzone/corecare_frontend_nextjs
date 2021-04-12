@@ -4,7 +4,7 @@ import MetaComponent from '../components/common/MetaComponent'
 import Layout from '../components/common/Layout'
 const Home = () => {
   return (
-    <div className="">
+    <>
       <MetaComponent title="Home Page" description="Homepage" name="home Page" url="http://0.0.0.0:3000/"/>
       <Layout>
           <h1 className="heavy">Afzal Saiyed</h1>
@@ -19,7 +19,7 @@ const Home = () => {
           <span>Span</span>
           <a href="true">Link</a>
       </Layout>
-    </div>
+    </>
   )
 }
 export default Home
