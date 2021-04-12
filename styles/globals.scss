@@ -1,27 +1,29 @@
+@import './variables';
+@font-face {
+    font-family: 'Axiforma';
+    src:  url('../corecare_fonts/axiforma-bold-webfont.woff2') format('woff2'),
+          url('../corecare_fonts/axiforma-bold-webfont.woff') format('woff');
+    font-display: swap;
+    font-weight: 700;
+  }
 @font-face {
   font-family: 'Axiforma';
-  src: url("../corecare_fonts/axiforma-bold-webfont.woff2") format("woff2"), url("../corecare_fonts/axiforma-bold-webfont.woff") format("woff");
-  font-display: swap;
-  font-weight: 700;
-}
-
-@font-face {
-  font-family: 'Axiforma';
-  src: url("../corecare_fonts/axiforma-black-webfont.woff2") format("woff2"), url("../corecare_fonts/axiforma-black-webfont.woff") format("woff");
+  src:  url('../corecare_fonts/axiforma-black-webfont.woff2') format('woff2'),
+        url('../corecare_fonts/axiforma-black-webfont.woff') format('woff');
   font-display: swap;
   font-weight: 900;
 }
-
 @font-face {
   font-family: 'Axiforma';
-  src: url("../corecare_fonts/axiforma-semibold-webfont.woff2") format("woff2"), url("../corecare_fonts/axiforma-semibold-webfont.woff") format("woff");
+  src:  url('../corecare_fonts/axiforma-semibold-webfont.woff2') format('woff2'),
+        url('../corecare_fonts/axiforma-semibold-webfont.woff') format('woff');
   font-display: swap;
   font-weight: 500;
 }
-
 @font-face {
   font-family: 'Axiforma';
-  src: url("../corecare_fonts/axiforma-regular-webfont.woff2") format("woff2"), url("../corecare_fonts/axiforma-regular-webfont.woff") format("woff");
+  src:  url('../corecare_fonts/axiforma-regular-webfont.woff2') format('woff2'),
+        url('../corecare_fonts/axiforma-regular-webfont.woff') format('woff');
   font-display: swap;
   font-weight: 400;
 }
@@ -30,371 +32,236 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: Axiforma ,-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: Axiforma ,-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   font-weight: 400;
   font-size: 12px;
   line-height: 1.2;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  background: #f2f2f2;
-}
+  background: map-get($map: $colors, $key: background);
 
-@media (min-width: 993px) {
-  html,
-  body {
+  @media (min-width: 993px){
     font-size: 14px;
   }
 }
-
 h1.heavy {
-  font-family: Axiforma ,-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  font-size: 2.4rem;
-  font-weight: 900;
-  line-height: 1.2;
-}
+  font-family: Axiforma ,-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    font-size: 2.4rem;
+    font-weight: 900;
+    line-height: 1.2;
+    @media (min-width: 600px){
+      font-size: 2.6rem;
+    }
+    @media (min-width: 700px){
+      font-size: 2.8rem;
+    }
+    @media (min-width: 993px){
+      font-size: 3rem;
+    }
+    @media (min-width: 1200px){
+      font-size: 3.2rem;
+    }
+    @media (min-width: 1400px){
+      font-size: 3.4rem;
+    }
+    @media (min-width: 1600px){
+      font-size: 3.6rem;
+    }
 
-@media (min-width: 600px) {
-  h1.heavy {
-    font-size: 2.6rem;
-  }
 }
-
-@media (min-width: 700px) {
-  h1.heavy {
-    font-size: 2.8rem;
-  }
-}
-
-@media (min-width: 993px) {
-  h1.heavy {
-    font-size: 3rem;
-  }
-}
-
-@media (min-width: 1200px) {
-  h1.heavy {
-    font-size: 3.2rem;
-  }
-}
-
-@media (min-width: 1400px) {
-  h1.heavy {
-    font-size: 3.4rem;
-  }
-}
-
-@media (min-width: 1600px) {
-  h1.heavy {
-    font-size: 3.6rem;
-  }
-}
-
 h1, h2, h3, h4, h5, h6, span, a {
   margin: 0;
-  font-family: Axiforma ,-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: Axiforma ,-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+  Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   line-height: 1.2;
-}
 
+}
 h1 {
   font-size: 2rem;
-}
-
-@media (min-width: 600px) {
-  h1 {
+  @media (min-width: 600px){
     font-size: 2.2rem;
   }
-}
-
-@media (min-width: 700px) {
-  h1 {
+  @media (min-width: 700px){
     font-size: 2.4rem;
   }
-}
-
-@media (min-width: 993px) {
-  h1 {
+  @media (min-width: 993px){
     font-size: 2.6rem;
   }
-}
-
-@media (min-width: 1200px) {
-  h1 {
+  @media (min-width: 1200px){
     font-size: 2.8rem;
   }
-}
-
-@media (min-width: 1400px) {
-  h1 {
+  @media (min-width: 1400px){
     font-size: 3rem;
   }
-}
-
-@media (min-width: 1600px) {
-  h1 {
+  @media (min-width: 1600px){
     font-size: 3.2rem;
   }
-}
 
+}
 h2 {
   font-size: 1.8rem;
-}
-
-@media (min-width: 600px) {
-  h2 {
+  @media (min-width: 600px){
     font-size: 2rem;
   }
-}
-
-@media (min-width: 700px) {
-  h2 {
+  @media (min-width: 700px){
     font-size: 2.2rem;
   }
-}
-
-@media (min-width: 993px) {
-  h2 {
+  @media (min-width: 993px){
     font-size: 2.4rem;
   }
-}
-
-@media (min-width: 1200px) {
-  h2 {
+  @media (min-width: 1200px){
     font-size: 2.6rem;
   }
-}
-
-@media (min-width: 1400px) {
-  h2 {
+  @media (min-width: 1400px){
     font-size: 2.8rem;
   }
-}
-
-@media (min-width: 1600px) {
-  h2 {
+  @media (min-width: 1600px){
     font-size: 3rem;
   }
-}
 
+}
 h2, h1 {
-  font-weight: 700;
-}
 
+    font-weight: 700;
+}
 h3 {
   font-size: 1.6rem;
   font-weight: 500;
-}
-
-@media (min-width: 600px) {
-  h3 {
+  @media (min-width: 600px){
     font-size: 1.8rem;
   }
-}
-
-@media (min-width: 700px) {
-  h3 {
+  @media (min-width: 700px){
     font-size: 2rem;
   }
-}
-
-@media (min-width: 993px) {
-  h3 {
+  @media (min-width: 993px){
     font-size: 2.2rem;
   }
-}
-
-@media (min-width: 1200px) {
-  h3 {
+  @media (min-width: 1200px){
     font-size: 2.4rem;
   }
-}
-
-@media (min-width: 1400px) {
-  h3 {
+  @media (min-width: 1400px){
     font-size: 2.6rem;
   }
-}
-
-@media (min-width: 1600px) {
-  h3 {
+  @media (min-width: 1600px){
     font-size: 2.8rem;
   }
 }
-
 h4 {
+
   font-size: 1.6rem;
   font-weight: 400;
-}
-
-@media (min-width: 600px) {
-  h4 {
+  @media (min-width: 600px){
     font-size: 1.8rem;
   }
-}
-
-@media (min-width: 700px) {
-  h4 {
+  @media (min-width: 700px){
     font-size: 2rem;
   }
-}
-
-@media (min-width: 993px) {
-  h4 {
+  @media (min-width: 993px){
     font-size: 2.2rem;
   }
-}
-
-@media (min-width: 1200px) {
-  h4 {
+  @media (min-width: 1200px){
     font-size: 2.4rem;
   }
-}
-
-@media (min-width: 1400px) {
-  h4 {
+  @media (min-width: 1400px){
     font-size: 2.6rem;
   }
-}
-
-@media (min-width: 1600px) {
-  h4 {
+  @media (min-width: 1600px){
     font-size: 2.8rem;
   }
 }
-
 h5 {
+
   font-size: 1.2rem;
   font-weight: 400;
-}
-
-@media (min-width: 600px) {
-  h5 {
+  @media (min-width: 600px){
     font-size: 1.4rem;
   }
-}
-
-@media (min-width: 700px) {
-  h5 {
+  @media (min-width: 700px){
     font-size: 1.6rem;
   }
-}
-
-@media (min-width: 993px) {
-  h5 {
+  @media (min-width: 993px){
     font-size: 1.8rem;
   }
-}
-
-@media (min-width: 1200px) {
-  h5 {
+  @media (min-width: 1200px){
     font-size: 2rem;
   }
-}
-
-@media (min-width: 1400px) {
-  h5 {
+  @media (min-width: 1400px){
     font-size: 2.2rem;
   }
-}
-
-@media (min-width: 1600px) {
-  h5 {
+  @media (min-width: 1600px){
     font-size: 2.4rem;
   }
 }
-
 h6 {
   font-size: 1rem;
   font-weight: 300;
-}
-
-@media (min-width: 600px) {
-  h6 {
+  @media (min-width: 600px){
     font-size: 1.2rem;
   }
-}
-
-@media (min-width: 700px) {
-  h6 {
+  @media (min-width: 700px){
     font-size: 1.4rem;
   }
-}
-
-@media (min-width: 1200px) {
-  h6 {
+  @media (min-width: 1200px){
     font-size: 1.6rem;
   }
-}
-
-@media (min-width: 1400px) {
-  h6 {
+  @media (min-width: 1400px){
     font-size: 1.8rem;
   }
-}
-
-@media (min-width: 1600px) {
-  h6 {
+  @media (min-width: 1600px){
     font-size: 2rem;
   }
 }
-
 a {
   color: inherit;
   text-decoration: none;
 }
-
 p {
   margin-bottom: 0px;
 }
-
 span {
   font-size: 12px;
   font-weight: 400;
   color: #737373;
-}
 
-@media (min-width: 993px) {
-  span {
+  @media (min-width: 993px){
     font-size: 14px;
   }
 }
-
 a {
   color: #4d85ff;
+  :hover {
+    color: darken($color: #4d85ff, $amount: 30%);
+  }
 }
-
-a :hover {
-  color: #0038b3;
-}
-
 * {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 /* container */
-@media only screen and (min-width: 1400px) {
+@media only screen and (min-width: 1400px){
   .ui.container {
     width: 1227px;
-    margin-left: auto !important;
-    margin-right: auto !important;
-  }
+    margin-left: auto!important;
+    margin-right: auto!important;
 }
-
-@media only screen and (min-width: 1600px) {
+}
+@media only screen and (min-width: 1600px){
   .ui.container {
     width: 1327px;
-    margin-left: auto !important;
-    margin-right: auto !important;
-  }
+    margin-left: auto!important;
+    margin-right: auto!important;
 }
-
-@media only screen and (min-width: 1800px) {
+}
+@media only screen and (min-width: 1800px){
   .ui.container {
     width: 1377px;
-    margin-left: auto !important;
-    margin-right: auto !important;
-  }
+    margin-left: auto!important;
+    margin-right: auto!important;
 }
+}
+
 
 /* Nav Bar Style */
 .header {
@@ -405,20 +272,21 @@ a :hover {
   padding: 10px 0px;
 }
 
+
 .header.sticky {
   background-color: white !important;
   position: fixed;
   top: -75px;
   width: 100%;
   -webkit-transform: translateY(0px);
-  transform: translateY(0px);
+          transform: translateY(0px);
   -webkit-transition: 0.2s -webkit-transform ease-in-out;
   transition: 0.2s -webkit-transform ease-in-out;
   transition: 0.2s transform ease-in-out;
   transition: 0.2s transform ease-in-out, 0.2s -webkit-transform ease-in-out;
   z-index: 1999;
   -webkit-box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+          box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
 
 .navbar.sticky .nav-link {
@@ -434,12 +302,12 @@ a :hover {
 .navbar.sticky .profile-box {
   background: #f2f2f2;
   -webkit-box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
-  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+          box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 }
 
 .navbar.animate {
   -webkit-transform: translateY(75px);
-  transform: translateY(75px);
+          transform: translateY(75px);
 }
 
 .navbar .nav-main {
@@ -452,11 +320,11 @@ a :hover {
   display: flex;
   /* NEW, Spec - Opera 12.1, Firefox 20+ */
   -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .navbar .nav-list {
@@ -465,8 +333,8 @@ a :hover {
   display: flex;
   list-style: none;
   -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
   margin: 0;
 }
 
@@ -487,6 +355,7 @@ a :hover {
 .navbar .nav-link:hover {
   color: #bfbfbf;
 }
+
 
 /* Headere ProfileBox */
 .backmodel {
@@ -517,13 +386,13 @@ a :hover {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -webkit-column-gap: 10px;
-  column-gap: 10px;
+          column-gap: 10px;
   cursor: pointer;
 }
 
@@ -542,10 +411,10 @@ a :hover {
   position: fixed;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
-  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+          box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -563,13 +432,13 @@ a :hover {
   color: #383838;
   float: right;
   -webkit-box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
-  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+          box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
   padding: 10px 0 10px 10px;
 }
 
@@ -583,13 +452,11 @@ a :hover {
 .profile-box .profile-box-dropdown .nav-back-btn i:hover {
   color: gray !important;
 }
-
 .profile-box .profile-box-dropdown .nav-back-btn .close-text {
   font-size: 20px;
   font-weight: 400;
   margin-top: 4px;
 }
-
 .profile-box .profile-box-dropdown .nav-welcome-mssg {
   color: #383838;
   padding: 8px 8px 8px 42px;
@@ -663,4 +530,3 @@ a :hover {
   height: 30px;
   border-radius: 50%;
 }
-/*# sourceMappingURL=globals.css.map */

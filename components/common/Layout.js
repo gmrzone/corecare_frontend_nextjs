@@ -1,8 +1,12 @@
-const Layout = () => {
+import Header from '../global/Header'
+import Link from 'next/link'
+const Layout = ({ children, heroImage=null }) => {
     return (
-        <div>
-
-        </div>
+        <>
+            <Header />
+            {heroImage && heroImage}
+            {children}
+        </>
     )
 }
 
