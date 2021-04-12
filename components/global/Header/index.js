@@ -101,11 +101,13 @@ const Header = (props) => {
                         <Link href="/"><img alt="main-logo" src={mobileNav ? '/logo-mobile.svg' : '/logo-full.svg'} height="55px" /></Link>
                     </div>
                     <ul className="nav-list">
-                        {/* {mobileNav && <div>
-                            <NavItem name="Become a Partner" to="/become-a-partner"/>
-                            <NavItem name="Blog" to="/about"/>
-                            <NavItem name="Contact" to="/contact"/>
-                            </div>} */}
+                        {!mobileNav && (
+                            <>  
+                                <NavItem name="Become a Partner" to="/become-a-partner"/>
+                                <NavItem name="Blog" to="/about"/>
+                                <NavItem name="Contact" to="/contact"/>
+                            </>
+                            )}
                         <ProfileBox profileImage={null} dropDownList={mobileNav ? loginStatus ? ProfileBoxitemMobileLogin : ProfileBoxitemMobile : loginStatus ? ProfileBoxitemLogin : ProfileBoxitem} mobile={mobileNav} authentication={props.authentication || {loginStatus: false}}/>
                     </ul>
                 </div>

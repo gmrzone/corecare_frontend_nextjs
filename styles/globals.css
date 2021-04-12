@@ -482,10 +482,11 @@ a:hover {
   text-decoration: none;
   color: white;
   font-weight: 500;
+  font-size: 1.05rem;
 }
 
 .navbar .nav-link:hover {
-  color: #bfbfbf;
+  color: #f2f2f2;
 }
 
 /* Headere ProfileBox */

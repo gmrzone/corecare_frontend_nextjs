@@ -223,7 +223,7 @@ p {
 span {
   font-size: 12px;
   font-weight: 400;
-  color: #737373;
+  color:  map-get($map: $text, $key: secondary);
 
   @media (min-width: 993px){
     font-size: 14px;
@@ -350,10 +350,11 @@ a {
   text-decoration: none;
   color: white;
   font-weight: 500;
+  font-size: 1.05rem;
 }
 
 .navbar .nav-link:hover {
-  color: #bfbfbf;
+  color: map-get($map: $colors, $key: background);
 }
 
 
