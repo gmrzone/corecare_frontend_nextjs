@@ -1,3 +1,4 @@
+@import '../variables';
 .container {
   min-height: 100vh;
   padding: 0 0.5rem;
@@ -112,5 +113,133 @@
   .grid {
     width: 100%;
     flex-direction: column;
+  }
+}
+
+
+// ServiceBox
+
+.service_box_container {
+  background-color: map-get($map: $colors, $key: background);
+  box-shadow: none;
+  width: 100%;
+  position: relative;
+  height: 170px;
+  // left: 0;
+  overflow: hidden;
+  // top: 350px;
+
+
+
+  // @media (min-width: 550px){
+      
+
+  // }
+  @media (min-width: 670px){
+      background-color: white;
+      width: auto;
+      height: auto;
+      border-radius: 5px;
+      box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+      position: absolute;
+      max-width: 96%;
+      margin-left: auto;
+      margin-right: auto;
+      left: 0;
+      right: 0;
+      top: 460px;
+  }
+  @media (min-width: 750px){
+      max-width: 94%;
+      top: 480px;
+  }
+  @media (min-width: 1200px){
+      max-width: 1260px;
+
+  }
+  
+
+  .adjustment {
+      height: 100%;
+      width: 100%;
+
+  }
+  .service_inner_container {
+      display: grid;
+      grid-template-columns: repeat(8, 165px);
+      column-gap: 10px;
+      height: 100%;
+      width: 100%;
+      -ms-overflow-style: none;
+      overflow: -moz-scrollbars-none;
+      scrollbar-width: none;
+      margin-top: 5px;
+      padding: 0 0 10px 0;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      white-space: nowrap;
+
+      &::-webkit-scrollbar {
+          display: none;
+      }
+      
+
+      @media (min-width: 670px){
+          display: flex;
+          padding: 30px;
+          flex-wrap: wrap;
+          column-gap: 0px;
+          justify-content: center;
+          
+
+      }
+      .service_item {
+          padding: 20px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          color: map-get($colors, main);
+          background-color: white;
+          border-radius: 5px;
+          scroll-snap-align: start;
+          scroll-behavior: smooth;
+
+          
+          
+          @media (min-width: 670px){
+              box-shadow: none;
+              width: 143px;
+              
+          }
+          .service_icon {
+            width: 60px;
+            height: 60px;
+
+
+          }
+          // .service_img {
+          //     height: 70px;
+          //     @media (min-width: 670px){
+          //         height: 70px;
+          //     }   
+          // }
+          &:hover {
+              
+              background-color: white;
+              @media (min-width: 670px){
+                  
+                  background-color: map-get($map: $colors, $key: background);
+              }
+          }
+
+
+          .service_title {
+            font: inherit;
+          }
+      }
+
   }
 }

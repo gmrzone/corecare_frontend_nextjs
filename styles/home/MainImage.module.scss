@@ -1,7 +1,7 @@
 @import '../variables';
 .main_image_con {
     width: 100%;
-    height: 38rem;
+    height: 35rem;
     background-image: linear-gradient(to bottom, #1b1b1b 10%, transparent 50%, black 100%), url(../../public/main-image.jpg);
     background-size: cover;
     background-repeat: no-repeat;
@@ -9,6 +9,9 @@
     background-position: center;
     padding-top: 220px;
 
+    @media (min-width: 360px) {
+        height: 38rem;
+    }
     @media (min-width: 500px) {
         height: 40rem;
     }
@@ -207,147 +210,4 @@
 
 }
 
-.service-box-container {
-    background-color: map-get($map: $colors, $key: background);
-    box-shadow: none;
-    width: 100%;
-    position: absolute;
-    height: 170px;
-    left: 0;
-    overflow: hidden;
-    top: 350px;
 
-
-
-    @media (min-width: 550px){
-        border-radius: 5px;
-
-    }
-    @media (min-width: 670px){
-        background-color: white;
-        width: auto;
-        height: auto;
-        box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
-        position: absolute;
-        max-width: 96%;
-        margin-left: auto;
-        margin-right: auto;
-        left: 0;
-        right: 0;
-        top: 370px;
-    }
-    @media (min-width: 750px){
-        max-width: 94%;
-        top: 400px;
-    }
-    @media (min-width: 1200px){
-        max-width: 1260px;
-
-    }
-    
-
-    .adjustment {
-        height: 100%;
-        width: 100%;
-
-    }
-    .service-inner-container {
-        display: grid;
-        grid-template-columns: repeat(8, 165px);
-        column-gap: 10px;
-        height: 100%;
-        width: 100%;
-        -ms-overflow-style: none;
-        overflow: -moz-scrollbars-none;
-        scrollbar-width: none;
-        margin-top: 5px;
-        padding: 0 0 10px 0;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        scroll-snap-type: x mandatory;
-        scroll-behavior: smooth;
-        white-space: nowrap;
-
-        &::-webkit-scrollbar {
-            display: none;
-        }
-        
-
-        @media (min-width: 670px){
-            display: flex;
-            padding: 30px;
-            flex-wrap: wrap;
-            column-gap: 0px;
-            justify-content: center;
-            
-
-        }
-        .service-item {
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: map-get($colors, main);
-            background-color: white;
-            border-radius: 5px;
-            scroll-snap-align: start;
-            scroll-behavior: smooth;
-
-            
-            
-            @media (min-width: 670px){
-                box-shadow: none;
-                width: 143px;
-                
-            }
-
-            .service-img {
-                height: 70px;
-                @media (min-width: 670px){
-                    height: 80px;
-                }   
-            }
-            &:hover {
-                
-                background-color: white;
-                @media (min-width: 670px){
-                    
-                    background-color: map-get($map: $colors, $key: background);
-                }
-            }
-
-
-            
-        }
-
-    }
-}
-
-// .fix-space {
-//     width: 100%;
-//     height: 25px;
-
-//     @media (min-width: 670px){
-//         height: 250px;
-//     }
-
-//     @media (min-width: 700px){
-//         height: 180px;
-//     }
-//     @media (min-width: 749px){
-//         height: 205px;
-//     }
-//     @media (min-width: 992px){
-//         height: 180px;
-//     }
-//     @media (min-width: 1200px){
-//         height: 70px;
-//     }
-//     @media (min-width: 1207px){
-//         height: 60px;
-//     }
-//     @media (min-width: 1400px){
-//         height: 10px;
-//     }
-// }

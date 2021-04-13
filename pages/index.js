@@ -1,24 +1,21 @@
 
-import styles from '../styles/home/Home.module.scss'
 import MetaComponent from '../components/common/MetaComponent'
 import Layout from '../components/common/Layout'
 import HeroImage from '../components/home/MainImage'
-const Home = () => {
+import ServiceBox from '../components/home/ServiceBox'
+export const getStaticProps = async () => {
+  let res = await fetch('https://www.afzalsaiyed.corecare.in/')
+  const data = await res.json()
+  return {
+    props : {services: data}
+  }
+}
+const Home = ({ services, mobileNav }) => {
   return (
     <>
       <MetaComponent title="Home Page" description="Homepage" name="home Page" url="http://0.0.0.0:3000/"/>
-      <Layout HeroImage={HeroImage}>
-          <h1 className="heavy">Afzal Saiyed</h1>
-          <h1>Afzal Saiyed</h1>
-          <h2>Afzal Saiyed</h2>
-          <h3>Afzal Saiyed</h3>
-          <h4>Afzal Saiyed</h4>
-          <h5>Afzal Saiyed</h5>
-          <h6>Afzal Saiyed</h6>
-
-          <p>Normal Text</p>
-          <span>Span</span>
-          <a href="true">Link</a>
+      <Layout HeroImage={HeroImage} mobileNav={mobileNav}>
+          <ServiceBox services={services} mobileNav={mobileNav}/>
       </Layout>
     </>
   )

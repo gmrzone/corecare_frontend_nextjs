@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import Image from 'next/image'
 import DropDownItem from './DropDownItem'
 // import { CloseOutlined } from '@ant-design/icons'
 import BackModel from '../../common/ModelBack';
@@ -48,7 +49,8 @@ const ProfileBox = (props) => {
                     <div className="menu-item"></div>
                 </div>
                 <div className="avatar">
-                    <img src={props.profileImage || "/default-profile.png"} className="avatar-image" alt="default-avatar"/>
+                    {/* <img src={props.profileImage || "/default-profile.png"} className="avatar-image" alt="default-avatar"/> */}
+                    <Image src={props.profileImage || "/default-profile.png"} width="30" height="30" className="avatar-image"/>
                 </div>
                 <div className="notification">{props.cartCount || 0}</div>
             </div>

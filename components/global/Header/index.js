@@ -1,6 +1,7 @@
 import NavItem from './NavItem';
 import ProfileBox from './ProfileBox';
 import Link from 'next/link';
+import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
 // import { openSignup, closeSignup, mobileNavToggle } from '../../actions'
 // import Logo from '../../images/logo-full.svg';
@@ -12,36 +13,37 @@ import { ProfileBoxitem, ProfileBoxitemLogin, ProfileBoxitemMobile, ProfileBoxit
     
 const Header = (props) => {
     // const { loginStatus } = props.authentication
-    const [mobileNav, mobileNavToggle] = useState()
+    // const [mobileNav, mobileNavToggle] = useState()
+    const { mobileNav } = props
     const loginStatus  = false
     // let ProfileBoxItemRefDesktop = useRef(ProfileBoxitem)
     // let ProfileBoxItemRefMobile = useRef(ProfileBoxitemMobile)
-    let screenWidthRef = useRef(null)
-    const navbar = useRef()
+    // let screenWidthRef = useRef(null)
+    // const navbar = useRef()
     // const [mobileNav, setMobileNav] = useState(screenWidthRef.current > 700 ? false : true)
     // const { mobileNavToggle, mobileNav } = props
-    useEffect(() => {
-        mobileNavToggle(window.innerWidth > 992 ? false : true)
-        const renderNav = () => {
-            const currentWidth = window.innerWidth
-            if (currentWidth > 992 && screenWidthRef.current < 992){
-                screenWidthRef.current = currentWidth
-                mobileNavToggle(false)
+    // useEffect(() => {
+    //     // mobileNavToggle(window.innerWidth > 992 ? false : true)
+    //     const renderNav = () => {
+    //         const currentWidth = window.innerWidth
+    //         if (currentWidth > 992 && screenWidthRef.current < 992){
+    //             screenWidthRef.current = currentWidth
+    //             mobileNavToggle(false)
                 
-            }
-            else if (currentWidth <= 992 && screenWidthRef.current > 992){
-                screenWidthRef.current = currentWidth
-                mobileNavToggle(true)
+    //         }
+    //         else if (currentWidth <= 992 && screenWidthRef.current > 992){
+    //             screenWidthRef.current = currentWidth
+    //             mobileNavToggle(true)
 
-            }
-        }
-        renderNav()
-        window.addEventListener('resize', renderNav)
+    //         }
+    //     }
+    //     renderNav()
+    //     window.addEventListener('resize', renderNav)
 
-        return () => {
-            window.removeEventListener('resize', renderNav)
-        }
-    }, [screenWidthRef, mobileNavToggle])
+    //     return () => {
+    //         window.removeEventListener('resize', renderNav)
+    //     }
+    // }, [screenWidthRef, mobileNavToggle])
     
     
     // Sticky Navbar using IntersectionObserver
@@ -95,10 +97,14 @@ const Header = (props) => {
     // }, [mobileNav])
     return (
         <header className="header">
-            <nav className='navbar ui container' ref={navbar}>
+            <nav className='navbar ui container'>
                 <div className="containerAF nav-main">
                     <div className="logo">
-                        <Link href="/"><img alt="main-logo" src={mobileNav ? '/logo-mobile.svg' : '/logo-full.svg'} height="55px" /></Link>
+                        <Link href="/">
+                            <a style={{display: 'flex'}}>
+                            <Image src={mobileNav ? "/logo-mobile.svg" : "/logo-full.svg"} height="55" width={mobileNav ? "55" : "176"}/>
+                            </a>
+                        </Link>
                     </div>
                     <ul className="nav-list">
                         {!mobileNav && (
