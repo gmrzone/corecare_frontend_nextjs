@@ -1,7 +1,7 @@
 @import '../variables';
 .main_image_con {
     width: 100%;
-    height: 35rem;
+    height: 38rem;
     background-image: linear-gradient(to bottom, #1b1b1b 10%, transparent 50%, black 100%), url(../../public/main-image.jpg);
     background-size: cover;
     background-repeat: no-repeat;
@@ -10,14 +10,14 @@
     padding-top: 220px;
 
     @media (min-width: 500px) {
-        height: 35rem;
+        height: 40rem;
     }
     @media (min-width: 700px) {
-        height: 40rem;
+        height: 42rem;
         
     }
     @media (min-width: 992px) {
-        height: 42rem;
+        height: 45rem;
     }
     @media (min-width: 1200px) {
         height: 50rem;
@@ -56,6 +56,8 @@
         height: 45px;
         max-width: 900px;
         margin: 0 auto;
+        box-shadow: none;
+        transition: all 0.2s ease-in-out;
 
         @media (min-width: 360px) {
             height: 50px;
@@ -68,6 +70,9 @@
         }
         @media (min-width: 1200px) {
             height: 60px;
+        }
+        :focus-within {
+            box-shadow: 0px 0px 0px 1px lighten(black, 40%);
         }
         
         // .search_bar {
@@ -94,13 +99,14 @@
             @media (min-width: 1200px) {
                 padding: 0 20px;
             }
-            
+
             .search_input {
                 display: flex;
                 flex-wrap: nowrap;
                 align-items: center;
                 justify-content: flex-start;
                 height: 100%;
+                box-shadow: none !important;
                 
                 i {
                     font-size: 16px;
@@ -120,8 +126,9 @@
                     }
                 }
                 input {
-                    border: none;
+                    border: none !important;
                     outline: none;
+                    box-shadow: none !important;
                     height: 80%;
                     width: 100%;
                     font: inherit;
