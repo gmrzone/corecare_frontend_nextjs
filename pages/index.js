@@ -2,11 +2,12 @@
 import styles from '../styles/home/Home.module.scss'
 import MetaComponent from '../components/common/MetaComponent'
 import Layout from '../components/common/Layout'
+import HeroImage from '../components/home/MainImage'
 const Home = () => {
   return (
     <>
       <MetaComponent title="Home Page" description="Homepage" name="home Page" url="http://0.0.0.0:3000/"/>
-      <Layout>
+      <Layout HeroImage={HeroImage}>
           <h1 className="heavy">Afzal Saiyed</h1>
           <h1>Afzal Saiyed</h1>
           <h2>Afzal Saiyed</h2>

@@ -94,7 +94,7 @@ const Header = (props) => {
     //     observer.observe(document.getElementsByTagName('html'))
     // }, [mobileNav])
     return (
-        <header className="header"  style={{backgroundColor: 'black', 'position': 'static'}}>
+        <header className="header">
             <nav className='navbar ui container' ref={navbar}>
                 <div className="containerAF nav-main">
                     <div className="logo">

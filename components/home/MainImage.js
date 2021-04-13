@@ -1,12 +1,12 @@
-import '../../style/main-image.css'
-import MainSearch from '../global/Header/MainSearch'
+import style from '../../styles/home/MainImage.module.scss';
+import MainSearch from './MainSearch'
 
 const MainImage = (props) => {
 
     return (
-        <div className="main-image-con" style={{backgroundImage: `linear-gradient(to bottom, #1b1b1b 10%, transparent 50%, black 100%), url(${props.src})`}}>
+        <div className={style.main_image_con}>
             <div className="ui container">
-                <div className="main-title">
+                <div className={style.main_title}>
                     <h1>Home of the Experts</h1>
                 </div>
                 <MainSearch />

@@ -1,11 +1,11 @@
 import Header from '../global/Header'
 import Link from 'next/link'
-const Layout = ({ children, heroImage=null }) => {
+const Layout = ({ children, HeroImage=null }) => {
     return (
         <>  
             <div id="model"></div>
             <Header />
-            {heroImage && heroImage}
+            {HeroImage && <HeroImage />}
             <main>
                 {children}
             </main>

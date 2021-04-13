@@ -1,0 +1,346 @@
+@import '../variables';
+.main_image_con {
+    width: 100%;
+    height: 35rem;
+    background-image: linear-gradient(to bottom, #1b1b1b 10%, transparent 50%, black 100%), url(../../public/main-image.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-origin: border-box;
+    background-position: center;
+    padding-top: 220px;
+
+    @media (min-width: 500px) {
+        height: 35rem;
+    }
+    @media (min-width: 700px) {
+        height: 40rem;
+        
+    }
+    @media (min-width: 992px) {
+        height: 42rem;
+    }
+    @media (min-width: 1200px) {
+        height: 50rem;
+        background-position: top 0 right 0px;
+    }
+
+    .main_title {
+        text-align: center;
+        margin-bottom: 50px;
+        
+
+        h1 {
+            color: white;
+            font-size: 30px;
+
+            @media (min-width: 500px){
+                font-size: 40px;
+            }
+            @media (min-width: 700px){
+                font-size: 45px;
+            }
+            @media (min-width: 850px){
+                font-size: 50px;
+            }
+            @media (min-width: 1000px){
+                font-size: 55px;
+            }
+            @media (min-width: 1200px){
+                font-size: 60px;
+            }
+        }
+    }
+    .search_container {
+        display: flex;
+        width: 100%;
+        height: 45px;
+        max-width: 900px;
+        margin: 0 auto;
+
+        @media (min-width: 360px) {
+            height: 50px;
+        }
+        @media (min-width: 600px) {
+            height: 55px;
+        }
+        @media (min-width: 992px) {
+            height: 57px;
+        }
+        @media (min-width: 1200px) {
+            height: 60px;
+        }
+        
+        // .search_bar {
+        //     width: 100%;
+        //     font-size: 14px;
+
+        // }
+        .search_bar {
+            height: 100%;
+            background: white;
+            border-radius: 4px;
+            width: 100%;
+            padding: 0 12px;
+            
+            @media (min-width: 360px) {
+                padding: 0 14px;
+            }
+            @media (min-width: 600px) {
+                padding: 0 16px;
+            }
+            @media (min-width: 992px) {
+                padding: 0 18px;
+            }
+            @media (min-width: 1200px) {
+                padding: 0 20px;
+            }
+            
+            .search_input {
+                display: flex;
+                flex-wrap: nowrap;
+                align-items: center;
+                justify-content: flex-start;
+                height: 100%;
+                
+                i {
+                    font-size: 16px;
+                    padding: 4px 20px 4px 0;
+                    color: map-get($map: $text, $key: secondary);
+                    @media (min-width: 360px) {
+                        padding-right: 14px;
+                    }
+                    @media (min-width: 600px) {
+                        padding-right: 0 16px;
+                    }
+                    @media (min-width: 992px) {
+                        padding-right: 0 18px;
+                    }
+                    @media (min-width: 1200px) {
+                        padding-right: 0 20px;
+                    }
+                }
+                input {
+                    border: none;
+                    outline: none;
+                    height: 80%;
+                    width: 100%;
+                    font: inherit;
+                    font-size: 13px;
+                    color: map-get($map: $text, $key: secondary);
+                    @media (min-width: 360px) {
+                        font-size: 14px;
+                    }
+                    @media (min-width: 600px) {
+                        font-size: 15px;
+                    }
+                    @media (min-width: 992px) {
+                        font-size: 16px;
+                    }
+                    @media (min-width: 1200px) {
+                        font-size: 17px;
+                    }
+                }
+            }
+        }
+        .ui.selection {
+            display: inline-flex;
+            align-items: center;
+            justify-content: flex-start;
+            width: 90px;
+            min-width: 90px;
+
+            @media (min-width: 700px){
+                width: 125px;
+                min-width: 125px;
+            }
+            @media (min-width: 1000px){
+                width: 150px;
+                min-width: 150px;
+            }
+            &.dropdown {
+                margin-right: 4px;
+
+                @media (min-width: 500px){
+                    margin-right: 6px;
+                }
+                @media (min-width: 700px){
+                    margin-right: 8px;
+                }
+                @media (min-width: 850px){
+                    margin-right: 10px;
+                }
+                @media (min-width: 1000px){
+                    margin-right: 12px;
+                }
+                @media (min-width: 1200px){
+                    margin-right: 14px;
+                }
+                @media (min-width: 1400px){
+                    margin-right: 16px;
+                }
+                @media (min-width: 1600px){
+                    margin-right: 25px;
+                }
+                @media (min-width: 1800px){
+                    margin-right: 30px;
+                }
+            }
+            .dropdown.icon {
+                padding: 12px 5px;
+
+                @media (min-width: 700px){
+                    padding: 15px 8px;
+                }
+                @media (min-width: 1000px){
+                    padding: 20px 10px;
+                }
+            }
+        }
+    }
+
+}
+
+.service-box-container {
+    background-color: map-get($map: $colors, $key: background);
+    box-shadow: none;
+    width: 100%;
+    position: absolute;
+    height: 170px;
+    left: 0;
+    overflow: hidden;
+    top: 350px;
+
+
+
+    @media (min-width: 550px){
+        border-radius: 5px;
+
+    }
+    @media (min-width: 670px){
+        background-color: white;
+        width: auto;
+        height: auto;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+        position: absolute;
+        max-width: 96%;
+        margin-left: auto;
+        margin-right: auto;
+        left: 0;
+        right: 0;
+        top: 370px;
+    }
+    @media (min-width: 750px){
+        max-width: 94%;
+        top: 400px;
+    }
+    @media (min-width: 1200px){
+        max-width: 1260px;
+
+    }
+    
+
+    .adjustment {
+        height: 100%;
+        width: 100%;
+
+    }
+    .service-inner-container {
+        display: grid;
+        grid-template-columns: repeat(8, 165px);
+        column-gap: 10px;
+        height: 100%;
+        width: 100%;
+        -ms-overflow-style: none;
+        overflow: -moz-scrollbars-none;
+        scrollbar-width: none;
+        margin-top: 5px;
+        padding: 0 0 10px 0;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+        white-space: nowrap;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+        
+
+        @media (min-width: 670px){
+            display: flex;
+            padding: 30px;
+            flex-wrap: wrap;
+            column-gap: 0px;
+            justify-content: center;
+            
+
+        }
+        .service-item {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: map-get($colors, main);
+            background-color: white;
+            border-radius: 5px;
+            scroll-snap-align: start;
+            scroll-behavior: smooth;
+
+            
+            
+            @media (min-width: 670px){
+                box-shadow: none;
+                width: 143px;
+                
+            }
+
+            .service-img {
+                height: 70px;
+                @media (min-width: 670px){
+                    height: 80px;
+                }   
+            }
+            &:hover {
+                
+                background-color: white;
+                @media (min-width: 670px){
+                    
+                    background-color: map-get($map: $colors, $key: background);
+                }
+            }
+
+
+            
+        }
+
+    }
+}
+
+// .fix-space {
+//     width: 100%;
+//     height: 25px;
+
+//     @media (min-width: 670px){
+//         height: 250px;
+//     }
+
+//     @media (min-width: 700px){
+//         height: 180px;
+//     }
+//     @media (min-width: 749px){
+//         height: 205px;
+//     }
+//     @media (min-width: 992px){
+//         height: 180px;
+//     }
+//     @media (min-width: 1200px){
+//         height: 70px;
+//     }
+//     @media (min-width: 1207px){
+//         height: 60px;
+//     }
+//     @media (min-width: 1400px){
+//         height: 10px;
+//     }
+// }

@@ -1,12 +1,19 @@
-import { useRef } from 'react'
-const Searchbar = (props)=> {
-    const screenWidth = useRef(window.innerWidth)
-    const searchheight = screenWidth.current > 1000 ? "massive" : screenWidth.current > 700 ? "huge" : "big"
+import { useEffect, useRef } from 'react'
+import style from '../../styles/home/MainImage.module.scss';
+const Searchbar = ({  register, handleChange })=> {
+
+
     return(
-        <div className="search-bar">
-            <div className={`ui icon input fluid ${searchheight}`}>
-                <input type="text" name="search" placeholder="Search Services" {...props.input}/>
-                <i className="search icon"></i>
+        // <div className={style.search_bar}>
+        //     <div className={`ui icon input fluid huge`}>
+        //         <input type="text" placeholder="Search Services" />
+        //         <i className="search icon"></i>
+        //     </div>
+        // </div>
+        <div className={style.search_bar}>
+            <div className={style.search_input}>
+                <i className="fa fa-search" aria-hidden="true" />
+                <input type="text" placeholder="Search for a service"  {...register("search")} onChange={handleChange}/>
             </div>
         </div>
     )
