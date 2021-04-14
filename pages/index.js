@@ -26,10 +26,11 @@ const Home = ({ services, coupons,  mobileNav }) => {
             <div className="section__first">
               <div className="section__wrapper">
                 <Section title="Best Offers">
-                  <SliderWrapper data={coupons} image={false}/>
+                  <SliderWrapper data={coupons} image={false} mobileNav={mobileNav}/>
                 </Section>
               </div>
             </div>
+            
       </Layout>
     </>
   )

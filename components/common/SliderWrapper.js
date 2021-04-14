@@ -1,25 +1,100 @@
+import { useEffect, useRef, useState } from 'react'
 import style from '../../styles/home/SliderWrapper.module.scss'
-const SliderWrapper = ({ data, image }) => {
+const SliderWrapper = ({ data, image, mobileNav }) => {
+    const innerContainer = useRef()
+    const sliderouterContainer = useRef()
+    const currentTrans = useRef(0)
+    const [sliderState, setSliderState] = useState({itemWidth: 240, containerWidth: ''})
+    const {itemWidth, containerWidth} = sliderState
+    const screenWidth = typeof window === "undefined" ? null : window.innerWidth
+    useEffect(() => {
+        let itemWidth;
+        let containerWidth;
+        if (screenWidth > 992 && screenWidth < 1150){
+            itemWidth = sliderouterContainer.current.clientWidth / 3 - 10
+        }
+        else {
+            itemWidth = sliderouterContainer.current.clientWidth / 4 - 10
+        }
+        containerWidth = (itemWidth + 10) * data.length
+        setSliderState({itemWidth: itemWidth, containerWidth: containerWidth})
+
+    }, [data.length, sliderouterContainer, screenWidth])
     const RenderSliderItem = data.map(x => {
         return (
-        <div className={style.slider_item} key={x.id}>
+        <div className={style.slider_item + " slider_item"} key={x.id}>
             {image ? (
                 <div className={style.slider_item_image}>
 
                 </div>
             ) : (
                 <div className={style.slider_item_content}>
-                    <p>{x.code}</p>
+                    {x.code && (
+                        <>
+                        <p>{x.code}</p>
+                        <p>Get {x.discount}% Discount</p>
+                        </>
+                        )}
                 </div>
             )}
         </div>  
         )
     })
+    const leftClick = (e) => {
+
+    }
+    const rightClick = (e) => {
+        
+        if (currentTrans.current - sliderState.itemWidth >= 0){
+            innerContainer.current.style.transform = "translateX(0px)"
+            currentTrans.current = 0
+        }
+        else{
+            // innerContainer.current.style.transform = `translateX(${currentTrans.current - sliderState.itemWidth - 10}px)`
+            // currentTrans.current = currentTrans.current - sliderState.itemWidth
+            if (screenWidth > 992 && screenWidth < 1150){
+                    innerContainer.current.style.transform = `translateX(${currentTrans.current - sliderouterContainer.current.clientWidth / 3}px)`
+                    currentTrans.current = currentTrans.current - sliderouterContainer.current.clientWidth / 3
+            }
+            else{
+                innerContainer.current.style.transform = `translateX(${currentTrans.current - sliderouterContainer.current.clientWidth / 4}px)`
+                currentTrans.current = currentTrans.current - sliderouterContainer.current.clientWidth / 4
+            }
+        }
+    }
+    const renderSliderHandle = () => {
+        if (!mobileNav){
+            return (
+                <>
+                    <i className={style.left_icon + " fad fa-chevron-circle-left"} onClick={leftClick}/>
+                    <i className={style.right_icon + " fad fa-chevron-circle-right"} onClick={rightClick}/>
+                </>
+            )
+        }
+    }
     return (
-        <div className={style.slider_container}>
-            <div className={style.slider_inner_container}>
-                {RenderSliderItem}
+        <div className={style.slider_container} ref={sliderouterContainer}>
+            {renderSliderHandle()}
+            <div className="semi-outer-container">
+                <div className={style.slider_inner_container + " inner_container"} ref={innerContainer}>
+                    {RenderSliderItem}
+                </div>
             </div>
+            <style jsx>{`
+                .inner_container {
+                    grid-auto-columns: ${mobileNav ? "240px" : sliderState.itemWidth + "px"};
+                    width: ${mobileNav ? "auto" : sliderState.containerWidth + "px"};
+                    transform: translateX(${currentTrans.current}px);
+                    will-change: transform;
+                    scroll-behavior: smooth;
+                    transition: transform 0.5s;
+                }
+                .semi-outer-container {
+                    overflow: hidden;
+                    width: 100%;
+                    height: 100%;
+                }
+            `}</style>
         </div>
     )
 }
