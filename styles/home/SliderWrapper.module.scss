@@ -75,6 +75,8 @@
         }
         .slider_item_image {
             border-radius: 6px;
+            
+            
 
             
 
@@ -84,9 +86,13 @@
                 color: #1C1C1C;
                 text-align: center;
                 width: 100%;
-                bottom: 0;
+                bottom: 10%;
                 font-weight: 700;
                 font-size: 14px;
+                background: white;
+
+
+                
 
                 @media (min-width: 992px) {
                     font-size: 16px;
