@@ -670,6 +670,7 @@ a:hover {
 @media (min-width: 670px){
   .section__first {
     margin-top: 295px;
+    margin-bottom: 20px;
   }
 }
 @media (min-width: 700px){
@@ -704,8 +705,10 @@ a:hover {
 }
 .section__wrapper {
   background-color: white;
+  margin-bottom: 20px;
 }
 
 .section_divider {
 padding: 10px 0px !important;
+
 }

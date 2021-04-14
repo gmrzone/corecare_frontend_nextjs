@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
+import Image from 'next/image'
 import style from '../../styles/home/SliderWrapper.module.scss'
+import { BASE_URL } from '../../data/_variables'
 const SliderWrapper = ({ data, image, mobileNav }) => {
     const innerContainer = useRef()
     const sliderouterContainer = useRef()
@@ -24,8 +26,10 @@ const SliderWrapper = ({ data, image, mobileNav }) => {
         return (
         <div className={style.slider_item + " slider_item"} key={x.id}>
             {image ? (
-                <div className={style.slider_item_image}>
-
+                <div className={style.slider_item_image + " image-slider-item"}>
+                    <p className={style.slider_item_image_text}>{x.name}</p>
+                    <Image src={BASE_URL + x.icon} layout="fill" objectFit="cover" className={style.slider_image} />
+                    
                 </div>
             ) : (
                 <div className={style.slider_item_content}>
@@ -109,6 +113,11 @@ const SliderWrapper = ({ data, image, mobileNav }) => {
                     overflow: hidden;
                     width: 100%;
                     height: 100%;
+                }
+                .image-slider-item {
+                    width: ${mobileNav ? "240px" : sliderState.itemWidth + "px"};
+                    height: ${mobileNav ? "200px" : "240px"};
+                    position: relative;
                 }
             `}</style>
         </div>
