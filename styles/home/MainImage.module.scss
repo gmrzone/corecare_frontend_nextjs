@@ -2,7 +2,12 @@
 .main_image_con {
     width: 100%;
     height: 35rem;
-    background-image: linear-gradient(to bottom, #1b1b1b 10%, transparent 50%, black 100%), url(../../public/main-image.jpg);
+    // background-image: linear-gradient(to bottom, #1b1b1b 10%, transparent 50%, black 100%), url(../../public/main-image.jpg);
+    background: rgb(0,0,0);
+    background: -moz-linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 50%, rgba(0,0,0,1) 100%), url(../../public/main-image.jpg);
+    background: -webkit-linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 50%, rgba(0,0,0,1) 100%), url(../../public/main-image.jpg);
+    background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 50%, rgba(0,0,0,1) 100%), url(../../public/main-image.jpg);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000",endColorstr="#000000",GradientType=1), url(../../public/main-image.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-origin: border-box;

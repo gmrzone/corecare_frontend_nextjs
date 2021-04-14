@@ -102,7 +102,7 @@ const Header = (props) => {
                     <div className="logo">
                         <Link href="/">
                             <a style={{display: 'flex'}}>
-                            <Image src={mobileNav ? "/logo-mobile.svg" : "/logo-full.svg"} height="55" width={mobileNav ? "55" : "176"}/>
+                                <Image src={mobileNav ? "/logo-mobile.svg" : "/logo-full.svg"} height="55" width={mobileNav ? "55" : "176"}/>
                             </a>
                         </Link>
                     </div>

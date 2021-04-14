@@ -54,7 +54,7 @@ const ProfileBox = (props) => {
                 </div>
                 <div className="notification">{props.cartCount || 0}</div>
             </div>
-            {props.mobile ? <BackModel active={dropDownActive} available={props.mobile} closeModel={closeDropDown}/> : null}
+            {props.mobile && typeof window !== "undefined" ? <BackModel active={dropDownActive} available={props.mobile} closeModel={closeDropDown}/> : null}
             <div className={`profile-box-dropdown ${dropDownActive ? "active" : null}`} onClick={(e) => e.stopPropagation()}>
                 {props.mobile ? (
                     <div className="nav-back-btn">
@@ -67,15 +67,15 @@ const ProfileBox = (props) => {
         </li>
     )
 }
-const mapStateToProps = (state) => {
-    let cartCount = 0;
-    Array.from(Object.values(state.basicCart)).forEach(x => {
-        cartCount += x.quantity
-    })
-    return {
-        cartCount
-    }
-}
+// const mapStateToProps = (state) => {
+//     let cartCount = 0;
+//     Array.from(Object.values(state.basicCart)).forEach(x => {
+//         cartCount += x.quantity
+//     })
+//     return {
+//         cartCount
+//     }
+// }
 // export default connect(mapStateToProps, { openSignup, logOut })(ProfileBox)
 export default ProfileBox
 

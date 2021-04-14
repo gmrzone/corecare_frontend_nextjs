@@ -30,7 +30,8 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: Axiforma ,-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: Axiforma ,-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+ Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   font-weight: 400;
   font-size: 12px;
   line-height: 1.2;
@@ -47,7 +48,8 @@ body {
 }
 
 h1.heavy {
-  font-family: Axiforma ,-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: Axiforma ,-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+ Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   font-size: 2.4rem;
   font-weight: 900;
   line-height: 1.2;
@@ -91,7 +93,8 @@ h1.heavy {
 
 h1, h2, h3, h4, h5, h6, span, a {
   margin: 0;
-  font-family: Axiforma ,-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: Axiforma ,-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+ Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   line-height: 1.2;
 }
 
@@ -227,39 +230,39 @@ h4 {
 
 @media (min-width: 600px) {
   h4 {
-    font-size: 1.8rem;
+    font-size: 1.7rem;
   }
 }
 
 @media (min-width: 700px) {
   h4 {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
 }
 
-@media (min-width: 993px) {
+/* @media (min-width: 993px) {
+  h4 {
+    font-size: 1.9rem;
+  }
+} */
+
+/* @media (min-width: 1200px) {
+  h4 {
+    font-size: 2rem;
+  }
+} */
+
+/* @media (min-width: 1400px) {
+  h4 {
+    font-size: 2.1rem;
+  }
+} */
+
+/* @media (min-width: 1600px) {
   h4 {
     font-size: 2.2rem;
   }
-}
-
-@media (min-width: 1200px) {
-  h4 {
-    font-size: 2.4rem;
-  }
-}
-
-@media (min-width: 1400px) {
-  h4 {
-    font-size: 2.6rem;
-  }
-}
-
-@media (min-width: 1600px) {
-  h4 {
-    font-size: 2.8rem;
-  }
-}
+} */
 
 h5 {
   font-size: 1.2rem;
@@ -664,4 +667,45 @@ a:hover {
   height: 30px;
   border-radius: 50%;
 }
-/*# sourceMappingURL=globals.css.map */
+@media (min-width: 670px){
+  .section__first {
+    margin-top: 295px;
+  }
+}
+@media (min-width: 700px){
+  .section__first {
+    margin-top: 265px;
+  }
+}
+@media (min-width: 750px){
+  .section__first {
+    margin-top: 280px;
+  }
+}
+@media (min-width: 992px){
+  .section__first {
+    margin-top: 165px;
+  }
+}
+@media (min-width: 1199px){
+  .section__first {
+    margin-top: 100px;
+  }
+}
+@media (min-width: 1203px){
+  .section__first {
+    margin-top: 90px;
+  }
+}
+@media (min-width: 1400px){
+  .section__first {
+    margin-top: 10px;
+  }
+}
+.section__wrapper {
+  background-color: white;
+}
+
+.section_divider {
+padding: 10px 0px !important;
+}
