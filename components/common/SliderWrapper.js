@@ -41,13 +41,28 @@ const SliderWrapper = ({ data, image, mobileNav }) => {
         )
     })
     const leftClick = (e) => {
-
-    }
-    const rightClick = (e) => {
-        
-        if (currentTrans.current - sliderState.itemWidth >= 0){
+        if (currentTrans.current + sliderState.itemWidth >= 0){
             innerContainer.current.style.transform = "translateX(0px)"
             currentTrans.current = 0
+        }
+        else{
+            if (screenWidth > 992 && screenWidth < 1150){
+                innerContainer.current.style.transform = `translateX(${currentTrans.current + sliderouterContainer.current.clientWidth / 3}px)`
+                currentTrans.current = currentTrans.current + sliderouterContainer.current.clientWidth / 3
+            }
+            else{
+                innerContainer.current.style.transform = `translateX(${currentTrans.current + sliderouterContainer.current.clientWidth / 4}px)`
+                currentTrans.current = currentTrans.current + sliderouterContainer.current.clientWidth / 4
+            }
+
+        }
+    }
+    const rightClick = (e) => {
+        const slidableWidth = sliderState.containerWidth - sliderouterContainer.current.clientWidth
+        
+        if ((currentTrans.current - sliderState.itemWidth) <= -slidableWidth){
+            innerContainer.current.style.transform = `translateX(${-slidableWidth}px)`
+            currentTrans.current = -slidableWidth
         }
         else{
             // innerContainer.current.style.transform = `translateX(${currentTrans.current - sliderState.itemWidth - 10}px)`
@@ -55,6 +70,7 @@ const SliderWrapper = ({ data, image, mobileNav }) => {
             if (screenWidth > 992 && screenWidth < 1150){
                     innerContainer.current.style.transform = `translateX(${currentTrans.current - sliderouterContainer.current.clientWidth / 3}px)`
                     currentTrans.current = currentTrans.current - sliderouterContainer.current.clientWidth / 3
+                    
             }
             else{
                 innerContainer.current.style.transform = `translateX(${currentTrans.current - sliderouterContainer.current.clientWidth / 4}px)`
