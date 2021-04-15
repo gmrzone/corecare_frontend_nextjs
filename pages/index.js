@@ -92,6 +92,7 @@ const Home = ({ services, coupons,  mobileNav, cleaner, carpenter, electrician, 
               <SliderWrapper data={electrician.filter(x => x.slug !== "electrician-consultation")} image={true} mobileNav={mobileNav}/>
             </Section>
             <ReviewSection mobileNav={mobileNav} data={reviewData}/>
+            {console.log("Afgzal")}
       </Layout>
     </>
   )

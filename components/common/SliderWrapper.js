@@ -46,7 +46,7 @@ const SliderWrapper = ({ data, image, mobileNav, review }) => {
     })
     const renderReviewItem = data.map((x, i) => {
         return (
-            <div className={"comment " + style.slider_item} key={i}>
+            <div className={"comment " + style.review_slider_item} key={i}>
                 <div className="item-header">   
                     <span className="avatar">
                         <Image src={x.image} width={40} height={40} alt="profile" className="review-profile"/>
