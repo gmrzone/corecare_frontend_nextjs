@@ -30,7 +30,7 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: Axiform ,-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+  font-family: Axiforma ,-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
  Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   font-weight: 400;
   font-size: 12px;
@@ -48,7 +48,7 @@ body {
 }
 
 h1.heavy {
-  font-family: Axiform ,-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+  font-family: Axiforma ,-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
  Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   font-size: 2.4rem;
   font-weight: 900;
@@ -93,7 +93,7 @@ h1.heavy {
 
 h1, h2, h3, h4, h5, h6, span, a {
   margin: 0;
-  font-family: Axiform ,-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+  font-family: Axiforma ,-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
  Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   line-height: 1.2;
 }
