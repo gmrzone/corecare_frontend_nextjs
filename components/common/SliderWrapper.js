@@ -3,7 +3,7 @@ import Image from 'next/image'
 import style from '../../styles/home/SliderWrapper.module.scss'
 import Link from 'next/link'
 import { BASE_URL } from '../../data/_variables'
-const SliderWrapper = ({ data, image, mobileNav }) => {
+const SliderWrapper = ({ data, image, mobileNav, review }) => {
     const innerContainer = useRef()
     const sliderouterContainer = useRef()
     const currentTrans = useRef(0)
@@ -28,7 +28,7 @@ const SliderWrapper = ({ data, image, mobileNav }) => {
             <div className={style.slider_item + " slider_item"} key={x.id || i}>
                 {image ? (
                     <div className={style.slider_item_image + " image-slider-item"}>
-                        <p className={style.slider_item_image_text}>{x.service_specialist.slug}</p>
+                        <p className={style.slider_item_image_text}>{x.name}</p>
                         <Image src={BASE_URL + x.icon} layout="fill" objectFit="cover" className={style.slider_image} />
                     </div>
                 ) : (
@@ -41,6 +41,22 @@ const SliderWrapper = ({ data, image, mobileNav }) => {
                             )}
                     </div>
                 )}
+            </div>
+        )
+    })
+    const renderReviewItem = data.map((x, i) => {
+        return (
+            <div className={"comment " + style.slider_item} key={i}>
+                <div className="item-header">   
+                    <span className="avatar">
+                        <Image src={x.image} width={40} height={40} alt="profile" className="review-profile"/>
+                    </span>
+                    <span className="author">{x.name}</span>
+                </div>
+                <div className="content">   
+                <div className="text" dangerouslySetInnerHTML={{ __html: x.msge }}>
+                </div>
+                </div>
             </div>
         )
     })
@@ -97,7 +113,7 @@ const SliderWrapper = ({ data, image, mobileNav }) => {
             {renderSliderHandle()}
             <div className="semi-outer-container">
                 <div className={style.slider_inner_container + " inner_container"} ref={innerContainer}>
-                    {RenderSliderItem}
+                    {review ? renderReviewItem : RenderSliderItem}
                 </div>
             </div>
             <style jsx>{`

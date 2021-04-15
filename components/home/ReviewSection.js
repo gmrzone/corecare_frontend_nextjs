@@ -14,7 +14,7 @@ const ReviewSlider = (props) => {
                     <h1 className={style.review_title}>Customer safety is our Priority</h1>
                     <p className={style.review_subs}>What Customers are saying about our saftey standards</p>
                 </div>
-                <SliderWrapper bgColor="black" image={false} data={props.data} mobileNav={props.mobileNav} />
+                <SliderWrapper bgColor="black" image={false} data={props.data} mobileNav={props.mobileNav} review={true}/>
             </div>
         </div>
     )

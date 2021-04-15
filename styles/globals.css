@@ -712,3 +712,18 @@ a:hover {
 padding: 10px 0px !important;
 
 }
+
+.company-name {
+  color: #ff385c;
+}
+.author {
+  font-weight: bolder;
+}
+.item-header {
+  display: flex;
+  align-items: center;
+
+}
+.review-profile {
+  border-radius: 5px;
+}   
