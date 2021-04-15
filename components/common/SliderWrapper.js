@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import style from '../../styles/home/SliderWrapper.module.scss'
+import Link from 'next/link'
 import { BASE_URL } from '../../data/_variables'
 const SliderWrapper = ({ data, image, mobileNav }) => {
     const innerContainer = useRef()
@@ -22,26 +23,25 @@ const SliderWrapper = ({ data, image, mobileNav }) => {
         setSliderState({itemWidth: itemWidth, containerWidth: containerWidth})
 
     }, [data.length, sliderouterContainer, screenWidth])
-    const RenderSliderItem = data.map(x => {
+    const RenderSliderItem = data.map((x, i) => {
         return (
-        <div className={style.slider_item + " slider_item"} key={x.id}>
-            {image ? (
-                <div className={style.slider_item_image + " image-slider-item"}>
-                    <p className={style.slider_item_image_text}>{x.name}</p>
-                    <Image src={BASE_URL + x.icon} layout="fill" objectFit="cover" className={style.slider_image} />
-                    
-                </div>
-            ) : (
-                <div className={style.slider_item_content}>
-                    {x.code && (
-                        <>
-                        <p>{x.code}</p>
-                        <p>Get {x.discount}% Discount</p>
-                        </>
-                        )}
-                </div>
-            )}
-        </div>  
+            <div className={style.slider_item + " slider_item"} key={x.id || i}>
+                {image ? (
+                    <div className={style.slider_item_image + " image-slider-item"}>
+                        <p className={style.slider_item_image_text}>{x.service_specialist.slug}</p>
+                        <Image src={BASE_URL + x.icon} layout="fill" objectFit="cover" className={style.slider_image} />
+                    </div>
+                ) : (
+                    <div className={style.slider_item_content}>
+                        {x.code && (
+                            <>
+                            <p>{x.code}</p>
+                            <p>Get {x.discount}% Discount</p>
+                            </>
+                            )}
+                    </div>
+                )}
+            </div>
         )
     })
     const leftClick = (e) => {
