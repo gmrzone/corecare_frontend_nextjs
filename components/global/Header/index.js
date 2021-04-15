@@ -2,12 +2,9 @@ import NavItem from './NavItem';
 import ProfileBox from './ProfileBox';
 import Link from 'next/link';
 import Image from 'next/image'
+import { useRouter } from 'next/router'
 import { useEffect, useRef, useState } from 'react'
 // import { openSignup, closeSignup, mobileNavToggle } from '../../actions'
-// import Logo from '../../images/logo-full.svg';
-// import LogoPink from '../../images/logo-full-pink.svg';
-// import LogoMob from '../../images/logo-mobile.svg';
-// import LogoMobPink from '../../images/logo-mobile-pink.svg';
 import { ProfileBoxitem, ProfileBoxitemLogin, ProfileBoxitemMobile, ProfileBoxitemMobileLogin, BASE_URL } from '../../../data/_variables'
 
     
@@ -16,6 +13,7 @@ const Header = (props) => {
     // const [mobileNav, mobileNavToggle] = useState()
     const { mobileNav } = props
     const loginStatus  = false
+    const router = useRouter()
     // let ProfileBoxItemRefDesktop = useRef(ProfileBoxitem)
     // let ProfileBoxItemRefMobile = useRef(ProfileBoxitemMobile)
     // let screenWidthRef = useRef(null)
@@ -95,9 +93,21 @@ const Header = (props) => {
     //     }, options)
     //     observer.observe(document.getElementsByTagName('html'))
     // }, [mobileNav])
+    const background = () => {
+        if (router.pathname === "/about"){
+            return {
+                backgroundColor: 'black',
+                position: 'relative'
+            }
+        }
+        return {
+            backgroundColor: 'transparent'
+        }
+    }
     return (
-        <header className="header">
+        <header className="header" style={background()}>
             <nav className='navbar ui container'>
+                {console.log(router.pathname)}
                 <div className="containerAF nav-main">
                     <div className="logo">
                         <Link href="/">
