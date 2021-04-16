@@ -9,9 +9,6 @@ import { useForm } from 'react-hook-form'
 const Login = (props) => {
     const param = useRouter().query.pathParam
     const { register, handleSubmit, formState: { errors } } = useForm();
-    // const NumberErrorRef = useRef(false);
-    // const NumberErrorMssg = useRef(null)
-    const [formError, setFormError] = useState({error: false, message: null})
 
     const submitForm = (formValues) => {
         console.log(formValues)
