@@ -53,11 +53,12 @@ const reviewData = [
   }
 ]
 export const getStaticProps = async () => {
-  const res = await axios.get('https://www.afzalsaiyed.corecare.in/')
-  const res1 = await axios.get('https://www.afzalsaiyed.corecare.in/coupons/')
-  const res2 = await axios.get('https://www.afzalsaiyed.corecare.in/subcategory/3/cleaner/')
-  const res3 = await axios.get('https://www.afzalsaiyed.corecare.in/subcategory/2/carpenter/')
-  const res4 = await axios.get('https://www.afzalsaiyed.corecare.in/subcategory/1/electrician/')
+  const BASE_URL = process.env['API_BASE_URL']
+  const res = await axios.get(BASE_URL)
+  const res1 = await axios.get(`${BASE_URL}coupons/`)
+  const res2 = await axios.get(`${BASE_URL}subcategory/3/cleaner/`)
+  const res3 = await axios.get(`${BASE_URL}subcategory/2/carpenter/`)
+  const res4 = await axios.get(`${BASE_URL}subcategory/1/electrician/`)
 
 
   return {
