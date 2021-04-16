@@ -4,12 +4,14 @@ import Footer from '../global/Footer'
 const Layout = ({ children, HeroImage=null, mobileNav }) => {
     return (
         <>  
-            <div id="model"></div>
-            <Header mobileNav={mobileNav}/>
-            {HeroImage && <HeroImage />}
-            <main>
-                {children}
-            </main>
+            <div className="afzal-container">
+                <div id="model"></div>
+                <Header mobileNav={mobileNav}/>
+                {HeroImage && <HeroImage />}
+                <main>
+                    {children}
+                </main>
+            </div>
             <footer id="footer">
                 <Footer mobileNav={mobileNav}/>
             </footer>

@@ -1,0 +1,35 @@
+
+.form_container {
+    max-width: 815px;
+
+    margin: auto auto;
+   
+    .login_form {
+        max-width: 715px;
+    }
+
+    .innerContainer {
+        padding: 15px;
+
+        @media (min-width: 430px){
+            padding: 30px;
+        }
+        @media (min-width: 650px){
+            padding: 60px;
+        }
+        @media (min-width: 800px){
+            padding: 100px;
+        }
+    }
+    
+}
+
+#footer {
+    margin-top: 0px !important;
+}
+#afzal {
+    padding-top: 0px !important;
+}
+.password_field {
+    background-color: white !important;
+}

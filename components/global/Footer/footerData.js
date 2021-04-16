@@ -36,7 +36,7 @@ export const col__one = [
 // ]
 
 export const col__two = [
-        {name: 'Mumbai', path: ""},
-        {name: 'Navi Mumbai', path: ""},
-        {name: 'Pune', path: ""}
+        {name: 'Mumbai', path: "/mumbai"},
+        {name: 'Navi Mumbai', path: "/navi-mumbai"},
+        {name: 'Pune', path: "/pune"}
 ]

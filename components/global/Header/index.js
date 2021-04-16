@@ -94,7 +94,7 @@ const Header = (props) => {
     //     observer.observe(document.getElementsByTagName('html'))
     // }, [mobileNav])
     const background = () => {
-        if (router.pathname === "/about"){
+        if (router.pathname === "/about" || router.pathname === "/login"){
             return {
                 backgroundColor: 'black',
                 position: 'relative'
