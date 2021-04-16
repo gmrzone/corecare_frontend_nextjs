@@ -21,7 +21,6 @@ const SliderWrapper = ({ data, image, mobileNav, review }) => {
         }
         containerWidth = (itemWidth + 10) * data.length
         setSliderState({itemWidth: itemWidth, containerWidth: containerWidth})
-
     }, [data.length, sliderouterContainer, screenWidth])
     const RenderSliderItem = data.map((x, i) => {
         return (

@@ -1,5 +1,6 @@
 import Header from '../global/Header'
 import Link from 'next/link'
+import Footer from '../global/Footer'
 const Layout = ({ children, HeroImage=null, mobileNav }) => {
     return (
         <>  
@@ -9,8 +10,8 @@ const Layout = ({ children, HeroImage=null, mobileNav }) => {
             <main>
                 {children}
             </main>
-            <footer>
-
+            <footer id="footer">
+                <Footer mobileNav={mobileNav}/>
             </footer>
         </>
     )

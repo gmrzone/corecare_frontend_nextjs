@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import style from '../../styles/common/Dropdown.module.scss'
+import Image from 'next/image'
 const Dropdown = ({ register,  selected, options, selectionChange })=> {
     const [open, setOpen] = useState(false)
     let renderedOpt = options.map((x, i) => {
@@ -28,7 +29,10 @@ const Dropdown = ({ register,  selected, options, selectionChange })=> {
         //     </div>
         // </div>
         <div className={style.dropdown_main} onClick={toggleDropDown} style={{boxShadow: open ? '0px 0px 0px 1px #666666' : ""}}>
-            <img src="/india.svg" alt="india_icon" className={style.india_icon}/>
+            <div className={style.india_icon}>
+                {/* <img src="/india.svg" alt="india_icon"/> */}
+                <Image src="/india.svg" alt="india_icon" layout="fill" objectFit="cover" />
+            </div>
             <span>{selected?.value[0].toUpperCase() + selected?.value.substring(1) || "Select City"}</span>
             <i className="fa fa-caret-down" aria-hidden="true" />
             <div className={style.dropdown_options + ` ${open ? style.active : ""}`}>
