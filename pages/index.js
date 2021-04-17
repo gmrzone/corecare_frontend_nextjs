@@ -7,6 +7,7 @@ import SliderWrapper from '../components/common/SliderWrapper'
 import axios from 'axios'
 import Section from '../components/common/Section'
 import ReviewSection from '../components/home/ReviewSection'
+import { frontend_base } from '../data/_variables'
 const reviewData = [
   {
       name: '@Bilalhashmi29',
@@ -75,7 +76,7 @@ export const getStaticProps = async () => {
 const Home = ({ services, coupons,  mobileNav, cleaner, carpenter, electrician, review }) => {
   return (
     <>
-      <MetaComponent title="Home Page" description="Homepage" name="home Page" url="http://0.0.0.0:3000/"/>
+      <MetaComponent title="Home Page" description="Homepage" name="home Page" url={`${frontend_base}`}/>
       <Layout HeroImage={HeroImage} mobileNav={mobileNav}>
           <ServiceBox services={services} mobileNav={mobileNav}/>
             <div className="section__first">

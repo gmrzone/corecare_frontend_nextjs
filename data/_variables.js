@@ -1,5 +1,6 @@
 // export const BASE_URL = "http://127.0.0.1:8000"
 export const BASE_URL = "https://www.afzalsaiyed.corecare.in/"
+export const frontend_base = "http://0.0.0.0:3000/"
 export const ProfileBoxitem = [
     {
         name: 'Login',

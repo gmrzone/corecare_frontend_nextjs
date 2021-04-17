@@ -1,8 +1,8 @@
 import Image from 'next/image'
 import style from '../../styles/common/NumberField.module.scss'
-const NumberField = ({ register, label }) => {
+const NumberField = ({ register, label, errors }) => {
     return(
-        <div className="field">
+        <div className={`field ${errors.number && "error"}`}>
             {label && <label>{label}</label>}
             <div className={style.main_input}>
                 <div className={style.india_icon}>
@@ -10,7 +10,7 @@ const NumberField = ({ register, label }) => {
                     <Image src="/india.svg" width="30" height="30" alt="india_icon" className={style.india_icon_img}/>
                     <div style={{paddingRight: '4px'}}>+91</div>
                 </div>
-                <input placeholder="10 Digit Mobile No." maxLength="10" className={style.number_input} {...register("number", {required: true, maxLength: 10, minLength: 10, pattern: {value: /^(7|8|9)\d{9}/, message: "Please Enter a valid number"}})}/>
+                <input placeholder="10 Digit Mobile No." maxLength="10" className={style.number_input} {...register("number", {required: {value: true, message: "Cannot Login with blank username"}, pattern: {value: /^(7|8|9)\d{9}/, message: "Please Enter a valid number"}})}/>
             </div>
             
         </div>

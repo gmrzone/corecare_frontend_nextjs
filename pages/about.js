@@ -3,10 +3,11 @@ import AboutSection from '../components/about/AboutSection';
 import AboutStats from '../components/about/AboutStats';
 import MetaComponent from '../components/common/MetaComponent'
 import Layout from '../components/common/Layout'
+import { frontend_base } from '../data/_variables'
 const About = ({ mobileNav }) => {
     return(
         <>  
-            <MetaComponent title="About Page" description="Aboutpage" name="about Page" url="http://0.0.0.0:3000/about" />
+            <MetaComponent title="About Page" description="Aboutpage" name="about Page" url={`${frontend_base}about`} />
             <Layout mobileNav={mobileNav} HeroImage={null}>
                 <div className={style.about_container__12364}>
                     <div className={style.header_section__47942d}>
