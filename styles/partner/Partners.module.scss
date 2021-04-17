@@ -1,0 +1,343 @@
+.partner_hero_background {
+    background: darken(rgba(220, 240, 251, 0.5), 10%);
+    padding: 15px 0;
+
+    @media (min-width: 400px){
+        padding: 20px 0;
+    }
+    @media (min-width: 445px){
+        padding: 30px 0;
+    }
+    @media (min-width: 540px){
+        padding: 40px 0;
+    }
+    @media (min-width: 600px){
+        padding: 50px 0;
+    }
+    .get_in_touch_container {
+        background: linear-gradient(91.41deg ,#0050ff .15%,#4d85ff 99.82%);
+        padding: 20px;
+        margin: 0 20px 20px 20px;
+        max-width: 1260px;
+        border-radius: 12px;
+        @media (min-width: 540px){
+            padding: 025px;
+        }
+        @media (min-width: 800px){
+            margin: 0 auto;
+            padding: 40px;
+        }
+
+        h1 {
+            color: white;
+            font-size: 20px;
+            font-weight: inherit;
+            @media (min-width: 400px){
+                font-size: 22px;
+            }
+            @media (min-width: 480px){
+                font-size: 24px;
+            }
+            @media (min-width: 540px){
+                font-size: 26px;
+            }
+            @media (min-width: 600px){
+               font-size: 28px;   
+            }
+            @media (min-width: 800px){
+                font-size: 30px;
+            }
+            @media (min-width: 1000px){
+               font-size: 32px;   
+            }
+        }
+        .partner_form {
+            display: flex;
+            flex-direction: column;
+
+            @media (min-width: 992px){
+                flex-direction: row;
+            } 
+            .partner_field {
+                margin-bottom: 1em;
+                margin-right: 0px;
+                @media (min-width: 992px){
+                    margin-bottom: 0px;
+                    margin-right: 0.6em;
+                }
+                @media (min-width: 1200px){
+                    margin-right: 0.8em;
+                }
+                @media (min-width: 1200px){
+                    margin-right: 1em;
+                }  
+            }
+            .partner_button {
+                white-space: nowrap;
+                background: white;
+                transition: 0.2s all ease-in-out;
+                margin: 0;
+                
+                &:hover {
+                    background: darken($color: white, $amount: 15%);
+                }
+            }
+
+            
+        }
+    } 
+}
+
+.partner_hero_container {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    @media (min-width: 992px){
+        flex-direction: row;
+    }
+
+    .partner_hero_text {
+        margin-bottom: 20px;
+
+        @media (min-width: 360px){
+            margin-bottom: 25px;
+        }
+        @media (min-width: 400px){
+            margin-bottom: 30px;
+        }
+        @media (min-width: 992px){
+            margin-bottom: 0px;
+        }
+    }
+    .partner_hero_image {
+        max-height: 380px;
+        max-width: 570px;
+        height: 260px;
+        position: relative;
+
+        @media (min-width: 400px){
+            height: 300px;
+        }
+        @media (min-width: 445px){
+            height: 320px;
+        }
+        @media (min-width: 540px){
+            height: 350px;
+        }
+        @media (min-width: 600px){
+            height: auto;
+        }
+
+        .ui.placeholder {
+            max-height: 360px;
+            max-width: 550px;
+            height: 260px;
+            width: 300px;
+            @media (min-width: 400px){
+                height: 300px;
+                width: 340px;
+            }
+            @media (min-width: 445px){
+                height: 320px;
+                width: 380px
+            }
+            @media (min-width: 540px){
+                height: 350px;
+                width: 440px
+            }
+            @media (min-width: 600px){
+                width: 550;
+                height: 360;
+            }
+        }
+        .partner_image {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+            max-height: 380px;
+            max-width: 570px;
+        }
+
+
+    }
+    .main_title {
+        font-size: 26px;
+        font-weight: bolder;
+        
+        @media (min-width: 700px){
+            font-size: 34px;
+        }
+        @media (min-width: 1200px){
+            font-size: 38px;
+        }
+        @media (min-width: 1400px){
+            font-size: 40px;
+        }
+    }
+    .description {
+        font-weight: bold;
+        font-size: 16px;
+        color: #696969;
+
+        @media (min-width: 360px){
+            font-size: 17px;
+        }
+        @media (min-width: 600px){
+            font-size: 18px;
+        }
+        @media (min-width: 600px){
+            font-size: 20px;
+        }
+        @media (min-width: 1000px){
+            font-size: 22px;
+        }
+    }
+    .stats {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        margin-top: 30px;
+
+        @media (min-width: 700px){
+            flex-direction: row;
+            justify-content: space-between;
+        }
+        .stats_item {
+            // margin-right: 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+            @media (min-width: 700px){
+                margin-bottom: 0px;
+            }
+            h1 {
+                color: #018b2e;
+                font-weight: bolder;
+                font-size: 2rem;
+                margin-bottom: 8px;
+                @media (min-width: 700px){
+                    font-size: 2.4rem;
+                }
+                @media (min-width: 1000px){
+                    font-size: 2.6rem;
+                }
+                @media (min-width: 1200px){
+                    font-size: 2.8rem;
+                }
+                @media (min-width: 1400px){
+                    font-size: 3rem;
+                }
+                
+
+            }
+        }
+        p {
+            font-size: 1.2rem;
+            @media (min-width: 700px){
+                font-size: 1.3rem;
+            }
+            @media (min-width: 1000px){
+                font-size: 1.4rem;
+            }
+            @media (min-width: 1200px){
+                font-size: 1.5rem;
+            }
+            @media (min-width: 1400px){
+                font-size: 1.6rem;
+            }
+        }
+    }
+}
+
+
+// Partners Card
+
+.hiring_section {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+
+}
+.hiring_item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.hiring_item .icon {
+    padding: 10px;
+    overflow: hidden;
+}
+.hiring_item .icon img {
+    width: 50px;
+    
+}
+.hiring_item .name {
+    font-size: 12px;
+}
+
+@media (min-width: 400px){
+    .hiring_item .icon {
+        padding: 12px;
+        padding-bottom: 10px;
+        overflow: hidden;
+    }
+    .hiring_item .icon img {
+        width: 55px;
+    }
+    .hiring_item .name {
+        font-size: 14px;
+    }
+}
+@media (min-width: 600px){
+
+    .hiring_item .icon {
+        padding: 14px;
+        padding-bottom: 10px;
+        overflow: hidden;
+    }
+    .hiring_item .icon img {
+        width: 60px;
+    }
+    .hiring_item .name {
+        font-size: 16px;
+    }
+}
+@media (min-width: 800px){
+
+    .hiring_item .icon {
+        padding: 16px;
+        padding-bottom: 10px;
+        overflow: hidden;
+    }
+    .hiring_item .icon img {
+        width: 70px;
+
+    }
+    .hiring_item .name {
+        font-size: 18px;
+    }
+}
+@media (min-width: 1000px){
+
+    .hiring_item .icon {
+        padding: 18px;
+        padding-bottom: 10px;
+        overflow: hidden;
+    }
+    .hiring_item .icon img {
+        width: 80px;
+    }
+    .hiring_item .name {
+        font-size: 20px;
+    }
+}
+
+.partner_container_secondary {
+    display: block !important;
+}

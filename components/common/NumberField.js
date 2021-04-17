@@ -1,8 +1,8 @@
 import Image from 'next/image'
 import style from '../../styles/common/NumberField.module.scss'
-const NumberField = ({ register, label, errors }) => {
+const NumberField = ({ register, label, errors, fieldClass }) => {
     return(
-        <div className={`field ${errors.number && "error"}`}>
+        <div className={`field ${errors.number && "error"} ${fieldClass && fieldClass}`}>
             {label && <label>{label}</label>}
             <div className={style.main_input}>
                 <div className={style.india_icon}>
