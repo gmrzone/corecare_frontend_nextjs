@@ -10,12 +10,11 @@ const NumberField = ({ register, label, errors, fieldClass }) => {
                     <Image src="/india.svg" width="30" height="30" alt="india_icon" className={style.india_icon_img}/>
                     <div style={{paddingRight: '4px'}}>+91</div>
                 </div>
-                <input placeholder="10 Digit Mobile No." maxLength="10" className={style.number_input} {...register("number", {required: {value: true, message: "Cannot Login with blank username"}, pattern: {value: /^(7|8|9)\d{9}/, message: "Please Enter a valid number"}})}/>
+                <input placeholder="10 Digit Mobile No." maxLength="10" className={style.number_input} {...register("number", {required: {value: true, message: "Number field cannot be blank"}, pattern: {value: /^(7|8|9)\d{9}/, message: "Please Enter a valid number"}})}/>
             </div>
             
         </div>
     )
 }
-
 export default NumberField
 // {props.meta.error ? props.setError({status: 'error', mssg: props.error}) : null}    

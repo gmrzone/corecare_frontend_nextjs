@@ -115,6 +115,7 @@
         max-height: 380px;
         max-width: 570px;
         height: 260px;
+        width: 100%;
         position: relative;
 
         @media (min-width: 400px){
@@ -127,7 +128,7 @@
             height: 350px;
         }
         @media (min-width: 600px){
-            height: auto;
+            height: 380px;
         }
 
         .ui.placeholder {
