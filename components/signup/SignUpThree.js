@@ -5,8 +5,9 @@ import { useForm } from 'react-hook-form'
 const SignUpPageThree = ({ signUpstate, signUpUpdateProfile, closeModel, successPath, payButton }) => {
     const history = useRouter()
     const [loading, setLoading] = useState(false)
+    const [formSection, nextFormSection] = useState(0)
     const [formError, setFormError] = useState({status: null, msg: 'null'})
-    const {register, handleSubmit, formState: { errors }} = useForm()
+    const {register, handleSubmit, watch, formState: { errors, isValid }} = useForm()
     const onSubmit = (formValues) => {
         // setLoading(true)
         formValues.number = signUpstate.number
@@ -15,50 +16,97 @@ const SignUpPageThree = ({ signUpstate, signUpUpdateProfile, closeModel, success
         console.log(formValues)
         
     }
+    const isError = () => {
+        if (errors?.first_name || errors?.last_name || errors?.email || errors?.address_1 || errors?.address_2 || errors?.state || errors?.pincode || errors?.city){
+            return true
+        }
+        return false
+    }
+    const disableFirstSection = () => {
+        const state = watch()
+        if (state.first_name && state.last_name && state.email){
+            return false
+        }
+        return true
+    }
+    const renderButton = () => {
+        if (formSection === 0){
+            return (
+                <div className="buttons" style={{textAlign: 'right', marginTop: '15px'}}>
+                    <button class={`ui secondary button ${disableFirstSection() && "disabled"}`} onClick={() => nextFormSection(s => s + 1)}>
+                        Next
+                    </button>
+                </div>
+            )
+        }
+        else if (formSection === 1) {
+            return (
+                <div className="buttons" style={{textAlign: 'right'}}>
+                    <button class="ui secondary button" onClick={() => nextFormSection(s => s - 1)}>
+                        Previous
+                    </button>
+                    <button type="submit" className={`ui positive right labeled icon button ${loading && "loading"}`}>
+                        Update
+                    <i className="address card icon"></i>
+                    </button>
+                </div>
+            )
+        }
+    }
     return (
         <form onSubmit={handleSubmit(onSubmit)} className="ui form large">
-            <div className="two fields">
-                <div className={`field ${errors.first_name ? "error" : ""}`}>
-                    <label>First Name</label>
-                    <input type="text" placeholder="First name" {...register('first_name', {required: {value: true, message: "Please enter your first name"}})}/>
+            {formSection >= 0 && (<section className="wizard_one">
+                <div className="two fields">
+                    <div className={`field ${errors.first_name ? "error" : ""}`}>
+                        <label>First Name</label>
+                        <input type="text" placeholder="First name" {...register('first_name', {required: {value: true, message: "Please enter your first name"}})}/>
+                    </div>
+                    <div className={`field ${errors.last_name ? "error" : ""}`}>
+                        <label>Last Name</label>
+                        <input type="text" placeholder="Last name" {...register('last_name', {required: {value: true, message: "Please enter your last name"}})}/>
+                    </div>
                 </div>
-                <div className={`field ${errors.last_name ? "error" : ""}`}>
-                    <label>Last Name</label>
-                    <input type="text" placeholder="Last name" {...register('last_name', {required: {value: true, message: "Please enter your last name"}})}/>
+                <div className={`field ${errors.email ? "error" : ""}`}>
+                    <label>Email</label>
+                    <input type="email" placeholder="Email" {...register('email', {required: {value: true, message: "Please enter a email address"}, pattern: {value: /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/, message: "Please Enter a valid Email Address"}})}/>
                 </div>
-            </div>
-            <div className={`field ${errors.email ? "error" : ""}`}>
-                <label>Email</label>
-                <input type="email" placeholder="Email"/>
-            </div>
-            <div className={`field ${errors.address_1 ? "error" : ""}`}>
-                <label>Address 1</label>
-                <input type="text" placeholder="Address One" {...register('address_1', {required: {value: true, message: "Please enter your Address"}})}/>
-            </div>
-            <div className={`field ${errors.address_2 ? "error" : ""}`}>
-                <label>Address 2</label>
-                <input type="text" placeholder="Address Two" {...register('address_2')}/>
-            </div>
-            <div className={`field ${errors.state ? "error" : ""}`}>
-                <label>State</label>
-                <input type="text" placeholder="State" {...register('state', {required: {value: true, message: "Please enter your State"}})}/>
-            </div>
-            <div className="two fields">
-                <div className={`field ${errors.city ? "error" : ""}`}>
-                    <label>City</label>
-                    <input type="text" placeholder="City" {...register('city', {required: {value: true, message: "Please enter your City"}})}/>
+            </section>)}
+            {formSection >= 1 && (<section className="wizard_two">
+                <div className={`field ${errors.address_1 ? "error" : ""}`}>
+                    <label>Address 1</label>
+                    <input type="text" placeholder="Address One" {...register('address_1', {required: {value: true, message: "Please enter your Address"}})}/>
                 </div>
-                <div className={`field ${errors.pincode ? "error" : ""}`}>
-                    <label>Pincode</label>
-                    <input type="text" placeholder="Pincode" {...register('pincode', {required: {value: true, message: "Please enter your pincode"}, maxLength: {value: 6, message: "Pincode cannot be greater then 6 digits"}, pattern: {value: /\d{6}/, message: "Please enter a valid Pincode"}})}/>
+                <div className={`field ${errors.address_2 ? "error" : ""}`}>
+                    <label>Address 2</label>
+                    <input type="text" placeholder="Address Two" {...register('address_2')}/>
                 </div>
+                <div className={`field ${errors.state ? "error" : ""}`}>
+                    <label>State</label>
+                    <input type="text" placeholder="State" {...register('state', {required: {value: true, message: "Please enter your State"}})}/>
+                </div>
+                <div className="two fields">
+                    <div className={`field ${errors.city ? "error" : ""}`}>
+                        <label>City</label>
+                        <input type="text" placeholder="City" {...register('city', {required: {value: true, message: "Please enter your City"}})}/>
+                    </div>
+                    <div className={`field ${errors.pincode ? "error" : ""}`}>
+                        <label>Pincode</label>
+                        <input type="text" placeholder="Pincode" {...register('pincode', {required: {value: true, message: "Please enter your pincode"}, maxLength: {value: 6, message: "Pincode cannot be greater then 6 digits"}, pattern: {value: /\d{6}/, message: "Please enter a valid Pincode"}})}/>
+                    </div>
             </div>
-            <div className="buttons" style={{textAlign: 'right'}}>
-                <button type="submit" disabled={submitting} className={`ui positive right labeled icon button ${loading && "loading"}`}>
-                  Update
-                  <i className="address card icon"></i>
-                </button>
+            </section>)}
+            {renderButton()}
+            <div className={`ui tiny message red ${formError.status === 'error' || isError() ? "visible" : "hidden"}`}>
+                    {errors?.first_name?.message || errors?.last_name?.message || errors?.email?.message || errors?.address_1?.message || errors?.address_2?.message || errors?.state?.message || errors?.pincode?.message || errors?.city?.message || formError.msg}
             </div>
+            <style jsx>{`
+                .wizard_one {
+                    display: ${formSection === 0 ? "block" : "none"};
+                }
+                .wizard_two {
+                    display: ${formSection === 1 ? "block" : "none"}
+                }
+            `}</style>
         </form>
     )
 }
