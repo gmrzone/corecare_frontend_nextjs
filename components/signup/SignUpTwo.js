@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
+import BackendApi from '../../data/backendApi'
 export const SignUpPageTwo = ({
   signUpSettings,
   setSignUpHeader,
   signUpData,
 }) => {
-  // const [otpField, setOtpField] = useState("")
-  // const [error, setError] = useState({error: false, message: ""})
+
   const [otpError, setOtpError] = useState({ error: false, message: null });
   const [loading, setLoading] = useState(false);
   const {
@@ -21,51 +21,38 @@ export const SignUpPageTwo = ({
       title: "Enter 6 Digit OTP",
       subtitle: "Make sure both password are same",
     });
-
+    setValue('entered_otp', signUpData.otp)
     return () => {
       setSignUpHeader({ title: "", subtitle: "" });
     };
   }, [setSignUpHeader]);
+
+  
   const onSubmit = (formValues) => {
     setLoading(true);
     formValues.number = signUpData.number;
-    console.log(formValues);
+    BackendApi.post('create_user_account/verify/', formValues)
+    .then(response => {
+      if (response.data.status === 'error'){
+        setOtpError({error: true, message: response.data.msg})
+      }
+      else{
+        signUpSettings(state => {
+          return {...state, otpVerified: true, password: formValues.password1}
+        })
+      }
+      setLoading(false)
+    })
   };
   const goBack = () => {
     signUpSettings((state) => {
       return { ...state, otpSend: false, otp: null };
     });
   };
-  // const validateOtp = value => {
-  //     if (value){
-  //         if (value.length === 6){
-  //             if (value.match(/[a-zA-Z ]/)){
-  //                 return "Invalid Otp"
-  //             }
-  //             else{
-  //                 return undefined
-  //             }
 
-  //         }
-  //         else{
-  //             return "Invalid Otp"
-  //         }
-  //     }
-  //     else{
-  //         return "Required"
-  //     }
-  // }
-  // const validateForm = (formValues) => {
-  //     const { password1, password2} = formValues
-  //     let error = {}
-  //     if (password1 !== password2){
-  //         error.password2 = "Both Password Dont Match"
-  //     }
-  //     return error
-  // }
   return (
-    <form className="ui form" onSubmit={formProps.handleSubmit}>
-      <div className={`field ${meta.touched && meta.error && "error"}`}>
+    <form className="ui form Big" onSubmit={handleSubmit(onSubmit)}>
+      <div className={`field ${errors?.entered_otp || otpError.error ? "error" : ""}`}>
         <label>OTP</label>
         <input
           type="text"
@@ -87,17 +74,16 @@ export const SignUpPageTwo = ({
           })}
         />
       </div>
-      <div className={`field ${meta.touched && meta.error && "error"}`}>
+      <div className={`field ${errors?.password1 || otpError.error ? "error" : ""}`}>
         <label>Password</label>
         <input type="password" placeholder="Password" {...register('password1', {minLength: {value: 8, message: "Password cannot be less then 8 characters"}})} />
       </div>
-      <div className={`field ${meta.touched && meta.error && "error"}`}>
+      <div className={`field ${errors?.password2 || otpError.error ? "error" : ""}`}>
         <label>Confirm Password</label>
         <input type="password" placeholder="Confirm password" {...register('password2', {minLength: {value: 8, message: "Password cannot be less then 8 characters"}})}/>
-        {(meta.error && meta.touched && meta.error !== "Required") ||
-        otpError.error ? (
+        {errors?.entered_otp || errors?.password1 || errors?.password2 || otpError?.error ? (
           <div className="ui tiny message red">
-            {meta.error || otpError.message}
+            {errors?.entered_otp?.message || errors?.password1?.message || errors?.password2?.message || otpError?.message}
           </div>
         ) : (
           ""

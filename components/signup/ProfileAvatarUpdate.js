@@ -2,10 +2,11 @@ import style from '../../styles/signup/ProfileAvatar.module.scss'
 import { useState, useRef } from 'react';
 import ReactCrop from 'react-image-crop';
 import 'react-image-crop/dist/ReactCrop.css';
+import BackendApi from '../../data/backendApi'
 // import defaultProfile from '../../images/default-profile.png'
 import ImageCropModel from './ImageCropModel';
 import { extractImageFileExtensionFromBase64, base64StringtoFile } from './codeCamputils'
-const ProfileAvatarUpdate = ({ mobile, signUpstate, setSignUpstate, updateProfileImage }) => {
+const ProfileAvatarUpdate = ({ mobile, signUpstate, setSignUpstate }) => {
     // Button loading
     const [loading, setLoading] = useState(false)
     const [imageUpdateError, setImageUpdateError] = useState({'error': false, message: ""})
@@ -23,7 +24,27 @@ const ProfileAvatarUpdate = ({ mobile, signUpstate, setSignUpstate, updateProfil
         setLoading(true)
         e.preventDefault()
         const {number, password} = signUpstate
-        updateProfileImage(croppedImage, number, password, setSignUpstate, setImageUpdateError, setLoading)
+        const formData = new FormData()
+        if (croppedImage) {
+            formData.append('image', croppedImage)
+        }
+        formData.append('number', number)
+        formData.append('password', password)
+        BackendApi.post('create_user_account/profile-image/', formData)
+        .then(response => {
+            if (response.data.status === 'ok'){
+                setSignUpstate(state => {
+                    return {...state, profilePicUpdated: true}
+                })
+            }
+            else{
+                setImageUpdateError({error: true, message: response.data.message})
+                setSignUpstate(state => {
+                    return {...state, profilePicUpdated: false}
+                })
+            }
+            setLoading(false)
+        })
     }
     const inputRef = useRef()
     // Handle input file change use e.target.files[0] to get a single file and convert to base64 and save it in state so that we can extract file extension later
@@ -87,9 +108,9 @@ const ProfileAvatarUpdate = ({ mobile, signUpstate, setSignUpstate, updateProfil
             <form className={"ui form " + style.profile_avatar_update_form} onSubmit={handleSubmit}>
                 <div className={style.choose_file}>
                     <label htmlFor="choose_file">
-                        <input type="file" id="choose-file" accept="image/" onChange={handleFileChange} ref={inputRef}/>
-                        <span className="file-upload-header">Choose Photo</span>
-                        <span className="file-upload-text">Please select jpg or png file</span>
+                        <input type="file" id={style.choose_file} accept="image/" onChange={handleFileChange} ref={inputRef}/>
+                        <span className={style.file_upload_header}>Choose Photo</span>
+                        <span className={style.file_upload_text}>Please select jpg or png file</span>
                     </label>
                 </div>
                 {fileSrc && (

@@ -1,16 +1,11 @@
-import { useRef, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link'
 import NumberField from '../common/NumberField';
 import { useForm } from 'react-hook-form'
-import { SignUpPageTwo } from './SignUpTwo';
-// import { Field, Form } from 'react-final-form'
-// import { verifyNumber } from '../../actions'
-// import { connect } from 'react-redux'
-
-const SignUpPageOne = (props) => {
+import BackendApi from '../../data/backendApi'
+const SignUpPageOne = ({ setSignUpHeader, signUpSettings, closeSignup }) => {
     const [formError, setFormError] = useState({status: null, message: null})
     const { register, handleSubmit, formState: { errors } } = useForm()
-    const { setSignUpHeader } = props
     const [loading, setLoading] = useState(false)
     useEffect(() => {
         setSignUpHeader({'title': 'Verify number', subtitle: 'Please enter your number to receive a 6 digit verification Code.'})
@@ -21,16 +16,31 @@ const SignUpPageOne = (props) => {
     }, [setSignUpHeader])
 
     const submitForm = (formValues) => {
-        // setLoading(true)
+        setLoading(true)
+        BackendApi.post('create_user_account/', formValues)
+        .then(response => {
+            if (response.data.status === "ok"){
+                signUpSettings(state => {
+                    return {...state, otpSend: true, number: formValues.number, otp: response.data.otp}
+                })
+            }
+            else{
+                setFormError({status: "error", message: response.data.msg})
+            }
+            setLoading(false)
+        })
+        .catch(err => {
+            console.log(err)
+        })
         console.log(formValues)
     }
     return(
         <>
-        <form onSubmit={handleSubmit(submitForm)} className="login-form ui large form">
-            <NumberField register={register}/>
+        <form onSubmit={handleSubmit(submitForm)} className="login-form ui big form">
+            <NumberField register={register} errors={errors}/>
             <div style={{textAlign: 'right'}}>
                 <Link href="/login">
-                    <a className="ui secondary button" onClick={() => props.closeSignup()}>Login</a>
+                    <a className="ui secondary button" onClick={() => closeSignup()}>Login</a>
                 </Link>
                 <button className={`ui positive right labeled icon button ${loading && "loading"}`} type="submit">
                     Get Otp
@@ -38,7 +48,7 @@ const SignUpPageOne = (props) => {
                 </button>
             </div>
             <div className={`ui message red ${errors.number || formError.status === 'error' ? "visible" : "hidden"}`}>
-                <p>{errors?.numbers?.message || formError.message}</p>
+                <p>{errors?.number?.message || formError.message}</p>
             </div>
         </form>
         </>

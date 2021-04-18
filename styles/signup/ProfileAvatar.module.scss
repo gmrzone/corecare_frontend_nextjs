@@ -1,4 +1,4 @@
-.choose-file label {
+.choose_file label {
     display: block;
     border: 2px dashed #cccccc;
     padding: 10px;
@@ -9,13 +9,13 @@
 
 
 }
-.choose-file:hover {
+.choose_file:hover {
     
     .file-upload-header {
         color: lighten($color: #FF385C, $amount: 12%);
     }
 }
-.choose-file #choose-file {
+.choose_file #choose_file {
     outline: none;
     width: 100%;
     height: 100%;
@@ -30,13 +30,13 @@
         border: none;
     }
 }
-.choose-file .file-upload-header {
+.choose_file .file_upload_header {
     font-size: 18px;
     font-weight: bold;
     color: #FF385C;
     display: block;
 }
-.choose-file .file-upload-text {
+.choose_file .file_upload_text {
     font: inherit;
     font-size: 12px;
 
@@ -45,7 +45,7 @@
     }
 }
 
-.image-crop-model-container {
+.image_crop_model_container {
     position: absolute;
     z-index: 10000;
     display: flex;
@@ -53,8 +53,9 @@
     align-items: center;
     width: 100%;
     height: 100%;
+    
 
-    .image-crop-model {
+    .image_crop_model {
         background: white;
         padding: 20px;
         border-radius: 3px;
