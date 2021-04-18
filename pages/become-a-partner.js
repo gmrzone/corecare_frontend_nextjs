@@ -30,7 +30,7 @@ const BecomeAPartner = ({ hiring, mobileNav }) => {
     return (
         <div>
             <MetaComponent title="Become a partner" description="Home page for corecare Partners" name="Partners Page Page" url={`${frontend_base}/become-a-partner`}/>
-                <Layout>
+                <Layout mobileNav={mobileNav}>
                     <PartnerHero />
                     <Segment>
                         <div className={"ui container " + style.partner_hero_container + " " + style.partner_container_secondary}>
