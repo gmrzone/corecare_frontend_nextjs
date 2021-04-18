@@ -107,7 +107,6 @@ const Header = (props) => {
     return (
         <header className="header" style={background()}>
             <nav className='navbar ui container'>
-                {console.log(router.pathname)}
                 <div className="containerAF nav-main">
                     <div className="logo">
                         <Link href="/">
@@ -124,7 +123,7 @@ const Header = (props) => {
                                 <NavItem name="Contact" to="/contact"/>
                             </>
                             )}
-                        <ProfileBox profileImage={null} dropDownList={mobileNav ? loginStatus ? ProfileBoxitemMobileLogin : ProfileBoxitemMobile : loginStatus ? ProfileBoxitemLogin : ProfileBoxitem} mobile={mobileNav} authentication={props.authentication || {loginStatus: false}}/>
+                        <ProfileBox profileImage={null} dropDownList={mobileNav ? loginStatus ? ProfileBoxitemMobileLogin : ProfileBoxitemMobile : loginStatus ? ProfileBoxitemLogin : ProfileBoxitem} mobile={mobileNav} authentication={props.authentication || {loginStatus: false}} openSignup={props.openSignup}/>
                     </ul>
                 </div>
             </nav>

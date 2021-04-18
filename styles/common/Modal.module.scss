@@ -1,0 +1,30 @@
+
+.inner_model_box {
+    width: 100%;
+    background-color: white;
+    padding: 10px 20px 30px 20px;
+    border-radius: 5px;
+    margin: 10px !important;
+    max-width: 750px !important;
+
+
+    .inner_model_header{
+        color: black;
+        font-size: 25px;
+        padding : 10px 0px 20px 0px;
+        border-bottom: 1px solid #e6e6e6;
+
+    }
+    .close_icon {
+        float: right;
+        cursor: pointer;
+    }
+    .content{
+           padding: 20px 0;
+
+        &:first-child {
+            display: flex;
+        }
+    }
+    
+}

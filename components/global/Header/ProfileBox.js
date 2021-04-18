@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import DropDownItem from './DropDownItem'
 // import { CloseOutlined } from '@ant-design/icons'
-import BackModel from '../../common/ModelBack';
+import BackModal from '../../common/ModalBack';
 // import { openSignup } from '../../actions'
 import DropDownSame from './DropDownsame'
 // import { logOut} from '../../actions'
@@ -54,11 +54,11 @@ const ProfileBox = (props) => {
                 </div>
                 <div className="notification">{props.cartCount || 0}</div>
             </div>
-            {props.mobile && typeof window !== "undefined" ? <BackModel active={dropDownActive} available={props.mobile} closeModel={closeDropDown}/> : null}
+            {props.mobile && typeof window !== "undefined" ? <BackModal active={dropDownActive} available={props.mobile} closeModel={closeDropDown}/> : null}
             <div className={`profile-box-dropdown ${dropDownActive ? "active" : null}`} onClick={(e) => e.stopPropagation()}>
                 {props.mobile ? (
                     <div className="nav-back-btn">
-                        <i className="fas fa-times" onClick={() => setDropdownActive(false)} />
+                        <i className="far fa-times" onClick={() => setDropdownActive(false)} />
                         <div className="close-text">Go back</div>
                     </div>) : null}
                 {props.authentication.loginStatus ? <div className="nav-welcome-mssg">Welcome {props.authentication.username || props.authentication.first_name || props.authentication.number}</div> : ""}
@@ -67,15 +67,7 @@ const ProfileBox = (props) => {
         </li>
     )
 }
-// const mapStateToProps = (state) => {
-//     let cartCount = 0;
-//     Array.from(Object.values(state.basicCart)).forEach(x => {
-//         cartCount += x.quantity
-//     })
-//     return {
-//         cartCount
-//     }
-// }
-// export default connect(mapStateToProps, { openSignup, logOut })(ProfileBox)
+
+
 export default ProfileBox
 
