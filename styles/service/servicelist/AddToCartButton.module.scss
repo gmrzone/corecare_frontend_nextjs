@@ -1,0 +1,51 @@
+@import './../../../../style/_variables.scss';
+.add_to_cart__counter {
+    font-family:courier,arial,helvetica;
+    display: inline-flex;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    border-radius: 2px;
+    background-color: #304ffe;
+    align-self: flex-start;
+    align-items: center;
+    height: auto;
+    border: 1px solid #304ffe;
+    justify-self: center;
+
+    .decrement_button {
+        color: white;
+        line-height: 18px;
+        font-size: 18px;
+        font-weight: bolder;
+        padding: 4px 6px;
+        cursor: pointer;
+    }
+    .increment_button {
+        color: white;
+        line-height: 18px;
+        font-size: 18px;
+        padding: 4px 6px;
+        font-weight: bolder;
+        cursor: pointer;
+    }
+    .cart_item_count {
+
+        background-color: white;
+        padding: 4px 6px;
+        font-family: 'Open Sans', sans-serif;
+        font-weight: bolder;
+        color: #304ffe;
+
+
+    }
+    .empty_item {
+
+        background-color: white;
+        padding: 4px 6px;
+        font-family: 'Open Sans', sans-serif;
+        color: #304ffe;
+        cursor: pointer;
+
+
+    }
+}

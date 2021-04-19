@@ -1,0 +1,111 @@
+.main_container {
+    position: relative;
+    top: -60px;
+    background: white;
+    border-radius: 5px;
+    z-index: 10;
+    margin: 0 auto;
+    @media (min-width: 992px){
+        position: absolute;
+        top: 60px;
+        right: 10%;
+        width: auto;
+    }
+    @media (min-width: 1199px){
+        top: 90px;
+        top: 110px;
+    }
+    @media (min-width: 1430px){
+        right: 13%;
+    }
+    @media (min-width: 1670px){
+        right: 12%;
+    }
+    @media (min-width: 1800px){
+        right: 17%;
+    }
+
+    .service_info_box {
+        padding: 18px 20px;
+        background: linear-gradient(to bottom right, #570080 10%, #ff002f 70%,  #FF385C 100%);
+        border-radius: 5px;
+
+        @media (min-width: 1150px){
+            padding: 25px 26px;
+        }
+
+        .service_info__title {
+            font: inherit;
+
+            .text {
+                color: white;
+                font-weight: bolder;
+    
+            }
+        } 
+        .service_info_content {
+            display: flex;
+            flex-direction: column;
+            row-gap: 10px;
+            margin-top: 15px;
+
+            .service_content_item {
+                width: 100%;
+                background: white;
+                display: flex;
+                justify-content: space-between;
+                padding: 15px 10px;
+                border-radius: 5px;
+                cursor: pointer;
+
+
+                .content_text {
+                    margin: 0px;
+                    font-weight: bolder;
+                }
+            }
+
+        }
+        
+
+    }
+    .service_info_rating {
+        display: flex;
+        background: white;
+        border-radius: 5px;
+        padding: 10px;
+
+        .star_rating {
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+
+            .header {
+                -webkit-font-smoothing: antialiased;
+                color: #228d27;
+                font-size: 18px;
+                font-weight: bolder;
+            }
+            .rating_content {
+                color: #999999;
+                word-wrap: break-word;
+            }
+        }
+        .booking_done {
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+
+            .booking_header {
+                font-size: 18px;
+                font-weight: bolder;
+                color: #212121;
+                -webkit-font-smoothing: antialiased;
+            }
+            .booking_text {
+                color: #999999;
+                word-wrap: break-word;
+            }
+        }
+    }
+}

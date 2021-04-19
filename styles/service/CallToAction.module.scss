@@ -1,0 +1,26 @@
+.call_to_action__con {
+    background-color: white;
+    padding: 20px 15px;
+    box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+    margin-bottom: 15px;
+}
+.call_to_action_content {
+    font: inherit;
+
+    .title {
+        font-weight: bolder;
+    }
+    .desc {
+        font-size: 14px;
+
+        @media (min-width: 700px){
+            font-size: 16px;
+        }
+    }
+}
+
+.call_to_action__btn {
+    font-size: 20px !important;
+    margin-top: 20px !important;
+    float: center   ;
+}

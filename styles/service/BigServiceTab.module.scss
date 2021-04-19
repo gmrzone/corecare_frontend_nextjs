@@ -1,0 +1,150 @@
+// .slider-container {
+//     width: 100%;
+//     min-width: 640px;
+//     overflow: hidden;
+
+// }
+// .slider-container__inner {
+//     overflow: auto;
+// }
+.slider_container {
+    overflow: hidden;
+    position: relative;
+    
+    
+
+    .big_service_tabs {
+        display: flex !important;
+        position: relative;
+        padding-top: 10px;
+        flex-direction: row;
+        column-gap: 20px;
+        padding: 0 12px;
+        background: white;
+        margin-top: 0px;
+        top: 10px;
+        padding-bottom: 10px;
+        overflow: auto;
+        box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+        scroll-behavior: smooth;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+
+    
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
+        @media (min-width: 700px){
+            position: static;
+            column-gap: 30px;
+            overflow: hidden;
+            padding-bottom: 0px;
+            top: 0;
+            margin-top: 15px;
+            
+
+        }
+
+        .tab_item {
+            cursor: pointer;
+            font-weight: bolder;
+            font-size: 16px;
+            padding: 12px 0;
+            white-space: nowrap;
+
+        
+
+
+            &.active {
+                border-bottom: 3px solid black;
+            }
+        }
+    }
+
+}
+    
+
+.big_service_content {
+    display: none;
+    margin: 1rem 0;
+    padding: 10px;
+    background: white;
+    box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+
+
+    &.activecontent {
+        display: block;
+    }
+    .content_title {
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+    .content_container_one {
+        display: flex;
+        flex-direction: column;
+        row-gap: 10px;
+
+        .content_item {
+            display: flex;
+            align-items: center;
+
+            .content_image {
+                width: 45px;
+                height: 45px;
+                margin-right: 20px;
+            }
+        }
+    }
+    .content_container_two {
+        display: flex;
+        flex-direction: column;
+
+        .employee_list_container {
+            display: flex;
+            flex-direction: column;
+            row-gap: 15px;
+
+            .employee_item {
+                display: flex;
+                align-items: center;
+                column-gap: 5px;
+
+                .employee_profile_image .img {
+                    border-radius: 50%;
+                    width: 65px;
+                    height: 65px;
+                }
+                .employee_profile_detail {
+                    font: inherit;
+
+                    .employee_address {
+                        font-size: 12px;
+    
+                        @media (min-width: 700px){
+                            font-size: 14px;
+                        }
+    
+                    }
+                    .employee-name {
+                        font-size: 12px;
+    
+                        @media (min-width: 700px){
+                            font-size: 14px;
+                        }
+    
+                    }
+                }       
+
+            }
+        }
+    }
+    .content-container-three .create-review {
+        
+    }
+    
+}

@@ -1,0 +1,69 @@
+
+
+.hero_image_container {
+    width: 100%;
+    background: rgb(0,0,0);
+    background: -moz-linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 50%, rgba(0,0,0,1) 100%);
+    background: -webkit-linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 50%, rgba(0,0,0,1) 100%);
+    background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 50%, rgba(0,0,0,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000",endColorstr="#000000",GradientType=1);
+    height: 30rem;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-origin: border-box;
+    background-position: center;
+    padding-top: 140px;
+
+    @media (min-width: 500px) {
+        height: 30rem;
+        padding-top: 150px;
+    }
+    @media (min-width: 700px) {
+        height: 33rem;
+        padding-top: 160px;
+        
+    }
+    @media (min-width: 992px) {
+        height: 35rem;
+    }
+    @media (min-width: 1200px) {
+        height: 40rem;
+        background-position: top 0 right 0px;
+    }
+
+    .main_title {
+        font: inherit;
+
+        .main_title_text {
+            color: white;
+            font-weight: bolder;
+            font-size: 30px;
+
+            @media (min-width: 700px){
+                font-size: 30px;
+            }
+            @media (min-width: 1000px){
+                font-size: 35px;
+            }
+            @media (min-width: 1200px){
+                font-size: 40px;
+            }
+
+        }
+    }
+
+    .bullet_points {
+        margin-top: 30px;
+
+        .bullets_p {
+            color:#e6e6e6;
+            font-size: 14px;
+            font-weight: bolder;
+            
+            @media (min-width: 992px){
+                font-size: 18px;
+            }
+        }  
+    }
+    
+}   

@@ -1,0 +1,43 @@
+.form {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+
+    @media (min-width: 992px){
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+    }
+    
+}
+// @media (min-width: 700px){
+//     .form {
+
+//         padding-left: 10px !important;
+//         padding-right: 10px !important;
+    
+//     }
+// }
+.form_field {
+    margin-bottom: 18px !important;
+
+    @media (min-width: 992px){
+        margin-bottom: 25px !important; 
+    }
+}
+// @media (min-width: 700px){
+//     .ui.reply.form .field {
+//         margin-bottom: 25px !important; 
+//     }  
+// }
+.rater {
+    display: block;
+    margin-bottom: 18px;
+
+    @media (min-width: 992px){
+        margin-bottom: 25px;
+    }
+}
+// @media (min-width: 700px){
+//     .ui.reply.form > span {
+//         margin-bottom: 25px;
+//     }
+// }
