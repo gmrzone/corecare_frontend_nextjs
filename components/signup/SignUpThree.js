@@ -2,6 +2,7 @@
 import { useRouter } from 'next/router'
 import { useState } from 'react';
 import { useForm } from 'react-hook-form'
+import BackendApi from '../../data/backendApi'
 const SignUpPageThree = ({ signUpstate, signUpUpdateProfile, closeModel, successPath, payButton }) => {
     const history = useRouter()
     const [loading, setLoading] = useState(false)
@@ -13,7 +14,26 @@ const SignUpPageThree = ({ signUpstate, signUpUpdateProfile, closeModel, success
         formValues.number = signUpstate.number
         formValues.password = signUpstate.password
         // signUpUpdateProfile(formValues, closeModel, setLoading, setFormError, history, successPath, payButton)
-        console.log(formValues)
+        setLoading(true)
+        BackendApi.post('create_user_account/additional/', formValues)
+        .then(response => {
+            if (response.data.status === 'ok'){
+                setLoading(false)
+                closeModel()
+                if (successPath){
+                    // history.push(successPath)
+                    setTimeout(() => history.push(successPath), 200)
+                }
+                if (payButton){
+                    payButton.current.click()
+                }
+
+            }
+            else{
+                setLoading(false)
+                setFormError({status: 'error', msg: response.data.msg})
+            }
+        })
         
     }
     const isError = () => {
@@ -33,7 +53,7 @@ const SignUpPageThree = ({ signUpstate, signUpUpdateProfile, closeModel, success
         if (formSection === 0){
             return (
                 <div className="buttons" style={{textAlign: 'right', marginTop: '15px'}}>
-                    <button class={`ui secondary button ${disableFirstSection() && "disabled"}`} onClick={() => nextFormSection(s => s + 1)}>
+                    <button className={`ui secondary button ${disableFirstSection() && "disabled"}`} onClick={() => nextFormSection(s => s + 1)} type="button">
                         Next
                     </button>
                 </div>
@@ -42,7 +62,7 @@ const SignUpPageThree = ({ signUpstate, signUpUpdateProfile, closeModel, success
         else if (formSection === 1) {
             return (
                 <div className="buttons" style={{textAlign: 'right'}}>
-                    <button class="ui secondary button" onClick={() => nextFormSection(s => s - 1)}>
+                    <button className="ui secondary button" onClick={() => nextFormSection(s => s - 1)} type="button">
                         Previous
                     </button>
                     <button type="submit" className={`ui positive right labeled icon button ${loading && "loading"}`}>
@@ -78,7 +98,7 @@ const SignUpPageThree = ({ signUpstate, signUpUpdateProfile, closeModel, success
                 </div>
                 <div className={`field ${errors.address_2 ? "error" : ""}`}>
                     <label>Address 2</label>
-                    <input type="text" placeholder="Address Two" {...register('address_2')}/>
+                    <input type="text" placeholder="Address Two" {...register('address_2', {required: {value: true, message: "Please enter your Address"}})}/>
                 </div>
                 <div className={`field ${errors.state ? "error" : ""}`}>
                     <label>State</label>

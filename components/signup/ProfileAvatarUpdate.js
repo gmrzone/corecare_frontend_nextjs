@@ -21,8 +21,8 @@ const ProfileAvatarUpdate = ({ mobile, signUpstate, setSignUpstate }) => {
     // React image crop aspect state
     const [crop, setCrop] = useState({ aspect: 1 / 1, unit: 'px', x: 0, y: 0, width: 200, height: 200});
     const handleSubmit = (e) => {
-        setLoading(true)
         e.preventDefault()
+        setLoading(true)
         const {number, password} = signUpstate
         const formData = new FormData()
         if (croppedImage) {
@@ -33,6 +33,7 @@ const ProfileAvatarUpdate = ({ mobile, signUpstate, setSignUpstate }) => {
         BackendApi.post('create_user_account/profile-image/', formData)
         .then(response => {
             if (response.data.status === 'ok'){
+                setLoading(false)
                 setSignUpstate(state => {
                     return {...state, profilePicUpdated: true}
                 })
@@ -43,7 +44,7 @@ const ProfileAvatarUpdate = ({ mobile, signUpstate, setSignUpstate }) => {
                     return {...state, profilePicUpdated: false}
                 })
             }
-            setLoading(false)
+            
         })
     }
     const inputRef = useRef()

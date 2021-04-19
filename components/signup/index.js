@@ -4,14 +4,11 @@ import Model from '../common/Modal';
 // import { closeSignup } from '../../actions'
 import SignupModelContentWrapper from './SignUpModelContentWrapper'
 const Signup = (props) => {
-    const [modelheaderText, setModelHeaderText] = useState('Create Account')
-    const closeSignup = () => {
-        props.closeSignup()
-    }
-    
+    // const [modelheaderText, setModelHeaderText] = useState('Create Account')
+
     return(
-        <Model header={modelheaderText} active={props.modelActive} closeModel={closeSignup}>
-            <SignupModelContentWrapper closeSignup={closeSignup} setModelHeaderText={setModelHeaderText}/>
+        <Model header="Create Account" active={props.modelActive} closeModel={() => props.closeSignup()}>
+            <SignupModelContentWrapper closeSignup={() => props.closeSignup()}/>
         </Model>
     )
 }
