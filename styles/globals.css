@@ -105,144 +105,122 @@ h1, h2, h3, h4, h5, h6, span, a {
 }
 
 h1 {
-  font-size: 2rem;
+  font-size: 1.6rem;
 }
 
 @media (min-width: 600px) {
   h1 {
-    font-size: 2.2rem;
+    font-size: 1.7rem;
   }
 }
 
 @media (min-width: 700px) {
   h1 {
-    font-size: 2.4rem;
+    font-size: 1.8rem;
   }
 }
 
 @media (min-width: 993px) {
   h1 {
-    font-size: 2.6rem;
+    font-size: 1.9rem;
   }
 }
 
 @media (min-width: 1200px) {
   h1 {
-    font-size: 2.8rem;
-  }
-}
-
-@media (min-width: 1400px) {
-  h1 {
-    font-size: 3rem;
-  }
-}
-
-@media (min-width: 1600px) {
-  h1 {
-    font-size: 3.2rem;
-  }
-}
-
-h2 {
-  font-size: 1.8rem;
-}
-
-@media (min-width: 600px) {
-  h2 {
     font-size: 2rem;
   }
 }
 
-@media (min-width: 700px) {
-  h2 {
+@media (min-width: 1400px) {
+  h1 {
+    font-size: 2.1rem;
+  }
+}
+
+@media (min-width: 1600px) {
+  h1 {
     font-size: 2.2rem;
   }
 }
 
+h2 {
+  font-size: 1.6rem;
+}
+
 @media (min-width: 993px) {
   h2 {
-    font-size: 2.4rem;
+    font-size: 1.7rem;
   }
 }
 
 @media (min-width: 1200px) {
   h2 {
-    font-size: 2.6rem;
+    font-size: 1.8rem;
   }
 }
 
 @media (min-width: 1400px) {
   h2 {
-    font-size: 2.8rem;
+    font-size: 1.9rem;
   }
 }
 
-@media (min-width: 1600px) {
+/* @media (min-width: 1600px) {
   h2 {
-    font-size: 3rem;
+    font-size: 2rem;
   }
-}
+} */
 
 h2, h1 {
   font-weight: 700;
 }
 
 h3 {
-  font-size: 1.6rem;
+  font-size: 1.3rem;
   font-weight: 500;
 }
 
 @media (min-width: 600px) {
   h3 {
-    font-size: 1.8rem;
+    font-size: 1.4rem;
   }
 }
 
 @media (min-width: 700px) {
   h3 {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 }
 
 @media (min-width: 993px) {
   h3 {
-    font-size: 2.2rem;
+    font-size: 1.6rem;
   }
 }
 
 @media (min-width: 1200px) {
   h3 {
-    font-size: 2.4rem;
+    font-size: 1.7rem;
   }
 }
 
-@media (min-width: 1400px) {
-  h3 {
-    font-size: 2.6rem;
-  }
-}
 
-@media (min-width: 1600px) {
-  h3 {
-    font-size: 2.8rem;
-  }
-}
 
 h4 {
-  font-size: 1.6rem;
+  font-size: 1rem;
   font-weight: 400;
 }
 
 @media (min-width: 600px) {
   h4 {
-    font-size: 1.7rem;
+    font-size: 1.2rem;
   }
 }
 
 @media (min-width: 700px) {
   h4 {
-    font-size: 1.8rem;
+    font-size: 1.4rem;
   }
 }
 

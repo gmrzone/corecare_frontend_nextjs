@@ -147,11 +147,11 @@ const BigServiceTab = (props) => {
             <div className="service-tab-contents">
                 <div className={style.big_service_content + " " + style.activecontent} id="how-it-work">
                     <div className={style.content_container_one}>
-                        <h3 className="content-title">How it Works?</h3>
+                        <h2 className="content-title">How it Works?</h2>
                         <div className={style.content_item}>
                             {/* <img src="/how-it-work1.svg" alt="service-icon" className={style.content_image} /> */}
                             <Image src="/how-it-work1.svg" alt="service-icon" className={style.content_image} width="45" height="45"/>
-                            <h3>Choose the type of service</h3>
+                            <h4>Choose the type of service</h4>
                         </div>
                         <div className={style.content_item}>
                             {/* <img src="/how-it-work2.svg" alt="service-icon" className={style.content_image} /> */}
@@ -167,7 +167,7 @@ const BigServiceTab = (props) => {
                 </div>
                 <div className={style.big_service_content} id={props.serviceCategory.toLowerCase()}>
                     <div className={style.content_container_two}>
-                        <h3 className={style.content_title}>{props.serviceCategory}s</h3>
+                        <h2 className={style.content_title}>{props.serviceCategory}s</h2>
                         <div className={style.employee_list_container}>
                             {renderEmployees}
                         </div>
@@ -177,7 +177,7 @@ const BigServiceTab = (props) => {
                     <div className="content-container-three">
                         <div className="ui comments">
                             {/* <h2 className={`ui dividing header ${style.content_title}`}>Customers Reviews</h2> */}
-                            <h3 className="content-title">Reviews</h3>
+                            <h2 className="content-title">Reviews</h2>
                             <div>{renderReviews}</div>
                         </div>
                         <div className="create-review">

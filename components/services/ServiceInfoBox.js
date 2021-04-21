@@ -23,7 +23,7 @@ const ServiceInfoBox = (props) => {
         <div className={`${style.main_container} ${props.mobileNav ? "ui container" : null}`}>
             <div className={style.service_info_box}>
                 <div className={style.service_info__title}>
-                    <h1 className={style.text}>{props.title}:</h1>
+                    <h2 className={style.text}>{props.title}:</h2>
                 </div>
                 <div className={style.service_info_content}>
                     {renderContent}
