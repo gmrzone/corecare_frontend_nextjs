@@ -114,11 +114,15 @@
                 align-items: center;
                 column-gap: 5px;
 
-                .employee_profile_image .img {
-                    border-radius: 50%;
-                    width: 65px;
-                    height: 65px;
+                .employee_profile_image {
+
+                    .img {
+                        border-radius: 50%;
+                        width: 65px;
+                        height: 65px;
+                        }
                 }
+
                 .employee_profile_detail {
                     font: inherit;
 

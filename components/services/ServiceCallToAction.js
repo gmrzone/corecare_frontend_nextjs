@@ -4,7 +4,7 @@ const CallToAction = (props) => {
     return (
         <div className="ui container">
             <div className={style.call_to_action__con}>
-                <div className={stylecall_to_action_content}>
+                <div className={style.call_to_action_content}>
                     <h2 className={style.title}>{props.title}</h2>
                     <p className={style.desc}>{props.desc}</p>
                 </div>

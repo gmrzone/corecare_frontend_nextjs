@@ -1,4 +1,4 @@
-import Model from '../../../utils/Model';
+import Model from '../../common/Modal';
 import Link from 'next/link';
 // import { replaceCart } from '../../../../actions'
 // import { connect } from 'react-redux'
@@ -30,4 +30,5 @@ const categoryChangeModel = (props) => {
     )
 }
 
-export default connect(null, { replaceCart })(categoryChangeModel)
+// export default connect(null, { replaceCart })(categoryChangeModel)
+export default categoryChangeModel

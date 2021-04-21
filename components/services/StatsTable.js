@@ -1,4 +1,4 @@
-import './style/stats-table.css';
+// import './style/stats-table.css';
 const StatsTable = () => {
     return (
         <div>

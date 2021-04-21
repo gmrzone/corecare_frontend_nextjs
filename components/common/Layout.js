@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Footer from '../global/Footer'
 import SignUpModel from '../signup'
 import { useState } from 'react'
-const Layout = ({ children, HeroImage=null, mobileNav }) => {
+const Layout = ({ children, HeroImage=null, mobileNav, heroProps }) => {
     const [signUpActive, setSignUpActive] = useState(false)
     return (
         <>  
@@ -11,7 +11,7 @@ const Layout = ({ children, HeroImage=null, mobileNav }) => {
                 <div id="model"></div>
                 <SignUpModel modelActive={signUpActive} closeSignup={() => setSignUpActive(false)}/>
                 <Header mobileNav={mobileNav} openSignup={() => setSignUpActive(true)}/>
-                {HeroImage && <HeroImage />}
+                {HeroImage && <HeroImage {...heroProps}/>}
                 <main>
                     {children}
                 </main>
