@@ -38,7 +38,7 @@ const ServiceList = ({ category, active, setActive, reference,  subcategorys, mo
         
     }
 
-    return reactDom.createPortal(
+    return (
         <div className={style.service_list_model__main} ref={reference} style={{left: active ? '0%' : '100%'}}>
             <CategoryChangeModel modelActive={categoryChangeModelActive} closeModel={closeCategoryModel} header={modelHeaderText} category={category} replacementItem={replacementCartItem} incrementReplacedService={incrementReplacedService}/>
             <div className={style.service_list_main_header}>
@@ -47,7 +47,7 @@ const ServiceList = ({ category, active, setActive, reference,  subcategorys, mo
                 <Link href="/cart">
                     <a className={style.cart_icon_container}>
                     {/* <img src={cart_image} alt="cart" className="cart-icon" /> */}
-                        <Image className={style.cart_icon_img} alt="cart" layout="fill" objectFit="cover" />
+                        <Image src="/cart.svg" className={style.cart_icon_img} alt="cart" layout="fill" objectFit="cover" />
                         <div className={style.cart_count} style={{padding: cartCount > 9 ? "0 3px 0 3px" : "0 5px 0 5px"}}>{cartCount || 0}</div>
                     </a>
                 </Link>
@@ -56,8 +56,7 @@ const ServiceList = ({ category, active, setActive, reference,  subcategorys, mo
                 {subcategorys?.length > 0 ? <SubcategoryHeader data={subcategorys} searchParam={searchParam} /> : <ServiceCategoryUnavailable category={category}/>}
                 {subcategorys?.length > 0 ? <ServiceContent category={category} openCategoryModel={openCategoryModel} setModelText={setModelHeaderText} setReplacementCartItem={setReplacementCartItem} incrementReplacedService={incrementReplacedService} services={services}/> : ""}
             </div>
-        </div>,
-        document.getElementById('service-list')
+        </div>
     )
 }
 // const mapStateToProps = (state) => {

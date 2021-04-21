@@ -149,8 +149,8 @@ const Services = ({ services, mobileNav, employees }) => {
     return (
         <>  
             <MetaComponent title={renderTitle()} description={`${renderTitle()} Page`} name={`${renderTitle()} Page`} url={`${frontend_base}services/${service_category}`}/>
-            <Layout HeroImage={HeroImage} mobileNav={mobileNav} heroProps={{mainTitle: `Get Professional ${renderTitle()}`, src: renderImage(), bullets: MainImagebullets}}>
-                {serviceListActive ? <ServiceList category={service_category} active={serviceListVisible} setActive={toggleServiceList} reference={ServiceListRef} searchParam={search_param} services={services}/> : ""}
+            <Layout HeroImage={HeroImage} mobileNav={mobileNav} heroProps={{mainTitle: `Get Professional ${renderTitle()}`, src: renderImage(), bullets: MainImagebullets}} ServiceListModel={serviceListActive ? ServiceList : null} serviceListProps={{category: service_category, active: serviceListVisible, setActive: toggleServiceList, services: services, searchParam:search_param}}>
+                {/* {serviceListActive ? <ServiceList category={service_category} active={serviceListVisible} setActive={toggleServiceList} reference={ServiceListRef} searchParam={search_param} services={services}/> : ""} */}
                 {/* <HeroImage mainTitle={`Get Professional ${renderTitle()}`} src={renderImage()} bullets={MainImagebullets}/> */}
                 <ServiceInfoBox title={`Need an ${renderTitle()} for`} content={renderServiceInfoBoxContent()} rating={renderedStats.rating} ratingCount={renderedStats.ratingCount} bookingDone={renderedStats.bookingDone} onClick={call2ActioncustomerClicked} searchParam={search_param} mobileNav={mobileNav}/>
                 <BigServiceTab serviceCategory={renderTitle()} accordianItem={accordianItem} about={renderBigServiceBoxText()} category={service_category} mobileNav={mobileNav} employees={employees} categoryReviews={data}/>
