@@ -134,7 +134,7 @@
 
         }
         .subcategory_item {
-            padding: 13px 16px;
+            padding: 16px;
             margin-right: 12px;
             border: 1px solid #bdbdbd;
             border-radius: 8px;
@@ -143,6 +143,7 @@
 
             span {
                 font-weight: 700;
+                font-size: 14px;
             }
             @media (min-width: 900px){
                 margin-bottom: 12px;
