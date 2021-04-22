@@ -29,15 +29,14 @@ const ServiceContent = ({ category, openCategoryModel, setModelText, setReplacem
         return itemList.map(x => {
             return (
                 <div className={style.service_category_items} key={x.id}>
-                
                     <div className={style.item_detail}>
                         <div className={style.item_image}>
                             {/* <LazyLoadImage width={60} height={60} src={BASE_URL + x.icon}/> */}
                             {/* <img src={BASE_URL + x.icon} alt="service" width={60}/> */}
                             <Image src={BASE_URL + x.icon} width="60" height="60" alt="service_icon" className={style.img_image}/>
                         </div>
-                        <div className={style.item_image}>
-                            <h3>{x.name}</h3>
+                        <div className={style.item_content}>
+                            <h4>{x.name}</h4>
                             <span>&#8377;&nbsp;{x.price}</span>
                         </div>
                         <AddToCart forService={x} add={addToCartHandler} remove={removeFromCartHandler} cart={basicCart}/>

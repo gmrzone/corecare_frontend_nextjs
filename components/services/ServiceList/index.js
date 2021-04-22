@@ -52,7 +52,7 @@ const ServiceList = ({ category, active, setActive, reference,  subcategorys, mo
                     </a>
                 </Link>
             </div>
-            <div className={`${style.service_list_model} ${mobileNav ? "" : "ui container"}`} style={{display: subcategorys?.length === 0 || !subcategorys ? "block" : "grid" }}>
+            <div className={`${mobileNav ? "" : "ui container"} ${style.service_list_model}`} style={{display: subcategorys?.length === 0 || !subcategorys ? "block" : "grid"}}>
                 {subcategorys?.length > 0 ? <SubcategoryHeader data={subcategorys} searchParam={searchParam} /> : <ServiceCategoryUnavailable category={category}/>}
                 {subcategorys?.length > 0 ? <ServiceContent category={category} openCategoryModel={openCategoryModel} setModelText={setModelHeaderText} setReplacementCartItem={setReplacementCartItem} incrementReplacedService={incrementReplacedService} services={services} subcategorys={subcategorys}/> : ""}
             </div>
