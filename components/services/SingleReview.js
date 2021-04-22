@@ -5,6 +5,7 @@ import CreateReply from './createReview'
 import {useState} from 'react';
 // import { connect } from 'react-redux'
 import Image from 'next/image'
+import StarRating from '../common/StarRating'
 
 const SingleReview = ({ BASEURL, review, renderReviewReply, isReply, authenticated }) => {
     const [replyActive, setReplyActive] = useState(false)
@@ -23,8 +24,8 @@ const SingleReview = ({ BASEURL, review, renderReviewReply, isReply, authenticat
                 <div className="metadata">
                     <span className={"date " + style.date_span}>{review.created.trim()}</span>
                 </div>
-                {/* <Rate disabled defaultValue={review.star} /> */}
-                <div className="ui star rating" data-rating={review.star} data-max-rating="5"></div>
+                {/* <Rate disabled defaultValue={review.star} /> */}    
+                <StarRating rating={review.star}/>
                 <div className="text">
                     {review.review}
                 </div>

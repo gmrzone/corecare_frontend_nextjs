@@ -4,7 +4,7 @@ import { useEffect, useRef } from 'react'
 // import { fetchEmployees, fetchCategoryReviews } from '../../../actions'
 import Link from 'next/link';
 import Image from 'next/image';
-// import Accordian from '../../utils/Accordian';
+import Accordian from '../common/Accordian';
 import { BASE_URL } from '../../data/_variables';
 import SingleReview from './SingleReview';
 import ReviewReplyWrapper from './reviewReplyWrapper';
@@ -191,7 +191,7 @@ const BigServiceTab = (props) => {
                     <div className="content-container-four">
                         <h2 className="content-title">Faqs</h2>
                         <div>
-                            {/* <Accordian items={props.accordianItem}/> */}
+                            <Accordian items={props.accordianItem}/>
                         </div>
                     </div>
                 </div>
@@ -208,15 +208,7 @@ const BigServiceTab = (props) => {
       </div>
     )
 }
-// const mapStateToProps = (state) => {
-//     return {
-//         mobileNav: state.mobileNav,
-//         employees: state.employees, 
-//         categoryReviews: state.categoryReview,
-//         authenticated: state.Authentication.loginStatus
-//     }
-// }
-// export default connect(mapStateToProps, { fetchEmployees, fetchCategoryReviews })(BigServiceTab)
+
 
 export default BigServiceTab
 

@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from 'react'
 import '../styles/globals.css'
-
+import { SWRConfig } from 'swr';
+import axios from 'axios'
 const MyApp = ({ Component, pageProps }) => {
   const [mobileNav, mobileNavToggle] = useState(false)
   let screenWidthRef = useRef(null)
@@ -27,7 +28,11 @@ const MyApp = ({ Component, pageProps }) => {
     }
 }, [screenWidthRef, mobileNavToggle, mobileNav])
 
-  return <Component {...pageProps} mobileNav={mobileNav}/>
+  return (
+        <SWRConfig value={{fetcher: (...args) => axios.get(...args).then(response => response.data)}}>
+            <Component {...pageProps} mobileNav={mobileNav}/>
+        </SWRConfig>
+        )
 }
 
 export default MyApp

@@ -59,16 +59,5 @@ const ServiceList = ({ category, active, setActive, reference,  subcategorys, mo
         </div>
     )
 }
-// const mapStateToProps = (state) => {
-//     let cartCount = 0;
-//     Array.from(Object.values(state.basicCart)).forEach(x => {
-//         cartCount += x.quantity
-//     })
-//     return {
-//         subcategorys: state.allServices.subcategory,
-//         mobileNav: state.mobileNav,
-//         cartCount: cartCount
-//     }
-// }
-// export default connect(mapStateToProps, { fetchFullService })(ServiceList)
+
 export default ServiceList
