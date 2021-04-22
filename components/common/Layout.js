@@ -8,7 +8,7 @@ const Layout = ({ children, HeroImage=null, mobileNav, heroProps, ServiceListMod
     return (
         <>  
             <div className="afzal-container">
-                {ServiceListModel && <ServiceListModel {...serviceListProps}/>}
+                {ServiceListModel && <ServiceListModel {...serviceListProps} mobileNav={mobileNav}/>}
                 <div id="model"></div>
                 <SignUpModel modelActive={signUpActive} closeSignup={() => setSignUpActive(false)}/>
                 <Header mobileNav={mobileNav} openSignup={() => setSignUpActive(true)}/>

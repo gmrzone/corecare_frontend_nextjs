@@ -42,7 +42,7 @@ const ServiceList = ({ category, active, setActive, reference,  subcategorys, mo
         <div className={style.service_list_model__main} ref={reference} style={{left: active ? '0%' : '100%'}}>
             <CategoryChangeModel modelActive={categoryChangeModelActive} closeModel={closeCategoryModel} header={modelHeaderText} category={category} replacementItem={replacementCartItem} incrementReplacedService={incrementReplacedService}/>
             <div className={style.service_list_main_header}>
-                <div className="service-list-close" onClick={() => setActive(!active)}><i className="far fa-times" style={{float: 'right', cursor: 'pointer'}} /></div>
+                <div className="service-list-close" onClick={() => setActive(!active)}><i className="far fa-arrow-left" style={{float: 'right', cursor: 'pointer'}} /></div>
                 <div className={style.service_list_title}>{category[0].toUpperCase() + category.slice(1)}</div>
                 <Link href="/cart">
                     <a className={style.cart_icon_container}>
@@ -52,7 +52,7 @@ const ServiceList = ({ category, active, setActive, reference,  subcategorys, mo
                     </a>
                 </Link>
             </div>
-            <div className={`${style.service_list_model} ${mobileNav ? "" : "ui container"}`} style={{display: subcategorys?.length === 0 ? "block" : "grid" }}>
+            <div className={`${style.service_list_model} ${mobileNav ? "" : "ui container"}`} style={{display: subcategorys?.length === 0 || !subcategorys ? "block" : "grid" }}>
                 {subcategorys?.length > 0 ? <SubcategoryHeader data={subcategorys} searchParam={searchParam} /> : <ServiceCategoryUnavailable category={category}/>}
                 {subcategorys?.length > 0 ? <ServiceContent category={category} openCategoryModel={openCategoryModel} setModelText={setModelHeaderText} setReplacementCartItem={setReplacementCartItem} incrementReplacedService={incrementReplacedService} services={services}/> : ""}
             </div>
