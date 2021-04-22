@@ -48,7 +48,7 @@ const ServiceList = ({ category, active, setActive, reference,  subcategorys, mo
                     <a className={style.cart_icon_container}>
                     {/* <img src={cart_image} alt="cart" className="cart-icon" /> */}
                         <Image src="/cart.svg" className={style.cart_icon_img} alt="cart" layout="fill" objectFit="cover" />
-                        <div className={style.cart_count} style={{padding: cartCount > 9 ? "0 3px 0 3px" : "0 5px 0 5px"}}>{cartCount || 0}</div>
+                        <div className={style.cart_count + " cart_count"}>{cartCount || 0}</div>
                     </a>
                 </Link>
             </div>
@@ -56,6 +56,12 @@ const ServiceList = ({ category, active, setActive, reference,  subcategorys, mo
                 {subcategorys?.length > 0 ? <SubcategoryHeader data={subcategorys} searchParam={searchParam} /> : <ServiceCategoryUnavailable category={category}/>}
                 {subcategorys?.length > 0 ? <ServiceContent category={category} openCategoryModel={openCategoryModel} setModelText={setModelHeaderText} setReplacementCartItem={setReplacementCartItem} incrementReplacedService={incrementReplacedService} services={services} subcategorys={subcategorys}/> : ""}
             </div>
+            <style jsx>{`
+                .cart_count {
+                    padding: 2px 2px 0px 2px;
+                    right: ${cartCount > 9 ? "-5px" : "0px"};
+                }
+            `}</style>
         </div>
     )
 }
