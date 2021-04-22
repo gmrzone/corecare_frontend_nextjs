@@ -5,7 +5,7 @@ import AddToCart from './AddToCartButton';
 import Image from 'next/image'
 // import { addToCart, removeFromCart } from '../../../../actions'
 // import LazyLoadImage from '../../../utils/LazyLoadImage'
-const ServiceContent = ({ category, openCategoryModel, setModelText, setReplacementCartItem, services, subcategory, basicCart, addToCart, removeFromCart, incrementReplacedService}) => {
+const ServiceContent = ({ category, openCategoryModel, setModelText, setReplacementCartItem, services, subcategorys, basicCart, addToCart, removeFromCart, incrementReplacedService}) => {
 
     // const updateCartReplacementItem = (service_id) => {
     //     setReplacementCartItem(service_id)
@@ -58,7 +58,7 @@ const ServiceContent = ({ category, openCategoryModel, setModelText, setReplacem
     const renderServices = Reflect.ownKeys(services).map((x, i) => {
         return (
             <div id={x} className={style.service_items_container} key={i}>
-                <div className={style.service_items_title}>{subcategory[i]['name']}</div>
+                <div className={style.service_items_title}>{subcategorys[i]['name']}</div>
                 <div className={style.service_items_container__main}>{renderCategoryItems(services[x])}</div>
             </div>
         )

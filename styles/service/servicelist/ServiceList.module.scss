@@ -138,10 +138,12 @@
             margin-right: 12px;
             border: 1px solid #bdbdbd;
             border-radius: 8px;
-            font-weight: bolder;
             background: white;
             cursor: pointer;
 
+            span {
+                font-weight: 700;
+            }
             @media (min-width: 900px){
                 margin-bottom: 12px;
             }
@@ -149,6 +151,10 @@
                 border-color: #212121;
                 background-color: #212121;
                 color: white;
+
+                span {
+                    color: white;
+                }
             }
 
         }   

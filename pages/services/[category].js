@@ -37,9 +37,20 @@ export const getStaticProps = async ({ params }) => {
     const BASE_URL = process.env['API_BASE_URL']
     const res1 = await axios.get(`${BASE_URL}get_services/${params.category}/`)
     const res2 = await axios.get(`${BASE_URL}get_employee/${params.category}/`)
+    const subcategories = []
+    const services = {}
+    for (let i of res1.data){
+        const temp = {}
+        services[i.slug] = i.services
+        temp.id = i.id
+        temp.name = i.name
+        temp.slug = i.slug
+        subcategories.push(temp)
+    }
     return {
         props: {
-            services: res1.data,
+            services: services,
+            subcategories: subcategories,
             employees: res2.data
             
         },
@@ -51,13 +62,12 @@ export const getStaticProps = async ({ params }) => {
 //     title: 'Electricians in Mumbai',
 //     desc: 'In this age and time, life is indeed impossible without electricity. It seems difficult to survive even through a power cut of only 15 minutes. Any small breakdown or malfunction can bring our entire routine to a standstill. Life in a place like Mumbai doesn’t really give you time to get such problems fixed. Searching for a reliable and licensed electrician in Mumbai is a task in itself. At the same time, any electric faults can’t be left unattended. f you find yourself stuck in such a situation, don’t worry. <strong>CoreCare brings you the best electricians at home in Mumbai, NaviMumbai and Pune.',
 // }
-const Services = ({ services, mobileNav, employees }) => {
+const Services = ({ services, mobileNav, employees, subcategories }) => {
     const [serviceListActive, setServiceListActive] = useState(false);
     const [serviceListVisible, setServiceListVisible] = useState(false)
     const ServiceListRef = useRef()
     const router = useRouter()
     const service_category = router.query['category']
-    const fetcher = (...args) => axios.get(...args).then(response => response.data)
     const {data , error} = useSWR(`https://www.afzalsaiyed.corecare.in/get_reviews/${service_category}/`)
     // search_param will only be defined when user uses search box on main page and redirect to service page
     // seacrh param will be passed as prop to ServiceInfoBox component to trigger an click event on it if search param is defined to open ServiceList when search
@@ -149,7 +159,7 @@ const Services = ({ services, mobileNav, employees }) => {
     return (
         <>  
             <MetaComponent title={renderTitle()} description={`${renderTitle()} Page`} name={`${renderTitle()} Page`} url={`${frontend_base}services/${service_category}`}/>
-            <Layout HeroImage={HeroImage} mobileNav={mobileNav} heroProps={{mainTitle: `Get Professional ${renderTitle()}`, src: renderImage(), bullets: MainImagebullets}} ServiceListModel={serviceListActive ? ServiceList : null} serviceListProps={{category: service_category, active: serviceListVisible, setActive: toggleServiceList, services: services, searchParam:search_param}}>
+            <Layout HeroImage={HeroImage} mobileNav={mobileNav} heroProps={{mainTitle: `Get Professional ${renderTitle()}`, src: renderImage(), bullets: MainImagebullets}} ServiceListModel={serviceListActive ? ServiceList : null} serviceListProps={{category: service_category, active: serviceListVisible, setActive: toggleServiceList, services: services, searchParam:search_param, subcategorys: subcategories}}>
                 {/* {serviceListActive ? <ServiceList category={service_category} active={serviceListVisible} setActive={toggleServiceList} reference={ServiceListRef} searchParam={search_param} services={services}/> : ""} */}
                 {/* <HeroImage mainTitle={`Get Professional ${renderTitle()}`} src={renderImage()} bullets={MainImagebullets}/> */}
                 <ServiceInfoBox title={`Need an ${renderTitle()} for`} content={renderServiceInfoBoxContent()} rating={renderedStats.rating} ratingCount={renderedStats.ratingCount} bookingDone={renderedStats.bookingDone} onClick={call2ActioncustomerClicked} searchParam={search_param} mobileNav={mobileNav}/>
