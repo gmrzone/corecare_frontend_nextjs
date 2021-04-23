@@ -29,9 +29,7 @@ const MyApp = ({ Component, pageProps }) => {
 }, [screenWidthRef, mobileNavToggle, mobileNav])
 
   return (
-        <SWRConfig value={{fetcher: (...args) => axios.get(...args).then(response => response.data)}}>
             <Component {...pageProps} mobileNav={mobileNav}/>
-        </SWRConfig>
         )
 }
 

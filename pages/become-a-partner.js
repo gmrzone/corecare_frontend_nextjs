@@ -3,16 +3,18 @@ import PartnerHero from '../components/partner/PartnerHero';
 import Segment from '../components/partner/Segment'
 import PartnerCard from '../components/partner/PartnerCard'
 import Image from 'next/image';
-import axios from 'axios';
 import { BASE_URL, frontend_base } from '../data/_variables'
 import MetaComponent from '../components/common/MetaComponent'
 import Layout from '../components/common/Layout'
 
 export const getStaticProps = async () => {
-    const response = await axios.get(`${process.env['API_BASE_URL']}category/hiring/`)
+    const BASE_URL = process.env['API_BASE_URL']
+
+    const response = await fetch(`${BASE_URL}category/hiring/`)
+    const data = await response.json()
     return {
         props: {
-            hiring: response.data
+            hiring: data
     }}
 }
 const BecomeAPartner = ({ hiring, mobileNav }) => {
