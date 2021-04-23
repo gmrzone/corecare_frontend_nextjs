@@ -51,7 +51,7 @@ const ServiceList = ({ category, active, setActive, reference,  subcategorys, mo
                     <a className={style.cart_icon_container}>
                     {/* <img src={cart_image} alt="cart" className="cart-icon" /> */}
                         <Image src="/cart.svg" className={style.cart_icon_img} alt="cart" layout="fill" objectFit="cover" />
-                        <div className={style.cart_count + " cart_count"}>{cartCount || 0}</div>
+                        <div className={style.cart_count + " cart_count"}>{cartCount}</div>
                     </a>
                 </Link>
             </div>

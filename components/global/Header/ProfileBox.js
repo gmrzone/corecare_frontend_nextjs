@@ -8,8 +8,7 @@ import DropDownSame from './DropDownsame'
 // import { logOut} from '../../actions'
 import { BaseCartContext } from '../../../context/basicCartContext'
 const ProfileBox = (props) => {
-    const { baseCart } = useContext(BaseCartContext)
-    console.log(baseCart)
+    const { cartCount } = useContext(BaseCartContext)
     const [dropDownActive, setDropdownActive] = useState(false);
     const toggleDropdown = (e) => {
         setDropdownActive(!dropDownActive)
@@ -55,7 +54,7 @@ const ProfileBox = (props) => {
                     {/* <img src={props.profileImage || "/default-profile.png"} className="avatar-image" alt="default-avatar"/> */}
                     <Image src={props.profileImage || "/default-profile.png"} width="30" height="30" className="avatar-image"/>
                 </div>
-                <div className="notification">{props.cartCount || 0}</div>
+                <div className="notification">{cartCount}</div>
             </div>
             {props.mobile && typeof window !== "undefined" ? <BackModal active={dropDownActive} available={props.mobile} closeModel={closeDropDown}/> : null}
             <div className={`profile-box-dropdown ${dropDownActive ? "active" : null}`} onClick={(e) => e.stopPropagation()}>
