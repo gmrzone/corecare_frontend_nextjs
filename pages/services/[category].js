@@ -77,7 +77,6 @@ const Services = ({ services, mobileNav, employees, subcategories }) => {
     // seacrh param will be passed as prop to ServiceInfoBox component to trigger an click event on it if search param is defined to open ServiceList when search
     // it will also be passed to ServiceList component and then SubcategoryContent component to scroll in to view searched service category
     const search_param = router.query.afzal
-    console.log(data, error, service_category)
     // Cleanup servicelist state before unmounting service page using useEffect()
     useEffect(() => {
         return () => {
