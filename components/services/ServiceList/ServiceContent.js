@@ -3,19 +3,16 @@ import style from '../../../styles/service/servicelist/ServiceList.module.scss'
 import { BASE_URL } from '../../../data/_variables';
 import AddToCart from './AddToCartButton';
 import Image from 'next/image'
-import { useContext } from 'react'
-import { BaseCartContext } from '../../../context/basicCartContext';
 import axios from '../../../data/backendApi';
-const ServiceContent = ({ category, openCategoryModel, setModelText, setReplacementCartItem, services, subcategorys, incrementReplacedService}) => {
-    const { baseCart, mutateBaseCart } = useContext(BaseCartContext)
+const ServiceContent = ({ category, openCategoryModel, setModelText, setReplacementCartItem, services, subcategorys, incrementReplacedService, baseCart, mutateBaseCart}) => {
+
     const handleAddResponse = (response, service_id, setCartCount, openCategoryModel, setModelText, setReplacementCartItem) => {
         if (response.data.status && response.data.status === 'category_change'){
             console.log("Service Category Changed")
         }
         else{
-            mutateBaseCart({...baseCart, ...response.data})
-            // mutateBaseCart('cart/get/basic/', {...baseCart, ...response.data}, false)
-            console.log("current Cart", response.data)
+            mutateBaseCart({...baseCart, ...response.data}, false)
+
         }
     }
     const addToCartHandler = (service_id, setCartCount) => {
@@ -69,7 +66,6 @@ const ServiceContent = ({ category, openCategoryModel, setModelText, setReplacem
     return (
         <div className={`ui container ${style.service_content_container}`} >  
             <div className={style.service_content_inner__container}>
-            {console.log("Cart context" ,baseCart)}
                 {renderServices}
             </div>
         </div>

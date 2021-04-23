@@ -5,12 +5,15 @@ import { useEffect, useState, useRef } from 'react';
 import style from '../../../styles/service/servicelist/ServiceList.module.scss'
 // import { connect } from 'react-redux';
 // import { fetchFullService } from '../../../../actions';
+import { useContext } from 'react'
+import { BaseCartContext } from '../../../context/basicCartContext';
 import SubcategoryHeader from './SubcategoryHeader'
 import ServiceContent from './ServiceContent';
 import Image from 'next/image';
 import Link from 'next/link';
 import ServiceCategoryUnavailable from './ServiceCategoryUnavailable';
-const ServiceList = ({ category, active, setActive, reference,  subcategorys, mobileNav, cartCount, searchParam, services }) => {
+const ServiceList = ({ category, active, setActive, reference,  subcategorys, mobileNav, searchParam, services }) => {
+    const { baseCart, mutateBaseCart, cartCount } = useContext(BaseCartContext)
     const [categoryChangeModelActive, setCategoryChangeModelActive] = useState(false)
     const [modelHeaderText, setModelHeaderText] = useState("Category Changed From")
     const [replacementCartItem, setReplacementCartItem] = useState(null)
@@ -54,7 +57,7 @@ const ServiceList = ({ category, active, setActive, reference,  subcategorys, mo
             </div>
             <div className={`${mobileNav ? "" : "ui container"} ${style.service_list_model}`} style={{display: subcategorys?.length === 0 || !subcategorys ? "block" : "grid"}}>
                 {subcategorys?.length > 0 ? <SubcategoryHeader data={subcategorys} searchParam={searchParam} /> : <ServiceCategoryUnavailable category={category}/>}
-                {subcategorys?.length > 0 ? <ServiceContent category={category} openCategoryModel={openCategoryModel} setModelText={setModelHeaderText} setReplacementCartItem={setReplacementCartItem} incrementReplacedService={incrementReplacedService} services={services} subcategorys={subcategorys}/> : ""}
+                {subcategorys?.length > 0 ? <ServiceContent category={category} openCategoryModel={openCategoryModel} setModelText={setModelHeaderText} setReplacementCartItem={setReplacementCartItem} incrementReplacedService={incrementReplacedService} services={services} subcategorys={subcategorys} baseCart={baseCart} mutateBaseCart={mutateBaseCart}/> : ""}
             </div>
             <style jsx>{`
                 .cart_count {
