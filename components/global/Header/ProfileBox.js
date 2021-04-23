@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import Image from 'next/image'
 import DropDownItem from './DropDownItem'
 // import { CloseOutlined } from '@ant-design/icons'
@@ -6,7 +6,10 @@ import BackModal from '../../common/ModalBack';
 // import { openSignup } from '../../actions'
 import DropDownSame from './DropDownsame'
 // import { logOut} from '../../actions'
+import { BaseCartContext } from '../../../context/basicCartContext'
 const ProfileBox = (props) => {
+    const { baseCart } = useContext(BaseCartContext)
+    console.log(baseCart)
     const [dropDownActive, setDropdownActive] = useState(false);
     const toggleDropdown = (e) => {
         setDropdownActive(!dropDownActive)

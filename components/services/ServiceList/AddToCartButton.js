@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import style from '../../../styles/service/servicelist/AddToCartButton.module.scss';
+
 const AddToCart = ({ forService , add, remove, cart }) => {
-    // const itemCount = forService?.id in cart ? cart[forService.id].quantity : 0
-    const [cartCount, setCartCount] = useState(0)
+    const itemCount = forService?.id in cart ? cart[forService.id].quantity : 0
+    const [cartCount, setCartCount] = useState(itemCount)
     const incrementCount = () => {
         setCartCount(c => c + 1)
         add(forService.id, setCartCount)

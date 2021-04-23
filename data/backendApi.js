@@ -1,6 +1,6 @@
 import axios from "axios"
-import localStorageObj from './localStorageObj'
 axios.defaults.withCredentials = true;
+import localStorageObj from './localStorageObj'
 
 
 axios.interceptors.request.use(config => {

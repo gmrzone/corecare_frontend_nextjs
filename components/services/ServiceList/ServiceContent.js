@@ -3,23 +3,29 @@ import style from '../../../styles/service/servicelist/ServiceList.module.scss'
 import { BASE_URL } from '../../../data/_variables';
 import AddToCart from './AddToCartButton';
 import Image from 'next/image'
-// import { addToCart, removeFromCart } from '../../../../actions'
-// import LazyLoadImage from '../../../utils/LazyLoadImage'
-const ServiceContent = ({ category, openCategoryModel, setModelText, setReplacementCartItem, services, subcategorys, basicCart, addToCart, removeFromCart, incrementReplacedService}) => {
-
-    // const updateCartReplacementItem = (service_id) => {
-    //     setReplacementCartItem(service_id)
-    // }
-    // const opencartegoryChangeModel = () => {
-    //     openCategoryModel()
-    // }
-    // const setModelHeaderText = (text) => {
-    //     setModelText(text)
-    // }
+import { useContext } from 'react'
+import { BaseCartContext } from '../../../context/basicCartContext';
+import axios from '../../../data/backendApi';
+const ServiceContent = ({ category, openCategoryModel, setModelText, setReplacementCartItem, services, subcategorys, incrementReplacedService}) => {
+    const { baseCart, mutateBaseCart } = useContext(BaseCartContext)
+    const handleAddResponse = (response, service_id, setCartCount, openCategoryModel, setModelText, setReplacementCartItem) => {
+        if (response.data.status && response.data.status === 'category_change'){
+            console.log("Service Category Changed")
+        }
+        else{
+            mutateBaseCart({...baseCart, ...response.data})
+            // mutateBaseCart('cart/get/basic/', {...baseCart, ...response.data}, false)
+            console.log("current Cart", response.data)
+        }
+    }
     const addToCartHandler = (service_id, setCartCount) => {
         incrementReplacedService.current = setCartCount
         // addToCart(service_id, category, opencartegoryChangeModel, setModelHeaderText, setCartCount, updateCartReplacementItem)
-        addToCart(service_id, category, setCartCount, openCategoryModel, setModelText, setReplacementCartItem)
+        // addToCart(service_id, category, setCartCount, openCategoryModel, setModelText, setReplacementCartItem)
+        axios.post('cart/add/', {service_id: service_id, category: category})
+        .then(response => {
+            handleAddResponse(response, service_id, setCartCount, openCategoryModel, setModelText, setReplacementCartItem)
+        })
     }
     const removeFromCartHandler = (service_id) => {
         removeFromCart(service_id)
@@ -31,15 +37,13 @@ const ServiceContent = ({ category, openCategoryModel, setModelText, setReplacem
                 <div className={style.service_category_items} key={x.id}>
                     <div className={style.item_detail}>
                         <div className={style.item_image}>
-                            {/* <LazyLoadImage width={60} height={60} src={BASE_URL + x.icon}/> */}
-                            {/* <img src={BASE_URL + x.icon} alt="service" width={60}/> */}
                             <Image src={BASE_URL + x.icon} width="60" height="60" alt="service_icon" className={style.img_image}/>
                         </div>
                         <div className={style.item_content}>
                             <h4>{x.name}</h4>
                             <span>&#8377;&nbsp;{x.price}</span>
                         </div>
-                        <AddToCart forService={x} add={addToCartHandler} remove={removeFromCartHandler} cart={basicCart}/>
+                        <AddToCart forService={x} add={addToCartHandler} remove={removeFromCartHandler} cart={baseCart}/>
                     </div>
                     {x.description ? <div className="ui divider"></div> : ""}
                     {x.description ? <ul className="item-description-list">
@@ -65,17 +69,11 @@ const ServiceContent = ({ category, openCategoryModel, setModelText, setReplacem
     return (
         <div className={`ui container ${style.service_content_container}`} >  
             <div className={style.service_content_inner__container}>
+            {console.log("Cart context" ,baseCart)}
                 {renderServices}
             </div>
         </div>
     )
 }
-// const mapStateToProps = (state) => {
-//     return {
-//         services: state.allServices.services,
-//         subcategory: state.allServices.subcategory,
-//         basicCart: state.basicCart
-//     }
-// }
-// export default connect(mapStateToProps, { addToCart, removeFromCart })(ServiceContent)
+
 export default ServiceContent
