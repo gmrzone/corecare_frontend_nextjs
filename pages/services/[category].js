@@ -17,7 +17,9 @@ import { ServiceInfoBoxContent } from '../../components/services/utils';
 import { serviceInfoStatistic } from '../../components/services/utils';
 import { BigServiceBox } from '../../components/services/utils';
 import { accordianItem } from '../../components/services/utils';
+import CategoryChangeModal from '../../components/services/ServiceList/categoryChangeModel'
 import axios from '../../data/backendApi'
+import { CategoryModalProvider } from '../../context/categoryChangeModal'
 const MainImagebullets = [
     'Doorstep repair within 90 mins',
     'Protection against damage upto INR 10,000',
@@ -67,8 +69,16 @@ export const getStaticProps = async ({ params }) => {
 //     desc: 'In this age and time, life is indeed impossible without electricity. It seems difficult to survive even through a power cut of only 15 minutes. Any small breakdown or malfunction can bring our entire routine to a standstill. Life in a place like Mumbai doesn’t really give you time to get such problems fixed. Searching for a reliable and licensed electrician in Mumbai is a task in itself. At the same time, any electric faults can’t be left unattended. f you find yourself stuck in such a situation, don’t worry. <strong>CoreCare brings you the best electricians at home in Mumbai, NaviMumbai and Pune.',
 // }
 const Services = ({ services, mobileNav, employees, subcategories }) => {
+    // Service List states (2 state for transition effect)
     const [serviceListActive, setServiceListActive] = useState(false);
     const [serviceListVisible, setServiceListVisible] = useState(false)
+
+    // Category Change Model and refs
+    const [categoryChangeModelActive, setCategoryChangeModelActive] = useState(false)
+    const [modelHeaderText, setModelHeaderText] = useState("Category Changed From")
+    const [replacementCartItem, setReplacementCartItem] = useState(null)
+    const incrementReplacedService = useRef()
+
     const ServiceListRef = useRef()
     const router = useRouter()
     const service_category = router.query['category']
@@ -159,18 +169,42 @@ const Services = ({ services, mobileNav, employees, subcategories }) => {
         }
     }
     const renderedStats = renderStatictic()
+
+    const closeCategoryModel = () => {
+        setCategoryChangeModelActive(false)
+    }
+    const openCategoryModel = () => {
+        setCategoryChangeModelActive(true)
+        
+    }
+
+    const serviceListProps = {category: service_category, 
+                              active: serviceListVisible, 
+                              setActive: toggleServiceList, 
+                              services: services, 
+                              searchParam:search_param, 
+                              subcategorys: subcategories}
+
+    const categoryModalProps = {modelActive: categoryChangeModelActive,
+                                closeModel: closeCategoryModel,
+                                header: modelHeaderText, 
+                                category: service_category, 
+                                replacementItem: replacementCartItem, 
+                                incrementReplacedService: incrementReplacedService}
     return (
         <>  
             <MetaComponent title={renderTitle()} description={`${renderTitle()} Page`} name={`${renderTitle()} Page`} url={`${frontend_base}services/${service_category}`}/>
-            <Layout HeroImage={HeroImage} mobileNav={mobileNav} heroProps={{mainTitle: `Get Professional ${renderTitle()}`, src: renderImage(), bullets: MainImagebullets}} ServiceListModel={serviceListActive ? ServiceList : null} serviceListProps={{category: service_category, active: serviceListVisible, setActive: toggleServiceList, services: services, searchParam:search_param, subcategorys: subcategories}}>
-                {/* {serviceListActive ? <ServiceList category={service_category} active={serviceListVisible} setActive={toggleServiceList} reference={ServiceListRef} searchParam={search_param} services={services}/> : ""} */}
-                {/* <HeroImage mainTitle={`Get Professional ${renderTitle()}`} src={renderImage()} bullets={MainImagebullets}/> */}
-                <ServiceInfoBox title={`Need an ${renderTitle()} for`} content={renderServiceInfoBoxContent()} rating={renderedStats.rating} ratingCount={renderedStats.ratingCount} bookingDone={renderedStats.bookingDone} onClick={call2ActioncustomerClicked} searchParam={search_param} mobileNav={mobileNav}/>
-                <BigServiceTab serviceCategory={renderTitle()} accordianItem={accordianItem} about={renderBigServiceBoxText()} category={service_category} mobileNav={mobileNav} employees={employees} categoryReviews={data}/>
-                <ServiceCallToAction title={`Looking to hire Professionals ${renderTitle()}`} buttonText="Give Requirements" desc="Tell us your requirements and get custom quotes with profiles within 24 hours from upto 5 interested professionals." onClick={call2ActioncustomerClicked}/>
-                <ServiceCallToAction title="Are you an Expert looking for Customers?" buttonText="Join Now" desc="" onClick={call2ActionemployeeClicked}/>
-                <StatsTable />
-            </Layout>
+            <CategoryModalProvider openCategoryModal={{ openCategoryModel , setModelHeaderText , setReplacementCartItem, incrementReplacedService}}>
+                <Layout HeroImage={HeroImage} mobileNav={mobileNav} heroProps={{mainTitle: `Get Professional ${renderTitle()}`, src: renderImage(), bullets: MainImagebullets}} ServiceListModel={ServiceList} serviceListProps={serviceListProps} CategoryChangeModal={categoryChangeModelActive ? CategoryChangeModal : null} categoryChangeProps={categoryModalProps}>
+                    {/* {serviceListActive ? <ServiceList category={service_category} active={serviceListVisible} setActive={toggleServiceList} reference={ServiceListRef} searchParam={search_param} services={services}/> : ""} */}
+                    {/* <HeroImage mainTitle={`Get Professional ${renderTitle()}`} src={renderImage()} bullets={MainImagebullets}/> */}
+                    <ServiceInfoBox title={`Need an ${renderTitle()} for`} content={renderServiceInfoBoxContent()} rating={renderedStats.rating} ratingCount={renderedStats.ratingCount} bookingDone={renderedStats.bookingDone} onClick={call2ActioncustomerClicked} searchParam={search_param} mobileNav={mobileNav}/>
+                    <BigServiceTab serviceCategory={renderTitle()} accordianItem={accordianItem} about={renderBigServiceBoxText()} category={service_category} mobileNav={mobileNav} employees={employees} categoryReviews={data}/>
+                    <ServiceCallToAction title={`Looking to hire Professionals ${renderTitle()}`} buttonText="Give Requirements" desc="Tell us your requirements and get custom quotes with profiles within 24 hours from upto 5 interested professionals." onClick={call2ActioncustomerClicked}/>
+                    <ServiceCallToAction title="Are you an Expert looking for Customers?" buttonText="Join Now" desc="" onClick={call2ActionemployeeClicked}/>
+                    <StatsTable />
+                </Layout>
+            </CategoryModalProvider>
         </>
 
     )

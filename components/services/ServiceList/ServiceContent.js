@@ -1,4 +1,3 @@
-// import { connect } from 'react-redux';
 import style from '../../../styles/service/servicelist/ServiceList.module.scss'
 import { BASE_URL } from '../../../data/_variables';
 import AddToCart from './AddToCartButton';

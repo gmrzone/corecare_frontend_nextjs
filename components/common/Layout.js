@@ -3,12 +3,13 @@ import Link from 'next/link'
 import Footer from '../global/Footer'
 import SignUpModel from '../signup'
 import { useState } from 'react'
-const Layout = ({ children, HeroImage=null, mobileNav, heroProps, ServiceListModel=null, serviceListProps }) => {
+const Layout = ({ children, HeroImage=null, mobileNav, heroProps, ServiceListModel=null, serviceListProps, CategoryChangeModal=null, categoryChangeProps }) => {
     const [signUpActive, setSignUpActive] = useState(false)
     return (
         <>  
             <div className="afzal-container">
                 {ServiceListModel && <ServiceListModel {...serviceListProps} mobileNav={mobileNav}/>}
+                {CategoryChangeModal && <CategoryChangeModal {...categoryChangeProps}/>}
                 <div id="model"></div>
                 <SignUpModel modelActive={signUpActive} closeSignup={() => setSignUpActive(false)}/>
                 <Header mobileNav={mobileNav} openSignup={() => setSignUpActive(true)}/>
