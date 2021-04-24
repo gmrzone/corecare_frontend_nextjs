@@ -29,7 +29,7 @@ const Modal = ({ active, children, header, closeModel, zIndex }) => {
         
     }, [active])
     return (
-        <div className="backmodel" ref={modelRef} style={children ? {display: 'flex', justifyContent: 'center', alignItems: 'center', zIndex: zIndex} : {zIndex: zIndex}} onClick={() => closeModel()}>
+        <div className="backmodel" ref={modelRef} style={children ? {display: 'none', justifyContent: 'center', alignItems: 'center', zIndex: zIndex} : {zIndex: zIndex}} onClick={() => closeModel()}>
             <div className={`${style.inner_model_box} ${active ? "activated" : ""}`} ref={innerModelRef} onClick={(e) => e.stopPropagation()}>
                 <i className="far fa-times" style={{float: 'right', cursor: 'pointer'}} onClick={() => closeModel()} />
                 <div className={style.inner_model_header}>{header}</div>

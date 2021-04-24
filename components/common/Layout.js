@@ -11,7 +11,7 @@ const Layout = ({ children, HeroImage=null, mobileNav, heroProps, ServiceListMod
                 {ServiceListModel && <ServiceListModel {...serviceListProps} mobileNav={mobileNav}/>}
                 {CategoryChangeModal && <CategoryChangeModal {...categoryChangeProps}/>}
                 <div id="model"></div>
-                {signUpActive && <SignUpModel modelActive={signUpActive} closeSignup={() => setSignUpActive(false)}/>}
+                <SignUpModel modelActive={signUpActive} closeSignup={() => setSignUpActive(false)}/>
                 <Header mobileNav={mobileNav} openSignup={() => setSignUpActive(true)}/>
                 {HeroImage && <HeroImage {...heroProps}/>}
                 <main>
