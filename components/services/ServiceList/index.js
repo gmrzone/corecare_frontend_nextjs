@@ -18,13 +18,13 @@ const ServiceList = ({ category, active, setActive, reference,  subcategorys, mo
         
     // }
     const { openCategoryModel , setModelHeaderText , setReplacementCartItem, incrementReplacedService} = useContext(CategoryModalContext)
-    useEffect(() => {
-        document.body.style.overflow = "hidden";
+    // useEffect(() => {
+    //     document.body.style.overflow = "hidden";
 
-        return () => {
-            document.body.style.overflow = "auto";
-        }   
-    }, [])
+    //     return () => {
+    //         document.body.style.overflow = "auto";
+    //     }   
+    // }, [])
 
     // useEffect(() => {
     //     fetchFullService(category)
