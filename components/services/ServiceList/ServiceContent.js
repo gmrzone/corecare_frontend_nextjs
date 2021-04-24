@@ -7,7 +7,10 @@ const ServiceContent = ({ category, openCategoryModel, setModelText, setReplacem
 
     const handleAddResponse = (response, service_id, setCartCount, openCategoryModel, setModelText, setReplacementCartItem) => {
         if (response.data.status && response.data.status === 'category_change'){
-            console.log("Service Category Changed")
+            setModelText(response.data.mssg)
+            setCartCount(c => c - 1)
+            setReplacementCartItem(service_id)
+            openCategoryModel()
         }
         else{
             mutateBaseCart({...baseCart, ...response.data}, false)
