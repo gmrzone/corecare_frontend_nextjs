@@ -190,7 +190,7 @@ const Services = ({ services, mobileNav, employees, subcategories }) => {
                                 header: modelHeaderText, 
                                 category: service_category, 
                                 replacementItem: replacementCartItem, 
-                                incrementReplacedService: incrementReplacedService}
+                                incrementReplacedService: incrementReplacedService.current}
     return (
         <>  
             <MetaComponent title={renderTitle()} description={`${renderTitle()} Page`} name={`${renderTitle()} Page`} url={`${frontend_base}services/${service_category}`}/>
