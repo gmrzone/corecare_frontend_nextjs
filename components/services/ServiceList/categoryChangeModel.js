@@ -15,7 +15,9 @@ const categoryChangeModel = (props) => {
             if (response.data.status === 'ok'){
                 axios.post('cart/add/', {service_id: service_id, category: category})
                 .then(response => {
-                    mutateBaseCart({...response.data}, false)
+                    mutateBaseCart({...response.data}, true)
+                    props.closeModel()
+                    props.incrementReplacedService(c => c + 1)
                 })
             }
         })
