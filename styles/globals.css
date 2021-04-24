@@ -527,9 +527,9 @@ a:hover {
   background-color: red;
   font-size: 12px;
   border-radius: 50%;
-  padding: 2px 2px;
   top: 0;
-  right: 0;
+  color: white;
+  font-weight: 700;
 }
 
 .profile-box .profile-box-dropdown {

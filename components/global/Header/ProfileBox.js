@@ -66,6 +66,12 @@ const ProfileBox = (props) => {
                 {props.authentication.loginStatus ? <div className="nav-welcome-mssg">Welcome {props.authentication.username || props.authentication.first_name || props.authentication.number}</div> : ""}
                 {renderDropDownItems}
             </div>
+            <style jsx global>{`
+                .notification {
+                    padding: 2px 2px 0px 2px;
+                    right: ${cartCount > 9 ? "-5px" : "0px"};
+                }
+            `}</style>
         </li>
     )
 }
