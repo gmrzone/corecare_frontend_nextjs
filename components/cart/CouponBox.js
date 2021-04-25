@@ -1,17 +1,30 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import style from '../../styles/cart/Cart.module.scss'
-// import { connect } from 'react-redux';
-// import { applyCoupon } from '../../actions'
-const CouponBox = ({ applyCoupon }) => {
+import axios from '../../data/backendApi'
+import { DetailCartContext } from '../../context/detailCartContext' 
+const CouponBox = () => {
+    const { detailCartMutate } = useContext(DetailCartContext)
     const [couponValue, setCouponValue] = useState("")
     const [coupon, setCoupon] = useState({loading: false, error: false, mssg: ""})
+    const handleCouponResponse = (response, setCouponState) => {
+        if (response.data.status === "invalid_coupon" || response.data.status === 'category_error'){
+            setCouponState({loading: false, error: true, mssg: response.data.msg})
+        }
+        else{
+            detailCartMutate(response.data, false)
+            setCouponState({loading: false, error: false, mssg: "Coupon Applied!!"})
+        }
+    }
     const handleCouponApply = () => {
         if (couponValue === ""){
             setCoupon({loading: false, error: true, mssg: "No Coupon Applied"})
         }
         else{
             setCoupon({loading: true, error: false, mssg: ""})
-            // applyCoupon(couponValue, setCoupon)
+            axios.post('coupon/apply/', {coupon_code: couponValue})
+            .then(response => {
+                handleCouponResponse(response, setCoupon)
+            })
         }
         
     }
