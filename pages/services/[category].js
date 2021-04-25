@@ -20,6 +20,7 @@ import { accordianItem } from '../../components/services/utils';
 import CategoryChangeModal from '../../components/services/ServiceList/categoryChangeModel'
 import axios from '../../data/backendApi'
 import { CategoryModalProvider } from '../../context/categoryChangeModal'
+
 const MainImagebullets = [
     'Doorstep repair within 90 mins',
     'Protection against damage upto INR 10,000',
@@ -27,7 +28,7 @@ const MainImagebullets = [
 ]
 
 export const getStaticPaths = async () => {
-    const BASE_URL = process.env['API_BASE_URL']
+    const BASE_URL = process.env.NODE_ENV === 'development' ? process.env['API_BASE_URL'] : process.env['API_BASE_URL_PROD']
     const res1 = await fetch(BASE_URL)
     const data = await res1.json()
     const paths = data.map(x => {
