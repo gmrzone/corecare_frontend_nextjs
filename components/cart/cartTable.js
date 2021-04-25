@@ -39,7 +39,7 @@ const CartTable = ({ cart, cartDetail }) => {
             return newState
         }
     }
-    const handleAddResponse = (response, service_id, setCartCount) => {
+    const handleResponse = (response, service_id, setCartCount) => {
         mutateBaseCart({...baseCart, ...response}, false)
         const newState = generateDetailCartState(response)
         detailCartMutate(newState, false)
@@ -49,14 +49,21 @@ const CartTable = ({ cart, cartDetail }) => {
         // addToCart(service_id, cartDetail.category, setCartCount)
         axios.post('cart/add/', {service_id , category: cartDetail.category, setCartCount})
         .then(response => {
-            handleAddResponse(response.data, service_id, setCartCount)
+            handleResponse(response.data, service_id, setCartCount)
         })
     }
     const removeFromCartHandler = (service_id) => {
-        removeFromCart(service_id)
+        axios.post('cart/remove/', {service_id , category: cartDetail.category})
+        .then(response => {
+            handleResponse(response.data, service_id)
+        })
     }
     const deleteService = (service_id) => {
-        deleteServiceFromCart(service_id)
+        
+        axios.post('cart/delete/', {service_id , category: cartDetail.category})
+        .then(response => {
+            handleResponse(response.data, service_id)
+        })
     }
     const rendertableRow = Object.values(cart).map(x => {
         
