@@ -94,7 +94,7 @@ const Header = (props) => {
     //     observer.observe(document.getElementsByTagName('html'))
     // }, [mobileNav])
     const background = () => {
-        if (router.pathname === "/about" || router.pathname === "/login/[[...param]]" || router.pathname === "/contact" || router.pathname === "/become-a-partner"){
+        if (router.pathname === "/about" || router.pathname === "/login/[[...param]]" || router.pathname === "/contact" || router.pathname === "/become-a-partner" || router.pathname === "/cart"){
             return {
                 backgroundColor: 'black',
                 position: 'relative'
