@@ -1,5 +1,8 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+## Live Deployment
+<a href="https://www.dev.corecare.in">![CoreCare](https://img.shields.io/badge/CoreCare-Live%20Demo-ff4a77?style=for-the-badge)</a>
+
 ## Getting Started
 
 First, run the development server:
