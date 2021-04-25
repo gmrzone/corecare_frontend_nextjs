@@ -88,26 +88,26 @@ const CartSummary = ({ cart, loginStatus }) => {
                     {renderItem}
                 </div>
                 <div className="ui divider"></div>
-                {orderStatus & null}
+                {/* {orderStatus & null} */}
                 <div className={style.order_total}>
-                    <div className={style.summary_subtotal}>
+                    <div className={style.summary_total}>
                         <span>Subtotal</span>
                         <span>{cart.cart_detail.cart_subtotal} &#8377;</span>
                     </div>
-                    <div className="summary-discount" style={{color: "red"}}>
+                    <div className={style.summary_total}>
                         <span>Discount</span>
-                        <span>{cart.cart_detail.discount > 0 ? -cart.cart_detail.discount : cart.cart_detail.discount} &#8377;</span>
+                        <span style={{color: "red"}}>{cart.cart_detail.discount > 0 ? -cart.cart_detail.discount : cart.cart_detail.discount} &#8377;</span>
                     </div>
-                    <div className="summary-total">
+                    <div className={style.summary_total}>
                         <span>Total</span>
                         <span>{cart.cart_detail.total} &#8377;</span>
                     </div>
                     <div className="ui divider"></div>
-                    <div className="summary-coupon-code">
+                    <div className={style.summary_total}>
                         <span>Coupon Applied</span>
                         <span>{cart.cart_detail.coupon || "None"}</span>
                     </div>
-                    <div className="summary-discount-percent">
+                    <div className={style.summary_total}>
                         <span>Discount %</span>
                         <span>{cart.cart_detail.discount_percent || 0} %</span>
                     </div>
@@ -118,7 +118,7 @@ const CartSummary = ({ cart, loginStatus }) => {
                 There was a problem processing your order. If payment is deducted from your payment method then it will be refunded within 7 business days.
             </div>}
             <div className={style.cart_summary_action}>
-                {loginStatus ? <button className={`ui secondary button rzp-button1 ${loading && "loading"}`} onClick={completeOrder} ref={razorPayButton}>Checkout</button> : <Link to="/login" className="ui secondary button">Login To Continue</Link>}
+                {loginStatus ? <button className={`ui secondary button rzp-button1 ${loading && "loading"}`} onClick={completeOrder} ref={razorPayButton}>Checkout</button> : <Link href="/login"><a className="ui secondary button">Login To Continue</a></Link>}
             </div>
 
         </div>

@@ -9,7 +9,7 @@ import ReviewSection from '../components/home/ReviewSection'
 import { frontend_base } from '../data/_variables'
 import reviewData from '../data/reviewData'
 export const getStaticProps = async () => {
-  const BASE_URL = process.env['API_BASE_URL']
+  const BASE_URL = process.env.NODE_ENV === 'development' ? process.env['API_BASE_URL'] : process.env['API_BASE_URL_PROD']
   const res = await fetch(BASE_URL)
   const data1 = await res.json()
   const res1 = await fetch(`${BASE_URL}coupons/`)

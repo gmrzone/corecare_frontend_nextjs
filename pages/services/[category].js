@@ -37,7 +37,7 @@ export const getStaticPaths = async () => {
 }
 
 export const getStaticProps = async ({ params }) => {
-    const BASE_URL = process.env['API_BASE_URL']
+    const BASE_URL = process.env.NODE_ENV === 'development' ? process.env['API_BASE_URL'] : process.env['API_BASE_URL_PROD']
     const res1 = await fetch(`${BASE_URL}get_services/${params.category}/`)
     const data = await res1.json()
     const res2 = await fetch(`${BASE_URL}get_employee/${params.category}/`)

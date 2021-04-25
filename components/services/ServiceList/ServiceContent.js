@@ -14,7 +14,7 @@ const ServiceContent = ({ category, openCategoryModel, setModelText, setReplacem
         }
         else{
             mutateBaseCart({...baseCart, ...response.data}, false)
-
+            
         }
     }
     const addToCartHandler = (service_id, setCartCount) => {

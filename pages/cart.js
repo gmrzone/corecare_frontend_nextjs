@@ -31,7 +31,7 @@ import CartWrapper from '../components/cart/cartWrapper'
 //         }
 //     }
 // }
-const Cart = ({ mobileNav, detailCart }) => {
+const Cart = ({ mobileNav }) => {
 
     // useEffect(() => {
     //     getDetailCart()
@@ -44,7 +44,7 @@ const Cart = ({ mobileNav, detailCart }) => {
                 <Layout mobileNav={mobileNav}>
                     <CartWrapper />
                 </Layout>
-            s</DetailCartProvider>
+            </DetailCartProvider>
         </>
     )
 }

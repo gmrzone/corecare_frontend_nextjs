@@ -8,7 +8,7 @@ import MetaComponent from '../components/common/MetaComponent'
 import Layout from '../components/common/Layout'
 
 export const getStaticProps = async () => {
-    const BASE_URL = process.env['API_BASE_URL']
+    const BASE_URL = process.env.NODE_ENV === 'development' ? process.env['API_BASE_URL'] : process.env['API_BASE_URL_PROD']
 
     const response = await fetch(`${BASE_URL}category/hiring/`)
     const data = await response.json()

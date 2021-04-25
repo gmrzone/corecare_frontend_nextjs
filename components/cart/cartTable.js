@@ -4,12 +4,53 @@ import { BASE_URL } from '../../data/_variables'
 import AddToCartButton from '../services/ServiceList/AddToCartButton'
 // import dustBin from '../../images/dustbin.svg'
 import style from '../../styles/cart/Cart.module.scss'
-import image from 'next/image';
+import Image from 'next/image';
+import { BaseCartContext } from '../../context/basicCartContext'
+import { DetailCartContext } from '../../context/detailCartContext'
+import { useContext } from 'react'
+import axios from '../../data/backendApi'
 const CartTable = ({ cart, cartDetail }) => {
+    const { baseCart, mutateBaseCart } = useContext(BaseCartContext)
+    const { detailCartMutate } = useContext(DetailCartContext)
 
+    const generateDetailCartState = (response) => {
+        let newState = {cart: {}, cart_detail: {}}
+        let subtotal = 0;
+        Object.keys(response).forEach(x => {
+            if (x in cart){
+                newState.cart[x] = {...cart[x], ...response[x]}
+                newState.cart[x]['total'] = response[x]['quantity'] * response[x]['price']
+                newState.cart[x]['total'] = (Math.round(newState.cart[x]['total'] * 100) / 100).toFixed(2);
+            }
+            subtotal += response[x]['quantity'] * response[x]['price']
+        })
+        if (cartDetail.category){
+            let discount;
+            if (cartDetail.discount_percent){
+                discount = subtotal * cartDetail.discount_percent / 100
+            }
+            else{
+                discount = cartDetail.discount
+            }
+            subtotal = (Math.round(subtotal * 100) / 100).toFixed(2);
+            let cart_total = subtotal - discount
+            cart_total = (Math.round(cart_total * 100) / 100).toFixed(2);
+            newState.cart_detail = {...cartDetail, ...{cart_subtotal: subtotal, total: cart_total, discount: discount}}
+            return newState
+        }
+    }
+    const handleAddResponse = (response, service_id, setCartCount) => {
+        mutateBaseCart({...baseCart, ...response}, false)
+        const newState = generateDetailCartState(response)
+        detailCartMutate(newState, false)
 
+    }
     const addToCartHandler = (service_id, setCartCount) => {
-        addToCart(service_id, cartDetail.category, setCartCount)
+        // addToCart(service_id, cartDetail.category, setCartCount)
+        axios.post('cart/add/', {service_id , category: cartDetail.category, setCartCount})
+        .then(response => {
+            handleAddResponse(response.data, service_id, setCartCount)
+        })
     }
     const removeFromCartHandler = (service_id) => {
         removeFromCart(service_id)
