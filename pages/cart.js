@@ -11,32 +11,9 @@ import MetaComponent from '../components/common/MetaComponent'
 import {frontend_base} from '../data/_variables'
 import { DetailCartProvider } from '../context/detailCartContext'
 import CartWrapper from '../components/cart/cartWrapper'
-// export const getServerSideProps = async (context) => {
-//     const BASE_URL = process.env['API_BASE_URL']
-//     const responese = await fetch(`${BASE_URL}cart/get/detail/`)
-//     const data = await responese.json()
-//     // const detailCart = {
-//     //     cart: {}, 
-//     //     cart_detail: {}
-//     // }
-//     // let subtotal = 0
-//     // Object.keys(data).forEach(x => {
-//     //     detailCart.cart[x] = data[x]
-//     //     detailCart.cart[x]['total'] = data[x]['quantity'] * data[x]['price']
-//     //     subtotal += data[x]['quantity'] * data[x]['price']
-//     // })
-//     return {
-//         props: {
-//             detailCart: data
-//         }
-//     }
-// }
+
 const Cart = ({ mobileNav }) => {
 
-    // useEffect(() => {
-    //     getDetailCart()
-        
-    // }, [getDetailCart])
     return(
         <>
             <MetaComponent title="Cart" description="Detailed cart page" name="cart Page" url={`${frontend_base}cart`}/>

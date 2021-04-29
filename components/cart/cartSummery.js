@@ -2,11 +2,16 @@ import CouponBox from './CouponBox';
 // import { connect } from 'react-redux'
 import Link from 'next/link'; 
 import style from '../../styles/cart/Cart.module.scss'
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useContext } from 'react'
 // import { createRazorPayOrder, createOrder } from '../../actions';
 import UpdateProfileModel from './updateProfileModel';
+import {} from 'react'
+import { AuthContext } from '../../context/AuthContext';
+import DjangoApi from '../../data/backendApi'
+import { useRouter } from 'next/router'
 // import { useHistory } from 'react-router-dom'
-const CartSummary = ({ cart, loginStatus }) => {
+const CartSummary = ({ cart }) => {
+    const {userData, loginStatus} = useContext(AuthContext)
     // const history = useHistory()
     useEffect(() => {
         const script = document.createElement('script')
@@ -18,10 +23,11 @@ const CartSummary = ({ cart, loginStatus }) => {
         }
     }, [])
     const razorPayButton = useRef()
-    const [ orderStatus, setOrderStatus] = useState({error: null, error_code: null, order_status: null, order_detail: null, order_receipt: null})
+    const [orderStatus, setOrderStatus] = useState({error: null, error_code: null, order_status: null, order_detail: null, order_receipt: null})
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(false)
     const [updateProfileModel, setUpdateProfileModel] = useState(false)
+    const router = useRouter()
     const renderItem = Object.values(cart.cart).map(x => {
        return (
            <div key={x.service.id} className={style.cart_summery_item}>
@@ -30,6 +36,7 @@ const CartSummary = ({ cart, loginStatus }) => {
            </div>
        ) 
     })
+
     const razorPayHandleOrder = (amount, receipt, id, user, notes) => {
         var options = {
             'key': 'rzp_test_Fz30Ps4aOA4Zke',
@@ -43,8 +50,20 @@ const CartSummary = ({ cart, loginStatus }) => {
                 // alert(response.razorpay_payment_id);
                 // alert(response.razorpay_order_id);
                 // alert(response.razorpay_signature)
-                // RazorPay success callbace create a order inside django rest api
-                createOrder(response, history, setError)
+                // RazorPay success callback create a order inside django rest api
+                DjangoApi.post("create-orders/", response)
+                .then(response => {
+                    if (response.data.status === "ok"){
+                        router.push(`order/${response.data['receipt']}/`)
+                    }
+                    else{
+                        setError(true)
+                    }
+                })
+                .catch(e => {
+                    console.log(e)
+                })
+
             },
             "prefill": {
                 "name": user['name'],
@@ -71,10 +90,35 @@ const CartSummary = ({ cart, loginStatus }) => {
         })
         rzpay.open()
     }
+
+    const createRazorPayOrder = () => {
+        DjangoApi.post('create-razorpay-orders/')
+        .then(response => {
+            if (response.data.status === "error" && response.data.msg ==='address_error'){
+                setUpdateProfileModel(True)
+            }
+            else if (response.data.status === "ok"){
+                setOrderStatus(state => {
+                    return {...state, error: false, error_code: null, order_status: 'success', order_detail: response.data['order_details'], order_receipt: response.data['receipt']}
+                })
+                const amount = response.data.order_details['amount']
+                const receipt =response.data['receipt']
+                const id = response.data.order_details['id']
+                const user = response.data.user
+                const notes = response.data.notes
+                razorPayHandleOrder(amount, receipt, id, user, notes)
+            }
+            setLoading(false)
+         })
+         .catch(e => {
+             console.log(e)
+         })
+    }
+
     const completeOrder = (e) => {
         setLoading(true)
         e.preventDefault();
-        createRazorPayOrder(setOrderStatus, razorPayHandleOrder, setLoading, setUpdateProfileModel)
+        createRazorPayOrder()
     }
 
 

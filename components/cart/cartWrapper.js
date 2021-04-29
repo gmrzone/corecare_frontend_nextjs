@@ -18,7 +18,6 @@ const cartWrapper  = () => {
         ) : (
             <div className={style.empty_cart}>
                 <h1>Your Cart is Currently Empty.</h1>
-                {console.log(detailCart)}
                 {/* <img src="/emptycart.png" alt="empty_cart" width={120}/> */}
                 <Image src="/emptycart.png" alt="empty_cart" width="120" height="120"/>
                 <p>Your Cart is Empty Please add some items to your cart</p>
