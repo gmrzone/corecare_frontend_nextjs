@@ -20,7 +20,6 @@ import { accordianItem } from '../../components/services/utils';
 import CategoryChangeModal from '../../components/services/ServiceList/categoryChangeModel'
 import axios from '../../data/backendApi'
 import { CategoryModalProvider } from '../../context/categoryChangeModal'
-
 const MainImagebullets = [
     'Doorstep repair within 90 mins',
     'Protection against damage upto INR 10,000',

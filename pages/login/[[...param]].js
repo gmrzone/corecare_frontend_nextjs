@@ -6,14 +6,34 @@ import MetaComponent from '../../components/common/MetaComponent'
 import Link from 'next/link'
 import { useForm } from 'react-hook-form'
 import { frontend_base } from '../../data/_variables'
+import axios from 'axios'
+import localStorageObj from '../../data/localStorageObj'
+import { useState } from 'react'
 
 const Login = (props) => {
     const router = useRouter()
+
+
     const param = router.query.param
     const { register, handleSubmit, formState: { errors } } = useForm();
+    const [formErr, setFormErr] = useState(null)
+
     const submitForm = (formValues) => {
-        console.log(formValues)
+        axios.post('api/token/', formValues)
+        .then(response => {
+            console.log(response)
+            if (response.statusText === "OK"){
+                console.log("Afzal")
+                localStorageObj._setToken(response.data.access, response.data.refresh)
+                router.push('/')
+            }
+        })
+        .catch(error => {
+            console.clear()
+            setFormErr("Invalid Username or Password")
+        })
     }
+
     return(
         <>
         <MetaComponent title="Login" description="Login page" name="Login Page" url={`${frontend_base}login`}/>
@@ -42,8 +62,8 @@ const Login = (props) => {
                                     </button>
                             </div>
                             </div>
-                            <div className={`ui message red ${errors.number || errors.password ? "visible" : "hidden"}`}>
-                                <p>{errors?.number?.message || errors?.password?.message}</p>
+                            <div className={`ui message red ${errors.number || errors.password || formErr ? "visible" : "hidden"}`}>
+                                <p>{errors?.number?.message || errors?.password?.message || formErr}</p>
                             </div>
                         </form>
                 </div>

@@ -16,5 +16,34 @@ axios.interceptors.request.use(config => {
 })
 
 
+axios.interceptors.response.use(response => {
+    console.log(response.config.params)
+    return response
+}, error => {   
+    const originalRequest = error.config
+    // console.log(error.config)
+
+    if (error.response.status === 401 && originalRequest.url === "api/token/refresh/"){
+        localStorageObj._clearToken()
+        delete axios.defaults.headers.common["Authorization"]
+        return new Promise((resolve, reject) => {
+            reject(error)
+        })
+    }
+    else if (error.response.status === 401 && !originalRequest._retry){
+        originalRequest._retry = true
+        const refreshToken = localStorageObj._getRefreshToken()
+        return axios.post("", {refresh: refreshToken})
+                .then(response => {
+                    if (response.status === 200){
+                        localStorageObj._updateAccess(response.data.access)
+                        axios.defaults.headers.common['Authorization'] = `Bearer ${response.data.access}`
+                        return axios(originalRequest)
+                    }
+                })
+    }
+    return Promise.reject(error)
+})
+
 
 export default axios
