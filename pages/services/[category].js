@@ -83,7 +83,7 @@ const Services = ({ services, mobileNav, employees, subcategories }) => {
     const ServiceListRef = useRef()
     const router = useRouter()
     const service_category = router.query['category']
-    const {data , error} = useSWR(`${BASE_URL}/get_reviews/${service_category}/`, (...args) => axios.get(...args).then(response => response.data))
+    const {data , error} = useSWR(`${BASE_URL}get_reviews/${service_category}/`, (...args) => axios.get(...args).then(response => response.data))
     // search_param will only be defined when user uses search box on main page and redirect to service page
     // seacrh param will be passed as prop to ServiceInfoBox component to trigger an click event on it if search param is defined to open ServiceList when search
     // it will also be passed to ServiceList component and then SubcategoryContent component to scroll in to view searched service category
