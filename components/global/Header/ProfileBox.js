@@ -1,15 +1,18 @@
 import { useState, useEffect, useContext } from 'react'
 import Image from 'next/image'
 import DropDownItem from './DropDownItem'
-// import { CloseOutlined } from '@ant-design/icons'
 import BackModal from '../../common/ModalBack';
-// import { openSignup } from '../../actions'
 import DropDownSame from './DropDownsame'
-// import { logOut} from '../../actions'
 import { BaseCartContext } from '../../../context/basicCartContext'
+import localStorageObj from '../../../data/localStorageObj'
+
 const ProfileBox = (props) => {
     const { cartCount } = useContext(BaseCartContext)
     const [dropDownActive, setDropdownActive] = useState(false);
+    const handleLogout = () => {
+        localStorageObj._clearToken()
+        props.mutateAuth(null, false)
+    }
     const toggleDropdown = (e) => {
         setDropdownActive(!dropDownActive)
     }
@@ -21,7 +24,7 @@ const ProfileBox = (props) => {
             return <DropDownSame click={props.openSignup} item={item.name} key={index} closeDropDown={setDropdownActive}/>
         }
         else if (item.name === 'Logout'){
-            return <DropDownSame click={props.logOut} item={item.name} key={index} closeDropDown={setDropdownActive}/>
+            return <DropDownSame click={handleLogout} item={item.name} key={index} closeDropDown={setDropdownActive}/>
         }
         else{
             return <DropDownItem name={item.name} to={item.route} key={index} closeDropDown={setDropdownActive}/>
@@ -63,7 +66,7 @@ const ProfileBox = (props) => {
                         <i className="far fa-times" onClick={() => setDropdownActive(false)} />
                         <div className="close-text">Go back</div>
                     </div>) : null}
-                {props.authentication.loginStatus ? <div className="nav-welcome-mssg">Welcome {props.authentication.username || props.authentication.first_name || props.authentication.number}</div> : ""}
+                {props.authentication ? <div className="nav-welcome-mssg">Welcome {props.authentication.username || props.authentication.first_name || props.authentication.number}</div> : ""}
                 {renderDropDownItems}
             </div>
             <style jsx global>{`

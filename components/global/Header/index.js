@@ -6,13 +6,14 @@ import { useRouter } from 'next/router'
 import { useEffect, useRef, useState } from 'react'
 // import { openSignup, closeSignup, mobileNavToggle } from '../../actions'
 import { ProfileBoxitem, ProfileBoxitemLogin, ProfileBoxitemMobile, ProfileBoxitemMobileLogin, BASE_URL } from '../../../data/_variables'
-
-    
+import { AuthContext } from '../../../context/AuthContext';
+import { useContext } from 'react'
 const Header = (props) => {
     // const { loginStatus } = props.authentication
     // const [mobileNav, mobileNavToggle] = useState()
+    const { userData, error, loginStatus, mutateAuth} = useContext(AuthContext)
     const { mobileNav } = props
-    const loginStatus  = false
+    // const loginStatus  = false
     const router = useRouter()
     // let ProfileBoxItemRefDesktop = useRef(ProfileBoxitem)
     // let ProfileBoxItemRefMobile = useRef(ProfileBoxitemMobile)
@@ -123,7 +124,8 @@ const Header = (props) => {
                                 <NavItem name="Contact" to="/contact"/>
                             </>
                             )}
-                        <ProfileBox profileImage={null} dropDownList={mobileNav ? loginStatus ? ProfileBoxitemMobileLogin : ProfileBoxitemMobile : loginStatus ? ProfileBoxitemLogin : ProfileBoxitem} mobile={mobileNav} authentication={props.authentication || {loginStatus: false}} openSignup={props.openSignup}/>
+                            {console.log(userData)}
+                        <ProfileBox profileImage={userData ? BASE_URL + userData?.photo : null} dropDownList={mobileNav ? loginStatus ? ProfileBoxitemMobileLogin : ProfileBoxitemMobile : loginStatus ? ProfileBoxitemLogin : ProfileBoxitem} mobile={mobileNav} authentication={userData} openSignup={props.openSignup} mutateAuth={mutateAuth}/>
                     </ul>
                 </div>
             </nav>

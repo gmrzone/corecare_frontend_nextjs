@@ -587,7 +587,9 @@ a:hover {
 
 .profile-box .profile-box-dropdown .nav-welcome-mssg {
   color: #383838;
-  padding: 8px 8px 8px 42px;
+  padding: 18px 8px 8px 40px;
+  font-weight: 700;
+  font-size: 16px;
 }
 
 @media (min-width: 992px) {
