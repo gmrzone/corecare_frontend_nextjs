@@ -27,7 +27,9 @@ const ServiceContent = ({ category, openCategoryModel, setModelText, setReplacem
         })
     }
     const removeFromCartHandler = (service_id) => {
-        removeFromCart(service_id)
+        // removeFromCart(service_id)
+        axios.post('cart/remove/', {service_id: service_id})
+        .then(response => mutateBaseCart({...baseCart, ...response.data}, false))
     }
 
     const renderCategoryItems = (itemList) => {
