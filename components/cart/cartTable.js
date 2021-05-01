@@ -40,7 +40,7 @@ const CartTable = ({ cart, cartDetail }) => {
         }
     }
     const handleResponse = (response, service_id, setCartCount) => {
-        mutateBaseCart({...baseCart, ...response}, false)
+        mutateBaseCart({...response}, false)
         const newState = generateDetailCartState(response)
         detailCartMutate(newState, false)
 
