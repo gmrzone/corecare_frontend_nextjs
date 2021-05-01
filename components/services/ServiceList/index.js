@@ -15,7 +15,6 @@ const ServiceList = ({ category, active, setActive, reference,  subcategorys, mo
     // const [replacementCartItem, setReplacementCartItem] = useState(null)
     // const incrementReplacedService = useRef()
     // const scrollSearchedSubcategory = (callback) => {
-        
     // }
     const { openCategoryModel , setModelHeaderText , setReplacementCartItem, incrementReplacedService} = useContext(CategoryModalContext)
     // useEffect(() => {

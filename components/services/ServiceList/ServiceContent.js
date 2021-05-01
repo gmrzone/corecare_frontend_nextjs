@@ -13,7 +13,7 @@ const ServiceContent = ({ category, openCategoryModel, setModelText, setReplacem
             openCategoryModel()
         }
         else{
-            mutateBaseCart({...baseCart, ...response.data}, false)
+            mutateBaseCart({...response.data}, false)
             
         }
     }
@@ -23,13 +23,15 @@ const ServiceContent = ({ category, openCategoryModel, setModelText, setReplacem
         // addToCart(service_id, category, setCartCount, openCategoryModel, setModelText, setReplacementCartItem)
         axios.post('cart/add/', {service_id: service_id, category: category})
         .then(response => {
+            console.log("Addz")
             handleAddResponse(response, service_id, setCartCount, openCategoryModel, setModelText, setReplacementCartItem)
         })
     }
     const removeFromCartHandler = (service_id) => {
+        console.log("Remove")
         // removeFromCart(service_id)
         axios.post('cart/remove/', {service_id: service_id})
-        .then(response => mutateBaseCart({...baseCart, ...response.data}, false))
+        .then(response => mutateBaseCart({...response.data}, false))
     }
 
     const renderCategoryItems = (itemList) => {
@@ -44,7 +46,7 @@ const ServiceContent = ({ category, openCategoryModel, setModelText, setReplacem
                             <h4>{x.name}</h4>
                             <span>&#8377;&nbsp;{x.price}</span>
                         </div>
-                        <AddToCart forService={x} add={addToCartHandler} remove={removeFromCartHandler} cart={baseCart}/>
+                        {baseCart && <AddToCart forService={x} add={addToCartHandler} remove={removeFromCartHandler} cart={baseCart}/>}
                     </div>
                     {x.description ? <div className="ui divider"></div> : ""}
                     {x.description ? <ul className="item-description-list">

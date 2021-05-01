@@ -124,7 +124,6 @@ const Header = (props) => {
                                 <NavItem name="Contact" to="/contact"/>
                             </>
                             )}
-                            {console.log(userData)}
                         <ProfileBox profileImage={userData ? BASE_URL + userData?.photo : null} dropDownList={mobileNav ? loginStatus ? ProfileBoxitemMobileLogin : ProfileBoxitemMobile : loginStatus ? ProfileBoxitemLogin : ProfileBoxitem} mobile={mobileNav} authentication={userData} openSignup={props.openSignup} mutateAuth={mutateAuth}/>
                     </ul>
                 </div>
