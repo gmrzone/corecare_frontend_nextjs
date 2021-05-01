@@ -25,7 +25,6 @@ axios.interceptors.response.use(response => {
 
     if (error.response.status === 401 && originalRequest.url === "api/token/refresh/"){
         localStorageObj._clearToken()
-        console.log("Refresh")
         delete axios.defaults.headers.common["Authorization"]
         return new Promise((resolve, reject) => {
             reject(error)

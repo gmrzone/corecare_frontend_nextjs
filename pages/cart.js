@@ -11,15 +11,20 @@ import MetaComponent from '../components/common/MetaComponent'
 import {frontend_base} from '../data/_variables'
 import { DetailCartProvider } from '../context/detailCartContext'
 import CartWrapper from '../components/cart/cartWrapper'
-
+import UpdateProfileModal from '../components/cart/updateProfileModel'
+import { useState, useRef } from 'react'
+import PayButtonContext from '../context/PayButtonContext'
 const Cart = ({ mobileNav }) => {
-
+    const [profileUpdateModal, setProfileUpdateModal] = useState(false)
+    const payButton = useRef()
     return(
         <>
             <MetaComponent title="Cart" description="Detailed cart page" name="cart Page" url={`${frontend_base}cart`}/>
             <DetailCartProvider>
-                <Layout mobileNav={mobileNav}>
+                <Layout mobileNav={mobileNav} Modal={UpdateProfileModal} modalProps={{active: profileUpdateModal, setActive: setProfileUpdateModal, payButton: payButton}}>
+                <PayButtonContext.Provider value={{ payButton, setProfileUpdateModal }}>
                     <CartWrapper />
+                </PayButtonContext.Provider>
                 </Layout>
             </DetailCartProvider>
         </>

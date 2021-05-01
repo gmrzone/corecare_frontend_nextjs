@@ -2,7 +2,8 @@ import CouponBox from './CouponBox';
 // import { connect } from 'react-redux'
 import Link from 'next/link'; 
 import style from '../../styles/cart/Cart.module.scss'
-import { useState, useEffect, useRef, useContext } from 'react'
+import { useState, useEffect, useContext } from 'react'
+import PayButtonContext from '../../context/PayButtonContext'
 // import { createRazorPayOrder, createOrder } from '../../actions';
 import UpdateProfileModel from './updateProfileModel';
 import {} from 'react'
@@ -22,11 +23,11 @@ const CartSummary = ({ cart }) => {
             document.body.removeChild(script)
         }
     }, [])
-    const razorPayButton = useRef()
+    const { payButton: razorPayButton, setProfileUpdateModal } = useContext(PayButtonContext)
     const [orderStatus, setOrderStatus] = useState({error: null, error_code: null, order_status: null, order_detail: null, order_receipt: null})
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(false)
-    const [updateProfileModel, setUpdateProfileModel] = useState(false)
+    // const [updateProfileModel, setUpdateProfileModel] = useState(false)
     const router = useRouter()
     const renderItem = Object.values(cart.cart).map(x => {
        return (
@@ -95,7 +96,8 @@ const CartSummary = ({ cart }) => {
         DjangoApi.post('create-razorpay-orders/')
         .then(response => {
             if (response.data.status === "error" && response.data.msg ==='address_error'){
-                setUpdateProfileModel(True)
+                console.log("update Profile")
+                setProfileUpdateModal(true)
             }
             else if (response.data.status === "ok"){
                 setOrderStatus(state => {
@@ -124,7 +126,7 @@ const CartSummary = ({ cart }) => {
 
     return (
         <div className={style.cart_summary_container}>
-            <UpdateProfileModel active={updateProfileModel} setActive={setUpdateProfileModel} payButton={razorPayButton}/>
+            {/* <UpdateProfileModel active={updateProfileModel} setActive={setUpdateProfileModel} payButton={razorPayButton}/> */}
             <div className={style.cart_summary_header}><h3>CART SUMMARY</h3></div>
             <div className="ui divider" style={{marginTop:"0px"}}></div>
             <div className={style.cart_summary_content}>
