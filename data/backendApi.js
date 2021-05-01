@@ -17,7 +17,7 @@ axios.interceptors.request.use(config => {
 
 
 axios.interceptors.response.use(response => {
-    console.log(response.config.params)
+    // console.log(response.config.params)
     return response
 }, error => {   
     const originalRequest = error.config
@@ -25,6 +25,7 @@ axios.interceptors.response.use(response => {
 
     if (error.response.status === 401 && originalRequest.url === "api/token/refresh/"){
         localStorageObj._clearToken()
+        console.log("Refresh")
         delete axios.defaults.headers.common["Authorization"]
         return new Promise((resolve, reject) => {
             reject(error)
@@ -32,10 +33,12 @@ axios.interceptors.response.use(response => {
     }
     else if (error.response.status === 401 && !originalRequest._retry){
         originalRequest._retry = true
+        console.log("Access")
         const refreshToken = localStorageObj._getRefreshToken()
-        return axios.post("", {refresh: refreshToken})
+        return axios.post("api/token/refresh/", {refresh: refreshToken})
                 .then(response => {
                     if (response.status === 200){
+                        console.log("Access Update")
                         localStorageObj._updateAccess(response.data.access)
                         axios.defaults.headers.common['Authorization'] = `Bearer ${response.data.access}`
                         return axios(originalRequest)
