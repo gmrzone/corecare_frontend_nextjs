@@ -1,0 +1,85 @@
+.order-status-container {
+    text-align: center;
+    background: white;
+    padding: 20px 10px;
+
+    @media(min-width: 700px){
+        padding: 25px 12px;
+    }
+    @media(min-width: 1000px){
+        padding: 30px 15px;
+    }
+    @media(min-width: 1300px){
+        padding: 35px 15px;
+    }
+    .order-status-description {
+        font-size: 14px;
+
+        @media (min-width: 700px){
+            font-size: 16px;
+        }
+        @media (min-width: 1000px){
+            font-size: 18px;
+        }
+    }
+    .order-complete-image {
+        width: 50px;
+
+        @media(min-width: 700px){
+            width: 55px;
+        }
+        @media(min-width: 1000px){
+            width: 65px;
+        }
+        @media(min-width: 1300px){
+            width: 70px;
+        }
+    
+    }
+    .order-details__cont {
+        display: flex;
+        flex-direction: column;
+
+        .order-details-tables {
+            display: flex;
+            flex-direction: column;
+
+            @media (min-width: 992px){
+                flex-direction: row;
+            }
+            .table-one {
+                margin-right: 0px;
+                order: 1;
+                border-top: 0.3em solid #FF385C;
+
+                thead {
+                    box-shadow: rgba($color: #000000, $alpha: 1.0);
+                }
+                @media (min-width: 992px){
+                    margin-left: 20px;
+                    order: 2;
+                }
+            }
+            .table-two {
+                border-top: 0.3em solid #FF385C;
+                margin-top: 20px;
+                order: 2;
+                @media (min-width: 992px){
+                    margin-top: 0px;
+                    order: 1;
+                }
+            }
+        }
+
+
+    }
+    .order-details__info {
+        .card .description{
+            font-size: 14px;
+
+            @media (min-width: 1000px){
+                font-size: 16px;
+            }
+        }
+    }
+}

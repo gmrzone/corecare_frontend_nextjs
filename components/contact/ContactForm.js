@@ -1,6 +1,7 @@
 import style from '../../styles/contact/Contact.module.scss'
 import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
+import backendAPI from '../../data/backendApi'
 const ContactForm = ({ authentication, contactUs }) => {
     const [loading, setLoading] = useState(false)
     const [formMessage, setFormMessage] = useState({status: '', message: ""})
@@ -11,12 +12,20 @@ const ContactForm = ({ authentication, contactUs }) => {
         setValue('email', "saiyedafzalgz@gmail.com", { shouldValidate: true })
     }, [])
     const onSubmit = (formValues) => {
-        // setLoading(true)
+        setLoading(true)
         console.log(formValues)
-        
+        backendAPI.post('contact/send/', formValues)
+        .then(response => {
+            setLoading(false)
+            setFormMessage({status: response.data.status, message: response.data.message})
+        })
+        .catch(e => {
+            setLoading(false)
+            setFormMessage({status: response.data.status, message: response.data.message})
+        })
     }
     const getSubmitError = () => {
-        if (errors.first_name || errors.last_name || errors.email || errors.msg){
+        if (errors.first_name || errors.last_name || errors.email || errors.message){
             return true
         }
         return false
@@ -25,7 +34,7 @@ const ContactForm = ({ authentication, contactUs }) => {
     return (
             <form className={"ui form big " + style.contact_form_main} onSubmit={handleSubmit(onSubmit)}>
                 <div className={`ui tiny message ${getSubmitError() || formMessage.status === 'error' ? "red" : formMessage.status === "ok" ? "green" : "hidden"}`}>
-                    {errors?.first_name?.message || errors?.last_name?.message || errors?.email?.message || errors?.msg?.message || formMessage.message}
+                    {errors?.first_name?.message || errors?.last_name?.message || errors?.email?.message || errors?.message?.message || formMessage.message}
                 </div>
                 <div className="two fields">
                     <div className={`field ${errors.first_name && "error"}`}>
@@ -50,9 +59,9 @@ const ContactForm = ({ authentication, contactUs }) => {
                             type="email"
                             placeholder="Email" {...register('email', {pattern: {value: /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/, message: "Invalid email format please enter a valid email."}, required: {value: true, message: "Please Enter a email address"}})}/>
                 </div>
-                <div className={`field ${errors.msg && "error"}`}>
+                <div className={`field ${errors.message && "error"}`}>
                     <label>Message</label>
-                    <textarea placeholder="Enter Your Message" maxLength="500" minLength="10" {...register('msg', {minLength: {value: 10, message: "Message Should contain atleast 10 characters"}, required: {value: true, message: "You need to enter a message"}})}/>
+                    <textarea placeholder="Enter Your Message" maxLength="500" minLength="10" {...register('message', {minLength: {value: 10, message: "Message Should contain atleast 10 characters"}, required: {value: true, message: "You need to enter a message"}})}/>
                 </div>
                 <div className="action" style={{textAlign: 'right'}}><button className={`ui button ${loading ? "loading" : ""}`} tabIndex="0" type="submit">Send</button></div>
             </form>

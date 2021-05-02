@@ -1,7 +1,7 @@
 // export const BASE_URL = "http://127.0.0.1:8000"
 // export const BASE_URL = "https://www.afzalsaiyed.corecare.in/"
 export const BASE_URL = process.env.NODE_ENV === 'development' ? "http://127.0.0.1:8000" : "https://www.afzalsaiyed.corecare.in"
-export const frontend_base = "http://0.0.0.0:3000/"
+export const frontend_base = process.env.NODE_ENV === "development" ? "http://0.0.0.0:3000/" : "https://www.dev.corecare.in/"
 export const ProfileBoxitem = [
     {
         name: 'Login',
@@ -32,8 +32,8 @@ export const ProfileBoxitemLogin = [
         route: '/cart'
     },
     {
-        name: 'Order',
-        route: '/order'
+        name: 'Orders',
+        route: '/orders'
     },
     {
         name: 'Logout',
@@ -81,8 +81,8 @@ export const ProfileBoxitemMobileLogin = [
         route: '/cart'
     },
     {
-        name: 'Order',
-        route: '/order'
+        name: 'Orders',
+        route: '/orders'
     },
     {
         name: 'Blog',
