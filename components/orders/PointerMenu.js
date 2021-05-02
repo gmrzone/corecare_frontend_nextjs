@@ -2,6 +2,7 @@ import { useState } from 'react';
 import OrderList from './OrderList'
 import { OrdersContext } from '../../context/OrdersContext'
 import { useContext } from 'react'
+import OrderItemPlaceHolder from './OrderItemPlaceHolder'
 import style from '../../styles/orders/Orders.module.scss'
 const PointerMenu = () => {
     const [activeTab, setActiveTab] = useState('All')
@@ -28,13 +29,22 @@ const PointerMenu = () => {
         
 
     })
+    const renderPlaceHolder = () => {
+        const ph = []
+        for (let i = 0; i < 5; i++){
+            ph.push(
+                <OrderItemPlaceHolder key={i}/>
+            )
+        }
+        return ph
+    }
     return (
         <>
             <div className={"ui pointing menu " + style.hover}>
                 {renderMenuItems}
             </div>
             <div className="ui segment">
-                {renderMenuSegments}
+                {loading ? renderPlaceHolder() : renderMenuSegments}
             </div>
         </>
     )

@@ -8,7 +8,6 @@ import Layout from '../components/common/Layout'
 import MetaComponent from '../components/common/MetaComponent'
 import { frontend_base } from '../data/_variables'
 const Order = ({ mobileNav}) => {
-
     return(
         <>
         <MetaComponent title="Orders" description="Customers Order list page" name="Orders" url={`${frontend_base}`}/>
