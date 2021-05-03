@@ -22,15 +22,15 @@ axios.interceptors.response.use(response => {
 }, error => {   
     const originalRequest = error.config
     // console.log(error.config)
-
-    if (error.response.status === 401 && originalRequest.url === "api/token/refresh/"){
+    console.log(error.response)
+    if (error?.response?.status === 401 && originalRequest.url === "api/token/refresh/"){
         localStorageObj._clearToken()
         delete axios.defaults.headers.common["Authorization"]
         return new Promise((resolve, reject) => {
             reject(error)
         })
     }
-    else if (error.response.status === 401 && !originalRequest._retry){
+    else if (error?.response?.status === 401 && !originalRequest._retry){
         originalRequest._retry = true
         console.log("Access")
         const refreshToken = localStorageObj._getRefreshToken()

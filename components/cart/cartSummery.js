@@ -55,7 +55,7 @@ const CartSummary = ({ cart }) => {
                 DjangoApi.post("create-orders/", response)
                 .then(response => {
                     if (response.data.status === "ok"){
-                        router.push(`order/${response.data['receipt']}/`)
+                        router.push(`orders/${response.data['receipt']}/`)
                     }
                     else{
                         setError(true)
