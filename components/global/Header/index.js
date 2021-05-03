@@ -95,7 +95,7 @@ const Header = (props) => {
     //     observer.observe(document.getElementsByTagName('html'))
     // }, [mobileNav])
     const background = () => {
-        if (router.pathname === "/about" || router.pathname === "/login/[[...param]]" || router.pathname === "/contact" || router.pathname === "/become-a-partner" || router.pathname === "/cart" || router.pathname === "/orders"){
+        if (router.pathname === "/about" || router.pathname === "/login/[[...param]]" || router.pathname === "/contact" || router.pathname === "/become-a-partner" || router.pathname === "/cart" || router.pathname === "/orders" || router.pathname === "/orders/[order_id]"){
             return {
                 backgroundColor: 'black',
                 position: 'relative'

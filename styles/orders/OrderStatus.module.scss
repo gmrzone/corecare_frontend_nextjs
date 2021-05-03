@@ -1,4 +1,4 @@
-.order-status-container {
+.order_status_container {
     text-align: center;
     background: white;
     padding: 20px 10px;
@@ -12,7 +12,7 @@
     @media(min-width: 1300px){
         padding: 35px 15px;
     }
-    .order-status-description {
+    .order_status_description {
         font-size: 14px;
 
         @media (min-width: 700px){
@@ -22,7 +22,7 @@
             font-size: 18px;
         }
     }
-    .order-complete-image {
+    .order_complete_image {
         width: 50px;
 
         @media(min-width: 700px){
@@ -36,11 +36,11 @@
         }
     
     }
-    .order-details__cont {
+    .order_details__cont {
         display: flex;
         flex-direction: column;
 
-        .order-details-tables {
+        .order_details_tables {
             display: flex;
             flex-direction: column;
 

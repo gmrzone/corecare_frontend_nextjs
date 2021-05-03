@@ -39,7 +39,7 @@ const OrderItem = ({ order }) => {
                 </div>
             </div>
             <div className="extra content">
-                <Link href={`order/${order.receipt}`}>
+                <Link href={`orders/${order.receipt}`}>
                     <a className="ui button secondary">View Order</a>
                 </Link>
             </div>
