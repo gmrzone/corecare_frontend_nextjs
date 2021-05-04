@@ -1,6 +1,6 @@
 import style from '../../styles/service/BigServiceTab.module.scss'
 // import { connect } from 'react-redux';
-import { useEffect, useRef } from 'react'
+import { useRef, useContext } from 'react'
 // import { fetchEmployees, fetchCategoryReviews } from '../../../actions'
 import Link from 'next/link';
 import Image from 'next/image';
@@ -10,11 +10,12 @@ import SingleReview from './SingleReview';
 import ReviewReplyWrapper from './reviewReplyWrapper';
 import CreateReview from './createReview';
 import { CategoryContext } from './context'
-
+import { AuthContext } from '../../context/AuthContext'
 
 const BigServiceTab = (props) => {
    
     const { category } = props
+    const { loginStatus: authenticated } = useContext(AuthContext)
     const scrolableRef = useRef()
     // const {categoryReviews, error} = useSWR(`get_reviews/${category}/`, fetcher)
     // useEffect(() => {
@@ -101,7 +102,7 @@ const BigServiceTab = (props) => {
             return (
                 <ReviewReplyWrapper key={x.id}>
                     <CategoryContext.Provider value={category}>
-                        <SingleReview key={x.id} review={x} isReply={true} BASEURL={BASE_URL} category={category}/>
+                        <SingleReview key={x.id} review={x} isReply={true} BASEURL={BASE_URL} category={category} authenticated={authenticated}/>
                     </CategoryContext.Provider>
                 </ReviewReplyWrapper>
             )
@@ -111,7 +112,7 @@ const BigServiceTab = (props) => {
         if (!x.parent){
             return(
                 <CategoryContext.Provider value={category} key={x.id}>
-                    <SingleReview key={x.id} review={x} isReply={false} BASEURL={BASE_URL} renderReviewReply={renderReviewReply}/>
+                    <SingleReview key={x.id} review={x} isReply={false} BASEURL={BASE_URL} renderReviewReply={renderReviewReply} authenticated={authenticated}/>
                 </CategoryContext.Provider>
             )
         }
@@ -181,9 +182,9 @@ const BigServiceTab = (props) => {
                             <div>{renderReviews}</div>
                         </div>
                         <div className="create-review">
-                            {props.authenticated ? <CategoryContext.Provider value={category}>
+                            {authenticated ? <CategoryContext.Provider value={category}>
                                 <CreateReview />
-                            </CategoryContext.Provider> : <h2 style={{textAlign: 'center'}}><Link href="/login"><a>Login</a></Link> to add reviews or reply to reviews</h2>}
+                            </CategoryContext.Provider> : <h4 style={{textAlign: 'center'}}><Link href="/login"><a>Login</a></Link> to add reviews or reply to reviews</h4>}
                         </div>
                     </div>
                 </div>

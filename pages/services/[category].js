@@ -21,6 +21,10 @@ import CategoryChangeModal from '../../components/services/ServiceList/categoryC
 import axios from '../../data/backendApi'
 import { CategoryModalProvider } from '../../context/categoryChangeModal'
 import {BASE_URL} from '../../data/_variables'
+
+import reviewContext from '../../context/ReviewContext'
+import ReviewContext from '../../context/ReviewContext'
+
 const MainImagebullets = [
     'Doorstep repair within 90 mins',
     'Protection against damage upto INR 10,000',
@@ -83,7 +87,7 @@ const Services = ({ services, mobileNav, employees, subcategories }) => {
     const ServiceListRef = useRef()
     const router = useRouter()
     const service_category = router.query['category']
-    const {data , error} = useSWR(`${BASE_URL}get_reviews/${service_category}/`, (...args) => axios.get(...args).then(response => response.data))
+    const { data , error, mutate: mutateReviews } = useSWR(`${BASE_URL}/get_reviews/${service_category}/`, (...args) => axios.get(...args).then(response => response.data))
     // search_param will only be defined when user uses search box on main page and redirect to service page
     // seacrh param will be passed as prop to ServiceInfoBox component to trigger an click event on it if search param is defined to open ServiceList when search
     // it will also be passed to ServiceList component and then SubcategoryContent component to scroll in to view searched service category
@@ -200,7 +204,9 @@ const Services = ({ services, mobileNav, employees, subcategories }) => {
                     {/* {serviceListActive ? <ServiceList category={service_category} active={serviceListVisible} setActive={toggleServiceList} reference={ServiceListRef} searchParam={search_param} services={services}/> : ""} */}
                     {/* <HeroImage mainTitle={`Get Professional ${renderTitle()}`} src={renderImage()} bullets={MainImagebullets}/> */}
                     <ServiceInfoBox title={`Need an ${renderTitle()} for`} content={renderServiceInfoBoxContent()} rating={renderedStats.rating} ratingCount={renderedStats.ratingCount} bookingDone={renderedStats.bookingDone} onClick={call2ActioncustomerClicked} searchParam={search_param} mobileNav={mobileNav}/>
-                    <BigServiceTab serviceCategory={renderTitle()} accordianItem={accordianItem} about={renderBigServiceBoxText()} category={service_category} mobileNav={mobileNav} employees={employees} categoryReviews={data}/>
+                    <ReviewContext.Provider value={{ mutateReviews , data }}>
+                        <BigServiceTab serviceCategory={renderTitle()} accordianItem={accordianItem} about={renderBigServiceBoxText()} category={service_category} mobileNav={mobileNav} employees={employees} categoryReviews={data}/>
+                    </ReviewContext.Provider>
                     <ServiceCallToAction title={`Looking to hire Professionals ${renderTitle()}`} buttonText="Give Requirements" desc="Tell us your requirements and get custom quotes with profiles within 24 hours from upto 5 interested professionals." onClick={call2ActioncustomerClicked}/>
                     <ServiceCallToAction title="Are you an Expert looking for Customers?" buttonText="Join Now" desc="" onClick={call2ActionemployeeClicked}/>
                     <StatsTable />

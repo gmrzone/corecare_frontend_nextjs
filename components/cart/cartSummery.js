@@ -21,6 +21,10 @@ const CartSummary = ({ cart }) => {
         document.body.appendChild(script)
         return () => {
             document.body.removeChild(script)
+            var meta = document.createElement('meta')
+            meta.name = "viewport"
+            meta.content = "width=device-width, initial-scale=1.0"
+            document.head.appendChild(meta)
         }
     }, [])
     const { payButton: razorPayButton, setProfileUpdateModal } = useContext(PayButtonContext)
