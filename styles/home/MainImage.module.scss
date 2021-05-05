@@ -218,4 +218,33 @@
 
 }
 
+.search_result {
+    background-color: #fff;
+    margin-top: 15px;
+    border-radius: .28571429rem;
+    display: flex!important;
+    flex-direction: column;
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    max-height: 180px;
+    max-width: 900px !important;
+    width: 100%;
+    margin: 15px auto 0 auto;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    box-shadow: 0 4px 16px rgb(17 17 26 / 10%), 0 8px 24px rgb(17 17 26 / 10%), 0 16px 56px rgb(17 17 26 / 10%);
+
+    .search_item {
+        padding: 15px 10px;
+        text-decoration: none;
+        border-radius: .28571429rem;
+        color: #000;
+
+        &:hover {
+            background-color: #f2f2f2;
+        }
+    }
+}
 

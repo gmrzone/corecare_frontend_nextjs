@@ -13,7 +13,7 @@ const Layout = ({ children, HeroImage=null, mobileNav, heroProps, ServiceListMod
                 <div id="model"></div>
                 <SignUpModel modelActive={signUpActive} closeSignup={() => setSignUpActive(false)}/>
                 <Header mobileNav={mobileNav} openSignup={() => setSignUpActive(true)}/>
-                {HeroImage && <HeroImage {...heroProps}/>}
+                {HeroImage && <HeroImage {...heroProps} mobileNav={mobileNav}/>}
                 <main>
                     {children}
                 </main>

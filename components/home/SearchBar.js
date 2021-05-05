@@ -13,7 +13,7 @@ const Searchbar = ({  register, handleChange })=> {
         <div className={style.search_bar} onClick={() => input.current.focus()}>
             <div className={style.search_input}>
                 <i className="fa fa-search" aria-hidden="true" />
-                <input type="text" placeholder="Search for a service"  {...register("search")} onChange={handleChange} ref={input}/>
+                <input type="text" placeholder="Search for a service"  {...register("search")} onChange={handleChange} ref={input} autoComplete="off" />
             </div>
         </div>
     )

@@ -9,7 +9,7 @@ const MainImage = (props) => {
                 <div className={style.main_title}>
                     <h1>Home of the Experts</h1>
                 </div>
-                <MainSearch />
+                <MainSearch mobileNav={props.mobileNav}/>
             </div>
         </div>
     )

@@ -35,7 +35,7 @@ const Dropdown = ({ register,  selected, options, selectionChange })=> {
             </div>
             <span>{selected?.value[0].toUpperCase() + selected?.value.substring(1) || "Select City"}</span>
             <i className="fa fa-caret-down" aria-hidden="true" />
-            <div className={style.dropdown_options + ` ${open ? style.active : ""}`}>
+            <div className={style.dropdown_options + ` ${open ? style.active : ""}`} style={{zIndex: "51"}}>
                 {renderedOpt}
             </div>  
         </div>
