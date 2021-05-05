@@ -37,12 +37,7 @@ const MainSearch = ({ ClearSearch, mobileNav }) => {
     }
 
     const debounceSearch = (value) => {
-
-        console.log(value)
-
             search(value, dropDownSelected)
-
-
     }
     const handleChange = (e) => {
         const value = e.target.value
@@ -51,7 +46,6 @@ const MainSearch = ({ ClearSearch, mobileNav }) => {
             timeout_id.current = setTimeout(() => debounceSearch(value), 300)
         }
         else if (!value) {
-            console.log("empty")
             clearTimeout(timeout_id.current)
             setSearchResult(null)
         }
@@ -59,7 +53,7 @@ const MainSearch = ({ ClearSearch, mobileNav }) => {
 
     const renderSearchResult = searchResult?.map(x => {
         return (
-            <Link  href={`services/${x.service_specialist.slug}/${x.slug}/`} key={x.id}>
+            <Link  href={`services/${x.service_specialist.slug}?afzal=${x.slug}/`} key={x.id}>
                 <a className={style.search_item}>
                     {x.name}
                 </a>

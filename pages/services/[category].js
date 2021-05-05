@@ -1,29 +1,29 @@
 import { useRef, useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
-import Layout from '../../../components/common/Layout'
-import MetaComponent from '../../../components/common/MetaComponent'
-import { frontend_base } from '../../../data/_variables'
+import Layout from '../../components/common/Layout'
+import MetaComponent from '../../components/common/MetaComponent'
+import { frontend_base } from '../../data/_variables'
 import useSWR from 'swr'
 // Components
-import HeroImage from '../../../components/services/HeroImage';
-import ServiceInfoBox from '../../../components/services/ServiceInfoBox'
-import BigServiceTab from '../../../components/services/BigServiceTab'
-import ServiceCallToAction from '../../../components/services/ServiceCallToAction'
-import StatsTable from '../../../components/services/StatsTable';
-import ServiceList from '../../../components/services/ServiceList'
+import HeroImage from '../../components/services/HeroImage';
+import ServiceInfoBox from '../../components/services/ServiceInfoBox'
+import BigServiceTab from '../../components/services/BigServiceTab'
+import ServiceCallToAction from '../../components/services/ServiceCallToAction'
+import StatsTable from '../../components/services/StatsTable';
+import ServiceList from '../../components/services/ServiceList'
 
 // utils
-import { ServiceInfoBoxContent } from '../../../components/services/utils';
-import { serviceInfoStatistic } from '../../../components/services/utils';
-import { BigServiceBox } from '../../../components/services/utils';
-import { accordianItem } from '../../../components/services/utils';
-import CategoryChangeModal from '../../../components/services/ServiceList/categoryChangeModel'
-import axios from '../../../data/backendApi'
-import { CategoryModalProvider } from '../../../context/categoryChangeModal'
-import {BASE_URL} from '../../../data/_variables'
+import { ServiceInfoBoxContent } from '../../components/services/utils';
+import { serviceInfoStatistic } from '../../components/services/utils';
+import { BigServiceBox } from '../../components/services/utils';
+import { accordianItem } from '../../components/services/utils';
+import CategoryChangeModal from '../../components/services/ServiceList/categoryChangeModel'
+import axios from '../../data/backendApi'
+import { CategoryModalProvider } from '../../context/categoryChangeModal'
+import {BASE_URL} from '../../data/_variables'
 
-import reviewContext from '../../../context/ReviewContext'
-import ReviewContext from '../../../context/ReviewContext'
+import reviewContext from '../../context/ReviewContext'
+import ReviewContext from '../../context/ReviewContext'
 
 const MainImagebullets = [
     'Doorstep repair within 90 mins',
