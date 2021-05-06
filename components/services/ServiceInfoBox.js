@@ -10,6 +10,7 @@ const ServiceInfoBox = (props) => {
             itemRef.current.click()
         }
     }, [searchParam])
+    
     const renderContent = props.content.map((x, i) => {
         return (
                 <div className={style.service_content_item} key={i} onClick={() => props.onClick()} ref={itemRef}>

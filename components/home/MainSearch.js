@@ -53,7 +53,7 @@ const MainSearch = ({ ClearSearch, mobileNav }) => {
 
     const renderSearchResult = searchResult?.map(x => {
         return (
-            <Link  href={`services/${x.service_specialist.slug}?afzal=${x.slug}/`} key={x.id}>
+            <Link  href={`services/${x.service_specialist.slug}?afzal=${x.slug}`} key={x.id}>
                 <a className={style.search_item}>
                     {x.name}
                 </a>

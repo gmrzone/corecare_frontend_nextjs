@@ -7,6 +7,7 @@ const SubcategoryContent = ({ data, searchParam }) => {
         if (data){
             const element = document.getElementById(data)
             if (element){
+                console.log(data, "Afzal")
                 element.scrollIntoView({
                     behavior: 'smooth'
                     })
@@ -22,12 +23,12 @@ const SubcategoryContent = ({ data, searchParam }) => {
         }
     }, [data])
 
-    // useEffect(() => {
-    //     if (searchParam){
-    //         handleClick(searchParam)
-    //     }
+    useEffect(() => {
+        if (searchParam){
+            handleClick(searchParam)
+        }
 
-    // }, [searchParam])
+    }, [searchParam])
 
     const renderSubcategory = data.map((x, i) => {
         
