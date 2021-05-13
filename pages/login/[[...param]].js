@@ -70,7 +70,7 @@ const Login = (props) => {
                                     <input placeholder="password" type="password" className={style.password_field} {...register("password", {required: {value: true, message: "Cannot login with a blank password"}, minLength: {value: 8, message: "Password should be greater then 8 characters"}})}/>
                                 </div>
                                 <Link href="/login/forgot_password">
-                                    <a className="forgot-password">Forgot passowrd</a>
+                                    <a className="forgot-password">Forgot password</a>
                                 </Link>
                                 <div style={{textAlign: 'right'}}>
                                     <button className="ui secondary button" onClick={() => props.openSignup()} type="button">
