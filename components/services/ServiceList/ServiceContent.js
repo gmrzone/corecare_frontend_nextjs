@@ -28,6 +28,7 @@ const ServiceContent = ({ category, openCategoryModel, setModelText, setReplacem
         .then(response => {
             console.log("Addz")
             handleAddResponse(response, service_id, setCartCount, openCategoryModel, setModelText, setReplacementCartItem)
+            mutate()
         })
     }
     const removeFromCartHandler = (service_id) => {
@@ -50,7 +51,7 @@ const ServiceContent = ({ category, openCategoryModel, setModelText, setReplacem
                             <h4>{x.name}</h4>
                             <span>&#8377;&nbsp;{x.price}</span>
                         </div>
-                        {baseCart && <AddToCart forService={x} add={addToCartHandler} remove={removeFromCartHandler} cart={baseCart}/>}
+                        {baseCart && <AddToCart forService={x} add={addToCartHandler} remove={removeFromCartHandler} cart={baseCart} />}
                     </div>
                     {x.description ? <div className="ui divider"></div> : ""}
                     {x.description ? <ul className="item-description-list">
