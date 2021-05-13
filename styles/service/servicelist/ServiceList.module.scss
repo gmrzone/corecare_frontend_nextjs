@@ -190,6 +190,7 @@
             row-gap: 20px;
             max-width: 675px;
             padding-right: 0px;
+            padding-bottom: 20px;
             margin: 0px;
 
             @media (min-width: 700px){
@@ -231,9 +232,30 @@
                 margin-top: 10px;
                 padding: 16px;
                 box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+                transition: background .1s ease-in-out;
+                border-radius: 4px;
 
 
-                
+                &.recommanded {
+                    background: #e6f7ff;
+                    position: relative;
+                    padding-top: 50px;
+
+                    .banner {
+                        background: #008fcc;
+                        border-top-left-radius: 4px;
+                        border-top-right-radius: 4px;
+                        padding: 6px 4px;
+                        text-align: center;
+                        font-weight: bold;
+                        color: white;
+                        position: absolute;
+                        right: 0;
+                        left: 0;
+                        top: 0;
+                    }
+
+                }
                 
                 
                &:first-of-type {

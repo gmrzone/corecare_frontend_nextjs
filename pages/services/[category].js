@@ -21,6 +21,7 @@ import CategoryChangeModal from '../../components/services/ServiceList/categoryC
 import axios from '../../data/backendApi'
 import { CategoryModalProvider } from '../../context/categoryChangeModal'
 import {BASE_URL} from '../../data/_variables'
+import { BasicServiceRecommanderProvider } from '../../context/BasicServiceRecommander'
 
 import reviewContext from '../../context/ReviewContext'
 import ReviewContext from '../../context/ReviewContext'
@@ -200,6 +201,7 @@ const Services = ({ services, mobileNav, employees, subcategories }) => {
         <>  
             <MetaComponent title={renderTitle()} description={`${renderTitle()} Page`} name={`${renderTitle()} Page`} url={`${frontend_base}services/${service_category}`}/>
             <CategoryModalProvider openCategoryModal={{ openCategoryModel , setModelHeaderText , setReplacementCartItem, incrementReplacedService}}>
+                <BasicServiceRecommanderProvider>
                 <Layout HeroImage={HeroImage} mobileNav={mobileNav} heroProps={{mainTitle: `Get Professional ${renderTitle()}`, src: renderImage(), bullets: MainImagebullets}} ServiceListModel={ServiceList} serviceListProps={serviceListProps} Modal={CategoryChangeModal} modalProps={categoryModalProps}>
                     {/* {serviceListActive ? <ServiceList category={service_category} active={serviceListVisible} setActive={toggleServiceList} reference={ServiceListRef} searchParam={search_param} services={services}/> : ""} */}
                     {/* <HeroImage mainTitle={`Get Professional ${renderTitle()}`} src={renderImage()} bullets={MainImagebullets}/> */}
@@ -211,6 +213,7 @@ const Services = ({ services, mobileNav, employees, subcategories }) => {
                     <ServiceCallToAction title="Are you an Expert looking for Customers?" buttonText="Join Now" desc="" onClick={call2ActionemployeeClicked}/>
                     <StatsTable />
                 </Layout>
+                </BasicServiceRecommanderProvider>
             </CategoryModalProvider>
         </>
 

@@ -10,32 +10,9 @@ import ServiceCategoryUnavailable from './ServiceCategoryUnavailable';
 import { CategoryModalContext } from '../../../context/categoryChangeModal'
 const ServiceList = ({ category, active, setActive, reference,  subcategorys, mobileNav, searchParam, services }) => {
     const { baseCart, mutateBaseCart, cartCount } = useContext(BaseCartContext)
-    // const [categoryChangeModelActive, setCategoryChangeModelActive] = useState(false)
-    // const [modelHeaderText, setModelHeaderText] = useState("Category Changed From")
-    // const [replacementCartItem, setReplacementCartItem] = useState(null)
-    // const incrementReplacedService = useRef()
-    // const scrollSearchedSubcategory = (callback) => {
-    // }
+
     const { openCategoryModel , setModelHeaderText , setReplacementCartItem, incrementReplacedService} = useContext(CategoryModalContext)
-    // useEffect(() => {
-    //     document.body.style.overflow = "hidden";
-
-    //     return () => {
-    //         document.body.style.overflow = "auto";
-    //     }   
-    // }, [])
-
-    // useEffect(() => {
-    //     fetchFullService(category)
-    // }, [fetchFullService, category])
-
-    // const closeCategoryModel = () => {
-    //     setCategoryChangeModelActive(false)
-    // }
-    // const openCategoryModel = () => {
-    //     setCategoryChangeModelActive(true)
-        
-    // }
+    
 
     return (
         <div className={style.service_list_model__main} ref={reference} style={{left: active ? '0%' : '100%'}}>

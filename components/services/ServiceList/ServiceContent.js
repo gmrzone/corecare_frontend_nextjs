@@ -3,8 +3,11 @@ import { BASE_URL } from '../../../data/_variables';
 import AddToCart from './AddToCartButton';
 import Image from 'next/image'
 import axios from '../../../data/backendApi';
+import { useContext } from 'react';
+import { BasicServiceRecommanderContext } from '../../../context/BasicServiceRecommander'
 const ServiceContent = ({ category, openCategoryModel, setModelText, setReplacementCartItem, services, subcategorys, incrementReplacedService, baseCart, mutateBaseCart}) => {
-
+    const { basicRecommandation, mutate } = useContext(BasicServiceRecommanderContext)
+    console.log(basicRecommandation)
     const handleAddResponse = (response, service_id, setCartCount, openCategoryModel, setModelText, setReplacementCartItem) => {
         if (response.data.status && response.data.status === 'category_change'){
             setModelText(response.data.mssg)
@@ -37,7 +40,8 @@ const ServiceContent = ({ category, openCategoryModel, setModelText, setReplacem
     const renderCategoryItems = (itemList) => {
         return itemList.map(x => {
             return (
-                <div className={style.service_category_items} key={x.id}>
+                <div className={style.service_category_items + `${basicRecommandation && basicRecommandation?.includes(x.id) ? " " + style.recommanded : ""}`} key={x.id}>
+                    {basicRecommandation && basicRecommandation?.includes(x.id) && <div className={style.banner}>Recommanded</div>}
                     <div className={style.item_detail}>
                         <div className={style.item_image}>
                             <Image src={BASE_URL + x.icon} width="60" height="60" alt="service_icon" className={style.img_image}/>
