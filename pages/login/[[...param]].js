@@ -14,11 +14,11 @@ import LoginFooter from '../../components/login/LoginFooter'
 const Login = (props) => {
     const router = useRouter()
     const LoginForm = useRef();
-
+    console.log(props.mobileNav)
     const param = router.query.param
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [formErr, setFormErr] = useState(null)
-
+    const { mobileNav } = props;
     const submitForm = (formValues) => {
         axios.post('api/token/', formValues)
         .then(response => {
@@ -35,8 +35,15 @@ const Login = (props) => {
         })
     }
     useEffect(() => {
-        LoginForm.current.style.height = (window.innerHeight - 75 - 70) + "px"
-    }, [])
+        if (mobileNav){
+            LoginForm.current.style.height = 'auto';
+            
+        }
+        else {
+            LoginForm.current.style.height = (window.innerHeight - 75 - 70) + "px";
+        }
+        
+    }, [mobileNav])
     return(
         <>
         <MetaComponent title="Login" description="Login page" name="Login Page" url={`${frontend_base}login`}/>
@@ -57,7 +64,6 @@ const Login = (props) => {
             {param?.[0] === "signup" ? <div className="ui green message small">Account Created Sucessfully. You can Login Now</div> : ""}
                 {/* <h1>Login To Corecare</h1> */}
                         <form className={style.login_form + " ui huge form"} onSubmit={handleSubmit(submitForm)}>
-                            <div>
                                 <NumberField input={null} label="Mobile Number" meta={null} register={register} errors={errors}/>
                                 <div className={`field ${errors.password && "error"}`}>
                                     <label>Password</label>
@@ -75,17 +81,11 @@ const Login = (props) => {
                                         <i className="checkmark icon"></i>
                                     </button>
                             </div>
-                            </div>
                             <div className={`ui message red ${errors.number || errors.password || formErr ? "visible" : "hidden"}`}>
                                 <p>{errors?.number?.message || errors?.password?.message || formErr}</p>
                             </div>
                         </form>
                 </div>
-                {/* <style jsx>{`
-                    .form-container {
-                        height: ${getFormHeight()}
-                    }
-                `}</style> */}
         </div>
         </Layout>
         </>
