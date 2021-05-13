@@ -8,11 +8,12 @@ import { useForm } from 'react-hook-form'
 import { frontend_base } from '../../data/_variables'
 import axios from 'axios'
 import localStorageObj from '../../data/localStorageObj'
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react';
+import LoginFooter from '../../components/login/LoginFooter'
 
 const Login = (props) => {
     const router = useRouter()
-
+    const LoginForm = useRef();
 
     const param = router.query.param
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -33,16 +34,29 @@ const Login = (props) => {
             setFormErr("Invalid Username or Password")
         })
     }
-
+    useEffect(() => {
+        LoginForm.current.style.height = (window.innerHeight - 75 - 70) + "px"
+    }, [])
     return(
         <>
         <MetaComponent title="Login" description="Login page" name="Login Page" url={`${frontend_base}login`}/>
-        <Layout mobileNav={props.mobileNav}>
-        <div className={style.form_container}>
-            <div className={style.innerContainer}>
+        <Layout mobileNav={props.mobileNav} FooterSeft={LoginFooter}>
+        <div className={style.form_container} ref={LoginForm}>
+            <div className={style.left_container}>
+                    <div className={style.half_container}>
+                        <h1 className={style.login_title}>Login To get High-Quality workmanship at great Prices</h1>
+                        <ul className={style.login_list}>
+                            <li className="login-list__item">For speedy repairs</li>
+                            <li className="login-list__item">Prompt service you can depend on</li>
+                            <li className="login-list__item">Save money on your repair projects.</li>
+                            <li className="login-list__item">Deliver trusted repair services.</li>
+                        </ul>
+                    </div>
+            </div>
+            <div className={style.right_container}>
             {param?.[0] === "signup" ? <div className="ui green message small">Account Created Sucessfully. You can Login Now</div> : ""}
-                <h1>Login To Corecare</h1>
-                        <form className={style.login_form + " ui big form"} onSubmit={handleSubmit(submitForm)}>
+                {/* <h1>Login To Corecare</h1> */}
+                        <form className={style.login_form + " ui huge form"} onSubmit={handleSubmit(submitForm)}>
                             <div>
                                 <NumberField input={null} label="Mobile Number" meta={null} register={register} errors={errors}/>
                                 <div className={`field ${errors.password && "error"}`}>
@@ -67,6 +81,11 @@ const Login = (props) => {
                             </div>
                         </form>
                 </div>
+                {/* <style jsx>{`
+                    .form-container {
+                        height: ${getFormHeight()}
+                    }
+                `}</style> */}
         </div>
         </Layout>
         </>

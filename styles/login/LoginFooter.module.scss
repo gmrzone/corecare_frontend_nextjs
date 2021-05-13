@@ -1,0 +1,36 @@
+@import '../variables';
+
+.social__icons__login {
+    font: inherit;
+    
+    .social_link__login {
+        color: white;
+        font-size: 20px;
+        cursor: pointer;
+        margin-left: 10px;
+
+        @media (min-width: 992px){
+            font-size: 26px;
+        }
+        &:first-child  {
+            margin: 0px;
+        }
+        i {
+            transition: all 0.2s;
+            &:hover {
+                transform: scale(1.3);
+                // color: map-get($map: $colors, $key: theme);
+                color: map-get($map: $colors, $key: theme)
+            }
+        }
+    }
+}
+.footer_end {
+    color: white;
+    font-weight: 500;
+
+}
+#afzal {
+    padding-top: 0px !important;
+}
+

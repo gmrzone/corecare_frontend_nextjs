@@ -1,9 +1,8 @@
 import Header from '../global/Header'
-import Link from 'next/link'
 import Footer from '../global/Footer'
 import SignUpModel from '../signup'
 import { useState } from 'react'
-const Layout = ({ children, HeroImage=null, mobileNav, heroProps, ServiceListModel=null, serviceListProps, Modal=null, modalProps }) => {
+const Layout = ({ children, HeroImage=null, mobileNav, heroProps, ServiceListModel=null, serviceListProps, Modal=null, modalProps, FooterSeft=null }) => {
     const [signUpActive, setSignUpActive] = useState(false)
     return (
         <>  
@@ -19,7 +18,7 @@ const Layout = ({ children, HeroImage=null, mobileNav, heroProps, ServiceListMod
                 </main>
             </div>
             <footer id="footer">
-                <Footer mobileNav={mobileNav}/>
+                {FooterSeft ?  <FooterSeft /> : <Footer mobileNav={mobileNav}/>}
             </footer>
         </>
     )
