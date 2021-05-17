@@ -26,7 +26,6 @@ const ServiceContent = ({ category, openCategoryModel, setModelText, setReplacem
         // addToCart(service_id, category, setCartCount, openCategoryModel, setModelText, setReplacementCartItem)
         axios.post('cart/add/', {service_id: service_id, category: category})
         .then(response => {
-            console.log("Addz")
             handleAddResponse(response, service_id, setCartCount, openCategoryModel, setModelText, setReplacementCartItem)
             mutate()
         })

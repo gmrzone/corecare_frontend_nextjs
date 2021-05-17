@@ -3,9 +3,13 @@ import NumberField from '../../components/common/NumberField'
 import style from '../../styles/partner/Partners.module.scss'
 import { useForm } from 'react-hook-form'
 // import { connect } from 'react-redux'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 // import { partnersRequest } from '../../actions'
+import { AuthContext } from '../../context/AuthContext';
+import { useContext } from 'react';
+
 const GetInTouch = ({ mobileNav, user, partnersRequest }) => {
+    const {userData, loginStatus} = useContext(AuthContext)
     const [formState, setFormState] = useState({loading: false, msg: null})
     const { setValue, register, handleSubmit, formState: { errors } }  = useForm()
     const onSubmit = (formValues) => {
@@ -21,6 +25,12 @@ const GetInTouch = ({ mobileNav, user, partnersRequest }) => {
         }
         return false
     }
+
+    useEffect(() => {
+        setValue('name', loginStatus ? userData.first_name + " " + userData.last_name : "", { shouldValidate: true })
+        setValue('number', loginStatus ? userData.number : "", { shouldValidate: true })
+        setValue('email', loginStatus ? userData.email : "", { shouldValidate: true })
+    }, [loginStatus])
 
 
     return (

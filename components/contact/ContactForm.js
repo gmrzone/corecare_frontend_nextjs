@@ -1,16 +1,20 @@
 import style from '../../styles/contact/Contact.module.scss'
 import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
-import backendAPI from '../../data/backendApi'
+import backendAPI from '../../data/backendApi';
+import { useContext } from 'react';
+import { AuthContext } from '../../context/AuthContext'
 const ContactForm = ({ authentication, contactUs }) => {
+    const { userData, loginStatus } = useContext(AuthContext)
+    console.log(loginStatus, userData)
     const [loading, setLoading] = useState(false)
     const [formMessage, setFormMessage] = useState({status: '', message: ""})
     const { setValue ,register, handleSubmit ,formState: { errors }} = useForm();
     useEffect(() => {
-        setValue('first_name', "AFzal", { shouldValidate: true })
-        setValue('last_name', "Saiyed", { shouldValidate: true })
-        setValue('email', "saiyedafzalgz@gmail.com", { shouldValidate: true })
-    }, [])
+        setValue('first_name', loginStatus ? userData.first_name : "", { shouldValidate: true })
+        setValue('last_name', loginStatus ? userData.last_name : "", { shouldValidate: true })
+        setValue('email', loginStatus ? userData.email : "", { shouldValidate: true })
+    }, [loginStatus])
     const onSubmit = (formValues) => {
         setLoading(true)
         console.log(formValues)

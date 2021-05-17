@@ -61,7 +61,7 @@ const Login = (props) => {
                     </div>
             </div>
             <div className={style.right_container}>
-            {param?.[0] === "signup" ? <div className="ui green message small">Account Created Sucessfully. You can Login Now</div> : ""}
+            {param?.[0] === "signup" ? <div className="ui green message small fluid">Account Created Sucessfully. You can Login Now</div> : ""}
                 {/* <h1>Login To Corecare</h1> */}
                         <form className={style.login_form + " ui huge form"} onSubmit={handleSubmit(submitForm)}>
                                 <NumberField input={null} label="Mobile Number" meta={null} register={register} errors={errors}/>
