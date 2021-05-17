@@ -5,10 +5,36 @@ import Link from 'next/link';
 import Image from 'next/image'
 import CartTable from './cartTable'
 import CartSummery from './cartSummery'
+import { DetailRecommanderContext } from '../../context/DetailServiceRecommander';
+import RecommandedServices from './RecommandedServices'
 
-const cartWrapper  = () => {
+const cartWrapper  = ({ mobileNav }) => {
     const { detailCart, detailCartError, detailCartMutate } = useContext(DetailCartContext)
+    const { detailRecommandation, mutateDetailRecommander, loading } = useContext(DetailRecommanderContext)
+    const calculateRecommandation = () => {
+        if (detailRecommandation?.length <= 4){
+            return detailRecommandation
+        }
+        else{
+            if (mobileNav){
+                return detailRecommandation
+            }
+            else {
+                if (typeof window !== 'undefined' && window?.innerWidth >= 1280){
+                    return detailRecommandation?.slice(0, 5)
+                }
+                return detailRecommandation?.slice(0, 4)
+            }
+        }
+    }
     return (
+        <>
+        <div className={style.recommanded_services_outer}>
+            <div className={style.recommanded_services + " ui container"}>
+                <h1 className={style.shopping_cart_title}>Recommended Services</h1>
+                <RecommandedServices data={calculateRecommandation()} loading={loading} category={detailCart?.cart_detail.category}/>
+            </div>
+        </div>
         <div className={`ui container ${style.shopping_cart_container}`}>
         {detailCart?.cart_detail?.total > 0 ? (
             <>  <h1 className={style.shopping_cart_title}>Shopping Cart</h1>
@@ -32,6 +58,7 @@ const cartWrapper  = () => {
             }
         `}</style>
     </div>
+    </>
     )
 }
 

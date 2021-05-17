@@ -14,6 +14,8 @@ import CartWrapper from '../components/cart/cartWrapper'
 import UpdateProfileModal from '../components/cart/updateProfileModel'
 import { useState, useRef } from 'react'
 import PayButtonContext from '../context/PayButtonContext'
+import { DetailCartRecommanderProvider } from '../context/DetailServiceRecommander'
+
 const Cart = ({ mobileNav }) => {
     const [profileUpdateModal, setProfileUpdateModal] = useState(false)
     const payButton = useRef()
@@ -21,11 +23,13 @@ const Cart = ({ mobileNav }) => {
         <>
             <MetaComponent title="Cart" description="Detailed cart page" name="cart Page" url={`${frontend_base}cart`}/>
             <DetailCartProvider>
-                <Layout mobileNav={mobileNav} Modal={UpdateProfileModal} modalProps={{active: profileUpdateModal, setActive: setProfileUpdateModal, payButton: payButton}}>
-                <PayButtonContext.Provider value={{ payButton, setProfileUpdateModal }}>
-                    <CartWrapper />
-                </PayButtonContext.Provider>
-                </Layout>
+                    <Layout mobileNav={mobileNav} Modal={UpdateProfileModal} modalProps={{active: profileUpdateModal, setActive: setProfileUpdateModal, payButton: payButton}}>
+                        <DetailCartRecommanderProvider>
+                            <PayButtonContext.Provider value={{ payButton, setProfileUpdateModal }}>
+                                <CartWrapper mobileNav={mobileNav}/>
+                            </PayButtonContext.Provider>
+                        </DetailCartRecommanderProvider>
+                    </Layout>
             </DetailCartProvider>
         </>
     )
