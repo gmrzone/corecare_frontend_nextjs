@@ -44,9 +44,13 @@
             display: flex;
             justify-content: flex-start;
             align-items: center;
+            transition: background-color .1s ease-in-out;
 
             &:first-of-type {
                 margin-top: 0px !important;
+            }
+            &.added {
+                background-color: rgba(174, 220, 246, 0.5);
             }
             .cart_item_image {
                 height: 60px;

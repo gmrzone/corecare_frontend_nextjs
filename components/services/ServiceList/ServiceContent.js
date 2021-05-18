@@ -7,7 +7,6 @@ import { useContext } from 'react';
 import { BasicServiceRecommanderContext } from '../../../context/BasicServiceRecommander'
 const ServiceContent = ({ category, openCategoryModel, setModelText, setReplacementCartItem, services, subcategorys, incrementReplacedService, baseCart, mutateBaseCart}) => {
     const { basicRecommandation, mutate } = useContext(BasicServiceRecommanderContext)
-    console.log(basicRecommandation)
     const handleAddResponse = (response, service_id, setCartCount, openCategoryModel, setModelText, setReplacementCartItem) => {
         if (response.data.status && response.data.status === 'category_change'){
             setModelText(response.data.mssg)

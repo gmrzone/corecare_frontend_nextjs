@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react'
 // import { partnersRequest } from '../../actions'
 import { AuthContext } from '../../context/AuthContext';
 import { useContext } from 'react';
+import axios from '../../data/backendApi'
 
 const GetInTouch = ({ mobileNav, user, partnersRequest }) => {
     const {userData, loginStatus} = useContext(AuthContext)
@@ -17,6 +18,11 @@ const GetInTouch = ({ mobileNav, user, partnersRequest }) => {
         // return {...state, loading: true}
         // })
         // partnersRequest(formValues, setFormState)
+        setFormState({loading: true, msg: null})
+        axios.post('partner/request/', formValues)
+        .then(response => {
+            setFormState({loading: false, msg: response.data.message})
+        })
         console.log(formValues)
     }
     const renderError = () => {
@@ -27,9 +33,9 @@ const GetInTouch = ({ mobileNav, user, partnersRequest }) => {
     }
 
     useEffect(() => {
-        setValue('name', loginStatus ? userData.first_name + " " + userData.last_name : "", { shouldValidate: true })
-        setValue('number', loginStatus ? userData.number : "", { shouldValidate: true })
-        setValue('email', loginStatus ? userData.email : "", { shouldValidate: true })
+        setValue('name', loginStatus ? userData.first_name + " " + userData.last_name : "", { shouldValidate: false })
+        setValue('number', loginStatus ? userData.number : "", { shouldValidate: false })
+        setValue('email', loginStatus ? userData.email : "", { shouldValidate: false })
     }, [loginStatus])
 
 
@@ -53,7 +59,7 @@ const GetInTouch = ({ mobileNav, user, partnersRequest }) => {
                     </form>
                 {renderError() || formState.msg ? (
                     <div className={`ui visible message large ${renderError() ? "red" : "blue"}`}>
-                        <p>{formState?.msg?.message || errors.name?.message || errors.email?.message || errors.number?.message || errors.detail?.message}</p>
+                        <p>{formState?.msg || errors.name?.message || errors.email?.message || errors.number?.message || errors.detail?.message}</p>
                     </div>
                 ) : ""}
             </div>

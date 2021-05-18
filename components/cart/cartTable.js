@@ -65,10 +65,11 @@ const CartTable = ({ cart, cartDetail }) => {
             handleResponse(response.data, service_id)
         })
     }
+    console.log(cart)
     const rendertableRow = Object.values(cart).map(x => {
         
         return (
-            <div className={style.cart_table_row} key={x.service.id}>
+            <div className={`${style.cart_table_row} ${x?.added ? style.added : ""}`} key={x.service.id}>
                 <div className={style.cart_item_image}><Image src={BASE_URL + x.service.icon} alt={x.service.name} width="50" height="50"/></div>
                 <div className={style.cart_item_content}>
                     <div className={style.cart_item_header}>{x.service.name}</div>

@@ -11,7 +11,7 @@ const BaseCartProvider = ({ children }) => {
     const cartCount = test?.length > 0 ? test.reduce((x, y) => x + y) : 0
     return (
         // <BaseCartContext.Provider value={{ baseCart: typeof baseCart === "object" ? baseCart : {}, mutateBaseCart, baseCartErrors, cartCount }}>
-        <BaseCartContext.Provider value={{ baseCart: baseCart , mutateBaseCart, baseCartErrors, cartCount }}>
+        <BaseCartContext.Provider value={{ baseCart , mutateBaseCart, baseCartErrors, cartCount }}>
             {children}
         </BaseCartContext.Provider>
     )
