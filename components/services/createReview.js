@@ -30,13 +30,16 @@ const CreateReview = ({ parent, isReply }) => {
         })
     }
     const handleForm = (formValues) => {
-        let formData = {
-            star: star,
-            review: formValues.review,
-            parent: parent,
-        }
+        // let formData = {
+        //     star: star,
+        //     review: formValues.review,
+        //     parent: parent,
+        // }
+        const formData = new FormData()
+        formData.append('star', star)
+        formData.append('review', formValues.review)
         if (parent){
-            "create_review/<slug:slug>/new/"
+            formData.append('parent', parent)
             createReview(formData, category, true)
         }
         else{
