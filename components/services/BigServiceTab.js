@@ -79,7 +79,7 @@ const BigServiceTab = (props) => {
             <div className={style.employee_item} key={x.id}>
                 <div className={style.employee_profile_image}>
                     {/* <img src={BASE_URL + x.photo} alt="employee-profile"/> */}
-                    <Image src={BASE_URL + x.photo} alt="employee-profile" width="65" height="65" className={style.img}/>
+                    <Image src={x.photo} alt="employee-profile" width="65" height="65" className={style.img}/>
                 </div>
                 <div className={style.employee_profile_detail}>
                     <div className={style.employee_name}><strong>{`@${x.username}` || x.number || x.email}</strong></div>

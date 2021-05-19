@@ -24,7 +24,7 @@ const MainSearch = ({ ClearSearch, mobileNav }) => {
 
 
     const search = (query, city) => {
-        axios.get(`search/${query}/${city}/`)
+        axios.get(`search/v2/${query}/${city}/`)
         .then(response => {
             setSearchResult(response.data)
         })

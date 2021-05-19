@@ -6,6 +6,7 @@ import {useState} from 'react';
 // import { connect } from 'react-redux'
 import Image from 'next/image'
 import StarRating from '../common/StarRating'
+import { BASE_URL } from '../../data/_variables';
 
 const SingleReview = ({ BASEURL, review, renderReviewReply, isReply, authenticated }) => {
     const [replyActive, setReplyActive] = useState(false)
@@ -17,7 +18,7 @@ const SingleReview = ({ BASEURL, review, renderReviewReply, isReply, authenticat
         <div className={"comment " + style.comment_imp}>
             <span className={"avatar " + style.avatar_imp}>
                 {/* <img src={BASEURL + review.user.photo} alt="employee"/> */}
-                <Image src={BASEURL + review.user.photo} layout="fill" objectFit="cover" alt="employee" className={style.avatar_img}/>
+                <Image src={review.user.photo.startsWith("h") ? review.user.photo : BASE_URL + review.user.photo} layout="fill" objectFit="cover" alt="employee" className={style.avatar_img}/>
             </span>
             <div className={"content " + style.content_imp}>
                 <span className="author">{review.user.username || review.user.email || review.user.number}</span>

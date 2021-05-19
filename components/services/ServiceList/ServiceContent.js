@@ -43,7 +43,7 @@ const ServiceContent = ({ category, openCategoryModel, setModelText, setReplacem
                     {basicRecommandation && basicRecommandation?.includes(x.id) && <div className={style.banner}>Recommanded</div>}
                     <div className={style.item_detail}>
                         <div className={style.item_image}>
-                            <Image src={BASE_URL + x.icon} width="60" height="60" alt="service_icon" className={style.img_image}/>
+                            <Image src={x.icon} width="60" height="60" alt="service_icon" className={style.img_image}/>
                         </div>
                         <div className={style.item_content}>
                             <h4>{x.name}</h4>
