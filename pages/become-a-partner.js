@@ -10,7 +10,7 @@ import Layout from '../components/common/Layout'
 export const getStaticProps = async () => {
     const BASE_URL = process.env.NODE_ENV === 'development' ? process.env['API_BASE_URL'] : process.env['API_BASE_URL_PROD']
 
-    const response = await fetch(`${BASE_URL}category/v2/hiring/`)
+    const response = await fetch(`${BASE_URL}v2/category/hiring/`)
     const data = await response.json()
     return {
         props: {
