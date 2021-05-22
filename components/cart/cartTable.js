@@ -33,9 +33,10 @@ const CartTable = ({ cart, cartDetail }) => {
                 discount = cartDetail.discount
             }
             subtotal = (Math.round(subtotal * 100) / 100).toFixed(2);
-            let cart_total = subtotal - discount
+            let tax = subtotal * 5 / 100
+            let cart_total = subtotal - discount + tax
             cart_total = (Math.round(cart_total * 100) / 100).toFixed(2);
-            newState.cart_detail = {...cartDetail, ...{cart_subtotal: subtotal, total: cart_total, discount: discount}}
+            newState.cart_detail = {...cartDetail, ...{cart_subtotal: subtotal, tax: tax, total: cart_total, discount: discount}}
             return newState
         }
     }

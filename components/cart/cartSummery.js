@@ -145,8 +145,12 @@ const CartSummary = ({ cart }) => {
                         <span>{cart.cart_detail.cart_subtotal} &#8377;</span>
                     </div>
                     <div className={style.summary_total}>
+                        <span>Tax @5%</span>
+                        <span style={{color: "red"}}>{cart?.cart_detail?.tax > 0 ? '+ ' + cart?.cart_detail?.tax : cart?.cart_detail?.tax} &#8377;</span>
+                    </div>
+                    <div className={style.summary_total}>
                         <span>Discount</span>
-                        <span style={{color: "red"}}>{cart.cart_detail.discount > 0 ? -cart.cart_detail.discount : cart.cart_detail.discount} &#8377;</span>
+                        <span style={{color: "red"}}>{cart.cart_detail.discount > 0 ? "- " + cart.cart_detail.discount : cart.cart_detail.discount} &#8377;</span>
                     </div>
                     <div className={style.summary_total}>
                         <span>Total</span>

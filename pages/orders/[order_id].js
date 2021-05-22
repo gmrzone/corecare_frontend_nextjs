@@ -68,8 +68,12 @@ const OrderDetail = ({ mobileNav }) => {
                                             <td>&#8377;{current_order?.subtotal}</td>
                                         </tr>
                                         <tr>
+                                            <td>Tax @5%</td>
+                                            <td style={{color: "red"}}>+ &#8377;{current_order?.tax}</td>
+                                        </tr>
+                                        <tr>
                                             <td>Discount</td>
-                                            <td>&#8377;{current_order?.discount}</td>
+                                            <td style={{color: "red"}}>- &#8377;{current_order?.discount}</td>
                                         </tr>
                                         <tr>
                                             <td>Total</td>
