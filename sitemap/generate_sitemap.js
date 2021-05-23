@@ -1,6 +1,5 @@
 const fs = require('fs');
-
-
+const pretty = require('prettier');
 (async () => {
     const EXTERNAL_DATA_URL = 'https://afzalsaiyed.corecare.in';
     const domain = "https://www.dev.corecare.in"
@@ -39,12 +38,13 @@ const fs = require('fs');
                             <priority>${link.priority}</priority>
                         </url>
                 `;
-            })}
+            })
+            .join('')}
         </urlset>
         `;
     const request = await fetch(EXTERNAL_DATA_URL);
     const services = await request.json();
-    const sitemap = createSitemap(services)
+    const sitemap = pretty.format(createSitemap(services), {parser: 'html'})
     fs.writeFileSync('public/sitemap.xml', sitemap)
     
 })()
