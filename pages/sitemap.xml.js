@@ -44,28 +44,28 @@ const createSitemap = (slugs) => `<?xml version="1.0" encoding="UTF-8"?>
     </urlset>
     `;
 
-// class Sitemap extends React.Component {
-//   static async getInitialProps({ res }) {
-//     const request = await fetch(EXTERNAL_DATA_URL);
-//     const posts = await request.json();
-
-//     res.setHeader('Content-Type', 'text/xml; charset=utf-8');
-//     res.write(createSitemap(posts));
-//     res.end();
-//   }
-// }
-
-// export default Sitemap;
-export const getServerSideProps = async ({ res }) => {
+class Sitemap extends React.Component {
+  static async getInitialProps({ res }) {
     const request = await fetch(EXTERNAL_DATA_URL);
     const posts = await request.json();
 
     res.setHeader('Content-Type', 'text/xml; charset=utf-8');
     res.write(createSitemap(posts));
     res.end();
+  }
 }
-const Sitemap = () => {
-    
-}   
 
-export default Sitemap
+export default Sitemap;
+// export const getServerSideProps = async ({ res }) => {
+//     const request = await fetch(EXTERNAL_DATA_URL);
+//     const posts = await request.json();
+
+//     res.setHeader('Content-Type', 'text/xml; charset=utf-8');
+//     res.write(createSitemap(posts));
+//     res.end();
+// }
+// const Sitemap = () => {
+    
+// }   
+
+// export default Sitemap
