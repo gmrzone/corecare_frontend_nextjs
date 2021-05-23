@@ -3,4 +3,4 @@ User-agent: *
 Disallow:
 
 
-Sitemap: https://www.dev.corecare.in/api/sitemap.xml
+Sitemap: https://www.dev.corecare.in/sitemap.xml
