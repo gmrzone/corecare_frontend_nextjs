@@ -65,7 +65,7 @@ export const getServerSideProps = async ({ res }) => {
     res.end();
 }
 const Sitemap = () => {
-    return null
+    
 }   
 
 export default Sitemap
