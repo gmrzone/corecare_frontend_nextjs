@@ -1,5 +1,5 @@
 import Head from 'next/head'
-const MetaComponent = ({ title, name, description, url }) => {
+const MetaComponent = ({ title, name, description="Corecare is the best cleaning and maintanence services in Mumbai. Navimumbai and Pune. Login to get Exciting offers.", url }) => {
 
     return (
         <Head>
