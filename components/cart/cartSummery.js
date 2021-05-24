@@ -10,9 +10,10 @@ import {} from 'react'
 import { AuthContext } from '../../context/AuthContext';
 import DjangoApi from '../../data/backendApi'
 import { useRouter } from 'next/router'
-// import { useHistory } from 'react-router-dom'
+import { CsrfContext } from '../../context/CsrfTokenContext'
 const CartSummary = ({ cart }) => {
-    const {userData, loginStatus} = useContext(AuthContext)
+    const { csrfToken, mutateCsrf } = useContext(CsrfContext)
+    const {loginStatus} = useContext(AuthContext)
     // const history = useHistory()
     useEffect(() => {
         const script = document.createElement('script')
@@ -56,14 +57,16 @@ const CartSummary = ({ cart }) => {
                 // alert(response.razorpay_order_id);
                 // alert(response.razorpay_signature)
                 // RazorPay success callback create a order inside django rest api
-                DjangoApi.post("create-orders/", response)
+                DjangoApi.post("create-orders/", response, {headers: {'X-CSRFToken': csrfToken}})
                 .then(response => {
                     if (response.data.status === "ok"){
                         router.push(`orders/${response.data['receipt']}/`)
+                       
                     }
                     else{
                         setError(true)
                     }
+                    mutateCsrf()
                 })
                 .catch(e => {
                     console.log(e)
@@ -97,7 +100,7 @@ const CartSummary = ({ cart }) => {
     }
 
     const createRazorPayOrder = () => {
-        DjangoApi.post('create-razorpay-orders/')
+        DjangoApi.post('create-razorpay-orders/', {}, {headers: {'X-CSRFToken': csrfToken}})
         .then(response => {
             if (response.data.status === "error" && response.data.msg ==='address_error'){
                 console.log("update Profile")
@@ -115,6 +118,7 @@ const CartSummary = ({ cart }) => {
                 razorPayHandleOrder(amount, receipt, id, user, notes)
             }
             setLoading(false)
+            mutateCsrf()
          })
          .catch(e => {
              console.log(e)
