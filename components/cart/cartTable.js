@@ -9,7 +9,9 @@ import { BaseCartContext } from '../../context/basicCartContext'
 import { DetailCartContext } from '../../context/detailCartContext'
 import { useContext } from 'react'
 import axios from '../../data/backendApi'
+import { CsrfContext } from '../../context/CsrfTokenContext'
 const CartTable = ({ cart, cartDetail }) => {
+    const { csrfToken, mutateCsrf } = useContext(CsrfContext)
     const { baseCart, mutateBaseCart } = useContext(BaseCartContext)
     const { detailCartMutate } = useContext(DetailCartContext)
 
@@ -42,26 +44,27 @@ const CartTable = ({ cart, cartDetail }) => {
     }
     const handleResponse = (response, service_id, setCartCount) => {
         mutateBaseCart({...response}, false)
+        mutateCsrf()
         const newState = generateDetailCartState(response)
         detailCartMutate(newState, false)
 
     }
     const addToCartHandler = (service_id, setCartCount) => {
         // addToCart(service_id, cartDetail.category, setCartCount)
-        axios.post('cart/add/', {service_id , category: cartDetail.category, setCartCount})
+        axios.post('cart/add/', {service_id , category: cartDetail.category, setCartCount}, {headers: {'X-CSRFToken': csrfToken}})
         .then(response => {
             handleResponse(response.data, service_id, setCartCount)
         })
     }
     const removeFromCartHandler = (service_id) => {
-        axios.post('cart/remove/', {service_id , category: cartDetail.category})
+        axios.post('cart/remove/', {service_id , category: cartDetail.category}, {headers: {'X-CSRFToken': csrfToken}})
         .then(response => {
             handleResponse(response.data, service_id)
         })
     }
     const deleteService = (service_id) => {
         
-        axios.post('cart/delete/', {service_id , category: cartDetail.category})
+        axios.post('cart/delete/', {service_id , category: cartDetail.category}, {headers: {'X-CSRFToken': csrfToken}})
         .then(response => {
             handleResponse(response.data, service_id)
         })
