@@ -4,7 +4,9 @@ import { useForm } from 'react-hook-form'
 import backendAPI from '../../data/backendApi';
 import { useContext } from 'react';
 import { AuthContext } from '../../context/AuthContext'
+import { CsrfContext } from '../../context/CsrfTokenContext'
 const ContactForm = ({ authentication, contactUs }) => {
+    const { csrfToken, mutateCsrf } = useContext(CsrfContext)
     const { userData, loginStatus } = useContext(AuthContext)
     console.log(loginStatus, userData)
     const [loading, setLoading] = useState(false)
@@ -18,10 +20,11 @@ const ContactForm = ({ authentication, contactUs }) => {
     const onSubmit = (formValues) => {
         setLoading(true)
         console.log(formValues)
-        backendAPI.post('contact/send/', formValues)
+        backendAPI.post('contact/send/', formValues, {headers: {'X-CSRFToken': csrfToken}})
         .then(response => {
             setLoading(false)
             setFormMessage({status: response.data.status, message: response.data.message})
+            mutateCsrf()
         })
         .catch(e => {
             setLoading(false)

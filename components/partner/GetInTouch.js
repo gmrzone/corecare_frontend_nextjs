@@ -7,9 +7,11 @@ import { useEffect, useState } from 'react'
 // import { partnersRequest } from '../../actions'
 import { AuthContext } from '../../context/AuthContext';
 import { useContext } from 'react';
+import { CsrfContext } from '../../context/CsrfTokenContext'
 import axios from '../../data/backendApi'
 
 const GetInTouch = ({ mobileNav, user, partnersRequest }) => {
+    const { csrfToken, mutateCsrf } = useContext(CsrfContext)
     const {userData, loginStatus} = useContext(AuthContext)
     const [formState, setFormState] = useState({loading: false, msg: null})
     const { setValue, register, handleSubmit, formState: { errors } }  = useForm()
@@ -19,9 +21,10 @@ const GetInTouch = ({ mobileNav, user, partnersRequest }) => {
         // })
         // partnersRequest(formValues, setFormState)
         setFormState({loading: true, msg: null})
-        axios.post('partner/request/', formValues)
+        axios.post('partner/request/', formValues, {headers: {'X-CSRFToken': csrfToken}})
         .then(response => {
             setFormState({loading: false, msg: response.data.message})
+            mutateCsrf()
         })
         console.log(formValues)
     }

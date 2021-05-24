@@ -10,16 +10,17 @@ import reviewContext from '../../context/ReviewContext'
 // import { createCategoryReview } from '../../../actions'
 import { CategoryContext } from './context'
 import { useForm } from 'react-hook-form'
+import { CsrfContext } from '../../context/CsrfTokenContext'
 const CreateReview = ({ parent, isReply }) => {
     const { mutateReviews , data } = useContext(reviewContext)
-
+    const { csrfToken, mutateCsrf } = useContext(CsrfContext)
     const category = useContext(CategoryContext)
     const [star, setStar] = useState(5);
     const {handleSubmit, register,formState: { errors }} = useForm()
     // const desc = ['terrible', 'bad', 'normal', 'good', 'wonderful']
     
     const createReview = (formData, category, isReply) => {
-        axios.post(`create_review/${category}/new/`, formData).then(response => {
+        axios.post(`create_review/${category}/new/`, formData, {headers: {'X-CSRFToken': csrfToken}}).then(response => {
             if (isReply){
                 mutateReviews(response.data, false)
             }
@@ -27,6 +28,7 @@ const CreateReview = ({ parent, isReply }) => {
                 mutateReviews([...data, response.data], false)
                 
             }
+            mutateCsrf()
         })
     }
     const handleForm = (formValues) => {
