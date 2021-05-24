@@ -1,8 +1,10 @@
 import { useState, useContext } from 'react'
 import style from '../../styles/cart/Cart.module.scss'
 import axios from '../../data/backendApi'
-import { DetailCartContext } from '../../context/detailCartContext' 
+import { DetailCartContext } from '../../context/detailCartContext';
+import { CsrfContext } from '../../context/CsrfTokenContext'
 const CouponBox = () => {
+    const { csrfToken, mutateCsrf } = useContext(CsrfContext)
     const { detailCartMutate } = useContext(DetailCartContext)
     const [couponValue, setCouponValue] = useState("")
     const [coupon, setCoupon] = useState({loading: false, error: false, mssg: ""})
@@ -21,9 +23,10 @@ const CouponBox = () => {
         }
         else{
             setCoupon({loading: true, error: false, mssg: ""})
-            axios.post('coupon/apply/', {coupon_code: couponValue})
+            axios.post('coupon/apply/', {coupon_code: couponValue}, {headers: {'X-CSRFToken': csrfToken}})
             .then(response => {
                 handleCouponResponse(response, setCoupon)
+                mutateCsrf()
             })
         }
         
