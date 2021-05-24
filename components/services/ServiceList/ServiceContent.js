@@ -5,8 +5,10 @@ import Image from 'next/image'
 import axios from '../../../data/backendApi';
 import { useContext } from 'react';
 import { BasicServiceRecommanderContext } from '../../../context/BasicServiceRecommander'
+import { CsrfContext } from '../../../context/CsrfTokenContext'
 const ServiceContent = ({ category, openCategoryModel, setModelText, setReplacementCartItem, services, subcategorys, incrementReplacedService, baseCart, mutateBaseCart}) => {
     const { basicRecommandation, mutate } = useContext(BasicServiceRecommanderContext)
+    const { csrfToken, mutateCsrf } = useContext(CsrfContext)
     const handleAddResponse = (response, service_id, setCartCount, openCategoryModel, setModelText, setReplacementCartItem) => {
         if (response.data.status && response.data.status === 'category_change'){
             setModelText(response.data.mssg)
@@ -16,6 +18,7 @@ const ServiceContent = ({ category, openCategoryModel, setModelText, setReplacem
         }
         else{
             mutateBaseCart({...response.data}, false)
+            mutateCsrf()
             
         }
     }
@@ -23,7 +26,7 @@ const ServiceContent = ({ category, openCategoryModel, setModelText, setReplacem
         incrementReplacedService.current = setCartCount
         // addToCart(service_id, category, opencartegoryChangeModel, setModelHeaderText, setCartCount, updateCartReplacementItem)
         // addToCart(service_id, category, setCartCount, openCategoryModel, setModelText, setReplacementCartItem)
-        axios.post('cart/add/', {service_id: service_id, category: category})
+        axios.post('cart/add/', {service_id: service_id, category: category}, {headers: {'X-CSRFToken': csrfToken}})
         .then(response => {
             handleAddResponse(response, service_id, setCartCount, openCategoryModel, setModelText, setReplacementCartItem)
             mutate()
@@ -32,7 +35,7 @@ const ServiceContent = ({ category, openCategoryModel, setModelText, setReplacem
     const removeFromCartHandler = (service_id) => {
         console.log("Remove")
         // removeFromCart(service_id)
-        axios.post('cart/remove/', {service_id: service_id})
+        axios.post('cart/remove/', {service_id: service_id},  {headers: {'X-CSRFToken': csrfToken}})
         .then(response => mutateBaseCart({...response.data}, false))
     }
 
