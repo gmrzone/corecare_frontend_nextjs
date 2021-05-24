@@ -34,7 +34,7 @@ export const getStaticProps = async () => {
 const Home = ({ services, coupons,  mobileNav, cleaner, carpenter, electrician, review }) => {
   return (
     <>
-      <MetaComponent title="Home Page" name="home Page" url={`${frontend_base}`}/>
+      <MetaComponent title="Corecare Home Page" name="home Page" url={`${frontend_base}`}/>
       <Layout HeroImage={HeroImage} mobileNav={mobileNav}>
           <ServiceBox services={services} mobileNav={mobileNav}/>
             <div className="section__first">

@@ -29,7 +29,7 @@ const SliderWrapper = ({ data, image, mobileNav, review }) => {
                     <Link href={`/services/${x.service_specialist?.slug}?afzal=${x.slug}`} key={x.id}>
                         <div className={style.slider_item_image + " image-slider-item"}>
                             <p className={style.slider_item_image_text}>{x.name}</p>
-                            <Image src={x.icon} layout="fill" objectFit="cover" className={style.slider_image} />
+                            <Image src={x.icon} layout="fill" objectFit="cover" className={style.slider_image} alt="service_subcategory"/>
                         </div>
                     </Link>
                 ) : (
