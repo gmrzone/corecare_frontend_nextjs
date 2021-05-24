@@ -1,20 +1,23 @@
 import { BASE_URL } from '../../data/_variables'
-import { useRef, useState } from 'react'
+import { useRef, useState, useContext } from 'react'
 import style from '../../styles/cart/Cart.module.scss';
 import axios from '../../data/backendApi';
 import Image from 'next/image';
+import { CsrfContext } from '../../context/CsrfTokenContext'
 const RecommandedService = ({ data, category, mutateDetailRecommander, detailCartMutate, detailCart, baseCart, mutateBaseCart }) => {
+    const { csrfToken, mutateCsrf } = useContext(CsrfContext)
     const [loading, setLoading] = useState(false);
     const addedService = useRef()
     const addToCart = (service_id) => {
         setLoading(true)
         addedService.current = service_id
-        axios.post('cart/add/from_recommanded/', { service_id, category })
+        axios.post('cart/add/from_recommanded/', { service_id, category }, {headers: {'X-CSRFToken': csrfToken}})
         .then(response => {
             setLoading(false)
             mutateDetailRecommander(response.data.recommandedServices, false)
             detailCartMutate({cart: {...response.data.added, ...detailCart.cart}, cart_detail: response.data.cart_detail}, false)
             mutateBaseCart({...baseCart, ...response.data.added}, false)
+            mutateCsrf()
         })
     }
     const renderRecommandedServices = data?.map(x => {
