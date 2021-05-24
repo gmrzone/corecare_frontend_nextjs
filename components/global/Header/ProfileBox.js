@@ -1,17 +1,44 @@
-import { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import Image from 'next/image'
 import DropDownItem from './DropDownItem'
 import BackModal from '../../common/ModalBack';
 import DropDownSame from './DropDownsame'
-import { BaseCartContext } from '../../../context/basicCartContext'
-import localStorageObj from '../../../data/localStorageObj'
+import { BaseCartContext } from '../../../context/basicCartContext';
+import djangoBackend from '../../../data/backendApi'
+import { CsrfContext } from '../../../context/CsrfTokenContext'
 
 const ProfileBox = (props) => {
+    const { csrfToken, mutateCsrf } = useContext(CsrfContext);
     const { cartCount } = useContext(BaseCartContext)
     const [dropDownActive, setDropdownActive] = useState(false);
     const handleLogout = () => {
-        localStorageObj._clearToken()
-        props.mutateAuth(null, false)
+        // localStorageObj._clearToken()
+        // djangoBackend.get('get_csrf/')
+        // .then(response => {
+        //     const csrf = response.headers['x-csrftoken']
+        //     console.log(csrf)
+
+
+
+
+        //     // fetch('http://127.0.0.1:8000/logout/v1/', {headers: new Headers({'X-CSRFToken': csrf}), method: "POST", credentials: 'include'})
+        //     // .then(response => response.json())
+        //     // .then(data => {
+        //     //     console.log(data)
+        //     //     // localStorage.removeItem('get_user')
+        //     //     props.mutateAuth(null, false)
+        //     // })
+
+        // })
+        djangoBackend.post('logout/v1/', {}, {headers: {'X-CSRFToken': csrfToken}})
+        .then(response => {
+            console.log(response)
+            localStorage.removeItem('get_user')
+            props.mutateAuth(null, false)
+        })
+
+
+
     }
     const toggleDropdown = (e) => {
         setDropdownActive(!dropDownActive)

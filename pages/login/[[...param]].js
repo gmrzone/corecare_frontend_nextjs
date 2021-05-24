@@ -6,12 +6,14 @@ import MetaComponent from '../../components/common/MetaComponent'
 import Link from 'next/link'
 import { useForm } from 'react-hook-form'
 import { frontend_base } from '../../data/_variables'
-import axios from 'axios'
-import localStorageObj from '../../data/localStorageObj'
+import axios from '../../data/backendApi'
 import { useState, useEffect, useRef } from 'react';
 import LoginFooter from '../../components/login/LoginFooter'
+import { useContext } from 'react'
+import { CsrfContext } from '../../context/CsrfTokenContext'
 
 const Login = (props) => {
+    const { csrfToken, mutateCsrf } = useContext(CsrfContext)
     const router = useRouter()
     const LoginForm = useRef();
     console.log(props.mobileNav)
@@ -19,14 +21,28 @@ const Login = (props) => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [formErr, setFormErr] = useState(null)
     const { mobileNav } = props;
+    // const submitForm = (formValues) => {
+    //     axios.post('api/token/', formValues)
+    //     .then(response => {
+    //         console.log(response)
+    //         if (response.statusText === "OK"){
+    //             console.log("Afzal")
+    //             localStorageObj._setToken(response.data.access, response.data.refresh)
+    //             router.push('/')
+    //         }
+    //     })
+    //     .catch(error => {
+    //         console.clear()
+    //         setFormErr("Invalid Username or Password")
+    //     })
+    // }
     const submitForm = (formValues) => {
-        axios.post('api/token/', formValues)
+        axios.post('login/v1/', formValues, {headers: {'X-CSRFToken': csrfToken}})
         .then(response => {
-            console.log(response)
             if (response.statusText === "OK"){
-                console.log("Afzal")
-                localStorageObj._setToken(response.data.access, response.data.refresh)
+                localStorage.setItem("get_user", true)
                 router.push('/')
+                mutateCsrf()
             }
         })
         .catch(error => {

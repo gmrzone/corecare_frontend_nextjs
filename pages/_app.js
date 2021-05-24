@@ -3,6 +3,7 @@ import useMobileNav from '../data/mobileNav'
 import '../styles/globals.css'
 import { AuthContextProvider } from '../context/AuthContext'
 import { BaseCartProvider } from '../context/basicCartContext'
+import { CsrfContextProvider } from '../context/CsrfTokenContext'
 const MyApp = ({ Component, pageProps }) => {
   const mobileNav = useMobileNav()
 
@@ -10,7 +11,9 @@ const MyApp = ({ Component, pageProps }) => {
   return (
             <AuthContextProvider>
                 <BaseCartProvider>
-                    <Component {...pageProps} mobileNav={mobileNav}/>
+                    <CsrfContextProvider>
+                        <Component {...pageProps} mobileNav={mobileNav}/>
+                    </CsrfContextProvider>
                 </BaseCartProvider>
             </AuthContextProvider>
         )
