@@ -3,7 +3,10 @@ import Link from 'next/link';
 import axios from '../../../data/backendApi'
 import { BaseCartContext } from '../../../context/basicCartContext'
 import { useContext } from 'react'
+import { CsrfContext } from '../../../context/CsrfTokenContext'
 const categoryChangeModel = (props) => {
+    const { csrfToken, mutateCsrf } = useContext(CsrfContext)
+
     const {category, replacementItem: service_id} = props
     const { mutateBaseCart } = useContext(BaseCartContext)
     const replaceCart = () => {
@@ -13,11 +16,12 @@ const categoryChangeModel = (props) => {
         axios.get('cart/clear/')
         .then(response => {
             if (response.data.status === 'ok'){
-                axios.post('cart/add/', {service_id: service_id, category: category})
+                axios.post('cart/add/', {service_id: service_id, category: category}, {headers: {'X-CSRFToken': csrfToken}})
                 .then(response => {
                     mutateBaseCart({...response.data}, false)
                     props.closeModel()
                     props.incrementReplacedService(c => c + 1)
+                    mutateCsrf()
                 })
             }
         })
