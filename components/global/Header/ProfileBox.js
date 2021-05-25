@@ -93,7 +93,7 @@ const ProfileBox = (props) => {
                         <i className="far fa-times" onClick={() => setDropdownActive(false)} />
                         <div className="close-text">Go back</div>
                     </div>) : null}
-                {props.authentication ? <div className="nav-welcome-mssg">Welcome {props.authentication.username || props.authentication.first_name || props.authentication.number}</div> : ""}
+                {props.authentication && !props.blog ? <div className="nav-welcome-mssg">Welcome {props.authentication.username || props.authentication.first_name || props.authentication.number}</div> : ""}
                 {renderDropDownItems}
             </div>
             <style jsx global>{`

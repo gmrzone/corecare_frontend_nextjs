@@ -1,5 +1,6 @@
 import Link from 'next/link'
 const NavItem = (props) => {
+    
     return(
         <li className="nav-item">
             <Link href={props.to}>

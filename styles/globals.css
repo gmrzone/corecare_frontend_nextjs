@@ -613,6 +613,7 @@ a:hover {
   padding: 15px 0px;
   padding-left: 40px;
   font-size: 16px;
+  white-space: nowrap;
 }
 
 .profile-box .profile-box-dropdown .drop-down-link:hover {
@@ -629,7 +630,7 @@ a:hover {
   .profile-box .profile-box-dropdown {
     border-radius: 5px;
     right: 0;
-    top: 56px;
+    top: 54px;
     padding: 10px 0;
     height: auto;
     width: auto;

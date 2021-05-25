@@ -2,6 +2,7 @@ import Header from '../global/Header'
 import Footer from '../global/Footer'
 import SignUpModel from '../signup'
 import { useState } from 'react'
+import {ProfileBoxitem, ProfileBoxitemLogin, ProfileBoxitemMobileLogin, navItem, ProfileBoxitemMobile } from '../../data/_variables'
 const Layout = ({ children, HeroImage=null, mobileNav, heroProps, ServiceListModel=null, serviceListProps, Modal=null, modalProps, FooterSeft=null }) => {
     const [signUpActive, setSignUpActive] = useState(false)
     return (
@@ -11,7 +12,7 @@ const Layout = ({ children, HeroImage=null, mobileNav, heroProps, ServiceListMod
                 {Modal && <Modal {...modalProps}/>}
                 <div id="model"></div>
                 <SignUpModel modelActive={signUpActive} closeSignup={() => setSignUpActive(false)}/>
-                <Header mobileNav={mobileNav} openSignup={() => setSignUpActive(true)}/>
+                <Header mobileNav={mobileNav} openSignup={() => setSignUpActive(true)} ProfileBoxitem={ProfileBoxitem} ProfileBoxitemLogin={ProfileBoxitemLogin} ProfileBoxitemMobileLogin={ProfileBoxitemMobileLogin} ProfileBoxitemMobile={ProfileBoxitemMobile} navItem={navItem} />
                 {HeroImage && <HeroImage {...heroProps} mobileNav={mobileNav}/>}
                 <main>
                     {children}
