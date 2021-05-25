@@ -8,10 +8,20 @@ import Image from 'next/image';
 import Link from 'next/link';
 import ServiceCategoryUnavailable from './ServiceCategoryUnavailable';
 import { CategoryModalContext } from '../../../context/categoryChangeModal'
+import { doc } from 'prettier';
 const ServiceList = ({ category, active, setActive, reference,  subcategorys, mobileNav, searchParam, services }) => {
     const { baseCart, mutateBaseCart, cartCount } = useContext(BaseCartContext)
 
     const { openCategoryModel , setModelHeaderText , setReplacementCartItem, incrementReplacedService} = useContext(CategoryModalContext)
+
+    useEffect(() => {
+        if (active){
+            document.body.style.overflowY = "hidden";
+        }
+        else {
+            document.body.style.overflowY = "auto";
+        }
+    }, [active])
     
 
     return (

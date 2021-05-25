@@ -252,7 +252,15 @@
                         position: absolute;
                         right: 0;
                         left: 0;
-                        top: 0;
+                        top: 0px;
+                        transition: opacity .1s ease-in-out;
+                    }
+                    .banner_hide {
+
+                    }
+                    .banner_visable {
+                        background: #008fcc;
+                        right: 0;
                     }
 
                 }

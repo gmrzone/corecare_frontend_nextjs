@@ -43,7 +43,8 @@ const ServiceContent = ({ category, openCategoryModel, setModelText, setReplacem
         return itemList.map(x => {
             return (
                 <div className={style.service_category_items + `${basicRecommandation && basicRecommandation?.includes(x.id) ? " " + style.recommanded : ""}`} key={x.id}>
-                    {basicRecommandation && basicRecommandation?.includes(x.id) && <div className={style.banner}>Recommanded</div>}
+                    {/* {basicRecommandation && basicRecommandation?.includes(x.id) && <div className={style.banner}>Recommanded</div>} */}
+                    <div className={style.banner + " banner_status"}>Recommanded</div>
                     <div className={style.item_detail}>
                         <div className={style.item_image}>
                             <Image src={x.icon} width="60" height="60" alt="service_icon" className={style.img_image}/>
@@ -60,8 +61,11 @@ const ServiceContent = ({ category, openCategoryModel, setModelText, setReplacem
                             <li key={i}>{x}</li>
                         ))}
                     </ul> : ""}
-                    
-                    
+                    <style jsx>{`
+                        .banner_status {
+                            opacity: ${basicRecommandation && basicRecommandation?.includes(x.id) ? "1" : "0"};
+                        }
+                    `}</style>
                 </div>
             )
         })
