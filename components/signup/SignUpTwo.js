@@ -5,6 +5,8 @@ export const SignUpPageTwo = ({
   signUpSettings,
   setSignUpHeader,
   signUpData,
+  csrfToken, 
+  mutateCsrf
 }) => {
 
   const [otpError, setOtpError] = useState({ error: false, message: null });
@@ -31,7 +33,7 @@ export const SignUpPageTwo = ({
   const onSubmit = (formValues) => {
     setLoading(true);
     formValues.number = signUpData.number;
-    BackendApi.post('create_user_account/verify/', formValues)
+    BackendApi.post('create_user_account/verify/', formValues, {headers: {'X-CSRFToken': csrfToken}})
     .then(response => {
       if (response.data.status === 'error'){
         setOtpError({error: true, message: response.data.msg})
@@ -42,6 +44,7 @@ export const SignUpPageTwo = ({
         })
       }
       setLoading(false)
+      mutateCsrf()
     })
   };
   const goBack = () => {

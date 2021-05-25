@@ -3,7 +3,7 @@ import Link from 'next/link'
 import NumberField from '../common/NumberField';
 import { useForm } from 'react-hook-form'
 import BackendApi from '../../data/backendApi'
-const SignUpPageOne = ({ setSignUpHeader, signUpSettings, closeSignup }) => {
+const SignUpPageOne = ({ setSignUpHeader, signUpSettings, closeSignup, csrfToken, mutateCsrf }) => {
     const [formError, setFormError] = useState({status: null, message: null})
     const { register, handleSubmit, formState: { errors } } = useForm()
     const [loading, setLoading] = useState(false)
@@ -17,7 +17,7 @@ const SignUpPageOne = ({ setSignUpHeader, signUpSettings, closeSignup }) => {
 
     const submitForm = (formValues) => {
         setLoading(true)
-        BackendApi.post('create_user_account/', formValues)
+        BackendApi.post('create_user_account/', formValues, {headers: {'X-CSRFToken': csrfToken}})
         .then(response => {
             if (response.data.status === "ok"){
                 signUpSettings(state => {
@@ -28,6 +28,7 @@ const SignUpPageOne = ({ setSignUpHeader, signUpSettings, closeSignup }) => {
                 setFormError({status: "error", message: response.data.msg})
             }
             setLoading(false)
+            mutateCsrf()
         })
         .catch(err => {
             console.log(err)

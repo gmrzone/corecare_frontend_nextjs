@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import { useState } from 'react';
 import { useForm } from 'react-hook-form'
 import BackendApi from '../../data/backendApi'
-const SignUpPageThree = ({ signUpstate, signUpUpdateProfile, closeModel, successPath, payButton }) => {
+const SignUpPageThree = ({ signUpstate, signUpUpdateProfile, closeModel, successPath, payButton, csrfToken, mutateCsrf }) => {
     const history = useRouter()
     const [loading, setLoading] = useState(false)
     const [formSection, nextFormSection] = useState(0)
@@ -15,7 +15,7 @@ const SignUpPageThree = ({ signUpstate, signUpUpdateProfile, closeModel, success
         formValues.password = signUpstate.password
         // signUpUpdateProfile(formValues, closeModel, setLoading, setFormError, history, successPath, payButton)
         setLoading(true)
-        BackendApi.post('create_user_account/additional/', formValues)
+        BackendApi.post('create_user_account/additional/', formValues, {headers: {'X-CSRFToken': csrfToken}})
         .then(response => {
             if (response.data.status === 'ok'){
                 setLoading(false)
@@ -33,6 +33,7 @@ const SignUpPageThree = ({ signUpstate, signUpUpdateProfile, closeModel, success
                 setLoading(false)
                 setFormError({status: 'error', msg: response.data.msg})
             }
+            mutateCsrf()
         })
         
     }

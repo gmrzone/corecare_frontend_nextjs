@@ -6,7 +6,7 @@ import BackendApi from '../../data/backendApi'
 // import defaultProfile from '../../images/default-profile.png'
 import ImageCropModel from './ImageCropModel';
 import { extractImageFileExtensionFromBase64, base64StringtoFile } from './codeCamputils'
-const ProfileAvatarUpdate = ({ mobile, signUpstate, setSignUpstate }) => {
+const ProfileAvatarUpdate = ({ mobile, signUpstate, setSignUpstate, csrfToken, mutateCsrf  }) => {
     // Button loading
     const [loading, setLoading] = useState(false)
     const [imageUpdateError, setImageUpdateError] = useState({'error': false, message: ""})
@@ -30,7 +30,7 @@ const ProfileAvatarUpdate = ({ mobile, signUpstate, setSignUpstate }) => {
         }
         formData.append('number', number)
         formData.append('password', password)
-        BackendApi.post('create_user_account/profile-image/', formData)
+        BackendApi.post('create_user_account/profile-image/', formData, {headers: {'X-CSRFToken': csrfToken}})
         .then(response => {
             if (response.data.status === 'ok'){
                 setLoading(false)
@@ -44,6 +44,7 @@ const ProfileAvatarUpdate = ({ mobile, signUpstate, setSignUpstate }) => {
                     return {...state, profilePicUpdated: false}
                 })
             }
+            mutateCsrf()
             
         })
     }
