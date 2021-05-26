@@ -102,7 +102,9 @@ const Header = (props) => {
       router.pathname === "/cart" ||
       router.pathname === "/orders" ||
       router.pathname === "/orders/[order_id]" ||
-      router.pathname === "/blog"
+      router.pathname === "/blog" ||
+      router.pathname === "/blog/create" ||
+      router.pathname === "/blog/[slug]/[post_id]"
     ) {
       return {
         backgroundColor: "black",
