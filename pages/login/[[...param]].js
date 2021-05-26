@@ -21,6 +21,7 @@ const Login = (props) => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [formErr, setFormErr] = useState(null)
     const { mobileNav } = props;
+    const [loading, setLoading] = useState(false)
     // const submitForm = (formValues) => {
     //     axios.post('api/token/', formValues)
     //     .then(response => {
@@ -37,10 +38,12 @@ const Login = (props) => {
     //     })
     // }
     const submitForm = (formValues) => {
+        setLoading(true)
         axios.post('login/v1/', formValues, {headers: {'X-CSRFToken': csrfToken}})
         .then(response => {
             if (response.statusText === "OK"){
                 localStorage.setItem("get_user", true)
+                setLoading(false)
                 router.push('/')
                 mutateCsrf()
             }
@@ -92,7 +95,7 @@ const Login = (props) => {
                                     <button className="ui secondary button" onClick={() => props.openSignup()} type="button">
                                         Signup
                                     </button>
-                                    <button className="ui positive right labeled icon button" type="submit">
+                                    <button className={`ui positive right labeled icon button ${loading && "loading"}`} type="submit">
                                         Login
                                         <i className="checkmark icon"></i>
                                     </button>
