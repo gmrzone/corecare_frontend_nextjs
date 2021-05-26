@@ -1,0 +1,40 @@
+@import "../variables";
+.blog_create {
+    margin: 20px 0;
+
+
+    .editor_toolbox {
+        display: flex;
+        width: 100%;
+        background: map-get($map: $colors, $key: main);
+        border-top-left-radius: .28571429rem;
+        border-top-right-radius: .28571429rem;
+        margin: 0;
+        
+
+        .toolbox_button {
+            
+            font-size: 26px;
+            color: white;
+            padding: 8px 10px;
+            padding-top: 10px;
+            line-height: 1;
+            cursor: pointer;
+            width: 38px;
+
+            &:hover {
+                background: lighten(map-get($colors, main), 20%);
+            }
+        }
+
+        .editor_bold {
+            font-weight: bold;
+        }
+        .editor_italic {
+            font-style: italic;
+        }
+        .editor_underline {
+            text-decoration: underline;
+        }
+    }
+}
