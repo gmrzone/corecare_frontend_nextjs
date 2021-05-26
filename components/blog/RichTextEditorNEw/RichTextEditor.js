@@ -22,21 +22,20 @@ import RichToolbox from './RichToolbox'
 const RichTextEditor = () => {
     const [editorState, setEditorState] = useState(EditorState.createEmpty())
     const onChange = state => setEditorState(state)
-    const styleMap = {
-        CODE: {
-          backgroundColor: 'rgba(0, 0, 0, 0.05)',
-          fontFamily: '"Inconsolata", "Menlo", "Consolas", monospace',
-          fontSize: 16,
-          padding: 4,
-        },
-        BOLD: {
-          color: '#395296',
-          fontWeight: 'bolder',
-        },
-        ANYCUSTOMSTYLE: {
-          color: '#00e400',
-        },
-      }
+        const styleMap = {
+            'code-block': {
+            backgroundColor: 'rgba(0, 0, 0, 0.05)',
+            fontFamily: '"Inconsolata", "Menlo", "Consolas", monospace',
+            fontSize: 16,
+            padding: 4,
+            },
+            'BOLD': {
+            color: '#000000',
+            fontWeight: 'bold',
+            }
+        }
+
+
     const onBoldClick = () => {
         onChange(RichUtils.toggleInlineStyle(editorState, 'BOLD'));
       }
@@ -46,6 +45,9 @@ const RichTextEditor = () => {
     }
     const onUnderLineClick = () => {
         onChange(RichUtils.toggleInlineStyle(editorState, 'UNDERLINE'))
+    }
+    const onCodeClick = () => {
+        onChange(RichUtils.toggleBlockType(editorState, 'code-block'))
     }
 
     const handleKeyCommand = (command, editorState) => {
@@ -59,7 +61,7 @@ const RichTextEditor = () => {
       }
     return (
         <div className="editor-container">
-            <RichToolbox onBoldClick={onBoldClick} onItalicClick={onItalicClick} onUnderLineClick={onUnderLineClick} />
+            <RichToolbox onBoldClick={onBoldClick} onItalicClick={onItalicClick} onUnderLineClick={onUnderLineClick} onCodeClick={onCodeClick}/>
             <div className="editor">
                 <Editor customStyleMap={styleMap} editorState={editorState} onChange={onChange} placeholder="Tell a Story" handleKeyCommand={handleKeyCommand} />
             </div>

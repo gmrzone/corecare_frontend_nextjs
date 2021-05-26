@@ -336,7 +336,7 @@ p {
 span {
   font-size: 12px;
   /* font-weight: 400; */
-  color: #737373;
+  /* color: #737373; */
 }
 
 @media (min-width: 993px) {
@@ -1002,7 +1002,7 @@ div.DraftEditor-root:focus-within {
 div.DraftEditor-root span {
   font-family: Axiforma ,-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   font-size: 1.4rem;
-  color: rgba(0,0,0,.87);
+  /* color: rgba(0,0,0,.87); */
   /* font-weight: 400; */
 }
 

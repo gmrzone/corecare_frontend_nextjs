@@ -1,6 +1,7 @@
 // import RichTextEditor from './RichTextEditor/CreateRichTextEditor';
 import dynamic from 'next/dynamic';
 
+
 // const RichTextEditor = dynamic(() => import("./RichTextEditor/CreateRichTextEditor"), {
 //     ssr: false,
 //   })
