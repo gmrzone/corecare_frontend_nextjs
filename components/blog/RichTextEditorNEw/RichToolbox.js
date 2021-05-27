@@ -34,7 +34,7 @@ const RichToolbox = ({ onBoldClick , onItalicClick, onUnderLineClick, onCodeClic
                 <span className={style.toolbox_button + " " + style.editor_code} onClick={onCodeClick   }>
                     <i className={`fad fa-quote-left ${style.icon}`} />
                 </span>
-                <span className={style.toolbox_button + " " + style.editor_code} onClick={onCodeClick   }>
+                <span className={style.toolbox_button + " " + style.editor_code + " " + style.icon} onClick={onCodeClick   }>
                     <i className={`fa fa-list-ol ${style.icon}`} aria-hidden="true" />
                 </span>
                 <span className={style.toolbox_button + " " + style.editor_code} onClick={onCodeClick   }>

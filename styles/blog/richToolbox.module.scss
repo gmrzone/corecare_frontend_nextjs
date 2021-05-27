@@ -8,25 +8,31 @@
     border-top-right-radius: .28571429rem;
     margin: 0;
     row-gap: 10px;
+    justify-content: flex-start;
+    align-items: center;
     
     .editor_block {
         display: flex;
         flex-wrap: nowrap;
         margin-right: 20px;
         height: 34px;
+        align-items: center;
     }
     .toolbox_button {
         
         font-size: 20px;
         color: white;
         padding: 10px;
-        line-height: 1;
+        line-height: 0.8;
         cursor: pointer;
         // width: 38px;
         white-space: nowrap;
         &:hover {
             background: lighten(map-get($colors, main), 20%);
         }
+    }
+    .icon {
+        // padding: 0px;
     }
     .editor_colors {
         background: white;
