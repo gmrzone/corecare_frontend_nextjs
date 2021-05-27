@@ -45,13 +45,13 @@ const RichToolbox = ({ onBoldClick , onItalicClick, onUnderLineClick, onCodeClic
             <HeadingDropDown options={alignIcons} defaultSelected={alignIcons[0]} width="50px" height="auto"/>
             {/* <div className={style.editor_block + " " + style.editor_inline}>
                 <span className={style.toolbox_button + " " + style.editor_code} onClick={onCodeClick   }>
-                    <i class="fa fa-align-left" aria-hidden="true" />
+                    <i className="fa fa-align-left" aria-hidden="true" />
                 </span>
                 <span className={style.toolbox_button + " " + style.editor_code} onClick={onCodeClick   }>
-                    <i class="fa fa-align-center" aria-hidden="true" />
+                    <i className="fa fa-align-center" aria-hidden="true" />
                 </span>
                 <span className={style.toolbox_button + " " + style.editor_code} onClick={onCodeClick   }>
-                    <i class="fa fa-align-right" aria-hidden="true" />
+                    <i className="fa fa-align-right" aria-hidden="true" />
                 </span>
             </div> */}
         </div>

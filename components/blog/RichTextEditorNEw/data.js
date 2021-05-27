@@ -59,18 +59,18 @@ for (let i = 8; i <= 72; i+=2){
 const alignIcons = [
     {
         id: `icon_${1}`,
-        name: <i class="fa fa-align-left" aria-hidden="true" />,
+        name: <i className="fa fa-align-left" aria-hidden="true" />,
         block_name: 'align-left',
         class_name: 'align_left',
     },
     {
         id: `icon_${2}`,
-        name: <i class="fa fa-align-center" aria-hidden="true" />,
+        name: <i className="fa fa-align-center" aria-hidden="true" />,
         block_name: 'align-center',
         class_name: 'align_center',
     },    {
         id: `icon_${3}`,
-        name: <i class="fa fa-align-right" aria-hidden="true" />,
+        name: <i className="fa fa-align-right" aria-hidden="true" />,
         block_name: 'align-right',
         class_name: 'align_right',
     }
