@@ -1,6 +1,7 @@
 import style from '../../../styles/blog/richToolbox.module.scss';
 import HeadingDropDown from './HeadingDropdown'
 import ColorDropdown from './ColorDropDown'
+import FontSizeDropDown from './FontSizeDropdown'
 const RichToolbox = ({ onBoldClick , onItalicClick, onUnderLineClick, onCodeClick }) => {
     const BLOCK_TYPES = [
         { label: " “ ” ", style: "blockquote" },
@@ -23,6 +24,7 @@ const RichToolbox = ({ onBoldClick , onItalicClick, onUnderLineClick, onCodeClic
                     U
                 </span>
             </div>
+            <FontSizeDropDown />
             <div className={style.editor_block + " " + style.editor_inline}>
                 <span className={style.toolbox_button + " " + style.editor_code} onClick={onCodeClick   }>
                 {"{ }"}
