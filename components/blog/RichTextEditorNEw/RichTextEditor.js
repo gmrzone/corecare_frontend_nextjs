@@ -1,9 +1,10 @@
-import { useState } from 'react';
-import ReactDOM from 'react-dom';
+import { useState, useRef } from 'react';
 import {Editor, EditorState, RichUtils} from 'draft-js';
+import Draft from 'draft-js'
 import 'draft-js/dist/Draft.css';
 import RichToolbox from './RichToolbox'
-
+import AlignContent from './blocks/AlignContent'
+import Immutable from 'immutable'
 // class RichTextEditor extends React.Component {
 //   constructor(props) {
 //     super(props);
@@ -17,7 +18,7 @@ import RichToolbox from './RichToolbox'
 //     );
 //   }
 // }
-
+    
 
 const RichTextEditor = () => {
     const [editorState, setEditorState] = useState(EditorState.createEmpty())
@@ -52,6 +53,21 @@ const RichTextEditor = () => {
     const onBlockCHange = (code => {
         onChange(RichUtils.toggleBlockType(editorState, code))
     })
+    const blockRender = Immutable.Map({
+        'AlignCenter': {
+          element: "section",
+          wrapper: <AlignContent align="center"/>,
+        },
+        "AlignLeft": {
+            element: "section",
+            wrapper: <AlignContent align="flex-start"/>,
+        },
+        "AlignRight": {
+            element: "section",
+            wrapper: <AlignContent align="flex-end"/>,
+        },
+      });
+    const extendedBlockRenderMap = Draft.DefaultDraftBlockRenderMap.merge(blockRender);
     const handleKeyCommand = (command, editorState) => {
         const newState = RichUtils.handleKeyCommand(editorState, command);
         if (newState) {
@@ -63,9 +79,9 @@ const RichTextEditor = () => {
       }
     return (
         <div className="editor-container">
-            <RichToolbox onBoldClick={onBoldClick} onItalicClick={onItalicClick} onUnderLineClick={onUnderLineClick} onBlockChange={onBlockCHange}/>
+            <RichToolbox onBoldClick={onBoldClick} onItalicClick={onItalicClick} onUnderLineClick={onUnderLineClick} onBlockChange={onBlockCHange} />
             <div className="editor">
-                <Editor customStyleMap={styleMap} editorState={editorState} onChange={onChange} placeholder="Tell a Story" handleKeyCommand={handleKeyCommand} />
+                <Editor  blockRenderMap={extendedBlockRenderMap} customStyleMap={styleMap} editorState={editorState} onChange={onChange} placeholder="Tell a Story" handleKeyCommand={handleKeyCommand} />
             </div>
         </div>
     )

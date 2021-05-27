@@ -967,6 +967,7 @@ div.DraftEditor-root {
   background: #fff;
   line-height: 1.21428571em;
   padding: .67857143em 1em;
+  padding-bottom: 0px;
   height: 300px;
   font-size: 1.4rem;
   color: rgba(0,0,0,.87);
@@ -993,6 +994,12 @@ div.DraftEditor-root:focus-within {
     box-shadow: 0 0 0 0 rgb(34 36 38 / 35%) inset;
     font-size: 1.4rem;
 }
+div.DraftEditor-editorContainer {
+  height: 100%;
+}
+div.notranslate .public-DraftEditor-content {
+  height: 100%;
+}
 
 
 
@@ -1006,6 +1013,13 @@ pre {
   margin: 0;
   font-family:Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New !important;
   font-size: 14px !important;
+}
+
+blockquote {
+  border-left: 6px solid #FF385C;
+  margin-left: 0;
+  padding-left: 22px;
+  font-style: italic;
 }
 .public-DraftStyleDefault-pre {
   word-wrap: normal;

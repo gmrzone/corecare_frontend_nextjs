@@ -2,7 +2,8 @@ import style from '../../../styles/blog/richToolbox.module.scss';
 import HeadingDropDown from './HeadingDropdown'
 import ColorDropdown from './ColorDropDown'
 // import FontSizeDropDown from './FontSizeDropdown'
-import { headingOptions, FontSizeData, alignIcons } from './data'
+import { headingOptions, FontSizeData, alignIcons } from './data';
+
 const RichToolbox = ({ onBoldClick , onItalicClick, onUnderLineClick, onBlockChange }) => {
     const BLOCK_TYPES = [
         { id: "afzal", label: "{ }", style: "code-block" },
@@ -18,9 +19,10 @@ const RichToolbox = ({ onBoldClick , onItalicClick, onUnderLineClick, onBlockCha
             </span>
         )
     })
+
     return (
         <div className={style.editor_toolbox}>
-            <HeadingDropDown options={headingOptions} defaultSelected={headingOptions[0]} width="100px" heading={true} onBlockChange={onBlockChange}/>
+            <HeadingDropDown options={headingOptions} defaultSelected={headingOptions[0]} width="100px" onBlockChange={onBlockChange} />
             <div className={style.editor_block + " " + style.editor_inline}>
                 <span className={style.editor_bold + " " + style.toolbox_button} onClick={onBoldClick}>
                     B
@@ -32,7 +34,7 @@ const RichToolbox = ({ onBoldClick , onItalicClick, onUnderLineClick, onBlockCha
                     U
                 </span>
             </div>
-            <HeadingDropDown options={FontSizeData} defaultSelected={FontSizeData[2]} width="70px"/>
+            <HeadingDropDown options={FontSizeData} defaultSelected={FontSizeData[2]} width="70px" fontBlock={true}/>
             {/* <FontSizeDropDown /> */}
             <div className={style.editor_block + " " + style.editor_inline}>
                 {/* <span className={style.toolbox_button + " " + style.editor_code} onClick={() => onBlockChange('code-block')}>
@@ -50,7 +52,7 @@ const RichToolbox = ({ onBoldClick , onItalicClick, onUnderLineClick, onBlockCha
                 {renderBlocks}
             </div>
             <ColorDropdown />
-            <HeadingDropDown options={alignIcons} defaultSelected={alignIcons[0]} width="50px" height="auto"/>
+            <HeadingDropDown options={alignIcons} defaultSelected={alignIcons[0]} width="50px" height="auto" onBlockChange={onBlockChange}/>
             <div className={style.editor_block + " " + style.editor_inline}>
                 <span className={style.toolbox_button + " " + style.editor_code}>
                     <i className="fa fa-link" aria-hidden="true" />

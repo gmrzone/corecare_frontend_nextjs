@@ -60,18 +60,18 @@ const alignIcons = [
     {
         id: `icon_${1}`,
         name: <i className="fa fa-align-left" aria-hidden="true" />,
-        block_name: 'align-left',
+        block_name: 'AlignLeft',
         class_name: 'align_left',
     },
     {
         id: `icon_${2}`,
         name: <i className="fa fa-align-center" aria-hidden="true" />,
-        block_name: 'align-center',
+        block_name: 'AlignCenter',
         class_name: 'align_center',
     },    {
         id: `icon_${3}`,
         name: <i className="fa fa-align-right" aria-hidden="true" />,
-        block_name: 'align-right',
+        block_name: 'AlignRight',
         class_name: 'align_right',
     }
 ]

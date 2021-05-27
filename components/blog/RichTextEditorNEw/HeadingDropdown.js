@@ -2,7 +2,7 @@ import style from '../../../styles/blog/richToolbox.module.scss';
 import { useState, useEffect } from 'react';
 
 
-const HeadingDropdown = ({ options, defaultSelected, width, heading,  onBlockChange, height="120px" }) => {
+const HeadingDropdown = ({ options, defaultSelected, width, fontBlock,  onBlockChange, height="120px", heading, setActiveHeadingBlock }) => {
 
     const [dropDownActive, setDropdownActive] = useState(false)
 
@@ -20,15 +20,19 @@ const HeadingDropdown = ({ options, defaultSelected, width, heading,  onBlockCha
     }, [dropDownActive])
 
     const [selectedItem, setSelectedItem] = useState(defaultSelected)
-    const handleBlockClick = (code) => {
-        if (heading){
-            onBlockChange(code)
+
+
+    const handleBlockClick = (x) => {
+        if (!fontBlock){
+            onBlockChange(x.block_name)
+            setSelectedItem(x)
         }
 
     }
+    
     const renderOptions = options.filter(x => x.id !== selectedItem.id)
                           .map(x => {
-                            return <span className={style[x.class_name] + " " + style.headings} key={x.id} onClick={() => setSelectedItem(x)} onClick={() => handleBlockClick(x.block_name)}>{x.name}</span>
+                            return <span className={style[x.class_name] + " " + style.headings} key={x.id} onClick={() => handleBlockClick(x)}>{x.name}</span>
                           })
     const toggleDropDown = (e) => {
             // e.stopPropagation()        
