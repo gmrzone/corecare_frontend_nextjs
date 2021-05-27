@@ -91,7 +91,6 @@
         margin-right: 20px;
         border-radius: 2px;
         padding: 0 10px;
-        width: 100px;
         cursor: pointer;
 
         .selected {
@@ -111,9 +110,8 @@
             }
         }
         .options {
-            // width: 100px;
-            // height: 120px;
-            overflow-y: auto;
+
+            overflow-y: auto    ;
             position: absolute;
             top: 42px;
             right: 0px;
