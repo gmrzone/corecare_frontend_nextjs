@@ -46,10 +46,12 @@ const RichTextEditor = () => {
     const onUnderLineClick = () => {
         onChange(RichUtils.toggleInlineStyle(editorState, 'UNDERLINE'))
     }
-    const onCodeClick = () => {
-        onChange(RichUtils.toggleBlockType(editorState, 'code-block'))
-    }
-
+    // const onCodeClick = () => {
+    //     onChange(RichUtils.toggleBlockType(editorState, 'code-block'))
+    // }
+    const onBlockCHange = (code => {
+        onChange(RichUtils.toggleBlockType(editorState, code))
+    })
     const handleKeyCommand = (command, editorState) => {
         const newState = RichUtils.handleKeyCommand(editorState, command);
         if (newState) {
@@ -61,7 +63,7 @@ const RichTextEditor = () => {
       }
     return (
         <div className="editor-container">
-            <RichToolbox onBoldClick={onBoldClick} onItalicClick={onItalicClick} onUnderLineClick={onUnderLineClick} onCodeClick={onCodeClick}/>
+            <RichToolbox onBoldClick={onBoldClick} onItalicClick={onItalicClick} onUnderLineClick={onUnderLineClick} onBlockChange={onBlockCHange}/>
             <div className="editor">
                 <Editor customStyleMap={styleMap} editorState={editorState} onChange={onChange} placeholder="Tell a Story" handleKeyCommand={handleKeyCommand} />
             </div>

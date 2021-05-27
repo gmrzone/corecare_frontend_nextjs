@@ -8,37 +8,37 @@ export const headingOptions = [
     {
         id: 2,
         name: "H1",
-        block_name: 'heading-one',
+        block_name: 'header-one',
         class_name: 'heading_h1',
     },
     {
         id: 3,
         name: "H2",
-        block_name: 'heading-two',
+        block_name: 'header-two',
         class_name: 'heading_h2',
     },
     {
         id: 4,
         name: "H3",
-        block_name: 'heading-three',
+        block_name: 'header-three',
         class_name: 'heading_h3',
     },
     {
         id: 5,
         name: "H4",
-        block_name: 'heading-four',
+        block_name: 'header-four',
         class_name: 'heading_h4',
     },
     {
         id: 6,
         name: "H5",
-        block_name: 'heading-five',
+        block_name: 'header-five',
         class_name: 'heading_h5',
     },
     {
         id: 7,
         name: "H6",
-        block_name: 'heading-six',
+        block_name: 'header-six',
         class_name: 'heading_h6',
     }
 ]
@@ -51,7 +51,7 @@ for (let i = 8; i <= 72; i+=2){
             id: `f${i}`,
             name: `${i}px`,
             block_name: `size_${i}`,
-            class_name: `fontsize_${i}`
+            class_name: 'font_size',
         }
     )
 }

@@ -132,9 +132,8 @@
                 display: block;
                 padding: 8px;
                 color: black;
-                font-weight: bold;
                 cursor: pointer;
-
+                
                 &:hover {
                     background: lighten(map-get($colors, main), 10%);
                     color: white;
