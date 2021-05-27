@@ -37,7 +37,7 @@
         margin-right: 20px;
         border-radius: 2px;
         padding: 0 10px;
-        width: 50px;
+        width: 55px;
         cursor: pointer;
         position: relative;
 
@@ -61,7 +61,7 @@
             background: lighten(map-get($colors, main), 95%);
             box-shadow: rgb(0 0 0 / 16%) 0px 3px 6px, rgb(0 0 0 / 23%) 0px 3px 6px;
             top: 42px;
-            left: 0px;
+            left: -30px;
             position: absolute;
             width: 132px;
             height: 126px;
@@ -71,6 +71,9 @@
             padding: 5px;
             flex-wrap: wrap;
 
+            @media (min-width: 321px){
+                left: 0px;
+            }
             .color_item {
                 height: 18px;
                 width: 18px;
