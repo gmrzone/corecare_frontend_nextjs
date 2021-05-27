@@ -1,7 +1,8 @@
 import style from '../../../styles/blog/richToolbox.module.scss';
 import HeadingDropDown from './HeadingDropdown'
 import ColorDropdown from './ColorDropDown'
-import FontSizeDropDown from './FontSizeDropdown'
+// import FontSizeDropDown from './FontSizeDropdown'
+import { headingOptions, FontSizeData, alignIcons } from './data'
 const RichToolbox = ({ onBoldClick , onItalicClick, onUnderLineClick, onCodeClick }) => {
     const BLOCK_TYPES = [
         { label: " “ ” ", style: "blockquote" },
@@ -12,7 +13,7 @@ const RichToolbox = ({ onBoldClick , onItalicClick, onUnderLineClick, onCodeClic
 
     return (
         <div className={style.editor_toolbox}>
-            <HeadingDropDown />
+            <HeadingDropDown options={headingOptions} defaultSelected={headingOptions[0]} width="100px"/>
             <div className={style.editor_block + " " + style.editor_inline}>
                 <span className={style.editor_bold + " " + style.toolbox_button} onClick={onBoldClick}>
                     B
@@ -24,7 +25,8 @@ const RichToolbox = ({ onBoldClick , onItalicClick, onUnderLineClick, onCodeClic
                     U
                 </span>
             </div>
-            <FontSizeDropDown />
+            <HeadingDropDown options={FontSizeData} defaultSelected={FontSizeData[2]} width="70px"/>
+            {/* <FontSizeDropDown /> */}
             <div className={style.editor_block + " " + style.editor_inline}>
                 <span className={style.toolbox_button + " " + style.editor_code} onClick={onCodeClick   }>
                 {"{ }"}
@@ -40,6 +42,18 @@ const RichToolbox = ({ onBoldClick , onItalicClick, onUnderLineClick, onCodeClic
                 </span>
             </div>
             <ColorDropdown />
+            <HeadingDropDown options={alignIcons} defaultSelected={alignIcons[0]} width="50px" height="auto"/>
+            {/* <div className={style.editor_block + " " + style.editor_inline}>
+                <span className={style.toolbox_button + " " + style.editor_code} onClick={onCodeClick   }>
+                    <i class="fa fa-align-left" aria-hidden="true" />
+                </span>
+                <span className={style.toolbox_button + " " + style.editor_code} onClick={onCodeClick   }>
+                    <i class="fa fa-align-center" aria-hidden="true" />
+                </span>
+                <span className={style.toolbox_button + " " + style.editor_code} onClick={onCodeClick   }>
+                    <i class="fa fa-align-right" aria-hidden="true" />
+                </span>
+            </div> */}
         </div>
     )
 }
