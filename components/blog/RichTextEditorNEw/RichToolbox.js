@@ -54,6 +54,14 @@ const RichToolbox = ({ onBoldClick , onItalicClick, onUnderLineClick, onCodeClic
                     <i className="fa fa-align-right" aria-hidden="true" />
                 </span>
             </div> */}
+            <div className={style.editor_block + " " + style.editor_inline}>
+                <span className={style.toolbox_button + " " + style.editor_code} onClick={onCodeClick   }>
+                    <i className="fa fa-link" aria-hidden="true" />
+                </span>
+                <span className={style.toolbox_button + " " + style.editor_code} onClick={onCodeClick   }>
+                    <i className="fad fa-image" />
+                </span>
+            </div>
         </div>
     )
 }
