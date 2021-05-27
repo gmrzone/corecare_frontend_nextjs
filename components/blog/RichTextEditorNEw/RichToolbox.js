@@ -1,4 +1,6 @@
-import style from '../../../styles/blog/createBlog.module.scss'
+import style from '../../../styles/blog/richToolbox.module.scss';
+import HeadingDropDown from './HeadingDropdown'
+import ColorDropdown from './ColorDropDown'
 const RichToolbox = ({ onBoldClick , onItalicClick, onUnderLineClick, onCodeClick }) => {
     const BLOCK_TYPES = [
         { label: " “ ” ", style: "blockquote" },
@@ -9,6 +11,7 @@ const RichToolbox = ({ onBoldClick , onItalicClick, onUnderLineClick, onCodeClic
 
     return (
         <div className={style.editor_toolbox}>
+            <HeadingDropDown />
             <div className={style.editor_block + " " + style.editor_inline}>
                 <span className={style.editor_bold + " " + style.toolbox_button} onClick={onBoldClick}>
                     B
@@ -34,6 +37,7 @@ const RichToolbox = ({ onBoldClick , onItalicClick, onUnderLineClick, onCodeClic
                     <i className={`fa fa-list ${style.icon}`} aria-hidden="true" />
                 </span>
             </div>
+            <ColorDropdown />
         </div>
     )
 }

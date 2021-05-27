@@ -1,0 +1,181 @@
+@import "../variables";
+.editor_toolbox {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    background: map-get($map: $colors, $key: main);
+    border-top-left-radius: .28571429rem;
+    border-top-right-radius: .28571429rem;
+    margin: 0;
+    row-gap: 10px;
+    
+    .editor_block {
+        display: flex;
+        flex-wrap: nowrap;
+        margin-right: 20px;
+    }
+    .toolbox_button {
+        
+        font-size: 20px;
+        color: white;
+        padding: 10px;
+        line-height: 1;
+        cursor: pointer;
+        // width: 38px;
+        white-space: nowrap;
+        &:hover {
+            background: lighten(map-get($colors, main), 20%);
+        }
+    }
+    .editor_colors {
+        background: white;
+        position: relative;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        margin: 4px;
+        margin-right: 20px;
+        border-radius: 2px;
+        padding: 0 10px;
+        width: 50px;
+        cursor: pointer;
+        position: relative;
+
+        .selected {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            
+
+            .selected_color {
+                background-color: red;
+                height: 18px;
+                width: 18px;
+            }
+            .dropdown_icon {
+                font-size: 14px;
+            }
+        }
+        .options {
+            background: lighten(map-get($colors, main), 95%);
+            box-shadow: rgb(0 0 0 / 16%) 0px 3px 6px, rgb(0 0 0 / 23%) 0px 3px 6px;
+            top: 42px;
+            left: 0px;
+            position: absolute;
+            width: 132px;
+            height: 126px;
+            border-radius: 4px;
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 5px;
+            flex-wrap: wrap;
+
+            .color_item {
+                height: 18px;
+                width: 18px;
+                margin: 6px;
+                cursor: pointer;
+            
+            }
+        }
+    }
+    .editor_headings {
+        background: white;
+        position: relative;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        margin: 4px;
+        margin-right: 20px;
+        border-radius: 2px;
+        padding: 0 10px;
+        width: 100px;
+        cursor: pointer;
+
+        .selected {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            
+
+            .selected_heading {
+                font-size: 16px;
+                color: map-get($map: $colors, $key: main);
+                margin-top: 2px;
+            }
+            .dropdown_icon {
+                font-size: 14px;
+            }
+        }
+        .options {
+            width: 100px;
+            height: 120px;
+            overflow-y: scroll;
+            position: absolute;
+            top: 42px;
+            right: 0px;
+            white-space: nowrap;
+            z-index: 1000;
+            // background: map-get($map: $colors, $key: main);
+            background: lighten(map-get($colors, main), 95%);
+            box-shadow: rgb(0 0 0 / 16%) 0px 3px 6px, rgb(0 0 0 / 23%) 0px 3px 6px;
+            border-radius: 4px;
+
+            .headings {
+                display: block;
+                padding: 8px;
+                color: black;
+                font-weight: bold;
+                cursor: pointer;
+
+                &:hover {
+                    background: lighten(map-get($colors, main), 10%);
+                    color: white;
+                }
+
+                &.heading_h1 {
+                    font-size: 22px;
+                }
+                &.heading_h2 {
+                    font-size: 20px;
+                }
+                &.heading_h3 {
+                    font-size: 18px;
+                }
+                &.heading_h4 {
+                    font-size: 16px;
+                }
+                &.heading_h5 {
+                    font-size: 14px;
+                }
+                &.heading_h6 {
+                    font-size: 12px;
+                }
+                &.heading_normal {
+                    font-size: 14px;
+                    font-weight: 400;
+                }
+            }
+        }
+    }
+    .editor_bold {
+        font-weight: bold;
+    }
+    .editor_italic {
+        font-style: italic;
+        font-weight: 500;
+    }
+    .editor_underline {
+        text-decoration: underline;
+        font-weight: 500;
+    }
+    .editor_code {
+        font-size: 20px;
+        font-weight: 500;
+    }
+    .icon {
+        font-size: 20px;
+    }
+}

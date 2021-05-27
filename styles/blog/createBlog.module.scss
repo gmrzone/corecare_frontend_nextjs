@@ -3,51 +3,5 @@
     margin: 20px 0;
 
 
-    .editor_toolbox {
-        display: flex;
-        flex-wrap: wrap;
-        width: 100%;
-        background: map-get($map: $colors, $key: main);
-        border-top-left-radius: .28571429rem;
-        border-top-right-radius: .28571429rem;
-        margin: 0;
-        
-        .editor_block {
-            display: flex;
-            flex-wrap: nowrap;
-            margin-right: 20px;
-        }
-        .toolbox_button {
-            
-            font-size: 20px;
-            color: white;
-            padding: 10px;
-            line-height: 1;
-            cursor: pointer;
-            // width: 38px;
-            white-space: nowrap;
-            &:hover {
-                background: lighten(map-get($colors, main), 20%);
-            }
-        }
 
-        .editor_bold {
-            font-weight: bold;
-        }
-        .editor_italic {
-            font-style: italic;
-            font-weight: 500;
-        }
-        .editor_underline {
-            text-decoration: underline;
-            font-weight: 500;
-        }
-        .editor_code {
-            font-size: 20px;
-            font-weight: 500;
-        }
-        .icon {
-            font-size: 20px;
-        }
-    }
 }
