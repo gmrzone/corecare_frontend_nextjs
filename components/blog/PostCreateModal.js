@@ -3,7 +3,7 @@ import style from '../../styles/blog/postCreate.module.scss';
 import CreateForm from './CreateForm'
 
 const PostCreateModal = ({ modalProps, mobileNav }) => {
-    const { createModelActive, setCreateModalActive } = modalProps
+    const { createModelActive, setCreateModalActive, textEditorLoading, setTextEditorLoading } = modalProps
 
     const modalBack = useRef()
     const modalMain = useRef()
@@ -24,7 +24,7 @@ const PostCreateModal = ({ modalProps, mobileNav }) => {
         }
         else {
             modalBack.current.style.opacity = "0";
-            modalMain.current.style.transform = mobileNav ? "translateX(0px)" : "translateX(900px)"
+            modalMain.current.style.transform = mobileNav ? "translateX(100%)" : "translateX(900px)"
             modalMain.current.style.opacity = "0";
             setTimeout(deactivateModal, 500)
         }
@@ -41,7 +41,7 @@ const PostCreateModal = ({ modalProps, mobileNav }) => {
                 <div className={style.modal_title}>
                     <h2>Create blog post</h2>
                 </div>
-                <CreateForm />
+                <CreateForm setTextEditorLoading={setTextEditorLoading}/>
             </div>
         </div>
         </>

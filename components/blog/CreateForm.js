@@ -5,7 +5,7 @@ import dynamic from 'next/dynamic';
 // const RichTextEditor = dynamic(() => import('./RichTextEditorNEw/RichTextEditor'), {ssr: false})
 
 const CkeditroEditor = dynamic(() => import('./ckeditor/Editor'), {ssr: false})
-const CreateForm = () => {
+const CreateForm = ({ setTextEditorLoading }) => {
     return (
         <form className="ui form huge">
               <div className="field">
@@ -15,7 +15,7 @@ const CreateForm = () => {
               <div className="field">
                     <label>Body</label>
                     {/* <RichTextEditor /> */}
-                    <CkeditroEditor />
+                    <CkeditroEditor setTextEditorLoading={setTextEditorLoading}/>
               </div>
               <div className="action" style={{textAlign: 'right'}}>
                   <button className="ui secondary button large">

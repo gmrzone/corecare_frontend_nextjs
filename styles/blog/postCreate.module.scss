@@ -3,11 +3,12 @@
     position: absolute;
     width: 100vw;
     height: 100vh;
-    background: rgba(0, 0, 0, 0.200);
+    background: rgba(0, 0, 0, 0.700);
     z-index: 1000;
     display: none;
     opacity: 0;
     transition: opacity 0.5s ease-in-out;
+    
 
 }
 
@@ -20,19 +21,19 @@
     right: 0px;
     width: 100%;
     z-index: 1001;
-    transform: translateX(0px);
+    transform: translateX(100%);
     box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
     display: none;
     opacity: 0;
     transition: opacity 0.5s ease-out 0.2s, transform 0.5s ease-in-out;
     
 
-
-    @media (min-width: 1100px) {
+    @media (min-width: 993px) {
         width: 900px;
         // right: -900px;
         transform: translateX(900px);
     }
+
     .modal_close {
         padding: 20px;
 

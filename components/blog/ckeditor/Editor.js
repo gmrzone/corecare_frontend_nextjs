@@ -4,7 +4,7 @@ import EditorNew from 'ckeditor5-custom-build'
 
 
 
-const Editor = () => {
+const Editor = ({ setTextEditorLoading }) => {
   const configuration = {
     toolbar: {
         items: [
@@ -96,6 +96,7 @@ const Editor = () => {
       data="<p>Hello from CKEditor 5!</p>"
       config={configuration}
       onReady={(editor) => {
+        setTextEditorLoading(false)
         // You can store the "editor" and use when it is needed.
         console.log("Editor is ready to use!", editor);
         // Insert the toolbar before the editable area.
