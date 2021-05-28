@@ -1,7 +1,7 @@
 import style from '../../../styles/blog/richToolbox.module.scss';
 import { useState, useEffect } from 'react'
 import { doc } from 'prettier';
-const ColorDropdown = () => {
+const ColorDropdown = ({ toggleColor }) => {
     const [dropDownActive, setDropDownActive] = useState(false)
     useEffect(() => {
         const onBodyClick = () => {
@@ -28,7 +28,7 @@ const ColorDropdown = () => {
         {   
             id: 1,
             name: "crimson",
-            inline_name: 'CRIMSON',
+            block_name: 'CRIMSON',
             class_name: 'color_crimson'
         },
         {
@@ -95,7 +95,7 @@ const ColorDropdown = () => {
         
     ]
     const colorClick = (color) => {
-        console.log(color)
+        toggleColor(color.block_name)  
     }
     const renderColors = options.map(x => {
         return <span className={style.color_item} key={x.id} style={{background: x.name}} onClick={() => colorClick(x)}></span>

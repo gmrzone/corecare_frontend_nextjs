@@ -4,7 +4,7 @@ import ColorDropdown from './ColorDropDown'
 // import FontSizeDropDown from './FontSizeDropdown'
 import { headingOptions, FontSizeData, alignIcons } from './data';
 
-const RichToolbox = ({ onBoldClick , onItalicClick, onUnderLineClick, onBlockChange }) => {
+const RichToolbox = ({ onBoldClick , onItalicClick, onUnderLineClick, onBlockChange, toggleColor }) => {
     const BLOCK_TYPES = [
         { id: "afzal", label: "{ }", style: "code-block" },
         { id: "afzal", label: <i className={`fad fa-quote-left ${style.icon}`} />, style: "blockquote" },
@@ -51,7 +51,7 @@ const RichToolbox = ({ onBoldClick , onItalicClick, onUnderLineClick, onBlockCha
                 </span> */}
                 {renderBlocks}
             </div>
-            <ColorDropdown />
+            <ColorDropdown toggleColor={toggleColor}/>
             <HeadingDropDown options={alignIcons} defaultSelected={alignIcons[0]} width="50px" height="auto" onBlockChange={onBlockChange}/>
             <div className={style.editor_block + " " + style.editor_inline}>
                 <span className={style.toolbox_button + " " + style.editor_code}>

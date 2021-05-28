@@ -75,4 +75,47 @@ const alignIcons = [
         class_name: 'align_right',
     }
 ]
-export { FontSizeData, alignIcons }
+
+const styleMap = {
+    'BOLD': {
+        color: '#000000',
+        fontWeight: 'bold',
+    },
+    'BLACK': {
+        color: "black"
+    },
+    'CRIMSON': {
+        color: 'crimson'
+    },
+    'CADETBLUE': {
+        color: 'cadetblue'
+    },
+    'BLUE': {
+        color: 'blue'
+    },
+    'GREY': {
+        color: 'grey'
+    },
+    'GREEN': {
+        color: 'green'
+    },
+    'ORCHID': {
+        color: 'orchid'
+    },
+    "PINK": {
+        color: 'pink'
+    },
+    'BROWN': {
+        color: 'brown'
+    },
+    'NAVY': {
+        color: 'navy'
+    },
+    'PURPLE': {
+        color: 'purple'
+    },
+    'DARKTURQUOISE' : {
+        color: 'darkturquoise'
+    }
+}
+export { FontSizeData, alignIcons, styleMap }

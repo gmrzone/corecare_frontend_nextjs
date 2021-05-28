@@ -1,41 +1,15 @@
 import { useState, useRef } from 'react';
-import {Editor, EditorState, RichUtils} from 'draft-js';
+import {Editor, EditorState, RichUtils, Modifier} from 'draft-js';
 import Draft from 'draft-js'
 import 'draft-js/dist/Draft.css';
 import RichToolbox from './RichToolbox'
 import AlignContent from './blocks/AlignContent'
 import Immutable from 'immutable'
-// class RichTextEditor extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {editorState: EditorState.createEmpty()};
-//     this.onChange = editorState => this.setState({editorState});
-//   }
-
-//   render() {
-//     return (
-//       <Editor editorState={this.state.editorState} onChange={this.onChange} placeholder="Tell a Story"/>
-//     );
-//   }
-// }
-    
+import { styleMap } from './data'
 
 const RichTextEditor = () => {
     const [editorState, setEditorState] = useState(EditorState.createEmpty())
     const onChange = state => setEditorState(state)
-        const styleMap = {
-            'code-block': {
-            backgroundColor: 'rgba(0, 0, 0, 0.05)',
-            fontFamily: '"Inconsolata", "Menlo", "Consolas", monospace',
-            fontSize: 16,
-            padding: 4,
-            },
-            'BOLD': {
-            color: '#000000',
-            fontWeight: 'bold',
-            }
-        }
-
 
     const onBoldClick = () => {
         onChange(RichUtils.toggleInlineStyle(editorState, 'BOLD'));
@@ -47,9 +21,41 @@ const RichTextEditor = () => {
     const onUnderLineClick = () => {
         onChange(RichUtils.toggleInlineStyle(editorState, 'UNDERLINE'))
     }
-    // const onCodeClick = () => {
-    //     onChange(RichUtils.toggleBlockType(editorState, 'code-block'))
-    // }
+    
+    const _toggleColor = (toggledColor) => {
+        const selection = editorState.getSelection();
+
+        // Let's just allow one color at a time. Turn off all active colors.
+        const nextContentState = Object.keys(styleMap)
+          .reduce((contentState, color) => {
+            return Modifier.removeInlineStyle(contentState, selection, color)
+          }, editorState.getCurrentContent());
+
+        let nextEditorState = EditorState.push(
+          editorState,
+          nextContentState,
+          'change-inline-style'
+        );
+
+        const currentStyle = editorState.getCurrentInlineStyle();
+
+        // Unset style override for current color.
+        if (selection.isCollapsed()) {
+          nextEditorState = currentStyle.reduce((state, color) => {
+            return RichUtils.toggleInlineStyle(state, color);
+          }, nextEditorState);
+        }
+
+        // If the color is being toggled on, apply it.
+        if (!currentStyle.has(toggledColor)) {
+          nextEditorState = RichUtils.toggleInlineStyle(
+            nextEditorState,
+            toggledColor
+          );
+        }
+
+        onChange(nextEditorState);
+      }
     const onBlockCHange = (code => {
         onChange(RichUtils.toggleBlockType(editorState, code))
     })
@@ -79,7 +85,7 @@ const RichTextEditor = () => {
       }
     return (
         <div className="editor-container">
-            <RichToolbox onBoldClick={onBoldClick} onItalicClick={onItalicClick} onUnderLineClick={onUnderLineClick} onBlockChange={onBlockCHange} />
+            <RichToolbox onBoldClick={onBoldClick} onItalicClick={onItalicClick} onUnderLineClick={onUnderLineClick} onBlockChange={onBlockCHange} toggleColor={_toggleColor}/>
             <div className="editor">
                 <Editor  blockRenderMap={extendedBlockRenderMap} customStyleMap={styleMap} editorState={editorState} onChange={onChange} placeholder="Tell a Story" handleKeyCommand={handleKeyCommand} />
             </div>
