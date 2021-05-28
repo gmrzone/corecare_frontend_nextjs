@@ -4,7 +4,7 @@ import CreateForm from './CreateForm'
 
 const PostCreateModal = ({ modalProps, mobileNav }) => {
     const { createModelActive, setCreateModalActive } = modalProps
-    
+
     const modalBack = useRef()
     const modalMain = useRef()
     const activateModal = () => {
@@ -26,7 +26,7 @@ const PostCreateModal = ({ modalProps, mobileNav }) => {
             modalBack.current.style.opacity = "0";
             modalMain.current.style.transform = mobileNav ? "translateX(0px)" : "translateX(900px)"
             modalMain.current.style.opacity = "0";
-            setTimeout(deactivateModal, 5000)
+            setTimeout(deactivateModal, 500)
         }
     }, [createModelActive])
     return (
