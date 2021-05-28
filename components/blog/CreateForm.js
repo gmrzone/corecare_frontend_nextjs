@@ -17,7 +17,11 @@ const CreateForm = () => {
                     {/* <RichTextEditor /> */}
                     <CkeditroEditor />
               </div>
-              
+              <div className="action" style={{marginBottom: '70px'}}>
+                  <button className="ui secondary button large" style={{float: 'right'}}>
+                        Create
+                  </button>
+              </div>
         </form>
     )
 }

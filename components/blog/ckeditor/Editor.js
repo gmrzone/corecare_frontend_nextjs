@@ -38,7 +38,7 @@ const Editor = () => {
             "undo",
             "redo",
           ],
-          shouldNotGroupWhenFull: true
+        //   shouldNotGroupWhenFull: true
     },
     image: {
         styles: [ 'full', 'side' ]

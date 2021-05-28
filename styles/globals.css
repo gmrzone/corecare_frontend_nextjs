@@ -1039,12 +1039,37 @@ div.public-DraftEditor-content {
     height: 250px;
   }
 }
-
-@media (min-width: 993px){
+@media (min-width: 400px){
   .ck .ck-editor__main {
     height: 300px;
   }
 }
+@media (min-width: 375px) and (min-height: 812px){
+  .ck .ck-editor__main {
+    height: 380px;
+  }
+}
+@media (min-width: 375px) and (min-height: 812px){
+  .ck .ck-editor__main {
+    height: 380px;
+  }
+}
+@media (min-width: 768px) and (min-height: 1024px){
+  .ck .ck-editor__main {
+    height: 450px;
+  }
+}
+
+@media (min-width: 993px){
+  .ck .ck-editor__main {
+    height: 400px;
+  }
+}
+@media (min-width: 1024px) and (min-height: 1366px){
+  .ck .ck-editor__main {
+    height: 550px;
+  }
+} 
 .ck .ck-editor__main > div {
   height: 100%;
 }
