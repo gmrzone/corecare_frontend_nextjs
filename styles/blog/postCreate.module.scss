@@ -1,0 +1,71 @@
+@import "../variables";
+.modal_back {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.200);
+    z-index: 1000;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+
+}
+
+
+        
+.post_create_modal {
+    background: white;
+    position: absolute;
+    height: 100%;
+    right: 0px;
+    width: 100%;
+    z-index: 1001;
+    transform: translateX(0px);
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease-out 0.2s, transform 0.5s ease-in-out;
+    
+
+
+    @media (min-width: 1100px) {
+        width: 900px;
+        // right: -900px;
+        transform: translateX(900px);
+    }
+    .modal_close {
+        padding: 20px;
+
+        
+        .close_icon {
+            font-size: 26px;
+            cursor: pointer;
+            color: black;
+            transition: color .1s ease-in-out;
+
+            &:hover {
+                color: lighten(map-get($colors, main), 20%);
+            }
+        }
+    }
+    .modal_content {
+        width: 100%;
+        padding: 0px 10px;
+
+        .modal_title {
+            text-align: center;
+            margin-bottom: 10px;
+
+        }
+
+        @media (min-width: 400px) {
+            padding: 10px 15px;
+        }
+        @media (min-width: 600px) {
+            padding: 20px 20px;
+        }
+        @media (min-width: 700px) {
+            padding: 30px 30px;
+        }   
+    }
+}

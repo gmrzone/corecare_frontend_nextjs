@@ -103,9 +103,9 @@ const Editor = () => {
         //     editor.ui.view.toolbar.element,
         //     editor.ui.getEditableElement()
         // );
-        Array.from(editor.ui.componentFactory.names()).forEach((x) =>
-          console.log(x)
-        );
+        // Array.from(editor.ui.componentFactory.names()).forEach((x) =>
+        //   console.log(x)
+        // );
         // editorObj = editor;
       }}
       onChange={(event, editor) => {
