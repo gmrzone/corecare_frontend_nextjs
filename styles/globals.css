@@ -1031,6 +1031,24 @@ div.public-DraftEditor-content {
   overflow: auto;
   
 }
+.ck .ck-editor__main {
+  height: 200px;
+}
+@media (min-width: 321px){
+  .ck .ck-editor__main {
+    height: 250px;
+  }
+}
+
+@media (min-width: 993px){
+  .ck .ck-editor__main {
+    height: 300px;
+  }
+}
+.ck .ck-editor__main > div {
+  height: 100%;
+}
+
 /* .public-DraftStyleDefault-pre  div {
   font-family:Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New !important;
 
