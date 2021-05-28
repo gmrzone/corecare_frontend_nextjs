@@ -1,14 +1,10 @@
-// import RichTextEditor from './RichTextEditor/CreateRichTextEditor';
+
 import dynamic from 'next/dynamic';
 
 
-// const RichTextEditor = dynamic(() => import("./RichTextEditor/CreateRichTextEditor"), {
-//     ssr: false,
-//   })
-
 const RichTextEditor = dynamic(() => import('./RichTextEditorNEw/RichTextEditor'), {ssr: false})
 
-
+const CkeditroEditor = dynamic(() => import('./ckeditor/Editor'), {ssr: false})
 const CreateForm = () => {
     return (
         <form className="ui form huge">
@@ -18,7 +14,8 @@ const CreateForm = () => {
               </div>
               <div className="field">
                     <label>Post Body</label>
-                    <RichTextEditor />
+                    {/* <RichTextEditor /> */}
+                    <CkeditroEditor />
               </div>
               
         </form>

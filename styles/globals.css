@@ -1009,13 +1009,13 @@ div.DraftEditor-editorContainer,
 div.public-DraftEditor-content {
   height: 100%;
 }
-pre {
+.draft-codeblock {
   margin: 0;
   font-family:Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New !important;
   font-size: 14px !important;
 }
 
-blockquote {
+.draft-blockquote {
   border-left: 6px solid #FF385C;
   margin-left: 0;
   padding-left: 22px;

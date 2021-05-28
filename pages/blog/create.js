@@ -1,7 +1,6 @@
 import Layout from '../../components/blog/Layout';
 import MetaComponent from '../../components/common/MetaComponent';
 import { frontend_base } from '../../data/_variables';
-import CreateRichTextEditor from '../../components/blog/RichTextEditor/CreateRichTextEditor'
 import CreateForm from '../../components/blog/CreateForm'
 import style from '../../styles/blog/createBlog.module.scss'
 export default function Home({ mobileNav }) {
