@@ -12,7 +12,12 @@ const Editor = () => {
             "|",
             "bold",
             "italic",
+            "underline",
+            "alignment",
+            "horizontalLine",
             "fontColor",
+            "fontSize",
+            "fontBackgroundColor",
             "selectAll",
             "link",
             "bulletedList",
@@ -21,6 +26,9 @@ const Editor = () => {
             "codeblock",
             "|",
             "uploadImage",
+            "imageInsert",
+            'imageStyle:full', 
+            'imageStyle:side',
             "mediaEmbed",
             "|",
             "indent",
@@ -31,6 +39,9 @@ const Editor = () => {
             "redo",
           ],
           shouldNotGroupWhenFull: true
+    },
+    image: {
+        styles: [ 'full', 'side' ]
     },
     codeBlock: {
         languages: [
