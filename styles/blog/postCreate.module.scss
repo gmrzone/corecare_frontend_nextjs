@@ -1,6 +1,6 @@
 @import "../variables";
 .modal_back {
-    position: absolute;
+    position: fixed;
     width: 100vw;
     height: 100vh;
     background: rgba(0, 0, 0, 0.700);
@@ -11,13 +11,12 @@
     
 
 }
-
-
         
 .post_create_modal {
     background: white;
-    position: absolute;
+    position: fixed;
     height: 100%;
+    overflow-y: auto;
     right: 0px;
     width: 100%;
     z-index: 1001;

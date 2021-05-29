@@ -528,6 +528,7 @@ a:hover {
 .profile-box .profile-box-dropdown {
   background-color: white;
   position: fixed;
+  overflow-y: auto;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
