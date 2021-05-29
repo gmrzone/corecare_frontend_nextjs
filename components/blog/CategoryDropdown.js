@@ -19,7 +19,7 @@ const CategoryDropDown = ({ value, onCategoryChange }) => {
 
     }
     return (
-        <div className={`ui floating dropdown labeled search icon button fluid ${dropDownActive && "active visible"}`} onClick={toggleDropDown}>
+        <div className={`ui floating dropdown labeled search icon button fluid ${dropDownActive && "transition active visible"}`} onClick={toggleDropDown}>
         <i className="clipboard list icon"></i>
         <span className="text">{value}</span>
         <div className={`menu ${dropDownActive && "transition visible"}`}>

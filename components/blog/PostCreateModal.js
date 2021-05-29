@@ -1,10 +1,16 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import style from '../../styles/blog/postCreate.module.scss';
 import CreateForm from './CreateForm'
+import BlogImageCropper from './BlogImageCropper'
+import ReactCrop from 'react-image-crop';
+import 'react-image-crop/dist/ReactCrop.css';
+
 
 const PostCreateModal = ({ modalProps, mobileNav }) => {
     const { createModelActive, setCreateModalActive, textEditorLoading, setTextEditorLoading } = modalProps
-
+    const [cropperModalActive, setCropperModalActive] = useState(false)
+    const [fileSrc, selectFileSrc] = useState(null)
+    const [crop, setCrop] = useState({ aspect: 16 / 9, unit: 'px', x: 0, y: 0, width: 200, height: 200});
     const modalBack = useRef()
     const modalMain = useRef()
     const activateModal = () => {
@@ -29,18 +35,23 @@ const PostCreateModal = ({ modalProps, mobileNav }) => {
             setTimeout(deactivateModal, 500)
         }
     }, [createModelActive])
+    
     return (
         <>
         <div className={style.modal_back} ref={modalBack}>
         </div>
+        <BlogImageCropper cropperModalActive={cropperModalActive} setCropperModalActive={setCropperModalActive}>
+            <ReactCrop src={fileSrc} crop={crop} onChange={newCrop => setCrop(newCrop)} />
+        </BlogImageCropper>
         <div className={style.post_create_modal} ref={modalMain}>
             <div className={style.modal_close}>
                 <i className={`fal fa-times ${style.close_icon}`} onClick={() => setCreateModalActive(false)}/>
                 <h2 className={style.modal_title}>Create blog post</h2>
             </div>
             <div className={style.modal_content}>
-                <CreateForm setTextEditorLoading={setTextEditorLoading}/>
+                <CreateForm setTextEditorLoading={setTextEditorLoading} selectFileSrc={selectFileSrc}/>
             </div>
+            <button type="button" onClick={() => setCropperModalActive(s => !s)}>Toggle Cropper Modal</button>
         </div>
         </>
     )

@@ -7,7 +7,7 @@ import style from '../../styles/blog/postCreate.module.scss';
 // const RichTextEditor = dynamic(() => import('./RichTextEditorNEw/RichTextEditor'), {ssr: false})
 
 const CkeditroEditor = dynamic(() => import('./ckeditor/Editor'), {ssr: false})
-const CreateForm = ({ setTextEditorLoading }) => {
+const CreateForm = ({ setTextEditorLoading, selectFileSrc }) => {
     const [formState, setFormState] = useState({ 'title': "",category: "Select Category"  ,body: "", image: "" })
     const onTitleChange = (e) => {
           setFormState(state => {
@@ -29,6 +29,15 @@ const CreateForm = ({ setTextEditorLoading }) => {
           e.preventDefault()
           console.log(formState)
     }
+    const handleFileChange = (e) => {
+      const imageBlob = e.target.files[0]
+      let reader = new FileReader();
+      reader.readAsDataURL(imageBlob)
+      reader.onloadend = function(){
+          selectFileSrc(reader.result)
+      }
+      
+  }
     return (
         <form className="ui form huge" onSubmit={onFormSubmit}>
               <div className="field">
@@ -44,7 +53,7 @@ const CreateForm = ({ setTextEditorLoading }) => {
                         <CategoryDropDown value={formState.category} onCategoryChange={onCategoryChange}/>
                   </div>
                   <div className="field">
-                        <ImageInput />
+                        <ImageInput handleFileChange={handleFileChange}/>
                   </div>
               </div>
               <div className="field">

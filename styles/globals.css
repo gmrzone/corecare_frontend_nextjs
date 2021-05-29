@@ -1092,6 +1092,15 @@ div.public-DraftEditor-content {
   }
   
 }
+.ui.fullscreen.modal {
+  width: auto !important;
+  height: auto !important;
+  max-height: 95%;
+  max-width: 95%;
+  margin: 0;
+
+  left: auto !important;
+}
 /* .public-DraftStyleDefault-pre  div {
   font-family:Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New !important;
 

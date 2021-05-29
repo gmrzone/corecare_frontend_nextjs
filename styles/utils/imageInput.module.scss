@@ -3,6 +3,7 @@
     position: relative;
     margin-bottom: 20px;
     border: 2px dashed #cccccc;
+    
 
     @media (min-width: 360px){
         border: 3px dashed #cccccc;
@@ -20,8 +21,7 @@
         left: 0;
         right: 0;
         opacity: 0;
-
-
+        cursor: pointer;
     }
     .visible_input {
         display: flex;
