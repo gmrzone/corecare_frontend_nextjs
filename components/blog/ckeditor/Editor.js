@@ -1,10 +1,12 @@
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 // import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-import EditorNew from 'ckeditor5-custom-build'
+import EditorNew from 'ckeditor5-custom-build';
+import { BASE_URL } from '../../../data/_variables';
+import { CsrfContext } from '../../../context/CsrfTokenContext';
+import { useContext } from 'react'
 
-
-
-const Editor = ({ setTextEditorLoading }) => {
+const Editor = ({ setTextEditorLoading, value , onBodyChange }) => {
+  const { csrfToken } = useContext(CsrfContext)
   const configuration = {
     toolbar: {
         items: [
@@ -34,9 +36,6 @@ const Editor = ({ setTextEditorLoading }) => {
             'imageStyle:side',
             "mediaEmbed",
             "|",
-            "indent",
-            "outdent",
-            "|",
             "insertTable",
             "undo",
             "redo",
@@ -48,20 +47,30 @@ const Editor = ({ setTextEditorLoading }) => {
     },
     codeBlock: {
         languages: [
-                // Do not render the CSS class for the plain text code blocks.
-                { language: 'plaintext', label: 'Plain text', class: '' },
-
-                // Use the "php-code" class for PHP code blocks.
-                { language: 'php', label: 'PHP', class: 'php-code' },
-
-                // Use the "js" class for JavaScript code blocks.
-                // Note that only the first ("js") class will determine the language of the block when loading data.
-                { language: 'javascript', label: 'JavaScript', class: 'js javascript js-code' },
-
-                // Python code blocks will have the default "language-python" CSS class.
-                { language: 'python', label: 'Python' }
+          { language: 'plaintext', label: 'Plain text' }, // The default language.
+          { language: 'c', label: 'C' },
+          { language: 'cs', label: 'C#' },
+          { language: 'cpp', label: 'C++' },
+          { language: 'css', label: 'CSS' },
+          { language: 'diff', label: 'Diff' },
+          { language: 'html', label: 'HTML' },
+          { language: 'java', label: 'Java' },
+          { language: 'javascript', label: 'JavaScript' },
+          { language: 'php', label: 'PHP' },
+          { language: 'python', label: 'Python' },
+          { language: 'ruby', label: 'Ruby' },
+          { language: 'typescript', label: 'TypeScript' },
+          { language: 'xml', label: 'XML' }
         ]
     },
+    simpleUpload: {
+        uploadUrl: BASE_URL + '/blog/posts/images/',
+        withCredentials: true,
+        headers: {
+          'X-CSRFToken': csrfToken,
+        }
+        
+    },  
     heading: {
       options: [
         {
@@ -93,12 +102,11 @@ const Editor = ({ setTextEditorLoading }) => {
   return (
     <CKEditor
       editor={EditorNew}
-      data="<p>Hello from CKEditor 5!</p>"
+      data={value}
       config={configuration}
       onReady={(editor) => {
         setTextEditorLoading(false)
         // You can store the "editor" and use when it is needed.
-        console.log("Editor is ready to use!", editor);
         // Insert the toolbar before the editable area.
         //     editor.ui.getEditableElement().parentElement.insertBefore(
         //     editor.ui.view.toolbar.element,
@@ -111,7 +119,9 @@ const Editor = ({ setTextEditorLoading }) => {
       }}
       onChange={(event, editor) => {
         const data = editor.getData();
-        console.log({ event, editor, data });
+        // console.log({ event, editor, data });
+        // console.log(data)
+        onBodyChange(data)
       }}
       onBlur={(event, editor) => {
         console.log("Blur.", editor);

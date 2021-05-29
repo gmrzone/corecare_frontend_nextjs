@@ -36,11 +36,9 @@ const PostCreateModal = ({ modalProps, mobileNav }) => {
         <div className={style.post_create_modal} ref={modalMain}>
             <div className={style.modal_close}>
                 <i className={`fal fa-times ${style.close_icon}`} onClick={() => setCreateModalActive(false)}/>
+                <h2 className={style.modal_title}>Create blog post</h2>
             </div>
             <div className={style.modal_content}>
-                <div className={style.modal_title}>
-                    <h2>Create blog post</h2>
-                </div>
                 <CreateForm setTextEditorLoading={setTextEditorLoading}/>
             </div>
         </div>
