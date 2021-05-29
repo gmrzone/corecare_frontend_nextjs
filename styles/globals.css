@@ -962,7 +962,7 @@ padding: 10px 0px !important;
 
 /* Draft.js style*/
 
-div.DraftEditor-root {
+/* div.DraftEditor-root {
   box-shadow: 0 0 0 0 transparent inset;
   border: 1px solid rgba(34,36,38,.15);
   background: #fff;
@@ -1031,9 +1031,17 @@ div.public-DraftEditor-content {
   border-radius: 5px;
   overflow: auto;
   
-}
+} */
+
+
+/* CKEDITOR Settings */
 .ck .ck-editor__main {
   height: 200px;
+}
+
+
+.ck.ck-button.ck-on:not(.ck-disabled):hover, a.ck.ck-button.ck-on:not(.ck-disabled):hover {
+  background: #1a1a1a !important;
 }
 @media (min-width: 321px){
   .ck .ck-editor__main {
@@ -1074,7 +1082,16 @@ div.public-DraftEditor-content {
 .ck .ck-editor__main > div {
   height: 100%;
 }
+.ui.search.dropdown .menu {
+  max-height: 8.68571429rem;
+}
 
+@media (min-width: 992px) {
+  .ui.search.dropdown .menu {
+    max-height: 10.68571429rem;
+  }
+  
+}
 /* .public-DraftStyleDefault-pre  div {
   font-family:Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New !important;
 

@@ -1,12 +1,14 @@
 
 import dynamic from 'next/dynamic';
 import { useState } from 'react'
-
+import CategoryDropDown from './CategoryDropdown'
+import ImageInput from './ImageInput'
+import style from '../../styles/blog/postCreate.module.scss';
 // const RichTextEditor = dynamic(() => import('./RichTextEditorNEw/RichTextEditor'), {ssr: false})
 
 const CkeditroEditor = dynamic(() => import('./ckeditor/Editor'), {ssr: false})
 const CreateForm = ({ setTextEditorLoading }) => {
-    const [formState, setFormState] = useState({ 'title': "", body: "", image: "" })
+    const [formState, setFormState] = useState({ 'title': "",category: "Select Category"  ,body: "", image: "" })
     const onTitleChange = (e) => {
           setFormState(state => {
                 return {...state, 'title': e.target.value}
@@ -17,15 +19,36 @@ const CreateForm = ({ setTextEditorLoading }) => {
                 return {...state, body: data}
           })
     }
-    console.log(formState)
+    const onCategoryChange = (e) => {
+            setFormState(state => {
+                  return {...state, category: e.target.textContent}
+            })
+    }
+
+    const onFormSubmit = (e) => {
+          e.preventDefault()
+          console.log(formState)
+    }
     return (
-        <form className="ui form huge">
+        <form className="ui form huge" onSubmit={onFormSubmit}>
               <div className="field">
-                    <label>Title</label>
-                    <input type="text" name="first-name" placeholder="Title" value={formState.title} onChange={onTitleChange}/>
+                  <div className="ui labeled input">
+                  <div className="ui label">
+                        Title
+                  </div>
+                        <input type="text" name="first-name" placeholder="Title" value={formState.title} onChange={onTitleChange}/>
+                  </div>
+              </div>
+              <div style={style.category_and_image}>
+                  <div className="field">
+                        <CategoryDropDown value={formState.category} onCategoryChange={onCategoryChange}/>
+                  </div>
+                  <div className="field">
+                        <ImageInput />
+                  </div>
               </div>
               <div className="field">
-                    <label>Body</label>
+                    {/* <label>Body</label> */}
                     {/* <RichTextEditor /> */}
                     <CkeditroEditor setTextEditorLoading={setTextEditorLoading} value={formState.body} onBodyChange={onBodyChange}/>
               </div>

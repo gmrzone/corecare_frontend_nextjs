@@ -8,6 +8,7 @@ import { useContext } from 'react'
 const Editor = ({ setTextEditorLoading, value , onBodyChange }) => {
   const { csrfToken } = useContext(CsrfContext)
   const configuration = {
+    placeholder: 'Write your blog post.',
     toolbar: {
         items: [
             "heading",

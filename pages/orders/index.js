@@ -14,7 +14,7 @@ const Order = ({ mobileNav}) => {
         <Layout mobileNav={mobileNav}>
         <OrderContextProvider>
             <div className={"ui container " + style.orders_container__user}>
-                <h1>Order</h1>
+                <h1>Orders</h1>
                 <div className={style.order_menu}>
                     <PointerMenu />
                 </div>
