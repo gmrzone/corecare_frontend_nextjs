@@ -43,7 +43,7 @@ const Login = (props) => {
         axios.post('login/v1/', formValues, {headers: {'X-CSRFToken': csrfToken}})
         .then(response => {
             if (response.statusText === "OK"){
-                localStorage.setItem("get_user", true)
+                // localStorage.setItem("get_user", true)
                 setLoading(false)
                 router.push('/')
                 mutateCsrf()
