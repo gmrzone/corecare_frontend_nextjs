@@ -23,6 +23,16 @@ const Login = (props) => {
     const { mobileNav } = props;
     const [loading, setLoading] = useState(false)
     const { setSignUpActive } = useContext(SignUpContext)
+
+    function setCookie(name,value,seconds) {
+    var expires = "";
+    if (seconds) {
+        var date = new Date();
+        date.setTime(date.getTime() + (seconds * 1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+}
     // const submitForm = (formValues) => {
     //     axios.post('api/token/', formValues)
     //     .then(response => {
@@ -44,6 +54,8 @@ const Login = (props) => {
         .then(response => {
             if (response.statusText === "OK"){
                 // localStorage.setItem("get_user", true)
+                console.log(response.data)
+                setCookie("get_user", "afzal", response.data.expire)
                 setLoading(false)
                 router.push('/')
                 mutateCsrf()
