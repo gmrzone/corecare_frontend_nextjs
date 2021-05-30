@@ -1036,7 +1036,7 @@ div.public-DraftEditor-content {
 
 /* CKEDITOR Settings */
 .ck .ck-editor__main {
-  height: 200px;
+  height: 160px;
 }
 
 
@@ -1045,38 +1045,38 @@ div.public-DraftEditor-content {
 }
 @media (min-width: 321px){
   .ck .ck-editor__main {
-    height: 250px;
+    height: 200px;
   }
 }
 @media (min-width: 400px){
+  .ck .ck-editor__main {
+    height: 270px;
+  }
+}
+@media (min-width: 375px) and (min-height: 812px){
   .ck .ck-editor__main {
     height: 300px;
   }
 }
 @media (min-width: 375px) and (min-height: 812px){
   .ck .ck-editor__main {
-    height: 380px;
-  }
-}
-@media (min-width: 375px) and (min-height: 812px){
-  .ck .ck-editor__main {
-    height: 380px;
+    height: 320px;
   }
 }
 @media (min-width: 768px) and (min-height: 1024px){
   .ck .ck-editor__main {
-    height: 450px;
+    height: 380px;
   }
 }
 
 @media (min-width: 993px){
   .ck .ck-editor__main {
-    height: 400px;
+    height: 360px;
   }
 }
 @media (min-width: 1024px) and (min-height: 1366px){
   .ck .ck-editor__main {
-    height: 550px;
+    height: 500px;
   }
 } 
 .ck .ck-editor__main > div {
@@ -1093,8 +1093,8 @@ div.public-DraftEditor-content {
   
 }
 .ui.fullscreen.modal {
-  width: auto !important;
-  height: auto !important;
+  width: 100% !important;
+  height: 100% !important;
   max-height: 95%;
   max-width: 95%;
   margin: 0;

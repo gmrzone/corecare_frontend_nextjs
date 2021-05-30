@@ -6,7 +6,7 @@ const BlogImageCropper = ({ cropperModalActive, children, setCropperModalActive 
                 <div className="header">
                     Update Your Settings
                 </div>
-                <div className="content">
+                <div className="content">   
                     {children}
                 </div>
                 <div className="actions">
@@ -30,7 +30,12 @@ const BlogImageCropper = ({ cropperModalActive, children, setCropperModalActive 
                 }
                 .content {
                     margin-top: 60px;
+                    height: 80%;
+                    max-width: 100%;
+                    overflow: auto !important;
+                    text-align: center;
                 }
+
                 @media (min-width: 992px){
                     .content {
                         margin-top: 90px;

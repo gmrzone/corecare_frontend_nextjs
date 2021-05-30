@@ -10,7 +10,8 @@ const PostCreateModal = ({ modalProps, mobileNav }) => {
     const { createModelActive, setCreateModalActive, textEditorLoading, setTextEditorLoading } = modalProps
     const [cropperModalActive, setCropperModalActive] = useState(false)
     const [fileSrc, selectFileSrc] = useState(null)
-    const [crop, setCrop] = useState({ aspect: 16 / 9, unit: 'px', x: 0, y: 0, width: 200, height: 200});
+    const [crop, setCrop] = useState({ aspect: 16 / 9, unit: 'px', x: 0, y: 0, width: 267, height: 150});
+    const [completedCrop, setCompletedCrop] = useState(null);
     const modalBack = useRef()
     const modalMain = useRef()
     const activateModal = () => {
@@ -49,9 +50,8 @@ const PostCreateModal = ({ modalProps, mobileNav }) => {
                 <h2 className={style.modal_title}>Create blog post</h2>
             </div>
             <div className={style.modal_content}>
-                <CreateForm setTextEditorLoading={setTextEditorLoading} selectFileSrc={selectFileSrc}/>
+                <CreateForm setTextEditorLoading={setTextEditorLoading} selectFileSrc={selectFileSrc} setCropperModalActive={setCropperModalActive}/>
             </div>
-            <button type="button" onClick={() => setCropperModalActive(s => !s)}>Toggle Cropper Modal</button>
         </div>
         </>
     )

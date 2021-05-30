@@ -7,8 +7,9 @@ import style from '../../styles/blog/postCreate.module.scss';
 // const RichTextEditor = dynamic(() => import('./RichTextEditorNEw/RichTextEditor'), {ssr: false})
 
 const CkeditroEditor = dynamic(() => import('./ckeditor/Editor'), {ssr: false})
-const CreateForm = ({ setTextEditorLoading, selectFileSrc }) => {
+const CreateForm = ({ setTextEditorLoading, selectFileSrc, setCropperModalActive }) => {
     const [formState, setFormState] = useState({ 'title': "",category: "Select Category"  ,body: "", image: "" })
+    const [formError, setFormError] = useState({title: "", image: "", status: ""})
     const onTitleChange = (e) => {
           setFormState(state => {
                 return {...state, 'title': e.target.value}
@@ -30,16 +31,25 @@ const CreateForm = ({ setTextEditorLoading, selectFileSrc }) => {
           console.log(formState)
     }
     const handleFileChange = (e) => {
-      const imageBlob = e.target.files[0]
-      let reader = new FileReader();
-      reader.readAsDataURL(imageBlob)
-      reader.onloadend = function(){
-          selectFileSrc(reader.result)
+      const file = e.target.files[0]
+      if (file.type === "image/jpeg" || file.type === "image/png") {
+            const imageBlob = file
+            let reader = new FileReader();
+            reader.readAsDataURL(imageBlob)
+            reader.onloadend = function(){
+                selectFileSrc(reader.result)
+                setCropperModalActive(true)
+            }
       }
-      
+      else{
+            setFormError(state => {
+                  return {...state, status: "error", image: "Unsupported Image Format please Select JPG or PNG"}
+            })
+      }   
   }
     return (
         <form className="ui form huge" onSubmit={onFormSubmit}>
+              {formError.status && <div class={`ui message mini ${formError.status === "error" ? "red" : "green"}`}>{formError.title || formError.image}</div>}
               <div className="field">
                   <div className="ui labeled input">
                   <div className="ui label">
