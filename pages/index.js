@@ -14,11 +14,11 @@ export const getStaticProps = async () => {
   const data1 = await res.json()
   const res1 = await fetch(`${BASE_URL}coupons/`)
   const data2 = await res1.json()
-  const res2 = await fetch(`${BASE_URL}subcategory/v2/3/cleaner/`)
+  const res2 = await fetch(`${BASE_URL}subcategory/3/cleaner/`)
   const data3 = await res2.json()
-  const res3 = await fetch(`${BASE_URL}subcategory/v2/2/carpenter/`)
+  const res3 = await fetch(`${BASE_URL}subcategory/2/carpenter/`)
   const data4 = await res3.json()
-  const res4 = await fetch(`${BASE_URL}subcategory/v2/1/electrician/`)
+  const res4 = await fetch(`${BASE_URL}subcategory/1/electrician/`)
   const data5 = await res4.json()
 
   return {
