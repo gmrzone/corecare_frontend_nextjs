@@ -14,19 +14,25 @@ const AuthContextProvider = ({ children }) => {
     // const shouldFetch = typeof localStorage !== "undefined" && localStorage?.getItem('access') ? true : false
     // const shouldFetch = typeof localStorage !== "undefined" && localStorage?.getItem('get_user') ? true : false
     // const { data: userData, error, mutate: mutateAuth } = useSWR(shouldFetch ? "get_current_user/" : null, fetcher)
-    const getCookie = (name) => {
+    // const getCookie = (name) => {
 
+    function getCookie(name) {
+        let cookieValue = null;
         if (process.browser){
-            var nameEQ = name + "=";
-            var ca = document.cookie.split(';');
-            for(var i=0;i < ca.length;i++) {
-                var c = ca[i];
-                while (c.charAt(0)==' ') c = c.substring(1,c.length);
-                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
             }
         }
 
-        return null;
+        return cookieValue;
     }
     const shouldFetch = getCookie('get_user') ? true : false
     const fetcher = (...args) => axios.get(...args).then(response => response.data)
