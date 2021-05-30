@@ -1,10 +1,12 @@
 import Header from '../global/Header'
 import Footer from '../global/Footer'
 import SignUpModel from '../signup'
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import {ProfileBoxitem, ProfileBoxitemLogin, ProfileBoxitemMobileLogin, navItem, ProfileBoxitemMobile } from '../../data/_variables'
+import { SignUpContext } from '../../context/SIgnUpContext'
 const Layout = ({ children, HeroImage=null, mobileNav, heroProps, ServiceListModel=null, serviceListProps, Modal=null, modalProps, FooterSeft=null }) => {
-    const [signUpActive, setSignUpActive] = useState(false)
+    // const [signUpActive, setSignUpActive] = useState(false)
+    const { signUpActive, setSignUpActive } = useContext(SignUpContext)
     return (
         <>  
             <div className="afzal-container">

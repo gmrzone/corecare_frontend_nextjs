@@ -65,7 +65,7 @@ const Editor = ({ setTextEditorLoading, value , onBodyChange }) => {
         ]
     },
     simpleUpload: {
-        uploadUrl: BASE_URL + '/blog/posts/images/',
+        uploadUrl: BASE_URL + '/blog/post/images/',
         withCredentials: true,
         headers: {
           'X-CSRFToken': csrfToken,

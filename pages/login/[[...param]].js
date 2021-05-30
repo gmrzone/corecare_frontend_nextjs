@@ -11,17 +11,18 @@ import { useState, useEffect, useRef } from 'react';
 import LoginFooter from '../../components/login/LoginFooter'
 import { useContext } from 'react'
 import { CsrfContext } from '../../context/CsrfTokenContext'
+import { SignUpContext } from '../../context/SIgnUpContext'
 
 const Login = (props) => {
     const { csrfToken, mutateCsrf } = useContext(CsrfContext)
     const router = useRouter()
     const LoginForm = useRef();
-    console.log(props.mobileNav)
     const param = router.query.param
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [formErr, setFormErr] = useState(null)
     const { mobileNav } = props;
     const [loading, setLoading] = useState(false)
+    const { setSignUpActive } = useContext(SignUpContext)
     // const submitForm = (formValues) => {
     //     axios.post('api/token/', formValues)
     //     .then(response => {
@@ -92,7 +93,7 @@ const Login = (props) => {
                                     <a className="forgot-password">Forgot password</a>
                                 </Link>
                                 <div style={{textAlign: 'right'}}>
-                                    <button className="ui secondary button" onClick={() => props.openSignup()} type="button">
+                                    <button className="ui secondary button" onClick={() => setSignUpActive(true)} type="button">
                                         Signup
                                     </button>
                                     <button className={`ui positive right labeled icon button ${loading && "loading"}`} type="submit">

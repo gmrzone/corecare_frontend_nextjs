@@ -41,13 +41,20 @@ const CreateForm = ({ setTextEditorLoading, selectFileSrc, setCropperModalActive
             }
             formData.append('body', formState.body)
             const headers = {headers: {'X-CSRFToken': csrfToken}}
-            djangoApi.post(`blog/posts/create/${formState.category.slug}/`, formData, headers)
+            djangoApi.post(`blog/post/create/${formState.category.slug}/`, formData, headers)
             .then(response => {
                   setFormError({status: "ok", title: response.data.message})
                   setFormState(initialFormState)
             })
             .catch(e => {
-                  alert("EndPoint Not available")
+                  if (e.response.status === 401){
+                        setFormError({status: "error", title: "You need To Login to create Post"})
+                  }
+                  else{
+                        alert("EndPoint Not available")
+                  }
+                  
+                  
             })
       }
       else {

@@ -4,6 +4,7 @@ import '../styles/globals.css'
 import { AuthContextProvider } from '../context/AuthContext'
 import { BaseCartProvider } from '../context/basicCartContext'
 import { CsrfContextProvider } from '../context/CsrfTokenContext'
+import { SignUpContextProvider } from '../context/SIgnUpContext'
 const MyApp = ({ Component, pageProps }) => {
   const mobileNav = useMobileNav()
 
@@ -12,7 +13,9 @@ const MyApp = ({ Component, pageProps }) => {
             <AuthContextProvider>
                 <BaseCartProvider>
                     <CsrfContextProvider>
-                        <Component {...pageProps} mobileNav={mobileNav}/>
+                        <SignUpContextProvider>
+                            <Component {...pageProps} mobileNav={mobileNav}/>
+                        </SignUpContextProvider>
                     </CsrfContextProvider>
                 </BaseCartProvider>
             </AuthContextProvider>
