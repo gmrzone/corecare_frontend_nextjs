@@ -36,8 +36,10 @@ const CreateForm = ({ setTextEditorLoading, selectFileSrc, setCropperModalActive
       if (formState.title && formState.body && formState.category.slug){
             const formData = new FormData()
             formData.append('title', formState.title)
+            
             if (completedCrop){
                   formData.append('photo', completedCrop)
+                  console.log(completedCrop)
             }
             formData.append('body', formState.body)
             const headers = {headers: {'X-CSRFToken': csrfToken}}
