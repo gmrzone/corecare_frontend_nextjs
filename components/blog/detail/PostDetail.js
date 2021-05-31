@@ -1,6 +1,7 @@
 import style from '../../../styles/blog/postDetail.module.scss';
 import Image from 'next/image';
 import Card from '../Card'
+import { BASE_URL } from '../../../data/_variables'
 const PostDetail = ({ post }) => {
     return (
             <Card>
@@ -10,7 +11,8 @@ const PostDetail = ({ post }) => {
                 <p className={style.meta}><span className={style.highlight}>{post.created}</span> By <span className={style.highlight}>{post.author.username || post.author.first_name + post.author.last_name}</span></p>
             </div>
             <div className={style.image}>
-                <Image layout="intrinsic" src="http://127.0.0.1:8000/media/default_blog.jpg" width={1280} height={720}/>
+                <Image layout="intrinsic" src={BASE_URL + post.photo} width={1280} height={720}/>
+            {console.log("afzal", post.photo)}
             </div>
             <div className={style.body} dangerouslySetInnerHTML={{__html: post.body}}>
             </div>
