@@ -2,9 +2,12 @@ import Card from "../Card";
 import style from "../../../styles/blog/postDetail.module.scss";
 import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form'
+import { useContext } from 'react';
+import { AuthContext } from '../../../context/AuthContext';
 import React from "react";
 const PostCreateComment = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { loginStatus, userData } = useContext(AuthContext)
+    const { register, handleSubmit, setValue ,formState: { errors } } = useForm();
     const generateRandomNumber = (min=1, max=50) => {
         const num = Math.floor(Math.random() * (max - min + 1) + min)
         return num
@@ -15,16 +18,24 @@ const PostCreateComment = () => {
             return {...state, firstNum: generateRandomNumber(), secondNum: generateRandomNumber()}
         })
     }, [])
+    useEffect(()=> {
+        setValue('name', loginStatus ? userData.first_name + " " + userData.last_name : "", {shouldValidate: false})
+        setValue('email', loginStatus ? userData.email : "", {shouldValidate: false})
+    }, [loginStatus])
+
     const onSubmit = (data) => {
-        console.log(errors)
-        if (data.question !== securityQuestion.firstNum + securityQuestion.secondNum){
+        const answer = securityQuestion.firstNum + securityQuestion.secondNum
+        const formAnswer = parseInt(data.question)
+        if (formAnswer !== answer){
             setSecurityQuestion(state => {
                 return {...state, firstNum: generateRandomNumber(), secondNum: generateRandomNumber(), error: true}
             })
         }
         else{
+            setSecurityQuestion(state => {
+                return {...state, error: false}
+            })
             console.log(data)
-            console.log(formState)
         }
     }
     const detectFormError = () => {
@@ -57,8 +68,8 @@ const PostCreateComment = () => {
           <label>What is {securityQuestion.firstNum} + {securityQuestion.secondNum} ?</label>
           <input type="text" autoComplete="off" placeholder="Security Question" {...register('question', {required: {value: true, message: "Please enter answer to security question."}, pattern: {value: /^[0-9]*$/, message: "Security answer cannot be anything other then number."}})}/>
         </div>
-        {detectFormError() && <div className="ui red message">{errors.name?.message || errors.email?.message || errors.comment?.message || errors.question?.message}</div>}
-        {securityQuestion.error === securityQuestion.error && <div className={`ui red message ${securityQuestion.error ? "red" : "green"}`}>{securityQuestion.error ? "Wrong Answer please try again." : "Comment Created sucessfully."}</div>}
+        {detectFormError() && <div className="ui red message">{errors.name?.message || errors.email?.message || errors.comment?.message || errors.question?.message}</div> ||
+        securityQuestion.error === securityQuestion.error && <div className={`ui red message ${securityQuestion.error ? "red" : "green"}`}>{securityQuestion.error ? "Wrong Answer please try again." : "Comment Created sucessfully."}</div>}
         <div className={style.form_action}>
             <button className="ui secondary button" type="submit">
                 Comment

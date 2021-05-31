@@ -32,7 +32,7 @@ export const getStaticProps = async ({ params }) => {
 
 
 export default function Home({ mobileNav, post }) {
-    console.log(post)
+
   return (
     <>
       <MetaComponent title={post.title} name="corecare" url={frontend_base + `blog/${post.date_slug.year}/${post.date_slug.month}/${post.date_slug.day}/${post.slug}`} />
