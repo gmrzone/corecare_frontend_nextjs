@@ -3,6 +3,7 @@ import MetaComponent from '../../../../../components/common/MetaComponent';
 import { frontend_base } from '../../../../../data/_variables'
 import PostDetail from '../../../../../components/blog/detail/PostDetail'
 import style from '../../../../../styles/blog/postDetail.module.scss';
+import PostCreateComment from '../../../../../components/blog/detail/PostCreateComment'
 
 
 export const getStaticPaths = async () => {
@@ -38,6 +39,7 @@ export default function Home({ mobileNav, post }) {
       <Layout mobileNav={mobileNav}>
         <div className={`ui container ${style.container}`}>
           <PostDetail post={post}/>
+          <PostCreateComment />
         </div>
       </Layout>
     </>

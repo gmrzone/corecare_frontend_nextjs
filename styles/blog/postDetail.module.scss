@@ -7,7 +7,7 @@
         margin: 40px 0;
     }
     .header {
-
+        margin-bottom: 15px;
 
         .title {
             color: lighten(map-get($colors, main), 25%);
@@ -20,6 +20,7 @@
         // position: relative;
         // width: 1280px;
         // height: 720px;
+        margin-bottom: 30px;
     }
     .body {
         font-size: 16px;
@@ -31,6 +32,42 @@
         li {
             margin-bottom: 20px;
         }
+
+        figure {
+            width: auto;
+            height: auto;
+            text-align: center;
+
+            img {
+                width: 100%;
+
+                @media (min-width: 992px){
+                    width: auto;
+                }
+            }
+        }
     }
 
+}
+
+// Create Comment Component
+
+.create_form_head {
+    margin-bottom: 20px;
+
+    @media (min-width: 992px) {
+        margin-bottom: 40px;
+    }
+}
+.comment_form > * {
+    margin-bottom: 20px !important;
+
+    &:last-child {
+        margin-bottom: 0px !important;
+    }
+}
+
+.form_action {
+    text-align: right;
+    margin-top: 10px;
 }

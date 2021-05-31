@@ -7,11 +7,16 @@ const Card = ({ children }) => {
                     background: white;
                     border-radious: 4px;
                     padding: 5px;
+                    margin-bottom: 20px;
+                    width: 100%;
+                    max-width: 900px;
+                    margin: 0 auto 20px auto
                 }
                 @media (min-width: 360px){
                     .card {
 
                     padding: 10px;
+                   
                 }
                 }
                 @media (min-width: 400px){
@@ -24,6 +29,7 @@ const Card = ({ children }) => {
                     .card {
 
                     padding: 20px;
+                    margin-bottom: 30px;
                 }
                 }
                 @media (min-width: 1200px){
@@ -36,6 +42,7 @@ const Card = ({ children }) => {
                     .card {
 
                     padding: 40px;
+                    margin-bottom: 40px;
                 }
                 }
             
