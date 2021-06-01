@@ -4,12 +4,15 @@ import { useForm } from 'react-hook-form'
 import { useContext } from 'react';
 import { AuthContext } from '../../../context/AuthContext';
 import { CsrfContext } from '../../../context/CsrfTokenContext';
+import { PostCommentContext } from '../../../context/PostCommentContext'
 import DjangoBackend from '../../../data/backendApi';
 const CommentForm = ({ year, month, day, slug, isReply, parent_id }) => {
+    const [loading, setLoading] = useState(false)
     const { loginStatus, userData } = useContext(AuthContext)
     const { csrfToken, mutateCsrf } = useContext(CsrfContext)
-
+    const { postComments, mutatePostComments } = useContext(PostCommentContext)
     const { register, handleSubmit, setValue, formState: { errors } } = useForm();
+
     const generateRandomNumber = (min=1, max=50) => {
         const num = Math.floor(Math.random() * (max - min + 1) + min)
         return num
@@ -25,6 +28,7 @@ const CommentForm = ({ year, month, day, slug, isReply, parent_id }) => {
     }, [loginStatus])
 
     const onSubmit = (data) => {
+        setLoading(true)
         const answer = securityQuestion.firstNum + securityQuestion.secondNum
         const formAnswer = parseInt(data.question)
         if (formAnswer !== answer){
@@ -47,10 +51,16 @@ const CommentForm = ({ year, month, day, slug, isReply, parent_id }) => {
             DjangoBackend.post(url, formData, headers)
             .then(response => {
               if (response.data.status === "ok"){
+                  mutateCsrf()
                   setSecurityQuestion(state => {
                     return {...state, error: false}
                   })
+                  response.data.data['added'] = true
+                  mutatePostComments([...postComments, response.data.data], false)
+                  console.log(response.data)
+                  console.log(postComments)
               }
+              setLoading(false)
             })
             .catch(e => {
               setSecurityQuestion(state => {
@@ -92,7 +102,7 @@ const CommentForm = ({ year, month, day, slug, isReply, parent_id }) => {
         {detectFormError() && <div className="ui red message">{errors.name?.message || errors.email?.message || errors.comment?.message || errors.question?.message}</div> ||
         securityQuestion.error === securityQuestion.error && <div className={`ui red message ${securityQuestion.error ? "red" : "green"}`}>{securityQuestion.error ? "Wrong Answer please try again." : "Comment Created sucessfully."}</div>}
         <div className={style.form_action}>
-            <button className="ui secondary button" type="submit">
+            <button className={`ui secondary button ${loading && "loading"}`} type="submit">
                 {isReply ? "Reply" :"Comment"}
             </button>
         </div>

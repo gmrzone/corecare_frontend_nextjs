@@ -80,6 +80,25 @@
                 margin-right: 12px !important;
             }
         }
+        .reply_button, 
+        .hide_button {
+            cursor: pointer;
+            color: map-get($map: $colors, $key: theme);
+            margin-right: 20px;
+            transition: color .1s ease-in-out;
+
+            &:hover {
+                
+                color: lighten(map-get($colors, main), 30%);
+            }
+        }
+
+        &.new_added {
+            color: green;
+            span {
+                color: inherit;
+            }
+        }
     }
 }
 
@@ -92,11 +111,10 @@
         margin-bottom: 40px;
     }
 }
-.comment_form.reply {
-    margin-left: 6px !important;
+.comment_form {
 
-    @media (min-width: 992px) {
-        margin-left: 12px !important;
+    &.reply {
+    padding-left: 6px !important;
     }
 }
 .comment_form > * {

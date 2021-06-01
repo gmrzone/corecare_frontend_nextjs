@@ -33,7 +33,7 @@ export const getStaticProps = async ({ params }) => {
 
 export default function Home({ mobileNav, post }) {
 
-  const {slug, date_slug: { year, month, day }} = post
+  const {slug , date_slug: { year, month, day }} = post
 
   return (
     <>
