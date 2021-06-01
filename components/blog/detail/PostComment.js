@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import style from '../../../styles/blog/postDetail.module.scss'
-const PostComment = ({ comment }) => {
+import CommentForm from './CommentForm'
+const PostComment = ({ comment,  year, month, day, slug  }) => {
     return (
         <div className={"comment " + style.comment}>
             <span className={"avatar " + style.avatar}>
@@ -19,6 +20,7 @@ const PostComment = ({ comment }) => {
                 <div className="actions">
                     <div className={"reply"}>Reply</div>
                 </div> 
+                <CommentForm isReply={true} year={year} month={month} day={day} slug={slug} parent_id={comment.id}/>
             </div>
         </div>
     )

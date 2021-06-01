@@ -42,7 +42,7 @@ export default function Home({ mobileNav, post }) {
         <div className={`ui container ${style.container}`}>
           <PostDetail post={post}/>
           <PostCommentProvider year={year} month={month} day={day} slug={slug}>
-              <PostComments />
+              <PostComments year={year} month={month} day={day} slug={slug}/>
               <PostCreateComment forPost={post}/>
           </PostCommentProvider> 
         </div>

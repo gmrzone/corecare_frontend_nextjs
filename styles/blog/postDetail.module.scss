@@ -92,6 +92,13 @@
         margin-bottom: 40px;
     }
 }
+.comment_form.reply {
+    margin-left: 6px !important;
+
+    @media (min-width: 992px) {
+        margin-left: 12px !important;
+    }
+}
 .comment_form > * {
     margin-bottom: 20px !important;
 
