@@ -4,9 +4,10 @@ const Card = ({ children }) => {
             {children}
             <style jsx>{`
                 .card {
+                    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
                     background: white;
                     border-radious: 4px;
-                    padding: 5px;
+                    padding: 10px;
                     margin-bottom: 20px;
                     width: 100%;
                     max-width: 900px;
@@ -15,14 +16,8 @@ const Card = ({ children }) => {
                 @media (min-width: 360px){
                     .card {
 
-                    padding: 10px;
-                   
-                }
-                }
-                @media (min-width: 400px){
-                    .card {
-
                     padding: 15px;
+                   
                 }
                 }
                 @media (min-width: 992px){

@@ -55,10 +55,24 @@ const CommentForm = ({ year, month, day, slug, isReply, parent_id }) => {
                   setSecurityQuestion(state => {
                     return {...state, error: false}
                   })
-                  response.data.data['added'] = true
-                  mutatePostComments([...postComments, response.data.data], false)
-                  console.log(response.data)
-                  console.log(postComments)
+                  if (response.data.data.parent){
+                    console.log("Reply Added", response.data.data)
+
+                    const newState = postComments.map(x => {
+                      if (parseInt(x.id) === parseInt(response.data.data.parent)){
+                        x['reply_added'] = response.data.data
+                      }
+                      return x
+                    })
+                    console.log(newState)
+                    mutatePostComments(newState, false)
+                  }
+                  else{
+                    mutatePostComments([...postComments, response.data.data], false)
+                  }
+                  
+                  // console.log(response.data)
+                  // console.log(postComments)
               }
               setLoading(false)
             })
@@ -100,7 +114,7 @@ const CommentForm = ({ year, month, day, slug, isReply, parent_id }) => {
           <input type="text" autoComplete="off" placeholder="Security Question" {...register('question', {required: {value: true, message: "Please enter answer to security question."}, pattern: {value: /^[0-9]*$/, message: "Security answer cannot be anything other then number."}})}/>
         </div>
         {detectFormError() && <div className="ui red message">{errors.name?.message || errors.email?.message || errors.comment?.message || errors.question?.message}</div> ||
-        securityQuestion.error === securityQuestion.error && <div className={`ui red message ${securityQuestion.error ? "red" : "green"}`}>{securityQuestion.error ? "Wrong Answer please try again." : "Comment Created sucessfully."}</div>}
+        securityQuestion.error === securityQuestion.error && <div className={`ui red message ${securityQuestion.error ? "red" : "green"}`}>{securityQuestion.error ? "Wrong Answer please try again." : `${isReply ? "Reply" : "Comment"} Created sucessfully.`}</div>}
         <div className={style.form_action}>
             <button className={`ui secondary button ${loading && "loading"}`} type="submit">
                 {isReply ? "Reply" :"Comment"}
