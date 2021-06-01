@@ -47,6 +47,7 @@ const CreateForm = ({ setTextEditorLoading, selectFileSrc, setCropperModalActive
             .then(response => {
                   setFormError({status: "ok", title: response.data.message})
                   setFormState(initialFormState)
+                  mutateCsrf()
             })
             .catch(e => {
                   if (e.response.status === 401){

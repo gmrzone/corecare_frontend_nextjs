@@ -7,7 +7,7 @@
         margin: 40px 0;
     }
     .header {
-        margin-bottom: 15px;
+        margin-bottom: 30px;
 
         .title {
             color: lighten(map-get($colors, main), 25%);
@@ -48,6 +48,39 @@
         }
     }
 
+}
+
+
+// Comments List Components
+
+.comments {
+
+    max-width: 750px !important;
+
+    .comment {
+        margin-top: 15px !important;
+
+
+        @media (min-width: 992px){
+            margin-top: 20px !important;
+        }
+        &:first-child {
+            margin-top: 0px !important;
+        }
+
+        .avatar {
+            width: 50px !important;
+            height: 50px !important;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+            margin-right: 6px !important;
+
+            @media (min-width: 992px) {
+                margin-right: 12px !important;
+            }
+        }
+    }
 }
 
 // Create Comment Component

@@ -4,8 +4,8 @@ import { frontend_base } from '../../../../../data/_variables'
 import PostDetail from '../../../../../components/blog/detail/PostDetail'
 import style from '../../../../../styles/blog/postDetail.module.scss';
 import PostCreateComment from '../../../../../components/blog/detail/PostCreateComment'
-
-
+import PostComments from '../../../../../components/blog/detail/PostComments'
+import { PostCommentProvider } from '../../../../../context/PostCommentContext'
 export const getStaticPaths = async () => {
     const BASE_URL = process.env.NODE_ENV === 'development' ? process.env['API_BASE_URL'] : process.env['API_BASE_URL_PROD']
     const data = await fetch(`${BASE_URL}blog/posts/`)
@@ -33,13 +33,18 @@ export const getStaticProps = async ({ params }) => {
 
 export default function Home({ mobileNav, post }) {
 
+  const {slug, date_slug: { year, month, day }} = post
+
   return (
     <>
       <MetaComponent title={post.title} name="corecare" url={frontend_base + `blog/${post.date_slug.year}/${post.date_slug.month}/${post.date_slug.day}/${post.slug}`} />
       <Layout mobileNav={mobileNav}>
         <div className={`ui container ${style.container}`}>
           <PostDetail post={post}/>
-          <PostCreateComment />
+          <PostCommentProvider year={year} month={month} day={day} slug={slug}>
+              <PostComments />
+              <PostCreateComment forPost={post}/>
+          </PostCommentProvider> 
         </div>
       </Layout>
     </>
