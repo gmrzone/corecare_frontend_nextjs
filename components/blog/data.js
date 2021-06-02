@@ -37,6 +37,10 @@ export const navItemLogin = [
 ]
 export const ProfileBoxitem = [
     {
+        'name': 'Create Post',
+        route: "/"
+    },
+    {
         name: 'Carpenter',
         route: '/blog?=carpenter'
     },
@@ -67,6 +71,10 @@ export const ProfileBoxitem = [
 
 ]
 export const ProfileBoxitemLogin = [
+    {
+        'name': 'Create Post',
+        route: "/"
+    },
     {
         name: 'Plumber',
         route: '/blog?=plumber'
@@ -101,6 +109,10 @@ export const ProfileBoxitemMobile = [
     {
         name: 'Login',
         route: '/login'
+    },
+    {
+        'name': 'Create Post',
+        route: "/"
     },
     {
         name: 'Cleaning',
@@ -141,7 +153,10 @@ export const ProfileBoxitemMobile = [
 
 ]
 export const ProfileBoxitemMobileLogin = [
-
+    {
+        'name': 'Create Post',
+        route: "/"
+    },
     {
         name: 'Cleaning',
         route: '/blog?=cleaning'

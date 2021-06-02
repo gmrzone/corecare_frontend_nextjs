@@ -56,6 +56,9 @@ const ProfileBox = (props) => {
         else if (item.name === 'Logout'){
             return <DropDownSame click={handleLogout} item={item.name} key={index} closeDropDown={setDropdownActive}/>
         }
+        else if (item.name === "Create Post"){
+            return <DropDownSame click={() => props.setPostCreateModalActive(true)} item={item.name} key={index} closeDropDown={setDropdownActive}/>
+        }
         else{
             return <DropDownItem name={item.name} to={item.route} key={index} closeDropDown={setDropdownActive}/>
         }

@@ -161,7 +161,7 @@ const Header = (props) => {
               openSignup={props.openSignup}
               mutateAuth={mutateAuth}
               blog={props.blog}
-              setCreatePostActive={props.setCreatePostActive}
+              setPostCreateModalActive={props.setPostCreateModalActive}
             />
           </ul>
         </div>
