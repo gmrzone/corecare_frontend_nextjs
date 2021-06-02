@@ -65,7 +65,7 @@ const CommentForm = ({ year, month, day, slug, isReply, parent_id }) => {
                       return x
                     })
                     console.log(newState)
-                    mutatePostComments(newState, false)
+                    mutatePostComments([...newState, response.data.data], false)
                   }
                   else{
                     mutatePostComments([...postComments, response.data.data], false)

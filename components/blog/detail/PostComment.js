@@ -6,7 +6,6 @@ import { useState } from 'react'
 import axios from '../../../data/backendApi'
 const PostComment = ({ comment,  year, month, day, slug, replyActive, setActiveReplyFor }) => {
     const [commentReply, setCommentReply] = useState({active: false, data: null})
-    console.log(comment.reply_added)
     const reply_length = comment.replies.length
     const activateReply = () => {
         setActiveReplyFor(comment.id)
@@ -15,6 +14,7 @@ const PostComment = ({ comment,  year, month, day, slug, replyActive, setActiveR
        setActiveReplyFor(null)
     }
     const toggleReplyList = () => {
+        comment.reply_added = null
         if (!commentReply.data){
             axios.get(`blog/post/${comment.id}/replies/`)
             .then(response => {
@@ -34,7 +34,7 @@ const PostComment = ({ comment,  year, month, day, slug, replyActive, setActiveR
         const data = replies.map(reply => {
             return (<div className="comments" key={reply.id}>
                 <div className={"avatar " + style.avatar}>
-                    <Image src={reply.user?.photo ? comment.user.photo.startsWith("h") ? reply.user.photo : BASE_URL + comment.user.photo : "/default-profile.png"} layout="fill" objectFit="cover" alt="employee" />
+                    <Image src={reply.user?.photo ? reply.user.photo.startsWith("h") ? reply.user.photo : BASE_URL + reply.user.photo : "/default-profile.png"} layout="fill" objectFit="cover" alt="employee" />
                 </div>
                 <div className={"content"}>
                     <span className="author">{reply.user?.username || reply.user?.email || reply.user?.number || reply.name}</span>

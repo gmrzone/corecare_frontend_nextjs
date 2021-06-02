@@ -19,6 +19,7 @@ const PostComments = ({ year, month, day, slug }) => {
         if (replyCount > 0){
             commentCount += replyCount
         }
+        if (x.parent)return
         return <PostCommentItem comment={x} key={x.id + x.name} year={year} month={month} day={day} slug={slug} replyActive={activeReplyFor === x.id} setActiveReplyFor={setActiveReplyFor} replies={getReplyData(x.replies)}/>
     })
     return (
