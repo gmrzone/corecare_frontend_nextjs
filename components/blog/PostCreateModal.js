@@ -50,7 +50,7 @@ const PostCreateModal = ({ modalProps, mobileNav }) => {
 
     return (
         <>
-        <div className={style.modal_back} ref={modalBack}>
+        <div className={style.modal_back} ref={modalBack} onClick={() => setCreateModalActive(false)}>
         </div>
         <BlogImageCropper cropperModalActive={cropperModalActive} closeCropperModal={closeCropperModal} fileSrc={fileSrc} selectFileSrc={selectFileSrc} imageType={imageType} setCompletedCrop={setCompletedCrop} loadedImage={loadedImage} crop={crop}>
             <ReactCrop src={fileSrc} crop={crop} onChange={newCrop => setCrop(newCrop)} onImageLoaded={setLoadedImage}/>
