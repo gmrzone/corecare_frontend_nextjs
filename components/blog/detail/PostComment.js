@@ -7,6 +7,7 @@ import axios from '../../../data/backendApi'
 const PostComment = ({ comment,  year, month, day, slug, replyActive, setActiveReplyFor }) => {
     const [commentReply, setCommentReply] = useState({active: false, data: null})
     const reply_length = comment.replies.length
+    console.log(comment.reply_added)
     const activateReply = () => {
         setActiveReplyFor(comment.id)
     }
@@ -30,7 +31,6 @@ const PostComment = ({ comment,  year, month, day, slug, replyActive, setActiveR
     }
 
     const renderReplies = (replies) => {
-        console.log("Running")
         const data = replies.map(reply => {
             return (<div className="comments" key={reply.id}>
                 <div className={"avatar " + style.avatar}>
@@ -72,7 +72,7 @@ const PostComment = ({ comment,  year, month, day, slug, replyActive, setActiveR
                     {replyActive && <span className={"hide " + style.hide_button} onClick={hideReplyForm}>Cancel</span>}
                 </div> 
                 {replyActive && <CommentForm isReply={true} year={year} month={month} day={day} slug={slug} parent_id={comment.id}/>}
-                {comment?.reply_added?.id && renderReplies([comment.reply_added])}
+                {comment?.reply_added?.id || comment.reply_added?.length > 1 ? renderReplies(comment.reply_added instanceof Array ? comment.reply_added : [comment.reply_added]) : null}
                 {reply_length > 0  && (
                     <div className={style.replies_text}><span onClick={toggleReplyList}><i className="fa fa-caret-down" aria-hidden="true" /><span>{commentReply.active ? "Hide" : "View"} {reply_length} {reply_length === 1 ? "Reply" : "Replies"}</span></span></div>
                 )}

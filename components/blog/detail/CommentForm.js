@@ -28,16 +28,15 @@ const CommentForm = ({ year, month, day, slug, isReply, parent_id }) => {
     }, [loginStatus])
 
     const onSubmit = (data) => {
-        setLoading(true)
         const answer = securityQuestion.firstNum + securityQuestion.secondNum
         const formAnswer = parseInt(data.question)
         if (formAnswer !== answer){
             setSecurityQuestion(state => {
-                return {...state, firstNum: generateRandomNumber(), secondNum: generateRandomNumber(), error: true}
+                return {firstNum: generateRandomNumber(), secondNum: generateRandomNumber(), error: true}
             })
         }
         else{
-
+            setLoading(true)
             let url = `blog/create_comment/${year}/${month}/${day}/${slug}/`
             const headers = {headers: {'X-CSRFToken': csrfToken}}
             const formData = new FormData()
@@ -53,18 +52,22 @@ const CommentForm = ({ year, month, day, slug, isReply, parent_id }) => {
               if (response.data.status === "ok"){
                   mutateCsrf()
                   setSecurityQuestion(state => {
-                    return {...state, error: false}
+                    return {firstNum: generateRandomNumber(), secondNum: generateRandomNumber(), error: false}
                   })
                   if (response.data.data.parent){
-                    console.log("Reply Added", response.data.data)
-
                     const newState = postComments.map(x => {
                       if (parseInt(x.id) === parseInt(response.data.data.parent)){
-                        x['reply_added'] = response.data.data
+                        if (x.reply_added){
+                          const old_replies = x['reply_added']
+                          x['reply_added'] = [response.data.data, old_replies]
+                        }
+                        else{
+                          x['reply_added'] = response.data.data
+                        }
+                        
                       }
                       return x
                     })
-                    console.log(newState)
                     mutatePostComments([...newState, response.data.data], false)
                   }
                   else{
@@ -78,8 +81,8 @@ const CommentForm = ({ year, month, day, slug, isReply, parent_id }) => {
             })
             .catch(e => {
               setSecurityQuestion(state => {
-                return {...state, error: true}
-              })
+                return {firstNum: generateRandomNumber(), secondNum: generateRandomNumber(), error: true}
+            })
             })
 
         }
