@@ -28,7 +28,7 @@ export default function Home({ mobileNav, posts }) {
           <div className={`ui container ${style.container}`}>
           {/* <button className={`negative ui button ${textEditorLoading && "loading"}`}  onClick={() => setCreateModalActive(true)}>Create Post</button> */}
             <h1>Recent Posts</h1>
-            <PostListPaginationProvider initialData={posts}>
+            <PostListPaginationProvider initialData={posts} mobileNav={mobileNav}>
               <PostList />
             </PostListPaginationProvider>
           </div>

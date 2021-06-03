@@ -7,7 +7,7 @@ const PostListItem = ({ post }) => {
         return false;
     else
         str = str.toString();
-    return str.replace( /(<([^>]+)>)/ig, '').substring(0, 100) + " ....";
+    return str.replace( /(<([^>]+)>)/ig, '').substring(0, 130) + " ....";
     }
     return (
         <Link href={`blog/${year}/${month}/${day}/${slug}`}>
@@ -16,7 +16,7 @@ const PostListItem = ({ post }) => {
                     <img src={post.photo} />
                 </div>
                 <div className="content">
-                <div className="head">{post.title}</div>
+                <div className={style.head}>{post.title}</div>
                 <div className="meta">
                     <a>{post.created}</a>
                 </div>
@@ -25,7 +25,7 @@ const PostListItem = ({ post }) => {
                 </div>
                 </div>
                 <div className="extra content">
-                <span className="right floated">
+                <span className={`right floated ${style.name}`}>
                     by {post?.author?.username || post?.author?.first_name + " " + post?.author?.last_name || post.name}
                 </span>
                 <span>
