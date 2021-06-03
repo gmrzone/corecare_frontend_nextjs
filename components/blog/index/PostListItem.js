@@ -14,8 +14,8 @@ const PostListItem = ({ post }) => {
         <Link href={`blog/${year}/${month}/${day}/${slug}`}>
             <div className={`card ${style.post_item}`}>
                 <div className={`image ${style.image_container}`}>
-                    <img src={post.photo} alt={slug}/>
-                    {/* <LazyLoadImage src={post.photo} alt_text={slug} class_name={style.image_container}/> */}
+                    {/* <img src={post.photo} alt={slug}/> */}
+                    <LazyLoadImage src={post.photo} alt_text={slug} class_name={style.image_container}/>
                 </div>
                 <div className="content">
                 <div className={style.head}>{post.title}</div>

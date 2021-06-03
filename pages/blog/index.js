@@ -30,6 +30,9 @@ export default function Home({ mobileNav, posts }) {
             <h1>Recent Posts</h1>
             <PostListPaginationProvider initialData={posts} mobileNav={mobileNav}>
               <PostList />
+              <div className="ui placeholder">
+                <div className="image"></div>
+            </div>
             </PostListPaginationProvider>
           </div>
         </Layout>

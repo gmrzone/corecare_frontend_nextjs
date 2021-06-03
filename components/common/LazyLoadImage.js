@@ -2,10 +2,9 @@ import { useEffect, useRef, useState } from 'react';
 
 const LazyLoadImage = ({ src, alt_text, class_name }) => {
     const imageRef = useRef()
-    console.log(class_name)
     const placeHolderRef = useRef(false)
     const [inView, setInVIew] = useState(false)
-    const [_, setImageLoaded] = useState(false)
+    const [, setImageLoaded] = useState(false)
 
     useEffect(() => {
         const option = {}
@@ -35,19 +34,28 @@ const LazyLoadImage = ({ src, alt_text, class_name }) => {
     const imageStyle = {
         opacity: "0",
         transition: "0.2s opacity ease-in-out",
-        display: 'none'
+        display: 'none',
     }
     const placeholderStyle = {
         height: "191px",
-        opacity: 1,
+        opacity: "1",
         transition: '0.2s opacity ease-in-out',
         display: "block"
     }
     return (
         <>
             {inView && <img src={src} alt={alt_text} ref={imageRef} style={imageStyle} onLoad={ImageLoaded}/>}
-            <div className="ui placeholder" style={{...placeholderStyle}} ref={placeHolderRef} className={class_name}>
+            <div className={`ui placeholder ${class_name}`} ref={placeHolderRef}>
                 <div className="image"></div>
+                <style jsx>{`
+                    .ui.placeholder {
+                        height: 200px;
+                        opacity: 1;
+                        transition: 0.2s opacity ease-in-out;
+                        display: block;
+                    }
+                
+                `}</style>
             </div>
         </>
     )
