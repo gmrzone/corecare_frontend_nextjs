@@ -9,7 +9,7 @@ const PostList = () => {
     })
     return (
         <div className={style.post_list_container}>
-            <div class="ui link cards">
+            <div className={`ui link cards ${style.cards}`}>
                 {renderPosts}
             </div>
         </div>

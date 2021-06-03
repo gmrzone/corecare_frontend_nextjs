@@ -11,9 +11,9 @@ const PostListItem = ({ post }) => {
     }
     return (
         <Link href={`blog/${year}/${month}/${day}/${slug}`}>
-            <div className="card">
-                <div className="image">
-                <img src={post.photo} />
+            <div className={`card ${style.post_item}`}>
+                <div className={`image ${style.image_container}`}>
+                    <img src={post.photo} />
                 </div>
                 <div className="content">
                 <div className="head">{post.title}</div>

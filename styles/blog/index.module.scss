@@ -1,3 +1,54 @@
 .container {
     margin: 30px 0;
+
+    .post_list_container {
+        font: inherit;
+
+
+        .cards {
+            // justify-content: center !important;
+            font: inherit;
+            width: 100%;
+            margin: 0 !important;
+            .post_item {
+                width: 100%;
+
+                @media (min-width: 992px){
+                    width: 294px;
+                }
+                @media (min-width: 1200px){
+                    width: 360px;
+                }
+                @media (min-width: 1400px){
+                    width: 394px;
+                }
+                @media (min-width: 1600px){
+                    width: 426px;
+                }
+
+                
+
+
+                .image_container {
+                    width: 100%;
+                    @media (min-width: 992px){
+                        width: 294px;
+                    }
+                    @media (min-width: 1200px){
+                        width: 360px;
+                    }
+                    @media (min-width: 1400px){
+                        width: 394px;
+                    }
+                    @media (min-width: 1600px){
+                        width: 426px;
+                    }
+
+                    img {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
 }
