@@ -3,15 +3,17 @@ import { PostListPaginationContext } from '../../../context/PostListPaginationCo
 import style from '../../../styles/blog/index.module.scss'
 import PostListItem from './PostListItem'
 const PostList = () => {
-    const { postList, mutatePostList } = useContext(PostListPaginationContext)
-    const renderPosts = postList.posts.map(x => {
-        return <PostListItem post={x} key={x.id + x.slug}/>
-    })
+    const { nextPage, pages } = useContext(PostListPaginationContext)
+    // const renderPosts = postList.posts.map(x => {
+    //     return <PostListItem post={x} key={x.id + x.slug}/>
+    // })
     return (
         <div className={style.post_list_container}>
             <div className={`ui link cards ${style.cards}`}>
-                {renderPosts}
+                {/* {renderPosts} */}
+                {pages}
             </div>
+            <div className={`ui active centered inline medium loader ${style.loader}`}></div>
         </div>
     )
 }

@@ -60,7 +60,60 @@
                     }
                     
                 }
+                .placeholder {
+                    width: 100%;
+                    height: 180px;
+                    max-width: 100% !important;
+
+                    @media (min-width: 470px){
+                        height: 200px;
+                    }
+                    @media (min-width: 560px){
+                        height: 240px;
+                    }
+                    @media (min-width: 650px){
+                        height: 280px;
+                    }
+                    @media (min-width: 700px){
+                        height: 300px;
+                    }
+                    @media (min-width: 992px){
+                        width: 294px;
+                        height: 200px;
+                    }
+                    @media (min-width: 1200px){
+                        width: 360px;
+                        height: 220px;
+                    }
+                    @media (min-width: 1400px){
+                        width: 394px;
+                        height: 230px;
+                    }
+                    @media (min-width: 1600px){
+                        width: 426px;
+                    }
+                }
             }
+
         }
+        .loader {
+            font-size: 30px !important;
+
+            @media (min-width: 992px) {
+                font-size: 40px !important;
+            }
+
+            &:before,
+            &:after{
+                width: 30px;
+                height: 30px;
+
+                @media (min-width: 992px){
+                    width: 50px;
+                    height: 50px;
+                }
+                
+            }
+        }   
     }
 }

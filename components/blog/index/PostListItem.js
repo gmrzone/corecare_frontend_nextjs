@@ -15,7 +15,7 @@ const PostListItem = ({ post }) => {
             <div className={`card ${style.post_item}`}>
                 <div className={`image ${style.image_container}`}>
                     {/* <img src={post.photo} alt={slug}/> */}
-                    <LazyLoadImage src={post.photo} alt_text={slug} class_name={style.image_container}/>
+                    <LazyLoadImage src={post.photo} alt_text={slug} class_name={style.placeholder}/>
                 </div>
                 <div className="content">
                 <div className={style.head}>{post.title}</div>

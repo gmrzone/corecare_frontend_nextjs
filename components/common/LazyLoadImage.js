@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 
-const LazyLoadImage = ({ src, alt_text, class_name, width, height }) => {
+const LazyLoadImage = ({ src, alt_text, class_name }) => {
     const imageRef = useRef()
     const placeHolderRef = useRef(false)
     const [inView, setInVIew] = useState(false)
@@ -23,9 +23,9 @@ const LazyLoadImage = ({ src, alt_text, class_name, width, height }) => {
     const hidePlaceHolder = () => {
         placeHolderRef.current.style.display = "none"
         imageRef.current.style.display = "block";
-        setTimeout(showImage, 20)
+        setTimeout(showImage, 40)
     }
-    const ImageLoaded = () => {
+    const imageLoaded = () => {
         placeHolderRef.current.style.opacity = "0"
         setTimeout(hidePlaceHolder, 200)
     }
@@ -38,13 +38,13 @@ const LazyLoadImage = ({ src, alt_text, class_name, width, height }) => {
 
     return (
         <>
-            {inView && <img src={src} alt={alt_text} ref={imageRef} style={imageStyle} onLoad={ImageLoaded}/>}
+            {inView && <img src={src} alt={alt_text} ref={imageRef} style={imageStyle} onLoad={imageLoaded}/>}
             <div className={`ui placeholder ${class_name}`} ref={placeHolderRef}>
                 <div className="image"></div>
                 <style jsx>{`
                     .ui.placeholder {
-                        height: ${height || "200px"};
                         opacity: 1;
+                        width: 100%;
                         transition: 0.2s opacity ease-in-out;
                         display: block;
                     }
