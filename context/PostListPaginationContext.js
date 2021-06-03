@@ -7,9 +7,10 @@ const PostListPaginationContext = createContext()
 
 
 const PostListPaginationProvider = ({ children, initialData }) => {
-    const {} = useSWR('')
+    const fetcher = (...args) => axios.get(...args).then(response => response.data)
+    const {data: postList, mutate: mutatePostList} = useSWR('blog/posts/?page=1', fetcher, {initialData: initialData})
     return (
-        <PostListPaginationContext.Provider>
+        <PostListPaginationContext.Provider  value={{ postList, mutatePostList }}>
             {children}
         </PostListPaginationContext.Provider>
     )

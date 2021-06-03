@@ -32,7 +32,17 @@
         li {
             margin-bottom: 20px;
         }
+        pre {
+            background: #e7e7e7;
+            white-space: pre-wrap;
+            overflow-x: auto;
+            padding: 10px;
+            border-radius: 4px;
 
+            @media (min-width: 992px) {
+                padding: 15px;
+            }
+        }
         figure {
             width: auto;
             height: auto;

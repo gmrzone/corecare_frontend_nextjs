@@ -21,7 +21,6 @@ const CategoryDropDown = ({ value, onCategoryChange }) => {
     //         setCategoryData(response.data)
     //     })
     // }, [])
-    console.log("Category", categoryData)
     const toggleDropDown = (e) => {
         if (!dropDownActive){
             e.stopPropagation()
