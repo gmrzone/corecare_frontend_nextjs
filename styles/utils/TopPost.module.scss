@@ -1,0 +1,13 @@
+@import '../variables';
+
+.slider_outer {
+    width: 100%;
+    position: relative;
+    
+
+    .slider_inner {
+        display: flex;
+        padding: 0 10px;
+        overflow-y: auto;
+    }
+}

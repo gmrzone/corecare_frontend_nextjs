@@ -4,6 +4,7 @@ import { frontend_base } from '../../data/_variables';
 import style from '../../styles/blog/index.module.scss';
 import { PostCreateModalProvider } from '../../context/PostCreateModalContext'
 import PostList from '../../components/blog/index/PostList'
+import TopPost from '../../components/blog/index/TopPosts'
 import { PostListPaginationProvider } from '../../context/PostListPaginationContext'
 
 export const getServerSideProps = async () => {
@@ -27,7 +28,7 @@ export default function Home({ mobileNav, posts }) {
         <Layout mobileNav={mobileNav}>
           <div className={`ui container ${style.container}`}>
           {/* <button className={`negative ui button ${textEditorLoading && "loading"}`}  onClick={() => setCreateModalActive(true)}>Create Post</button> */}
-            <h1>Recent Posts</h1>
+            <TopPost />
             <PostListPaginationProvider initialData={posts} mobileNav={mobileNav}>
               <PostList />
             </PostListPaginationProvider>

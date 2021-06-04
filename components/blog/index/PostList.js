@@ -28,6 +28,7 @@ const PostList = () => {
 
     return (
         <div className={style.post_list_container}>
+            <h1>Recent Posts</h1>
             <div className={`ui link cards ${style.cards}`}>
                 {/* {renderPosts} */}
                 {pages}
