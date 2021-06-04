@@ -8,6 +8,6 @@
     .slider_inner {
         display: flex;
         padding: 0 10px;
-        overflow-y: auto;
+        overflow: hidden;
     }
 }
