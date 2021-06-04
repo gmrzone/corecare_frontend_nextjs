@@ -13,17 +13,19 @@ const Page = ({ pageNum, mobileNav, initialData }) => {
 }
 
 const PostListPaginationProvider = ({ children, initialData, mobileNav }) => {
+
     const [pageCount, setPageCount] = useState(1)
     const pages = []
     for (let i = 1; i <= pageCount; i++){
         pages.push(<Page key={i} pageNum={i} mobileNav={mobileNav} initialData={initialData}/>)
     }
+    const lastPage = pageCount === initialData?.page_count
+    console.log(lastPage)
     const nextPage = () => {
-        setPageCount(s => s+1)
-        console.log(pageCount, "pageCount")
+        setPageCount(s => s+1)  
     }
     return (
-        <PostListPaginationContext.Provider  value={{ nextPage, pages }}>
+        <PostListPaginationContext.Provider  value={{ nextPage, pages, lastPage }}>
             {children}
         </PostListPaginationContext.Provider>
     )

@@ -1,22 +1,29 @@
 import { useContext, useEffect, useRef } from 'react'
 import { PostListPaginationContext } from '../../../context/PostListPaginationContext'
 import style from '../../../styles/blog/index.module.scss'
-import PostListItem from './PostListItem'
 const PostList = () => {
-    const { nextPage, pages } = useContext(PostListPaginationContext)
+    const { nextPage, pages, lastPage } = useContext(PostListPaginationContext)
     const loaderRef = useRef()
 
     useEffect(() => {
         const options = {}
-        const observer = new IntersectionObserver((entries) => {
+        const observer = new IntersectionObserver((entries, observe) => {
             entries.forEach(x => {
                 if (x.isIntersecting){
-                    nextPage()
+                    if (lastPage){
+                       observe.unobserve(x.target)
+                
+                    }
+                    else{
+                        nextPage()
+                    }
+
                     console.log("get_next_page")
                 }
             })
         }, options)
         observer.observe(loaderRef.current)
+
     }, [])
 
     return (
@@ -25,7 +32,7 @@ const PostList = () => {
                 {/* {renderPosts} */}
                 {pages}
             </div>
-            <div className={`ui active centered inline medium loader ${style.loader}`} ref={loaderRef}></div>
+            <div className={`ui active centered inline medium loader ${style.loader}`} ref={loaderRef} style={{display: lastPage ? "none" : "block"}}></div>
         </div>
     )
 }
