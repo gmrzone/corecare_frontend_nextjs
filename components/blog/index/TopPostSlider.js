@@ -27,7 +27,6 @@ const TopPostSlider = ({ data }) => {
         }
 
     }
-    console.log(sliderPosition)
     return (
         <div className={style.slider_outer} ref={outerRef}>
                 <i className={`chevron circle left icon " + ${style.desktop_slide_icon} ${style.left}`}  onClick={slideLeft}/>

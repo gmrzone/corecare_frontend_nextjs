@@ -4,20 +4,23 @@ import backendAPi from '../../../data/backendApi'
 import LazyLoadImage from '../../../components/common/LazyLoadImage'
 import { BASE_URL } from '../../../data/_variables'
 import TopPostSlider from './TopPostSlider'
+import Link from 'next/link'
 const TopPost = () => {
     const fetcher = (...args) => backendAPi.get(...args).then(response => response.data)
     const {data} = useSWR(`blog/posts/top/8/`, fetcher)
 
-    const renderPosts = data?.map((x, i) => {
+    const renderPosts = data?.map(x => {
         return (
-            <div className={style.top_post_item} key={x.id}>
-                <div className={style.image_container}>
-                    <LazyLoadImage alt_text={x.title} class_name={style.image_placeholder} src={BASE_URL + x.photo}/>
+            <Link key={x.id} href={`blog/${x.date_slug.year}/${x.date_slug.month}/${x.date_slug.day}/${x.slug}`}>
+                <div className={style.top_post_item} >
+                    <div className={style.image_container}>
+                        <LazyLoadImage alt_text={x.title} class_name={style.image_placeholder} src={BASE_URL + x.photo}/>
+                    </div>
+                    <div className={style.top_item_title}>
+                        {x.title}
+                    </div>
                 </div>
-                <div className={style.top_item_title}>
-                    {x.title}
-                </div>
-            </div>
+            </Link>
         )
     })
     return (
