@@ -7,7 +7,7 @@ const PostCreateModalContext = createContext()
 const PostCreateModalProvider = ({ children }) => {
 
     const [createModelActive, setCreateModalActive] = useState(false);
-    const [textEditorLoading, setTextEditorLoading] = useState(true)
+    const [textEditorLoading, setTextEditorLoading] = useState(false)
 
 
     return (
