@@ -9,7 +9,7 @@ const TopPostSlider = ({ data }) => {
     const slideLeft = () => {
         const stopSlidingLeft = desktopInnerWidth - outerRef.current.clientWidth + 20
 
-        if (sliderPosition > -1343  ){
+        if (sliderPosition > -1343){
             setSliderPosition(s => s - slideWidth)
         }
         else {

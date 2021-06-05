@@ -23,7 +23,7 @@ const TopPost = () => {
     return (
         <div className={style.top_post_container}>
             <h2>Top Posts</h2>
-            <TopPostSlider data={renderPosts}/>
+            {renderPosts ? <TopPostSlider data={renderPosts}/> : <div className={style.no_data_placeholder}></div>}
             {/* <div className={style.top_post_outer}>
                 {renderPosts}
             </div> */}

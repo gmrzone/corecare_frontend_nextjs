@@ -138,6 +138,17 @@
 
         }
     }
+    .no_data_placeholder {
+        height: 210px;
+        width: 100%;
+
+        @media (min-width: 360px){
+            height: 226px;
+        }
+        @media (min-width: 993px){
+            height: 240px;
+        }
+    }
 
     .top_post_item {
         width: 250px;
