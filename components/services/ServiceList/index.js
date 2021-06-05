@@ -43,8 +43,9 @@ const ServiceList = ({ category, active, setActive, reference,  subcategorys, mo
             </div>
             <style jsx>{`
                 .cart_count {
-                    padding: 2px 2px 0px 2px;
-                    right: ${cartCount > 9 ? "-5px" : "0px"};
+                    line-height: 1.2;
+                    padding: ${cartCount > 10 ? "1px 2px 0px 2px" : cartCount === 0 ? "1px 2px 0px 2px" : cartCount === 10 ? "1px 2px 1px 2px" : "1px 4px 0px 4px"}; 
+                    right: ${cartCount > 9 ? "-6px" : "-5px"};
                 }
                 .service-list-close-main {
                     float: right;

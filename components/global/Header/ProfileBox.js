@@ -104,7 +104,8 @@ const ProfileBox = (props) => {
             </div>
             <style jsx global>{`
                 .notification {
-                    padding: 2px 2px 0px 2px;
+                    line-height: 1.2;
+                    padding: ${cartCount > 10 ? "1px 2px 0px 2px" : cartCount === 0 ? "1px 2px 0px 2px" : cartCount === 10 ? "1px 2px 1px 2px" : "1px 4px 0px 4px"}; 
                     right: ${cartCount > 9 ? "-5px" : "0px"};
                 }
             `}</style>
