@@ -11,7 +11,7 @@ import { BASE_URL } from '../../data/_variables';
 const SingleReview = ({ review, renderReviewReply, isReply, authenticated, replyActiveFor, toggleReply }) => {
 
     return (
-        <div className={!isReply ? style.comment_wrapper : ""}>
+        <div className={style.comment_wrapper}>
         <div className={"comment " + style.comment_imp}>
             <span className={"avatar " + style.avatar_imp}>
                 {/* <img src={BASEURL + review.user.photo} alt="employee"/> */}
