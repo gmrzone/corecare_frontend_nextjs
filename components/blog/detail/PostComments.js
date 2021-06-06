@@ -8,7 +8,6 @@ const PostComments = ({ year, month, day, slug }) => {
     const { postComments } = useContext(PostCommentContext)
     const [activeReplyFor, setActiveReplyFor] = useState(null)
     let commentCount = 0
-
     const renderComments = postComments?.map(x => {
         commentCount += 1
         const replyCount = x.replies.length

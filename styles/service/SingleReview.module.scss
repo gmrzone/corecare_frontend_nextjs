@@ -51,5 +51,18 @@
                 }
             }
         }
+
+        .show_reply {
+            text-align: center;
+
+            .show_reply_link {
+                cursor: pointer;
+                color: #1a88ff;
+
+                i {
+                    margin-right: 4px;
+                }
+            }
+        }
     }
 }

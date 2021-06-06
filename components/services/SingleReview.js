@@ -7,9 +7,26 @@ import {useState} from 'react';
 import Image from 'next/image'
 import StarRating from '../common/StarRating'
 import { BASE_URL } from '../../data/_variables';
+import axios from '../../data/backendApi'
+
 
 const SingleReview = ({ review, renderReviewReply, isReply, authenticated, replyActiveFor, toggleReply }) => {
+    const replyCount = review.replies.length
+    const [replyList, setReplyList] = useState({active: false, data: null})
 
+    const toggleReplyList = () => {
+        if (replyList.data){
+            setReplyList(s => {
+                return {...s, active: !replyList.active}
+            })
+        }
+        else{
+            axios.get(`get_replies/v2/${review.id}/`)
+            .then(response => {
+                setReplyList({active: !replyList.active, data: response.data})
+            })
+        }
+    }
     return (
         <div className={style.comment_wrapper}>
         <div className={"comment " + style.comment_imp}>
@@ -32,9 +49,31 @@ const SingleReview = ({ review, renderReviewReply, isReply, authenticated, reply
                 </div> : ""}
                 {!isReply && replyActiveFor === review.id && authenticated ? <CreateReply parent={review.id} isReply="True" /> : ""}
             </div>
-            {review.replies.length > 0 && <div className="comments" style={{marginLeft: "30px"}}>
+            {/* {review.replies.length > 0 && <div className="comments" style={{marginLeft: "30px"}}>
                 {review.replies.length > 0 && !isReply ? renderReviewReply(review.replies) : ""}
-            </div>}
+            </div>} */}
+            {replyCount > 0 && (
+                <div className={style.show_reply}>
+                    <span className={style.show_reply_link} onClick={toggleReplyList}>
+                        {replyList.active ? (
+                            <>
+                            <i className="fa fa-caret-up" aria-hidden="true" />
+                            <span>Hide {replyCount} {replyCount > 1 ? "Replies" : "Reply"} </span>
+                            </>
+                            ): (
+                                <>
+                                <i className="fa fa-caret-down" aria-hidden="true" />
+                                <span>Show {replyCount} {replyCount > 1 ? "Replies" : "Reply"}</span>
+                                </>
+                                )}
+                    </span>
+                </div>
+            )}
+            {replyList.active && replyList.data && !isReply && (
+                <div className="comments" style={{marginLeft: "30px"}}>
+                    {renderReviewReply(replyList.data)}
+                </div>
+            )}
         </div>
         </div>
     )

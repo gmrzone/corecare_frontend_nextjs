@@ -90,17 +90,8 @@ const BigServiceTab = (props) => {
             </div>
         )
     })
-    const renderReviewReply = (reply) => {
-        return reply.map(x => {
-            let reply_data;
-            props.categoryReviews.forEach(y => {
-                if (x === y.id){
-                    reply_data = Object.create(y)
-                }
-            })
-            return reply_data
-        })
-        .map(x => {
+    const renderReviewReply = (replys) => {
+        return replys.map(x => {
             return (
                     <CategoryContext.Provider value={category} key={x.id}>
                         <SingleReview key={x.id} review={x} isReply={true} BASEURL={BASE_URL} category={category} authenticated={authenticated}/>
@@ -109,17 +100,11 @@ const BigServiceTab = (props) => {
         })
     }
     const renderReviews = props?.categoryReviews?.map(x => {
-        if (!x.parent){
             return(
                 <CategoryContext.Provider value={category} key={x.id}>
                     <SingleReview key={x.id} review={x} isReply={false} BASEURL={BASE_URL} renderReviewReply={renderReviewReply} authenticated={authenticated} replyActiveFor={replyActiveFor} toggleReply={toggleReplyForm} />
                 </CategoryContext.Provider>
             )
-        }
-        else {
-            return null
-        }
-
     })
     
     
@@ -176,7 +161,7 @@ const BigServiceTab = (props) => {
                 </div>
                 <div className={style.big_service_content} id="customer-review">
                     <div className="content-container-three">
-                        <div className="ui comments">
+                        <div className="ui medium comments" style={{maxWidth: "750px"}}>
                             {/* <h2 className={`ui dividing header ${style.content_title}`}>Customers Reviews</h2> */}
                             <h2 className="content-title">Reviews</h2>
                             <div>{renderReviews}</div>
