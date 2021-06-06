@@ -100,7 +100,9 @@ const BigServiceTab = (props) => {
         })
     }
     const renderReviews = props?.categoryReviews?.map(x => {
+            if (x.parent)return;
             return(
+
                 <CategoryContext.Provider value={category} key={x.id}>
                     <SingleReview key={x.id} review={x} isReply={false} BASEURL={BASE_URL} renderReviewReply={renderReviewReply} authenticated={authenticated} replyActiveFor={replyActiveFor} toggleReply={toggleReplyForm} />
                 </CategoryContext.Provider>
