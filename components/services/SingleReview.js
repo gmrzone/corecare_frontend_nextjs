@@ -11,7 +11,7 @@ import { BASE_URL } from '../../data/_variables';
 const SingleReview = ({ review, renderReviewReply, isReply, authenticated, replyActiveFor, toggleReply }) => {
 
     return (
-        <div className={style.comment_wrapper}>
+        <div className={!isReply ? style.comment_wrapper : ""}>
         <div className={"comment " + style.comment_imp}>
             <span className={"avatar " + style.avatar_imp}>
                 {/* <img src={BASEURL + review.user.photo} alt="employee"/> */}
@@ -32,7 +32,9 @@ const SingleReview = ({ review, renderReviewReply, isReply, authenticated, reply
                 </div> : ""}
                 {!isReply && replyActiveFor === review.id && authenticated ? <CreateReply parent={review.id} isReply="True" /> : ""}
             </div>
-            {review.replies.length > 0 && !isReply ? renderReviewReply(review.replies) : ""}
+            {review.replies.length > 0 && <div className="comments" style={{marginLeft: "30px"}}>
+                {review.replies.length > 0 && !isReply ? renderReviewReply(review.replies) : ""}
+            </div>}
         </div>
         </div>
     )

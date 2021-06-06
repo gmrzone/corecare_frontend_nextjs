@@ -7,7 +7,6 @@ import Image from 'next/image';
 import Accordian from '../common/Accordian';
 import { BASE_URL } from '../../data/_variables';
 import SingleReview from './SingleReview';
-import ReviewReplyWrapper from './reviewReplyWrapper';
 import CreateReview from './createReview';
 import { CategoryContext } from './context'
 import { AuthContext } from '../../context/AuthContext'
@@ -103,11 +102,9 @@ const BigServiceTab = (props) => {
         })
         .map(x => {
             return (
-                <ReviewReplyWrapper key={x.id}>
-                    <CategoryContext.Provider value={category}>
+                    <CategoryContext.Provider value={category} key={x.id}>
                         <SingleReview key={x.id} review={x} isReply={true} BASEURL={BASE_URL} category={category} authenticated={authenticated}/>
                     </CategoryContext.Provider>
-                </ReviewReplyWrapper>
             )
         })
     }
