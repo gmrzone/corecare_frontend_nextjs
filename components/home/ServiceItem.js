@@ -4,18 +4,13 @@ import { useState } from 'react'
 import Image from 'next/image'
 // import { ServicePlaceHolder } from '../utils/ImagePlaceholder'
 
-const ServiceItem = ({ BASE_URL, service }) => {
-    const [Imageloading, setImageLoading] = useState(true)
-
-    const imageLoaded = () => {
-        setImageLoading(false)
-        
-    }
+const ServiceItem = ({ BASE_URL, service, mobileNav, index }) => {
+    const image_priority = mobileNav ? index <= 2 ? true : false : true
     return (
         <Link href={`/services/${service.slug}`}>
             <a className={style.service_item}>
                 <div className={style.service_icon} style={{position: 'relative'}}>
-                    <Image src={`${BASE_URL}${service.icon}`} layout="fill"/>
+                    <Image src={`${BASE_URL}${service.icon}`} layout="fill" priority={image_priority}/>
                 </div>
                 <div className={style.service_title}>{service.name}</div>
             </a>

@@ -132,6 +132,7 @@ const Header = (props) => {
                   src={mobileNav ? "/logo-mobile.svg" : "/logo-full.svg"}
                   height="55"
                   width={mobileNav ? "55" : "176"}
+                  priority={true}
                 />
               </a>
             </Link>

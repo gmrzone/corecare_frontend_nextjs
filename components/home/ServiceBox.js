@@ -6,8 +6,8 @@ import { BASE_URL } from '../../data/_variables'
 
 
 const ServiceBox = ({ services, mobileNav }) => {
-    const renderServices = services?.map((service) => {
-        return <ServiceItem service={service} BASE_URL={BASE_URL} key={service.id}/>
+    const renderServices = services?.map((service, index) => {
+        return <ServiceItem service={service} BASE_URL={BASE_URL} key={service.id} mobileNav={mobileNav} index={index}/>
     })
     return(
         <div className={style.service_box_container + `${!mobileNav ? " ui container" : " "}`}>

@@ -88,7 +88,7 @@ const ProfileBox = (props) => {
                 </div>
                 <div className="avatar">
                     {/* <img src={props.profileImage || "/default-profile.png"} className="avatar-image" alt="default-avatar"/> */}
-                    <Image src={props.profileImage || "/default-profile.png"} width="30" height="30" className="avatar-image"/>
+                    <Image src={props.profileImage || "/default-profile.png"} width="30" height="30" className="avatar-image" priority={true}/>
                 </div>
                 <div className="notification">{cartCount}</div>
             </div>
