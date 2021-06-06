@@ -9,10 +9,6 @@ const PostComments = ({ year, month, day, slug }) => {
     const [activeReplyFor, setActiveReplyFor] = useState(null)
     let commentCount = 0
 
-    const getReplyData = (reply_ids) => {
-        const replies = postComments?.filter(x => x in reply_ids)
-        return replies
-    }
     const renderComments = postComments?.map(x => {
         commentCount += 1
         const replyCount = x.replies.length
@@ -20,7 +16,7 @@ const PostComments = ({ year, month, day, slug }) => {
             commentCount += replyCount
         }
         if (x.parent)return
-        return <PostCommentItem comment={x} key={x.id + x.name} year={year} month={month} day={day} slug={slug} replyActive={activeReplyFor === x.id} setActiveReplyFor={setActiveReplyFor} replies={getReplyData(x.replies)}/>
+        return <PostCommentItem comment={x} key={x.id + x.name} year={year} month={month} day={day} slug={slug} replyActive={activeReplyFor === x.id} setActiveReplyFor={setActiveReplyFor} />
     })
     return (
         <Card>
