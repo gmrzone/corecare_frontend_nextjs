@@ -24,12 +24,16 @@ const SliderWrapper = ({ data, image, mobileNav, review }) => {
     }, [data.length, sliderouterContainer, screenWidth])
     const RenderSliderItem = data.map((x, i) => {
         return (
-            <div className={style.slider_item + " slider_item"} key={x.id || i}>
+            <div className={image ? style.slider_image_item : style.slider_item} key={x.id || i}>
                 {image ? (
                     <Link href={`/services/${x.service_specialist?.slug}?afzal=${x.slug}`} key={x.id}>
-                        <div className={style.slider_item_image + " image-slider-item"}>
-                            <p className={style.slider_item_image_text}>{x.name}</p>
-                            <Image src={BASE_URL + x.icon} layout="fill" objectFit="cover" className={style.slider_image} alt="service_subcategory"/>
+                        <div className={style.slider_image_item}>
+                            <div className={style.image_container}>
+                                <Image src={BASE_URL + x.icon} layout="fill" objectFit="cover" className={style.slider_image} alt="service_subcategory"/>
+                            </div>
+                            <div className={style.slider_text}>
+                                <p>{x.name}</p>
+                            </div>
                         </div>
                     </Link>
                 ) : (
@@ -110,7 +114,7 @@ const SliderWrapper = ({ data, image, mobileNav, review }) => {
         }
     }
     return (
-        <div className={style.slider_container} ref={sliderouterContainer}>
+        <div className={`${style.slider_container} ${image && style.slider_image_container}`} ref={sliderouterContainer}>
             {renderSliderHandle()}
             <div className="semi-outer-container">
                 <div className={style.slider_inner_container + " inner_container"} ref={innerContainer}>
@@ -133,7 +137,7 @@ const SliderWrapper = ({ data, image, mobileNav, review }) => {
                 }
                 .image-slider-item {
                     width: ${mobileNav ? "240px" : sliderState.itemWidth + "px"};
-                    height: ${mobileNav ? "200px" : "240px"};
+                    height: ${mobileNav ? "155px" : "155px"};
                     position: relative;
                 }
             `}</style>
