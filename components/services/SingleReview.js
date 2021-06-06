@@ -8,11 +8,8 @@ import Image from 'next/image'
 import StarRating from '../common/StarRating'
 import { BASE_URL } from '../../data/_variables';
 
-const SingleReview = ({ BASEURL, review, renderReviewReply, isReply, authenticated }) => {
-    const [replyActive, setReplyActive] = useState(false)
-    const toggleReply = () => {
-        setReplyActive(!replyActive)
-    }
+const SingleReview = ({ review, renderReviewReply, isReply, authenticated, replyActiveFor, toggleReply }) => {
+
     return (
         <div className={style.comment_wrapper}>
         <div className={"comment " + style.comment_imp}>
@@ -31,9 +28,9 @@ const SingleReview = ({ BASEURL, review, renderReviewReply, isReply, authenticat
                     {review.review}
                 </div>
                 {!isReply && authenticated ? <div className="actions">
-                    <span className={"reply " + style.reply_span} onClick={toggleReply}>Reply</span>
+                    <span className={"reply " + style.reply_span} onClick={() => toggleReply(review.id)}>Reply</span>
                 </div> : ""}
-                {!isReply && replyActive && authenticated ? <CreateReply parent={review.id} isReply="True" /> : ""}
+                {!isReply && replyActiveFor === review.id && authenticated ? <CreateReply parent={review.id} isReply="True" /> : ""}
             </div>
             {review.replies.length > 0 && !isReply ? renderReviewReply(review.replies) : ""}
         </div>

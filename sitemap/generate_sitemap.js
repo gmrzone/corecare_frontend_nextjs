@@ -11,6 +11,7 @@ const pretty = require("prettier");
       { loc: "/login", changefreq: "daily", priority: "0.8" },
       { loc: "/become-a-partner", changefreq: "daily", priority: "0.8" },
       { loc: "/cart", changefreq: "daily", priority: "0.8" },
+      { loc: "/blog", changefreq: "daily", priority: "0.8" },
     ];
     return url_links;
   };

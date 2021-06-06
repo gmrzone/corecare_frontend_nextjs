@@ -1,6 +1,6 @@
 import style from '../../styles/service/BigServiceTab.module.scss'
 // import { connect } from 'react-redux';
-import { useRef, useContext } from 'react'
+import { useRef, useContext, useState } from 'react'
 // import { fetchEmployees, fetchCategoryReviews } from '../../../actions'
 import Link from 'next/link';
 import Image from 'next/image';
@@ -13,15 +13,18 @@ import { CategoryContext } from './context'
 import { AuthContext } from '../../context/AuthContext'
 
 const BigServiceTab = (props) => {
-   
+    const [replyActiveFor, setReplyActiveFor] = useState(null)
     const { category } = props
     const { loginStatus: authenticated } = useContext(AuthContext)
     const scrolableRef = useRef()
-    // const {categoryReviews, error} = useSWR(`get_reviews/${category}/`, fetcher)
-    // useEffect(() => {
-    //     fetchEmployees(category)
-    //     fetchCategoryReviews(category)
-    // }, [fetchEmployees, category,fetchCategoryReviews])
+
+
+    const toggleReplyForm = (reply_id) => {
+        const value = replyActiveFor === reply_id ? null : reply_id
+
+        setReplyActiveFor(value)
+    }
+
     const activateTab = (e) => {
         Array.from(e.target.parentNode.children).forEach(element => {
             element.classList.remove(style.active)
@@ -112,7 +115,7 @@ const BigServiceTab = (props) => {
         if (!x.parent){
             return(
                 <CategoryContext.Provider value={category} key={x.id}>
-                    <SingleReview key={x.id} review={x} isReply={false} BASEURL={BASE_URL} renderReviewReply={renderReviewReply} authenticated={authenticated}/>
+                    <SingleReview key={x.id} review={x} isReply={false} BASEURL={BASE_URL} renderReviewReply={renderReviewReply} authenticated={authenticated} replyActiveFor={replyActiveFor} toggleReply={toggleReplyForm} />
                 </CategoryContext.Provider>
             )
         }
