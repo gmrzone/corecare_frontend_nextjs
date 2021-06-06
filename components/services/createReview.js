@@ -22,7 +22,19 @@ const CreateReview = ({ parent, isReply }) => {
     const createReview = (formData, category, isReply) => {
         axios.post(`create_review/${category}/new/`, formData, {headers: {'X-CSRFToken': csrfToken}}).then(response => {
             if (isReply){
-                mutateReviews(response.data, false)
+                // mutateReviews(response.data, false)
+                const newState = data.map(x => {
+                    if (x.id === parent){
+                        if (x.added_replies){
+                            x.added_replies.push(response.data)
+                        }
+                        else{
+                            x.added_replies = [response.data]
+                        }
+                    }
+                    return x
+                })
+                mutateReviews([...newState, response.data], false)
             }
             else {
                 mutateReviews([...data, response.data], false)

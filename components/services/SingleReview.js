@@ -74,6 +74,7 @@ const SingleReview = ({ review, renderReviewReply, isReply, authenticated, reply
                     {renderReviewReply(replyList.data)}
                 </div>
             )}
+            {review.added_replies?.length > 0 && <div className="comments" style={{marginLeft: "30px"}}>{renderReviewReply(review.added_replies)}</div>}
         </div>
         </div>
     )

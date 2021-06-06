@@ -58,11 +58,12 @@ const CommentForm = ({ year, month, day, slug, isReply, parent_id }) => {
                     const newState = postComments.map(x => {
                       if (parseInt(x.id) === parseInt(response.data.data.parent)){
                         if (x.reply_added){
-                          const old_replies = x['reply_added']
-                          x['reply_added'] = [response.data.data, old_replies]
+                          x.reply_added.push(response.data.data)
+                          // const old_replies = x['reply_added']
+                          // x['reply_added'] = [response.data.data, old_replies]
                         }
                         else{
-                          x['reply_added'] = response.data.data
+                          x['reply_added'] = [response.data.data]
                         }
                         
                       }
