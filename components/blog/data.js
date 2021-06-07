@@ -9,12 +9,12 @@ export const navItem = [
         route: '/login'
     },
     {
-        name: 'Cleaning',
-        route: '/blog?=cleaning'
+        name: 'Cleaner',
+        route: '/blog?category=cleaner'
     },
     {
         name: 'Electrician',
-        route: '/blog?=electrician'
+        route: '/blog?category=electrician'
     },
 
 ]
@@ -24,16 +24,16 @@ export const navItemLogin = [
         route: "/blog"
     },
     {
-        name: 'Cleaning',
-        route: '/blog?=cleaning'
+        name: 'Cleaner',
+        route: '/blog?category=cleaner'
     },
     {
         name: 'Electrician',
-        route: '/blog?=electrician'
+        route: '/blog?category=electrician'
     },
     {
         name: 'Appliances',
-        route: '/blog?=appliance-repair'
+        route: '/blog?category=appliance-repair'
     }
 ]
 export const ProfileBoxitem = [
@@ -43,27 +43,27 @@ export const ProfileBoxitem = [
     },
     {
         name: 'Appliances',
-        route: '/blog?=appliance-repair'
+        route: '/blog?category=appliance-repair'
     },
     {
         name: 'Carpenter',
-        route: '/blog?=carpenter'
+        route: '/blog?category=carpenter'
     },
     // {
     //     name: 'Plumber',
-    //     route: '/blog?=plumber'
+    //     route: '/blog?category=plumber'
     // },
     {
         name: 'Painter',
-        route: '/blog?=painter'
+        route: '/blog?category=painter'
     },
     {
         name: 'Pest Control',
-        route: '/blog?=pest-control'
+        route: '/blog?category=pest-control'
     },
     {
         name: 'AC Services',
-        route: '/blog?=ac-service-repair'
+        route: '/blog?category=ac-service-repair'
     },
     {
         name: 'Contact',
@@ -83,23 +83,23 @@ export const ProfileBoxitemLogin = [
     },
     {
         name: 'Carpenter',
-        route: '/blog?=carpenter'
+        route: '/blog?category=carpenter'
     },
     // {
     //     name: 'Plumber',
-    //     route: '/blog?=plumber'
+    //     route: '/blog?category=plumber'
     // },
     {
         name: 'Painter',
-        route: '/blog?=painter'
+        route: '/blog?category=painter'
     },
     {
         name: 'Pest Control',
-        route: '/blog?=pest-control'
+        route: '/blog?category=pest-control'
     },
     {
         name: 'AC Services',
-        route: '/blog?=ac-service-repair'
+        route: '/blog?category=ac-service-repair'
     },
     {
         name: 'Contact',
@@ -129,36 +129,36 @@ export const ProfileBoxitemMobile = [
         route: "/"
     },
     {
-        name: 'Cleaning',
-        route: '/blog?=cleaning'
+        name: 'Cleaner',
+        route: '/blog?category=cleaner'
     },
     {
         name: 'Electrician',
-        route: '/blog?=electrician'
+        route: '/blog?category=electrician'
     },
     {
         name: 'Appliances',
-        route: '/blog?=appliance-repair'
+        route: '/blog?category=appliance-repair'
     },
     {
         name: 'Carpenter',
-        route: '/blog?=carpenter'
+        route: '/blog?category=carpenter'
     },
     // {
     //     name: 'Plumber',
-    //     route: '/blog?=plumber'
+    //     route: '/blog?category=plumber'
     // },
     {
         name: 'Painter',
-        route: '/blog?=painter'
+        route: '/blog?category=painter'
     },
     {
         name: 'Pest Control',
-        route: '/blog?=pest-control'
+        route: '/blog?category=pest-control'
     },
     {
         name: 'AC Services',
-        route: '/blog?=ac-service-repair'
+        route: '/blog?category=ac-service-repair'
     },
     {
         name: 'Contact',
@@ -176,36 +176,36 @@ export const ProfileBoxitemMobileLogin = [
         route: "/"
     },
     {
-        name: 'Cleaning',
-        route: '/blog?=cleaning'
+        name: 'Cleaner',
+        route: '/blog?category=cleaner'
     },
     {
         name: 'Electrician',
-        route: '/blog?=electrician'
+        route: '/blog?category=electrician'
     },
     {
         name: 'Appliances',
-        route: '/blog?=appliance-repair'
+        route: '/blog?category=appliance-repair'
     },
     {
         name: 'Carpenter',
-        route: '/blog?=carpenter'
+        route: '/blog?category=carpenter'
     },
     // {
     //     name: 'Plumber',
-    //     route: '/blog?=plumber'
+    //     route: '/blog?category=plumber'
     // },
     {
         name: 'Painter',
-        route: '/blog?=painter'
+        route: '/blog?category=painter'
     },
     {
         name: 'Pest Control',
-        route: '/blog?=pest-control'
+        route: '/blog?category=pest-control'
     },
     {
         name: 'AC Services',
-        route: '/blog?=ac-service-repair'
+        route: '/blog?category=ac-service-repair'
     },
     {
         name: 'Contact',

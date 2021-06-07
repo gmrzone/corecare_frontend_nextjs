@@ -1,9 +1,18 @@
 import { useContext, useEffect, useRef } from 'react'
 import { PostListPaginationContext } from '../../../context/PostListPaginationContext'
 import style from '../../../styles/blog/index.module.scss'
+import { useRouter } from 'next/router'
 const PostList = () => {
-    const { nextPage, pages, lastPage } = useContext(PostListPaginationContext)
+    const { nextPage, pages, lastPage, changeCategory, postCategory, pageError } = useContext(PostListPaginationContext)
     const loaderRef = useRef()
+    const router = useRouter()
+    const category = router?.query?.category
+
+
+    useEffect(() => {
+        changeCategory(category)
+    }, [category])
+
 
     useEffect(() => {
         const options = {}
@@ -28,12 +37,12 @@ const PostList = () => {
 
     return (
         <div className={style.post_list_container}>
-            <h1>Recent Posts</h1>
+            <h1>Recent Posts {postCategory ? postCategory === "ac-service-repair" ? "(Ac Services)" : `(${postCategory.substring(0, 1).toUpperCase() + postCategory.substring(1)})` : "(All)"}</h1>
             <div className={`ui link cards ${style.cards}`}>
                 {/* {renderPosts} */}
                 {pages}
             </div>
-            <div className={`ui active centered inline medium loader ${style.loader}`} ref={loaderRef} style={{display: lastPage ? "none" : "block"}}></div>
+            <div className={`ui active centered inline medium loader ${style.loader}`} ref={loaderRef} style={{display: lastPage || pageError ? "none" : "block"}}></div>
         </div>
     )
 }

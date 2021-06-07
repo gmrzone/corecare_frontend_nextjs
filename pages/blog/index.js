@@ -16,7 +16,7 @@ export const getStaticProps = async () => {
     props: {
       posts: data
     },
-    revalidate: 43200, 
+    revalidate: 43200 , 
   }
 }
 
@@ -31,7 +31,7 @@ export default function Home({ mobileNav, posts }) {
           {/* <button className={`negative ui button ${textEditorLoading && "loading"}`}  onClick={() => setCreateModalActive(true)}>Create Post</button> */}
             <TopPost />
             <PostListPaginationProvider initialData={posts} mobileNav={mobileNav}>
-              <PostList />
+                <PostList />
             </PostListPaginationProvider>
           </div>
         </Layout>
