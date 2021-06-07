@@ -7,6 +7,8 @@ import PostCreateComment from '../../../../../components/blog/detail/PostCreateC
 import PostComments from '../../../../../components/blog/detail/PostComments'
 import { PostCommentProvider } from '../../../../../context/PostCommentContext'
 import { PostCreateModalProvider } from '../../../../../context/PostCreateModalContext'
+import axios from '../../../../../data/backendApi'
+import { useEffect } from 'react';
 export const getStaticPaths = async () => {
     const BASE_URL = process.env.NODE_ENV === 'development' ? process.env['API_BASE_URL'] : process.env['API_BASE_URL_PROD']
     const data = await fetch(`${BASE_URL}blog/posts/`)
@@ -33,6 +35,10 @@ export const getStaticProps = async ({ params }) => {
 
 
 export default function Home({ mobileNav, post }) {
+  useEffect(() => {
+    
+    axios.get(`blog/post/views/update/${post.id}/`)
+  }, [])
 
   const {slug , date_slug: { year, month, day }} = post
 
