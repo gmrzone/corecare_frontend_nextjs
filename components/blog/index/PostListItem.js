@@ -1,7 +1,7 @@
 import style from '../../../styles/blog/index.module.scss'
 import Link from 'next/link'
 import LazyLoadImage from '../../common/LazyLoadImage'
-const PostListItem = ({ post }) => {
+const PostListItem = ({ post, view }) => {
     const {slug,  date_slug : {year, month, day}} = post
     const renderBody = (str) => {
         if ((str===null) || (str===''))
@@ -32,7 +32,7 @@ const PostListItem = ({ post }) => {
                 </span>
                 <span>
                 <i className="eye icon"></i>
-                    200 Views
+                    {view} Views
                 </span>
                 </div>
             </div>

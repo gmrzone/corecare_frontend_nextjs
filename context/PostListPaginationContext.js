@@ -5,19 +5,20 @@ import PostListItem from '../components/blog/index/PostListItem'
 
 const PostListPaginationContext = createContext()
 
-const Page = ({ pageNum, mobileNav, initialData }) => {
+const Page = ({ fetcher, pageNum, mobileNav, initialData, views }) => {
     const init = pageNum === 1 ? { initialData } : {}
-    const fetcher = (...args) => axios.get(...args).then(response => response.data)
     const {data: postList} = useSWR(mobileNav ? `blog/posts/?page=${pageNum}&size=6` : `blog/posts/?page=${pageNum}`, fetcher, init)
-    return postList?.posts.map(x => <PostListItem post={x} key={x.id}/>) || null
+  
+    return postList?.posts.map(x => <PostListItem post={x} key={x.id} view={views?.[x.id] || 0}/>) || null
 }
 
 const PostListPaginationProvider = ({ children, initialData, mobileNav }) => {
-
+    const fetcher = (...args) => axios.get(...args).then(response => response.data)
+    const {data: postViews} = useSWR('blog/posts/views/', fetcher)
     const [pageCount, setPageCount] = useState(1)
     const pages = []
     for (let i = 1; i <= pageCount; i++){
-        pages.push(<Page key={i} pageNum={i} mobileNav={mobileNav} initialData={initialData}/>)
+        pages.push(<Page key={i} fetcher={fetcher} pageNum={i} mobileNav={mobileNav} initialData={initialData} views={postViews}/>)
     }
     const lastPage = pageCount === initialData?.page_count
     console.log(lastPage)
