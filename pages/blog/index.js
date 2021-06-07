@@ -7,7 +7,7 @@ import PostList from '../../components/blog/index/PostList'
 import TopPost from '../../components/blog/index/TopPosts'
 import { PostListPaginationProvider } from '../../context/PostListPaginationContext'
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
   const BASE_URL = process.env.NODE_ENV === 'development' ? process.env['API_BASE_URL'] : process.env['API_BASE_URL_PROD']
   const response = await fetch(`${BASE_URL}blog/posts/?page=1`)
   const data = await response.json()
