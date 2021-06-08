@@ -30,7 +30,7 @@ const ProfileAvatarUpdate = ({ mobile, signUpstate, setSignUpstate, csrfToken, m
         }
         formData.append('number', number)
         formData.append('password', password)
-        BackendApi.post('create_user_account/profile-image/', formData, {headers: {'X-CSRFToken': csrfToken}})
+        BackendApi.post('account/create_user_account/profile-image/', formData, {headers: {'X-CSRFToken': csrfToken}})
         .then(response => {
             if (response.data.status === 'ok'){
                 setLoading(false)

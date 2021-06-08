@@ -6,7 +6,7 @@ const CsrfContext = createContext()
 
 const CsrfContextProvider = ({ children }) => {
     const fetcher = (...args) => backendApi(...args).then(response => response.headers['x-csrftoken'])
-    const {data: csrfToken, mutate: mutateCsrf} = useSWR('get_csrf/', fetcher)
+    const {data: csrfToken, mutate: mutateCsrf} = useSWR('account/get_csrf/', fetcher)
     return (
         <CsrfContext.Provider value={{ csrfToken, mutateCsrf }}>
             {children}

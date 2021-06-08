@@ -33,7 +33,7 @@ const ProfileBox = (props) => {
         function delete_cookie(name) {
             document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
           }
-        djangoBackend.post('logout/v1/', {}, {headers: {'X-CSRFToken': csrfToken}})
+        djangoBackend.post('account/logout/v1/', {}, {headers: {'X-CSRFToken': csrfToken}})
         .then(response => {
             console.log(response)
             delete_cookie('get_user')

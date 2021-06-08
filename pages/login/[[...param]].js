@@ -50,7 +50,7 @@ const Login = (props) => {
     // }
     const submitForm = (formValues) => {
         setLoading(true)
-        axios.post('login/v1/', formValues, {headers: {'X-CSRFToken': csrfToken}})
+        axios.post('account/login/v1/', formValues, {headers: {'X-CSRFToken': csrfToken}})
         .then(response => {
             if (response.statusText === "OK"){
                 // localStorage.setItem("get_user", true)

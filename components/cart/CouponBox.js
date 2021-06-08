@@ -23,7 +23,7 @@ const CouponBox = () => {
         }
         else{
             setCoupon({loading: true, error: false, mssg: ""})
-            axios.post('coupon/apply/', {coupon_code: couponValue}, {headers: {'X-CSRFToken': csrfToken}})
+            axios.post('cart/coupon/apply/', {coupon_code: couponValue}, {headers: {'X-CSRFToken': csrfToken}})
             .then(response => {
                 handleCouponResponse(response, setCoupon)
                 mutateCsrf()

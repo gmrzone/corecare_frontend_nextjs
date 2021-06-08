@@ -36,7 +36,7 @@ const AuthContextProvider = ({ children }) => {
     }
     const shouldFetch = getCookie('get_user') ? true : false
     const fetcher = (...args) => axios.get(...args).then(response => response.data)
-    const { data: userData, error, mutate: mutateAuth } = useSWR(shouldFetch ? "get_current_user/" : null, fetcher, {shouldRetryOnError: false})
+    const { data: userData, error, mutate: mutateAuth } = useSWR(shouldFetch ? "account/get_current_user/" : null, fetcher, {shouldRetryOnError: false})
     const loginStatus = userData?.number ? true : false
     return (
         <AuthContext.Provider value={{ userData, error, loginStatus, mutateAuth }}>

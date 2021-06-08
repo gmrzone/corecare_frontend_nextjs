@@ -57,7 +57,7 @@ const CartSummary = ({ cart }) => {
                 // alert(response.razorpay_order_id);
                 // alert(response.razorpay_signature)
                 // RazorPay success callback create a order inside django rest api
-                DjangoApi.post("create-orders/", response, {headers: {'X-CSRFToken': csrfToken}})
+                DjangoApi.post("cart/create-orders/", response, {headers: {'X-CSRFToken': csrfToken}})
                 .then(response => {
                     if (response.data.status === "ok"){
                         router.push(`orders/${response.data['receipt']}/`)
@@ -100,7 +100,7 @@ const CartSummary = ({ cart }) => {
     }
 
     const createRazorPayOrder = () => {
-        DjangoApi.post('create-razorpay-orders/', {}, {headers: {'X-CSRFToken': csrfToken}})
+        DjangoApi.post('cart/create-razorpay-orders/', {}, {headers: {'X-CSRFToken': csrfToken}})
         .then(response => {
             if (response.data.status === "error" && response.data.msg ==='address_error'){
                 console.log("update Profile")

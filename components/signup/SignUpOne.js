@@ -17,7 +17,7 @@ const SignUpPageOne = ({ setSignUpHeader, signUpSettings, closeSignup, csrfToken
 
     const submitForm = (formValues) => {
         setLoading(true)
-        BackendApi.post('create_user_account/', formValues, {headers: {'X-CSRFToken': csrfToken}})
+        BackendApi.post('account/create_user_account/', formValues, {headers: {'X-CSRFToken': csrfToken}})
         .then(response => {
             if (response.data.status === "ok"){
                 signUpSettings(state => {

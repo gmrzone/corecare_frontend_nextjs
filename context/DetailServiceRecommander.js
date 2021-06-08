@@ -6,7 +6,7 @@ const DetailRecommanderContext = createContext()
 
 const DetailCartRecommanderProvider = ({ children }) => {
     const fetcher = (...args) => BackendApi.get(...args).then(response => response.data)
-    const {data, error, mutate: mutateDetailRecommander} = useSWR('services/get-recommandation/detail/', fetcher)
+    const {data, error, mutate: mutateDetailRecommander} = useSWR('cart/services/get-recommandation/detail/', fetcher)
     const detailRecommandation = typeof data === "number" ? [data] : data
     const loading = !error && !detailRecommandation
 

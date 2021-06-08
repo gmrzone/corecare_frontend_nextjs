@@ -15,7 +15,7 @@ const SignUpPageThree = ({ signUpstate, signUpUpdateProfile, closeModel, success
         formValues.password = signUpstate.password
         // signUpUpdateProfile(formValues, closeModel, setLoading, setFormError, history, successPath, payButton)
         setLoading(true)
-        BackendApi.post('create_user_account/additional/', formValues, {headers: {'X-CSRFToken': csrfToken}})
+        BackendApi.post('account/create_user_account/additional/', formValues, {headers: {'X-CSRFToken': csrfToken}})
         .then(response => {
             if (response.data.status === 'ok'){
                 setLoading(false)
