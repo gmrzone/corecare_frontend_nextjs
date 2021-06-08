@@ -56,7 +56,7 @@ const pretty = require("prettier");
               })}
         </urlset>
         `;
-  const request = await fetch(backend_url);
+  const request = await fetch(backend_url + '/employee_category/');
   const services = await request.json();
   const postRequest = await fetch(backend_url + '/blog/posts/')
   const posts = await postRequest.json()
