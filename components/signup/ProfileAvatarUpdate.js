@@ -37,13 +37,21 @@ const ProfileAvatarUpdate = ({ mobile, signUpstate, setSignUpstate, csrfToken, m
                     return {...state, profilePicUpdated: true}
                  }) 
             }
+            else {
+                console.log(response)
+            }
         })
         .catch(e => {
-            console.log(e)
-            setImageUpdateError({error: true, message: e.response.data.message})
-            setSignUpstate(state => {
-                return {...state, profilePicUpdated: false}
-             })
+            if (e.response.data.status === "error"){
+                setImageUpdateError({error: true, message: e.response.data.message})
+                setSignUpstate(state => {
+                    return {...state, profilePicUpdated: false}
+                 })
+            }
+            else {
+                console.log(e)
+            }
+
         })
         mutateCsrf()
     }

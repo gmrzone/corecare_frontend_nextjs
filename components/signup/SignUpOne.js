@@ -19,25 +19,27 @@ const SignUpPageOne = ({ setSignUpHeader, signUpSettings, closeSignup, csrfToken
         setLoading(true)
         BackendApi.post('account/create_user_account/', formValues, {headers: {'X-CSRFToken': csrfToken}})
         .then(response => {
-            if (response.data.status === "ok"){
-                signUpSettings(state => {
-                    return {...state, otpSend: true, number: formValues.number, otp: response.data.otp}
-                })
-            }
-            else{
-                setFormError({status: "error", message: response.data.msg})
-            }
+            signUpSettings(state => {
+                return {...state, otpSend: true, number: formValues.number, otp: response.data.otp}
+            })
             setLoading(false)
             mutateCsrf()
         })
         .catch(err => {
-            console.log(err)
+            if (err.response.data.status === "error"){
+                setFormError({status: "error", message: err.response.data.msg})
+            }
+            else {
+                console.log(err)
+            }
+            setLoading(false)
+            mutateCsrf()
         })
-        console.log(formValues)
+
     }
     return(
         <>
-        <form onSubmit={handleSubmit(submitForm)} className="login-form ui big form">
+        <form onSubmit={handleSubmit(submitForm)} className="login-form ui large form">
             <NumberField register={register} errors={errors}/>
             <div style={{textAlign: 'right'}}>
                 <Link href="/login">

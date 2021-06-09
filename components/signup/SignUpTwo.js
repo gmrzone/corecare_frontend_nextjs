@@ -34,18 +34,30 @@ export const SignUpPageTwo = ({
     setLoading(true);
     BackendApi.post(`account/create_user_account/verify/${signUpData.number}/`, formValues, {headers: {'X-CSRFToken': csrfToken}})
     .then(response => {
-      if (response.data.status === 'error'){
-        setOtpError({error: true, message: response.data.msg})
-      }
-      else{
+      if (response.data.status === "ok"){
         signUpSettings(state => {
           return {...state, otpVerified: true, password: formValues.password1}
         })
       }
+      else {
+        console.log(response)
+      }
       setLoading(false)
       mutateCsrf()
     })
+    .catch(e => {
+      if (e.response.data.status === "error"){
+        setOtpError({error: true, message: e.response.data.msg})
+      }
+      else {
+        console.log(e)
+      }
+      setLoading(false)
+      mutateCsrf()
+    })
+
   };
+
   const goBack = () => {
     signUpSettings((state) => {
       return { ...state, otpSend: false, otp: null };
@@ -53,7 +65,7 @@ export const SignUpPageTwo = ({
   };
 
   return (
-    <form className="ui form Big" onSubmit={handleSubmit(onSubmit)}>
+    <form className="ui form large" onSubmit={handleSubmit(onSubmit)}>
       <div className={`field ${errors?.entered_otp || otpError.error ? "error" : ""}`}>
         <label>OTP</label>
         <input

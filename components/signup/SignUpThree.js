@@ -10,14 +10,14 @@ const SignUpPageThree = ({ signUpstate, signUpUpdateProfile, closeModel, success
     const [formError, setFormError] = useState({status: null, msg: 'null'})
     const {register, handleSubmit, watch, formState: { errors, isValid }} = useForm()
     const onSubmit = (formValues) => {
-        formValues.number = signUpstate.number
+        // formValues.number = signUpstate.number
         formValues.password = signUpstate.password
-        // signUpUpdateProfile(formValues, closeModel, setLoading, setFormError, history, successPath, payButton)
         setLoading(true)
-        BackendApi.post('account/create_user_account/additional/', formValues, {headers: {'X-CSRFToken': csrfToken}})
+
+        BackendApi.patch(`account/create_user_account/additional/v2/${signUpstate?.number}/`, formValues, {headers: {'X-CSRFToken': csrfToken}})
         .then(response => {
             if (response.data.status === 'ok'){
-                setLoading(false)
+                
                 closeModel()
                 if (successPath){
                     // history.push(successPath)
@@ -29,10 +29,20 @@ const SignUpPageThree = ({ signUpstate, signUpUpdateProfile, closeModel, success
 
             }
             else{
-                setLoading(false)
+                
                 setFormError({status: 'error', msg: response.data.msg})
             }
+            setLoading(false)
             mutateCsrf()
+        })
+        .catch(e => {
+            if (e?.response?.data?.status === "error"){
+                setFormError({status: 'error', msg: e.response.data.msg})
+            }
+            else {
+                console.log(e)
+            }
+            
         })
         
     }
