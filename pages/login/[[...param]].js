@@ -12,9 +12,11 @@ import LoginFooter from '../../components/login/LoginFooter'
 import { useContext } from 'react'
 import { CsrfContext } from '../../context/CsrfTokenContext'
 import { SignUpContext } from '../../context/SIgnUpContext'
+import { AuthContext } from '../../context/AuthContext'
 
 const Login = (props) => {
     const { csrfToken, mutateCsrf } = useContext(CsrfContext)
+    const { setShouldFetch: setShouldFetchUser } = useContext(AuthContext)
     const router = useRouter()
     const LoginForm = useRef();
     const param = router.query.param
@@ -32,30 +34,15 @@ const Login = (props) => {
         expires = "; expires=" + date.toUTCString();
     }
     document.cookie = name + "=" + (value || "")  + expires + "; path=/";
-}
-    // const submitForm = (formValues) => {
-    //     axios.post('api/token/', formValues)
-    //     .then(response => {
-    //         console.log(response)
-    //         if (response.statusText === "OK"){
-    //             console.log("Afzal")
-    //             localStorageObj._setToken(response.data.access, response.data.refresh)
-    //             router.push('/')
-    //         }
-    //     })
-    //     .catch(error => {
-    //         console.clear()
-    //         setFormErr("Invalid Username or Password")
-    //     })
-    // }
+    }
+
     const submitForm = (formValues) => {
         setLoading(true)
         axios.post('account/login/v1/', formValues, {headers: {'X-CSRFToken': csrfToken}})
         .then(response => {
             if (response.statusText === "OK"){
                 // localStorage.setItem("get_user", true)
-                console.log(response.data)
-                setCookie("get_user", "afzal", response.data.expire)
+                setShouldFetchUser(true)
                 setLoading(false)
                 router.push('/')
                 mutateCsrf()

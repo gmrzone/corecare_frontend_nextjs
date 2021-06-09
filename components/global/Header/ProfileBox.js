@@ -12,31 +12,12 @@ const ProfileBox = (props) => {
     const { cartCount } = useContext(BaseCartContext)
     const [dropDownActive, setDropdownActive] = useState(false);
     const handleLogout = () => {
-        // localStorageObj._clearToken()
-        // djangoBackend.get('get_csrf/')
-        // .then(response => {
-        //     const csrf = response.headers['x-csrftoken']
-        //     console.log(csrf)
 
-
-
-
-        //     // fetch('http://127.0.0.1:8000/logout/v1/', {headers: new Headers({'X-CSRFToken': csrf}), method: "POST", credentials: 'include'})
-        //     // .then(response => response.json())
-        //     // .then(data => {
-        //     //     console.log(data)
-        //     //     // localStorage.removeItem('get_user')
-        //     //     props.mutateAuth(null, false)
-        //     // })
-
-        // })
-        function delete_cookie(name) {
-            document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-          }
+        // function delete_cookie(name) {
+        //     document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+        //   }
         djangoBackend.post('account/logout/v1/', {}, {headers: {'X-CSRFToken': csrfToken}})
         .then(response => {
-            console.log(response)
-            delete_cookie('get_user')
             props.mutateAuth(null, false)
         })
 
