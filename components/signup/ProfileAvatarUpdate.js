@@ -28,25 +28,24 @@ const ProfileAvatarUpdate = ({ mobile, signUpstate, setSignUpstate, csrfToken, m
         if (croppedImage) {
             formData.append('image', croppedImage)
         }
-        formData.append('number', number)
         formData.append('password', password)
-        BackendApi.post('account/create_user_account/profile-image/', formData, {headers: {'X-CSRFToken': csrfToken}})
+        BackendApi.patch(`account/create_user_account/photo/v2/${number}/`, formData, {headers: {'X-CSRFToken': csrfToken}})
         .then(response => {
-            if (response.data.status === 'ok'){
+            if (response.data.status === "ok"){
                 setLoading(false)
                 setSignUpstate(state => {
                     return {...state, profilePicUpdated: true}
-                })
+                 }) 
             }
-            else{
-                setImageUpdateError({error: true, message: response.data.message})
-                setSignUpstate(state => {
-                    return {...state, profilePicUpdated: false}
-                })
-            }
-            mutateCsrf()
-            
         })
+        .catch(e => {
+            console.log(e)
+            setImageUpdateError({error: true, message: e.response.data.message})
+            setSignUpstate(state => {
+                return {...state, profilePicUpdated: false}
+             })
+        })
+        mutateCsrf()
     }
     const inputRef = useRef()
     // Handle input file change use e.target.files[0] to get a single file and convert to base64 and save it in state so that we can extract file extension later

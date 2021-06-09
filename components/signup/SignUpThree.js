@@ -10,7 +10,6 @@ const SignUpPageThree = ({ signUpstate, signUpUpdateProfile, closeModel, success
     const [formError, setFormError] = useState({status: null, msg: 'null'})
     const {register, handleSubmit, watch, formState: { errors, isValid }} = useForm()
     const onSubmit = (formValues) => {
-        // setLoading(true)
         formValues.number = signUpstate.number
         formValues.password = signUpstate.password
         // signUpUpdateProfile(formValues, closeModel, setLoading, setFormError, history, successPath, payButton)

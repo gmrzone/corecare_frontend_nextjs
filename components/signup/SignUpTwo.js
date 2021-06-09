@@ -32,8 +32,7 @@ export const SignUpPageTwo = ({
   
   const onSubmit = (formValues) => {
     setLoading(true);
-    formValues.number = signUpData.number;
-    BackendApi.post('account/create_user_account/verify/', formValues, {headers: {'X-CSRFToken': csrfToken}})
+    BackendApi.post(`account/create_user_account/verify/${signUpData.number}/`, formValues, {headers: {'X-CSRFToken': csrfToken}})
     .then(response => {
       if (response.data.status === 'error'){
         setOtpError({error: true, message: response.data.msg})
