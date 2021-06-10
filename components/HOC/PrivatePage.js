@@ -12,7 +12,7 @@ const PrivatePage = (PrivateComponent) => {
         const {loading: authLoading, loginStatus} = useContext(AuthContext)
         return (
             <>
-                {authLoading ? (<FullScreenLoader />) : loginStatus ? (<PrivateComponent {...props}/>) : redirectToLogin()}
+                {authLoading ? (<FullScreenLoader />) : loginStatus ? (<PrivateComponent {...props} />) : redirectToLogin()}
             </>
         )
     }

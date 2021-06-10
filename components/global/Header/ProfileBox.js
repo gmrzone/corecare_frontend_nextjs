@@ -1,12 +1,14 @@
 import React, { useState, useEffect, useContext } from 'react'
 import Image from 'next/image'
 import DropDownItem from './DropDownItem'
-import BackModal from '../../common/ModalBack';
+// import BackModal from '../../common/ModalBack';
 import DropDownSame from './DropDownsame'
 import { BaseCartContext } from '../../../context/basicCartContext';
 import djangoBackend from '../../../data/backendApi'
 import { CsrfContext } from '../../../context/CsrfTokenContext'
+import dynamic from 'next/dynamic'
 
+const BackModal = dynamic(() => import('../../common/ModalBack'), {ssr: false})
 const ProfileBox = (props) => {
     const { csrfToken, mutateCsrf } = useContext(CsrfContext);
     const { cartCount } = useContext(BaseCartContext)
