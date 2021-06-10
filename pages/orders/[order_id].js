@@ -13,7 +13,7 @@ const OrderDetail = ({ mobileNav }) => {
     const order_id = router.query['order_id']
     const shouldFetch = order_id ? true : false
     const fetcher = (...args) => axios.get(...args).then(response => response.data)
-    const { data: current_order, error } = useSWR(shouldFetch ? `orders/${order_id}/` : null, fetcher)
+    const { data: current_order, error } = useSWR(shouldFetch ? `cart/orders/${order_id}/` : null, fetcher)
     const loading = !current_order && !error
     const renderOrderItem = current_order ? current_order.items.map((x, i) => {
         return (

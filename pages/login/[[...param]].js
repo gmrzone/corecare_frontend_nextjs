@@ -14,9 +14,10 @@ import { CsrfContext } from '../../context/CsrfTokenContext'
 import { SignUpContext } from '../../context/SIgnUpContext'
 import { AuthContext } from '../../context/AuthContext'
 
+
 const Login = (props) => {
     const { csrfToken, mutateCsrf } = useContext(CsrfContext)
-    const { setShouldFetch: setShouldFetchUser, loading: loadingAuth, loginStatus } = useContext(AuthContext)
+    const { setShouldFetch: setShouldFetchUser, loginStatus } = useContext(AuthContext)
     const router = useRouter()
     const LoginForm = useRef();
     const param = router.query.param
@@ -25,8 +26,6 @@ const Login = (props) => {
     const { mobileNav } = props;
     const [loading, setLoading] = useState(false)
     const { setSignUpActive } = useContext(SignUpContext)
-    console.log("Loading Auth", loadingAuth)
-    console.log(loginStatus)
     function setCookie(name,value,seconds) {
     var expires = "";
     if (seconds) {
@@ -65,10 +64,6 @@ const Login = (props) => {
         
     }, [mobileNav])
 
-    // if (loadingAuth){
-    //     return <h1>Loading</h1>
-    // }
-    
     return(
         <>
         <MetaComponent title="Login" description="Login page" name="Login Page" url={`${frontend_base}login`}/>

@@ -5,7 +5,7 @@ import backendAPI from '../data/backendApi'
 const OrdersContext = createContext()   
 const OrderContextProvider = ({ children }) => {
     const fetcher = (...args) => backendAPI.get(...args).then(response => response.data)
-    const { data: orders, error } = useSWR("orders/user_order/", fetcher)
+    const { data: orders, error } = useSWR("cart/orders/user_order/", fetcher)
     const loading = !orders && !error
     const pending = [];
     const cancelled = [];
