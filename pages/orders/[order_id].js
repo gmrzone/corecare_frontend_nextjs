@@ -7,7 +7,7 @@ import useSWR from 'swr'
 import style from '../../styles/orders/OrderStatus.module.scss'
 import TextPlaceHolder from '../../components/order/TextPlaceholder'
 import Card from '../../components/order/Card'
-
+import PrivatePage from '../../components/HOC/PrivatePage'
 const OrderDetail = ({ mobileNav }) => {
     const router = useRouter()
     const order_id = router.query['order_id']
@@ -98,4 +98,4 @@ const OrderDetail = ({ mobileNav }) => {
     )
 }
 
-export default OrderDetail
+export default PrivatePage(OrderDetail);

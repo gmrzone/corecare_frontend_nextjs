@@ -11,7 +11,7 @@ import { useContext } from "react";
 const Header = (props) => {
   // const { loginStatus } = props.authentication
   // const [mobileNav, mobileNavToggle] = useState()
-  const { userData, loginStatus, mutateAuth } = useContext(AuthContext);
+  const { userData, loginStatus, mutateAuth, setShouldFetch } = useContext(AuthContext);
   const { mobileNav } = props;
   // const loginStatus  = false
   const router = useRouter();
@@ -161,6 +161,7 @@ const Header = (props) => {
               authentication={userData}
               openSignup={props.openSignup}
               mutateAuth={mutateAuth}
+              setShouldFetch={setShouldFetch}
               blog={props.blog}
               setPostCreateModalActive={props.setPostCreateModalActive}
             />

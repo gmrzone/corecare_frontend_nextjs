@@ -13,7 +13,7 @@ import { useContext } from 'react'
 import { CsrfContext } from '../../context/CsrfTokenContext'
 import { SignUpContext } from '../../context/SIgnUpContext'
 import { AuthContext } from '../../context/AuthContext'
-import PublicComponent from '../../components/HOC/PublicComponent'
+import PublicPage from '../../components/HOC/PublicPage'
 
 const Login = (props) => {
     const { csrfToken, mutateCsrf } = useContext(CsrfContext)
@@ -42,9 +42,10 @@ const Login = (props) => {
         .then(response => {
             if (response.statusText === "OK"){
                 // localStorage.setItem("get_user", true)
-                setShouldFetchUser(true)
+                
                 setLoading(false)
                 router.push('/')
+                setShouldFetchUser(true)
                 mutateCsrf()
             }
         })
@@ -112,4 +113,4 @@ const Login = (props) => {
     )
 }
 
-export default PublicComponent(Login)
+export default PublicPage(Login)

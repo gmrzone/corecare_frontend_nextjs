@@ -1,12 +1,11 @@
-import { useEffect } from 'react';
-// import { retriveUserOrders } from '../../actions';
-// import { connect } from 'react-redux';
+
 import PointerMenu from '../../components/orders/PointerMenu';
 import { OrderContextProvider } from '../../context/OrdersContext'
 import style from '../../styles/orders/Orders.module.scss'
 import Layout from '../../components/common/Layout'
 import MetaComponent from '../../components/common/MetaComponent'
 import { frontend_base } from '../../data/_variables'
+import PrivatePage from '../../components/HOC/PrivatePage'
 const Order = ({ mobileNav}) => {
     return(
         <>
@@ -24,29 +23,5 @@ const Order = ({ mobileNav}) => {
         </>
     )
 }
-// const mapStateToProps = (state) => {
-//     const allOrders = state.orders
-//     let pendingOrders = [];
-//     let cancelledOrders = [];
-//     let completedOrders = [];
-//     allOrders.forEach(element => {
-//         if (element.status === 'pending'){
-//             pendingOrders.push(element)
-//         }
-//         else if (element.status === 'cancelled'){
-//             cancelledOrders.push(element)
-//         }
-//         else if (element.status === 'completed'){
-//             completedOrders.push(element)
-//         }
-//     });
-//     return {
-//         allOrders: allOrders,
-//         cancelledOrders: cancelledOrders,
-//         pendingOrders: pendingOrders,
-//         completedOrders: completedOrders
-//     }
-// }
-// export default connect(mapStateToProps, { retriveUserOrders })(Order)
 
-export default Order
+export default PrivatePage(Order)

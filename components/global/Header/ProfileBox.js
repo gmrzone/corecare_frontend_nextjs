@@ -18,6 +18,7 @@ const ProfileBox = (props) => {
         //   }
         djangoBackend.post('account/logout/v1/', {}, {headers: {'X-CSRFToken': csrfToken}})
         .then(response => {
+            props.setShouldFetch(false)
             props.mutateAuth(null, false)
         })
 
