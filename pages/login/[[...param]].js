@@ -13,7 +13,7 @@ import { useContext } from 'react'
 import { CsrfContext } from '../../context/CsrfTokenContext'
 import { SignUpContext } from '../../context/SIgnUpContext'
 import { AuthContext } from '../../context/AuthContext'
-
+import PublicComponent from '../../components/HOC/PublicComponent'
 
 const Login = (props) => {
     const { csrfToken, mutateCsrf } = useContext(CsrfContext)
@@ -112,5 +112,4 @@ const Login = (props) => {
     )
 }
 
-// export default connect(null, { login, openSignup })(Login)
-export default Login
+export default PublicComponent(Login)
