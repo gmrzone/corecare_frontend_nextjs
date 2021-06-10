@@ -4,6 +4,7 @@ const FullScreenLoader = () => {
     return (
         <>
         <MetaComponent title="Corecare login" url={frontend_base + "login"} name="Corecare Login"/>
+            <div id="model"></div>
             <div className="ui active centered inline loader main-loader"></div>
             <style jsx>{`
                 .main-loader {
