@@ -40,7 +40,7 @@ const ServiceContent = ({ category, openCategoryModel, setModelText, setReplacem
     }
 
     const renderCategoryItems = (itemList) => {
-        return itemList.map(x => {
+        return itemList.map((x, i) => {
             return (
                 <div className={style.service_category_items + `${basicRecommandation && basicRecommandation?.includes(x.id) ? " " + style.recommanded : ""}`} key={x.id}>
                     {/* {basicRecommandation && basicRecommandation?.includes(x.id) && <div className={style.banner}>Recommanded</div>} */}

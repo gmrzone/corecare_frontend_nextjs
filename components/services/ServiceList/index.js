@@ -32,7 +32,7 @@ const ServiceList = ({ category, active, setActive, reference,  subcategorys, mo
                 <Link href="/cart">
                     <a className={style.cart_icon_container}>
                     {/* <img src={cart_image} alt="cart" className="cart-icon" /> */}
-                        <Image src="/cart.svg" className={style.cart_icon_img} alt="cart" layout="fill" objectFit="cover" />
+                        <Image src="/cart.svg" className={style.cart_icon_img} alt="cart" layout="fill" objectFit="cover" priority={true}/>
                         <div className={style.cart_count + " cart_count"}>{cartCount}</div>
                     </a>
                 </Link>

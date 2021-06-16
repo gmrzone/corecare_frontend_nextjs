@@ -5,6 +5,7 @@ import Image from 'next/image'
 // import { ServicePlaceHolder } from '../utils/ImagePlaceholder'
 
 const ServiceItem = ({ BASE_URL, service, mobileNav, index }) => {
+
     const image_priority = mobileNav ? index <= 2 ? true : false : true
     return (
         <Link href={`/services/${service.slug}`}>
