@@ -54,7 +54,7 @@ const SliderWrapper = ({ data, image, mobileNav, review }) => {
             <div className={"comment " + style.review_slider_item} key={i}>
                 <div className="item-header">   
                     <span className="avatar">
-                        <Image src={x.image} width={40} height={40} alt="profile" className="review-profile" placeholder="blur" />
+                        <Image src={x.image} width={40} height={40} alt="profile" className="review-profile" />
                     </span>
                     <span className="author">{x.name}</span>
                 </div>

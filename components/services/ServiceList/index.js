@@ -30,7 +30,7 @@ const ServiceList = ({ category, active, setActive, reference,  subcategorys, mo
                 <div className="service-list-close" onClick={() => setActive(!active)}><i className="far fa-arrow-left service-list-close-main" /></div>
                 <div className={style.service_list_title}>{category[0].toUpperCase() + category.slice(1)}</div>
                 <Link href="/cart">
-                    <a className={style.cart_icon_container}>
+                    <a className={style.cart_icon_container} onClick={() => setActive(false)}>
                     {/* <img src={cart_image} alt="cart" className="cart-icon" /> */}
                         <Image src="/cart.svg" className={style.cart_icon_img} alt="cart" layout="fill" objectFit="cover" priority={true}/>
                         <div className={style.cart_count + " cart_count"}>{cartCount}</div>
