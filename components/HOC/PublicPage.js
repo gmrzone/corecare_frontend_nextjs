@@ -9,7 +9,7 @@ const PublicPage = (PublicComponent) => {
             window.location.href = frontend_base
         }
     }
-    return (props) => {
+    return function WrapperComponent(props) {
         const {loading: authLoading, loginStatus} = useContext(AuthContext)
         return (
             <>
