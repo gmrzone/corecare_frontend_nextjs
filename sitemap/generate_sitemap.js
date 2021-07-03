@@ -1,7 +1,7 @@
 const fs = require("fs");
 const pretty = require("prettier");
 (async () => {
-  const backend_url = "https://afzalsaiyed.corecare.in";
+  const backend_url = "https://docker.corecare.in";
   const domain = "https://www.dev.corecare.in";
   const createStaticSitemap = () => {
     const url_links = [

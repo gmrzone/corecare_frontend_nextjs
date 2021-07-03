@@ -8,6 +8,6 @@ module.exports = {
     return config;
   },
   images: {
-    domains: ['www.afzalsaiyed.corecare.in', '127.0.0.1'],
+    domains: ['www.docker.corecare.in', '127.0.0.1'],
   },
   }
