@@ -41,7 +41,7 @@ const PostCreateModal = ({ modalProps, mobileNav }) => {
             modalMain.current.style.opacity = "0";
             setTimeout(deactivateModal, 500)
         }
-    }, [createModelActive])
+    }, [createModelActive, mobileNav])
     const closeCropperModal = () => {
         setCropperModalActive(false)
         ImageInputRef.current.value = null

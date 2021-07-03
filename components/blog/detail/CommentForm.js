@@ -25,7 +25,7 @@ const CommentForm = ({ year, month, day, slug, isReply, parent_id }) => {
         })
         setValue('name', loginStatus ? userData.first_name + " " + userData.last_name : "")
         setValue('email', loginStatus ? userData.email : "")
-    }, [loginStatus])
+    }, [loginStatus, setValue, userData])
 
     const onSubmit = (data) => {
         const answer = securityQuestion.firstNum + securityQuestion.secondNum

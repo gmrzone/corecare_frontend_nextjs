@@ -133,6 +133,7 @@ const Header = (props) => {
                   height="55"
                   width={mobileNav ? "55" : "176"}
                   priority={true}
+                  alt="main-logo"
                 />
               </a>
             </Link>

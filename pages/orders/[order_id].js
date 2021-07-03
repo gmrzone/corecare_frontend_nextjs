@@ -8,6 +8,7 @@ import style from '../../styles/orders/OrderStatus.module.scss'
 import TextPlaceHolder from '../../components/order/TextPlaceholder'
 import Card from '../../components/order/Card'
 import PrivatePage from '../../components/HOC/PrivatePage'
+import Image from 'next/image'
 const OrderDetail = ({ mobileNav }) => {
     const router = useRouter()
     const order_id = router.query['order_id']
@@ -28,7 +29,10 @@ const OrderDetail = ({ mobileNav }) => {
             <MetaComponent title={`Order ${order_id}`} description="Customers Order list page" name="Orders" url={`${frontend_base}orders`}/>
             <Layout mobileNav={mobileNav}>
                     <div className={"ui container " + style.order_status_container}>
-                    <img src="/order-complete.svg" alt="order-complete" className={style.order_complete_image}/>
+                    {/* <img src="/order-complete.svg" alt="order-complete" className={style.order_complete_image}/> */}
+                    <div className={style.order_complete_image}>
+                        <Image src="/order-complete.svg"  alt="order-complete" layout="fill" objectFit="contain" />
+                    </div>
                     <h1>Order Placed Successfully</h1>
                     <p className={style.order_status_description}>{`Thank you, your paymant has been successfull. Invoice for your order ${order_id} has been generated and sent to your email id ${current_order?.user?.email || "---------------------"}`}</p>
                         <div className={style.order_details__cont}>

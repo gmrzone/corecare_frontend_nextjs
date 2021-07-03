@@ -39,7 +39,7 @@ const GetInTouch = ({ mobileNav, user, partnersRequest }) => {
         setValue('name', loginStatus ? userData.first_name + " " + userData.last_name : "", { shouldValidate: false })
         setValue('number', loginStatus ? userData.number : "", { shouldValidate: false })
         setValue('email', loginStatus ? userData.email : "", { shouldValidate: false })
-    }, [loginStatus])
+    }, [loginStatus, setValue, userData])
 
 
     return (

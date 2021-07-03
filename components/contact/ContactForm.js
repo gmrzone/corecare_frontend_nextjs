@@ -16,7 +16,7 @@ const ContactForm = ({ authentication, contactUs }) => {
         setValue('first_name', loginStatus ? userData.first_name : "", { shouldValidate: false })
         setValue('last_name', loginStatus ? userData.last_name : "", { shouldValidate: false })
         setValue('email', loginStatus ? userData.email : "", { shouldValidate: false})
-    }, [loginStatus])
+    }, [loginStatus, setValue, userData])
     const onSubmit = (formValues) => {
         setLoading(true)
         console.log(formValues)

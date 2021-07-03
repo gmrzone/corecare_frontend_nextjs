@@ -11,7 +11,7 @@ const PostListItem = ({ post, view }) => {
     return str.replace( /(<([^>]+)>)/ig, '').substring(0, 100) + " ....";
     }
     return (
-        <Link href={`blog/${year}/${month}/${day}/${slug}`}>
+        <Link href={`blog/${year}/${month}/${day}/${slug}`} passHref={true}>
             <div className={`card ${style.post_item}`}>
                 <div className={`image ${style.image_container}`}>
                     {/* <img src={post.photo} alt={slug}/> */}

@@ -13,7 +13,7 @@ const PartnerHero = () => {
                     <p className={style.description}>Join 5,500+ partners across Mumbai, Pune.</p>
                 </div>
                 <div className={style.partner_hero_image}>
-                    <Image src={PartnerImage} layout="fill" objectFit="cover" className={style.partner_image} priority={true} placeholder="blur" />
+                    <Image src={PartnerImage} layout="fill" objectFit="cover" className={style.partner_image} priority={true} placeholder="blur" alt="partner-hero-image"/>
                 </div>
             </div>
             <GetInTouch />

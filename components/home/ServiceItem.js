@@ -11,7 +11,7 @@ const ServiceItem = ({ BASE_URL, service, mobileNav, index }) => {
         <Link href={`/services/${service.slug}`}>
             <a className={style.service_item}>
                 <div className={style.service_icon} style={{position: 'relative'}}>
-                    <Image src={`${BASE_URL}${service.icon}`} layout="fill" priority={image_priority}/>
+                    <Image src={`${BASE_URL}${service.icon}`} layout="fill" priority={image_priority} alt="service-item "/>
                 </div>
                 <div className={style.service_title}>{service.name}</div>
             </a>

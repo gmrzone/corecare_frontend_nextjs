@@ -3,6 +3,7 @@ import { useState, useRef } from 'react';
 import ReactCrop from 'react-image-crop';
 import 'react-image-crop/dist/ReactCrop.css';
 import BackendApi from '../../data/backendApi'
+import Image from 'next/image'
 // import defaultProfile from '../../images/default-profile.png'
 import ImageCropModel from './ImageCropModel';
 import { extractImageFileExtensionFromBase64, base64StringtoFile } from './codeCamputils'
@@ -111,8 +112,9 @@ const ProfileAvatarUpdate = ({ mobile, signUpstate, setSignUpstate, csrfToken, m
 
     return (
         <div className={style.profile_avatar_update}>
-            <div style={{marginBottom: '15px'}}>
-                <img src={croppedImageBase64} alt="current_profile_pic" className={`ui circular image ${mobile ? "small" : "medium"}`} style={{width: mobile ? "150px" : "250px", margin: '0 auto'}}/>
+            <div style={{marginBottom: '15px', width: mobile ? "150px" : "250px", height: mobile ? "150px" : "250px", margin: '0 auto', position: 'relative'}}>
+                {/* <img src={croppedImageBase64} alt="current_profile_pic" className={`ui circular image ${mobile ? "small" : "medium"}`} style={{width: mobile ? "150px" : "250px", margin: '0 auto'}}/> */}
+                <Image src={croppedImageBase64} alt="current_profile_pic" layout="fill" objectFit="cover" className={`ui circular image ${mobile ? "small" : "medium"}`}/>
             </div>
             <form className={"ui form " + style.profile_avatar_update_form} onSubmit={handleSubmit}>
                 <div className={style.choose_file}>

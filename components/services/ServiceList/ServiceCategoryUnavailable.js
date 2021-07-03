@@ -5,7 +5,7 @@ const ServiceCategoryUnavailable = ({ category }) => {
         <div className={style.unavailable_container}>
             {/* <img src={warning} alt="warning" className="warning-icon"/> */}
             <div className={style.warning_icon}>
-                <Image src="/warning.svg" layout="fill" objectFit="cover" />
+                <Image src="/warning.svg" layout="fill" objectFit="cover" alt="category-unavailable" />
             </div>
             <div className={style.inner_container}>
                 <h2 className={style.title}>Service Unavailable</h2>

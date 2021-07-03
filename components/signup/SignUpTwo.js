@@ -27,7 +27,7 @@ export const SignUpPageTwo = ({
     return () => {
       setSignUpHeader({ title: "", subtitle: "" });
     };
-  }, [setSignUpHeader]);
+  }, [setSignUpHeader, signUpData, setValue]);
 
   
   const onSubmit = (formValues) => {
