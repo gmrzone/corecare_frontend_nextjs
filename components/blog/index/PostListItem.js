@@ -1,6 +1,7 @@
 import style from '../../../styles/blog/index.module.scss'
 import Link from 'next/link'
 import LazyLoadImage from '../../common/LazyLoadImage'
+import { BASE_URL } from '../../../data/_variables'
 const PostListItem = ({ post, view }) => {
     const {slug,  date_slug : {year, month, day}} = post
     const renderBody = (str) => {
@@ -15,7 +16,7 @@ const PostListItem = ({ post, view }) => {
             <div className={`card ${style.post_item}`}>
                 <div className={`image ${style.image_container}`}>
                     {/* <img src={post.photo} alt={slug}/> */}
-                    <LazyLoadImage src={post.photo} alt_text={slug} class_name={style.placeholder}/>
+                    <LazyLoadImage src={BASE_URL + post.photo} alt_text={slug} class_name={style.placeholder}/>
                 </div>
                 <div className="content">
                 <div className={style.head}>{post.title}</div>

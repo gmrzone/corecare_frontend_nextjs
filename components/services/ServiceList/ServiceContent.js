@@ -38,13 +38,7 @@ const ServiceContent = ({ category, openCategoryModel, setModelText, setReplacem
         axios.post('cart/remove/', {service_id: service_id},  {headers: {'X-CSRFToken': csrfToken}})
         .then(response => mutateBaseCart({...response.data}, false))
     }
-    const getImageUrl = (url) => {
-        if (process.env.NODE_ENV !== "development"){
-            const new_url = "https" + url.substring(4,)
-            return new_url
-        }
-        return url
-    }   
+ 
     const renderCategoryItems = (itemList) => {
         return itemList.map((x, i) => {
             return (
@@ -53,7 +47,7 @@ const ServiceContent = ({ category, openCategoryModel, setModelText, setReplacem
                     <div className={style.banner + " banner_status"}>Recommanded</div>
                     <div className={style.item_detail}>
                         <div className={style.item_image}>
-                            <Image src={getImageUrl(x.icon)} width="60" height="60" alt="service_icon" className={style.img_image} placeholder="blur" blurDataURL={x.placeholder}/>
+                            <Image src={BASE_URL + x.icon} width="60" height="60" alt="service_icon" className={style.img_image} placeholder="blur" blurDataURL={BASE_URL + x.placeholder}/>
                         </div>
                         <div className={style.item_content}>
                             <h4>{x.name}</h4>
