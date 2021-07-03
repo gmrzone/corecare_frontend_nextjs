@@ -60,7 +60,7 @@ const Login = (props) => {
             
         }
         else {
-            LoginForm.current.style.height = (window.innerHeight - 75 - 70) + "px";
+            LoginForm.current.style.height = (window.innerHeight - 75 - 65) + "px";
         }
         
     }, [mobileNav])
