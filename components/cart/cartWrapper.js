@@ -9,7 +9,7 @@ import { DetailRecommanderContext } from '../../context/DetailServiceRecommander
 import RecommandedServices from './RecommandedServices'
 import { BaseCartContext } from '../../context/basicCartContext'
 
-const cartWrapper  = ({ mobileNav }) => {
+const CartWrapper  = ({ mobileNav }) => {
     const { detailCart, detailCartMutate } = useContext(DetailCartContext)
     const { detailRecommandation, mutateDetailRecommander, loading } = useContext(DetailRecommanderContext)
     const {baseCart , mutateBaseCart } = useContext(BaseCartContext)
@@ -67,4 +67,4 @@ const cartWrapper  = ({ mobileNav }) => {
     )
 }
 
-export default cartWrapper
+export default CartWrapper

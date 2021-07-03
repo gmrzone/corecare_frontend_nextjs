@@ -4,7 +4,7 @@ import axios from '../../../data/backendApi'
 import { BaseCartContext } from '../../../context/basicCartContext'
 import { useContext } from 'react'
 import { CsrfContext } from '../../../context/CsrfTokenContext'
-const categoryChangeModel = (props) => {
+const CategoryChangeModel = (props) => {
     const { csrfToken, mutateCsrf } = useContext(CsrfContext)
 
     const {category, replacementItem: service_id} = props
@@ -45,4 +45,4 @@ const categoryChangeModel = (props) => {
 }
 
 // export default connect(null, { replaceCart })(categoryChangeModel)
-export default categoryChangeModel
+export default CategoryChangeModel
