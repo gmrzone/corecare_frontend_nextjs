@@ -38,7 +38,7 @@ export default function Home({ mobileNav, post }) {
   useEffect(() => {
     
     axios.get(`blog/post/views/update/${post.id}/`)
-  }, [])
+  }, [post.id])
 
   const {slug , date_slug: { year, month, day }} = post
 

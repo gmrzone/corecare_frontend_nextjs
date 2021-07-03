@@ -11,7 +11,7 @@ const TopPost = () => {
 
     const renderPosts = data?.map(x => {
         return (
-            <Link key={x.id} href={`blog/${x.date_slug.year}/${x.date_slug.month}/${x.date_slug.day}/${x.slug}`}>
+            <Link key={x.id} href={`blog/${x.date_slug.year}/${x.date_slug.month}/${x.date_slug.day}/${x.slug}`} passHref={true}>
                 <div className={style.top_post_item} >
                     <div className={style.image_container}>
                         <LazyLoadImage alt_text={x.title} class_name={style.image_placeholder} src={BASE_URL + x.photo}/>
@@ -27,9 +27,6 @@ const TopPost = () => {
         <div className={style.top_post_container}>
             <h2>Top Posts</h2>
             {renderPosts ? <TopPostSlider data={renderPosts}/> : <div className={style.no_data_placeholder}></div>}
-            {/* <div className={style.top_post_outer}>
-                {renderPosts}
-            </div> */}
         </div>
         )
 }

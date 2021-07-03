@@ -44,7 +44,9 @@ const TopPostSlider = ({ data }) => {
                         .inner {
                             width: ${desktopInnerWidth}px;
                             transform: translateX(${sliderPosition}px);
-                            transition: transform 0.4s ease-in-out;
+                            will-change: transform;
+                            scroll-behavior: smooth;
+                            transition: transform 0.5s;
                         }
 
                     }
