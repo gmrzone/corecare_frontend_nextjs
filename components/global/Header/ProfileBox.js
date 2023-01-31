@@ -28,7 +28,8 @@ const ProfileBox = (props) => {
 
     }
     const toggleDropdown = (e) => {
-        setDropdownActive(!dropDownActive)
+        e.stopPropagation()
+        setDropdownActive(e => !e)
     }
     const closeDropDown = () => {
         setDropdownActive(false)

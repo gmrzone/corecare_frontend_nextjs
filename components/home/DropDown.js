@@ -28,7 +28,7 @@ const Dropdown = ({ register,  selected, options, selectionChange })=> {
         //         {renderedOpt}
         //     </div>
         // </div>
-        <div className={style.dropdown_main} onClick={toggleDropDown} style={{boxShadow: open ? '0px 0px 0px 1px #666666' : ""}}>
+        <div className={style.dropdown_main} onClick={toggleDropDown} style={{boxShadow: open ? '0px 0px 0px 1px #666666' : "0px 0px 0px 0px #666666"}}>
             <div className={style.india_icon}>
                 {/* <img src="/india.svg" alt="india_icon"/> */}
                 <Image src="/india.svg" alt="india_icon" layout="fill" objectFit="cover" priority={true}/>
